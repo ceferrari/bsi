@@ -8,7 +8,7 @@
 
         public Universidade(string nome)
         {
-            Codigo = Universidade.Cont++;
+            Codigo = Cont++;
             Nome = nome;
         }
     }

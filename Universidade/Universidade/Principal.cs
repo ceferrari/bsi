@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,8 +13,8 @@ namespace Universidade
         private BindingList<Universidade> Universidades { get; set; }
         private BindingList<Departamento> Departamentos { get; set; }
         private BindingList<Professor> Professores { get; set; }
-        private List<UniversidadeDepartamento> UniDep { get; set; }
-        private List<DepartamentoProfessor> DepPro { get; set; }
+        private List<UniDep> UniDep { get; set; }
+        private List<UniDepPro> UniDepPro { get; set; }
         private Universidade SelUniversidade { get; set; }
         private Departamento SelDepartamento { get; set; }
         private Professor SelProfessor { get; set; }
@@ -64,29 +65,29 @@ namespace Universidade
             Professores.Add(new Professor("Diego"));
             Professores.Add(new Professor("Laura"));
             Professores.Add(new Professor("Pedro"));
-            Professores.Add(new Professor("Bernardo"));
-            Professores.Add(new Professor("Manuela"));
-            Professores.Add(new Professor("Gabriel"));
-            Professores.Add(new Professor("Lucas"));
-            Professores.Add(new Professor("Helena"));
-            Professores.Add(new Professor("Matheus"));
-            Professores.Add(new Professor("Rafael"));
-            Professores.Add(new Professor("Beatriz"));
-            Professores.Add(new Professor("Guilherme"));
-            Professores.Add(new Professor("Mariana"));
-            Professores.Add(new Professor("Felipe"));
-            Professores.Add(new Professor("Gustavo"));
-            Professores.Add(new Professor("Henrique"));
-            Professores.Add(new Professor("Rafaela"));
-            Professores.Add(new Professor("Daniel"));
-            Professores.Add(new Professor("Murilo"));
-            Professores.Add(new Professor("Vitor"));
+            //Professores.Add(new Professor("Bernardo"));
+            //Professores.Add(new Professor("Manuela"));
+            //Professores.Add(new Professor("Gabriel"));
+            //Professores.Add(new Professor("Lucas"));
+            //Professores.Add(new Professor("Helena"));
+            //Professores.Add(new Professor("Matheus"));
+            //Professores.Add(new Professor("Rafael"));
+            //Professores.Add(new Professor("Beatriz"));
+            //Professores.Add(new Professor("Guilherme"));
+            //Professores.Add(new Professor("Mariana"));
+            //Professores.Add(new Professor("Felipe"));
+            //Professores.Add(new Professor("Gustavo"));
+            //Professores.Add(new Professor("Henrique"));
+            //Professores.Add(new Professor("Rafaela"));
+            //Professores.Add(new Professor("Daniel"));
+            //Professores.Add(new Professor("Murilo"));
+            //Professores.Add(new Professor("Vitor"));
 
-            UniDep = new List<UniversidadeDepartamento>();
-            UniDep.Add(new UniversidadeDepartamento(0, 0));
+            UniDep = new List<UniDep>();
+            UniDep.Add(new UniDep(0, 0));
 
-            DepPro = new List<DepartamentoProfessor>();
-            DepPro.Add(new DepartamentoProfessor(0, 0));
+            UniDepPro = new List<UniDepPro>();
+            UniDepPro.Add(new UniDepPro(0, 0));
 
             Aleatorios();
         }
@@ -94,24 +95,33 @@ namespace Universidade
         /* Atribui Departamentos e Professores aleatoriamente */
         private void Aleatorios()
         {
-            int nUni = Universidades.Count;
-            int nDep = Departamentos.Count;
-            int nPro = Professores.Count;
-            int nUniDep = nUni * nDep;
-            int nDepPro = nDep * nPro;
-
-            for (int i = 0; i < nUniDep/2; i++)
+            for (int i = 1; i < Universidades.Count; i++)
             {
-                UniDep.Add(new UniversidadeDepartamento(Rnd.Next(1, nUni), Rnd.Next(1, nDep)));
-            }
-
-            foreach (var x in UniDep)
-            {
-                for (int i = 0; i < nDepPro/2; i++)
+                for (int j = 0; j < Rnd.Next(1, Departamentos.Count); j++)
                 {
-                    DepPro.Add(new DepartamentoProfessor(Rnd.Next(1, nUniDep), Rnd.Next(1, nPro)));
+                    UniDep.Add(new UniDep(Universidades[i].Codigo, Rnd.Next(1, Departamentos.Count)));
                 }
             }
+
+            for (int i = 1; i < UniDep.Count; i++)
+            {
+                for (int j = 0; j < Rnd.Next(1, Professores.Count); j++)
+                {
+                    UniDepPro.Add(new UniDepPro(UniDep[i].Codigo, Rnd.Next(1, Professores.Count)));
+                }
+            }
+
+            /* Debug
+            for (int i = 0; i < UniDep.Count; i++)
+            {
+                Console.WriteLine(UniDep[i].Codigo + " " + UniDep[i].CodigoUniversidade + " " + UniDep[i].CodigoDepartamento);
+            }
+
+            for (int i = 0; i < UniDepPro.Count; i++)
+            {
+                Console.WriteLine(UniDepPro[i].Codigo + " " + UniDepPro[i].CodigoUniDep + " " + UniDepPro[i].CodigoProfessor);
+            }
+            */
         }
 
         private void PopulaDataGrids()
@@ -139,24 +149,6 @@ namespace Universidade
             lblQtdProfessoresValor.Text = Convert.ToString(dgvProfessores.RowCount - 1);
         }
 
-        private void LiberaBotoes()
-        {
-            if (dgvUniversidades.Rows[0].Selected && dgvDepartamentos.Rows[0].Selected && dgvProfessores.Rows[0].Selected)
-            {
-                btnCadDepartamento.Enabled = true;
-                btnRemDepartamento.Enabled = true;
-                btnCadProfessor.Enabled = true;
-                btnRemProfessor.Enabled = true;
-            }
-            else
-            {
-                btnCadDepartamento.Enabled = false;
-                btnRemDepartamento.Enabled = false;
-                btnCadProfessor.Enabled = false;
-                btnRemProfessor.Enabled = false;
-            }
-        }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (!txtNome.Text.Equals(""))
@@ -180,61 +172,104 @@ namespace Universidade
 
         private void dgvUniversidades_SelectionChanged(object sender, EventArgs e)
         {
-            SelUniversidade = dgvUniversidades.CurrentRow.DataBoundItem as Universidade;
-
-            if (dgvUniversidades.CurrentRow.Index == 0)
+            try
             {
-                dgvDepartamentos.DataSource = Departamentos;
+                SelUniversidade = dgvUniversidades.CurrentRow.DataBoundItem as Universidade;
+                List<Departamento> filtro = null;
+
+                if (dgvUniversidades.CurrentRow.Index > 0)
+                {
+                    filtro = Departamentos.Where(x => x.Codigo == 0 ||
+                        UniDep.Any(y => y.CodigoDepartamento == x.Codigo && y.CodigoUniversidade == SelUniversidade.Codigo)).ToList();
+                }
+
+                dgvDepartamentos.DataSource = (filtro == null) ? Departamentos : new BindingList<Departamento>(filtro);
                 dgvDepartamentos.Rows[0].Selected = true;
-                dgvProfessores.Rows[0].Selected = true;
+                AtualizaNumeros();
             }
-            else
+            catch (Exception ex)
             {
-                var filtered = Departamentos
-                    .Where(x => x.Codigo == 0 ||
-                        UniDep.Any(y => y.CodigoDepartamento == x.Codigo && 
-                                        y.CodigoUniversidade == SelUniversidade.Codigo)
-                    ).ToList();
-
-                dgvDepartamentos.DataSource = new BindingList<Departamento>(filtered);
-                dgvDepartamentos.Update();
+                Console.WriteLine(ex.Message);
             }
-
-            //AtualizaNumeros();
-            //LiberaBotoes();
         }
 
         private void dgvDepartamentos_SelectionChanged(object sender, EventArgs e)
         {
-            SelDepartamento = dgvDepartamentos.CurrentRow.DataBoundItem as Departamento;
-
-            if (dgvDepartamentos.CurrentRow.Index == 0)
+            try
             {
-                dgvProfessores.DataSource = Professores;
+                SelDepartamento = dgvDepartamentos.CurrentRow.DataBoundItem as Departamento;
+                List<Professor> filtro = null;
+
+                if (dgvUniversidades.CurrentRow.Index == 0 && dgvDepartamentos.CurrentRow.Index > 0)
+                {
+                    filtro = Professores.Where(x => x.Codigo == 0 ||
+                        UniDepPro.Any(y => y.CodigoProfessor == x.Codigo &&
+                            UniDep.Any(z => z.Codigo == y.CodigoUniDep && z.CodigoDepartamento == SelDepartamento.Codigo))).ToList();
+                }
+
+                if (dgvUniversidades.CurrentRow.Index > 0 && dgvDepartamentos.CurrentRow.Index == 0)
+                {
+                    filtro = Professores.Where(x => x.Codigo == 0 ||
+                        UniDepPro.Any(y => y.CodigoProfessor == x.Codigo &&
+                            UniDep.Any(z => z.Codigo == y.CodigoUniDep && z.CodigoUniversidade == SelUniversidade.Codigo))).ToList();
+                }
+
+                if (dgvUniversidades.CurrentRow.Index > 0 && dgvDepartamentos.CurrentRow.Index > 0)
+                {
+                    int codigoUniDep = UniDep.First(x => x.CodigoUniversidade == SelUniversidade.Codigo && x.CodigoDepartamento == SelDepartamento.Codigo).Codigo;
+
+                    filtro = Professores.Where(x => x.Codigo == 0 ||
+                        UniDepPro.Any(y => y.CodigoProfessor == x.Codigo && y.CodigoUniDep == codigoUniDep)).ToList();
+                }
+
+                dgvProfessores.DataSource = (filtro == null) ? Professores : new BindingList<Professor>(filtro);
                 dgvProfessores.Rows[0].Selected = true;
+                AtualizaNumeros();
             }
-            else
+            catch (Exception ex)
             {
-                //var filtered = Professores
-                //        .Where(x => x.Codigo == 0 ||
-                //            DepPro.Any(y => y.CodigoProfessor == x.Codigo &&
-                //                            y.CodigoUniDep == SelDepartamento.Codigo)
-                //        ).ToList();
-
-                //dgvProfessores.DataSource = new BindingList<Professor>(filtered);
-                //dgvProfessores.Update();
+                Console.WriteLine(ex.Message);
             }
-
-            //AtualizaNumeros();
-            //LiberaBotoes();
         }
 
         private void dgvProfessores_SelectionChanged(object sender, EventArgs e)
         {
-            //SelProfessor = dgvProfessores.CurrentRow.DataBoundItem as Professor;
+            try
+            {
+                SelProfessor = dgvProfessores.CurrentRow.DataBoundItem as Professor;
 
-            //AtualizaNumeros();
-            //LiberaBotoes();
+                if (dgvProfessores.CurrentRow.Index == 0)
+                {
+
+                }
+                else
+                {
+                    //List<Professor> filtrado = null;
+
+                    if (dgvUniversidades.CurrentRow.Index == 0)
+                    {
+                        dgvUniversidades.Rows
+                            .Cast<DataGridViewRow>()
+                            .FirstOrDefault(x => (x.DataBoundItem as Universidade).Codigo > 0 &&
+                                UniDepPro.Any(y => y.CodigoProfessor == SelProfessor.Codigo &&
+                                UniDep.Any(z => z.Codigo == y.CodigoUniDep))).DefaultCellStyle.BackColor = Color.Red;
+                    }
+
+                    //if (dgvDepartamentos.CurrentRow.Index == 0)
+                    //{
+                    //    filtrado = Professores.Where(x => x.Codigo == 0 ||
+                    //        UniDepPro.Any(y => y.CodigoProfessor == x.Codigo &&
+                    //            UniDep.Any(z => z.Codigo == y.CodigoUniDep &&
+                    //                z.CodigoDepartamento == SelDepartamento.Codigo))).ToList();
+                    //}
+                }
+
+                AtualizaNumeros();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

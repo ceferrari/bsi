@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Departamento.cs" />
-    <Compile Include="DepartamentoProfessor.cs" />
+    <Compile Include="UniDepPro.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,7 +60,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Universidade.cs" />
-    <Compile Include="UniversidadeDepartamento.cs" />
+    <Compile Include="UniDep.cs" />
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
