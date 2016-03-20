@@ -1,17 +1,18 @@
-﻿namespace Universidade
+﻿using System;
+
+namespace Universidade
 {
     public class UniDepPro
     {
         public static int Cont { get; set; }
         public int Codigo { get; set; }
-        public int CodigoUniDep { get; set; }
-        public int CodigoProfessor { get; set; }
+        public Tuple<int, int> Chaves { get; set; }
+        /* Chaves.Item1 = CodigoUniDep, Chaves.Item2 = CodigoProfessor */
 
-        public UniDepPro(int unidep, int professor)
+        public UniDepPro(Tuple<int, int> chaves)
         {
             Codigo = Cont++;
-            CodigoUniDep = unidep;
-            CodigoProfessor = professor;
+            Chaves = chaves;
         }
     }
 }

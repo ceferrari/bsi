@@ -28,24 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblQtdUniversidadesValor = new System.Windows.Forms.Label();
             this.lblQtdUniversidades = new System.Windows.Forms.Label();
             this.dgvUniversidades = new System.Windows.Forms.DataGridView();
-            this.CodUni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Universidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDepartamentos = new System.Windows.Forms.DataGridView();
-            this.CodDep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvProfessores = new System.Windows.Forms.DataGridView();
-            this.CodPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Professor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlRadioButtons = new System.Windows.Forms.Panel();
             this.rbProfessor = new System.Windows.Forms.RadioButton();
             this.rbDepartamento = new System.Windows.Forms.RadioButton();
@@ -57,6 +51,12 @@
             this.lblQtdProfessoresValor = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.CodPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Professor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodDep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodUni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Universidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUniversidades)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartamentos)).BeginInit();
@@ -103,7 +103,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 537);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(756, 533);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblQtdUniversidadesValor
@@ -112,7 +112,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.lblQtdUniversidadesValor, 2);
             this.lblQtdUniversidadesValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdUniversidadesValor.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdUniversidadesValor.Location = new System.Drawing.Point(124, 508);
+            this.lblQtdUniversidadesValor.Location = new System.Drawing.Point(123, 504);
             this.lblQtdUniversidadesValor.Name = "lblQtdUniversidadesValor";
             this.lblQtdUniversidadesValor.Size = new System.Drawing.Size(114, 29);
             this.lblQtdUniversidadesValor.TabIndex = 0;
@@ -124,10 +124,10 @@
             this.lblQtdUniversidades.AutoSize = true;
             this.lblQtdUniversidades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdUniversidades.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdUniversidades.Location = new System.Drawing.Point(0, 508);
+            this.lblQtdUniversidades.Location = new System.Drawing.Point(0, 504);
             this.lblQtdUniversidades.Margin = new System.Windows.Forms.Padding(0);
             this.lblQtdUniversidades.Name = "lblQtdUniversidades";
-            this.lblQtdUniversidades.Size = new System.Drawing.Size(121, 29);
+            this.lblQtdUniversidades.Size = new System.Drawing.Size(120, 29);
             this.lblQtdUniversidades.TabIndex = 0;
             this.lblQtdUniversidades.Text = "Quantidade:";
             this.lblQtdUniversidades.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -139,30 +139,31 @@
             this.dgvUniversidades.AllowUserToResizeColumns = false;
             this.dgvUniversidades.AllowUserToResizeRows = false;
             this.dgvUniversidades.BackgroundColor = System.Drawing.Color.White;
-            this.dgvUniversidades.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvUniversidades.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUniversidades.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvUniversidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUniversidades.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUniversidades.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvUniversidades.ColumnHeadersHeight = 30;
+            this.dgvUniversidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvUniversidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodUni,
             this.Universidade});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvUniversidades, 3);
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUniversidades.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUniversidades.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvUniversidades.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUniversidades.GridColor = System.Drawing.SystemColors.Control;
             this.dgvUniversidades.Location = new System.Drawing.Point(3, 93);
             this.dgvUniversidades.MultiSelect = false;
             this.dgvUniversidades.Name = "dgvUniversidades";
@@ -170,26 +171,11 @@
             this.dgvUniversidades.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.dgvUniversidades, 3);
             this.dgvUniversidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUniversidades.Size = new System.Drawing.Size(235, 412);
+            this.dgvUniversidades.Size = new System.Drawing.Size(234, 408);
             this.dgvUniversidades.TabIndex = 7;
+            this.dgvUniversidades.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUniversidades_CellDoubleClick);
             this.dgvUniversidades.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             this.dgvUniversidades.SelectionChanged += new System.EventHandler(this.dgvUniversidades_SelectionChanged);
-            // 
-            // CodUni
-            // 
-            this.CodUni.HeaderText = "Codigo";
-            this.CodUni.Name = "CodUni";
-            this.CodUni.ReadOnly = true;
-            this.CodUni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CodUni.Visible = false;
-            // 
-            // Universidade
-            // 
-            this.Universidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Universidade.HeaderText = "Universidade";
-            this.Universidade.Name = "Universidade";
-            this.Universidade.ReadOnly = true;
-            this.Universidade.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // dgvDepartamentos
             // 
@@ -198,57 +184,43 @@
             this.dgvDepartamentos.AllowUserToResizeColumns = false;
             this.dgvDepartamentos.AllowUserToResizeRows = false;
             this.dgvDepartamentos.BackgroundColor = System.Drawing.Color.White;
-            this.dgvDepartamentos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvDepartamentos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDepartamentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvDepartamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDepartamentos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDepartamentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvDepartamentos.ColumnHeadersHeight = 30;
+            this.dgvDepartamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDepartamentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodDep,
             this.Departamento});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvDepartamentos, 3);
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDepartamentos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDepartamentos.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvDepartamentos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDepartamentos.Location = new System.Drawing.Point(259, 93);
+            this.dgvDepartamentos.GridColor = System.Drawing.SystemColors.Control;
+            this.dgvDepartamentos.Location = new System.Drawing.Point(258, 93);
             this.dgvDepartamentos.MultiSelect = false;
             this.dgvDepartamentos.Name = "dgvDepartamentos";
             this.dgvDepartamentos.ReadOnly = true;
             this.dgvDepartamentos.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.dgvDepartamentos, 3);
             this.dgvDepartamentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDepartamentos.Size = new System.Drawing.Size(235, 412);
+            this.dgvDepartamentos.Size = new System.Drawing.Size(234, 408);
             this.dgvDepartamentos.TabIndex = 8;
+            this.dgvDepartamentos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartamentos_CellDoubleClick);
             this.dgvDepartamentos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             this.dgvDepartamentos.SelectionChanged += new System.EventHandler(this.dgvDepartamentos_SelectionChanged);
-            // 
-            // CodDep
-            // 
-            this.CodDep.HeaderText = "Codigo";
-            this.CodDep.Name = "CodDep";
-            this.CodDep.ReadOnly = true;
-            this.CodDep.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CodDep.Visible = false;
-            // 
-            // Departamento
-            // 
-            this.Departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Departamento.HeaderText = "Departamento";
-            this.Departamento.Name = "Departamento";
-            this.Departamento.ReadOnly = true;
-            this.Departamento.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // dgvProfessores
             // 
@@ -257,57 +229,43 @@
             this.dgvProfessores.AllowUserToResizeColumns = false;
             this.dgvProfessores.AllowUserToResizeRows = false;
             this.dgvProfessores.BackgroundColor = System.Drawing.Color.White;
-            this.dgvProfessores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvProfessores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProfessores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvProfessores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProfessores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProfessores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvProfessores.ColumnHeadersHeight = 30;
+            this.dgvProfessores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProfessores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodPro,
             this.Professor});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvProfessores, 3);
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProfessores.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProfessores.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvProfessores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProfessores.Location = new System.Drawing.Point(515, 93);
+            this.dgvProfessores.GridColor = System.Drawing.SystemColors.Control;
+            this.dgvProfessores.Location = new System.Drawing.Point(513, 93);
             this.dgvProfessores.MultiSelect = false;
             this.dgvProfessores.Name = "dgvProfessores";
             this.dgvProfessores.ReadOnly = true;
             this.dgvProfessores.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.dgvProfessores, 3);
             this.dgvProfessores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProfessores.Size = new System.Drawing.Size(242, 412);
+            this.dgvProfessores.Size = new System.Drawing.Size(240, 408);
             this.dgvProfessores.TabIndex = 9;
+            this.dgvProfessores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfessores_CellDoubleClick);
             this.dgvProfessores.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             this.dgvProfessores.SelectionChanged += new System.EventHandler(this.dgvProfessores_SelectionChanged);
-            // 
-            // CodPro
-            // 
-            this.CodPro.HeaderText = "Codigo";
-            this.CodPro.Name = "CodPro";
-            this.CodPro.ReadOnly = true;
-            this.CodPro.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CodPro.Visible = false;
-            // 
-            // Professor
-            // 
-            this.Professor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Professor.HeaderText = "Professor";
-            this.Professor.Name = "Professor";
-            this.Professor.ReadOnly = true;
-            this.Professor.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // pnlRadioButtons
             // 
@@ -316,9 +274,9 @@
             this.pnlRadioButtons.Controls.Add(this.rbDepartamento);
             this.pnlRadioButtons.Controls.Add(this.rbUniversidade);
             this.pnlRadioButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRadioButtons.Location = new System.Drawing.Point(124, 3);
+            this.pnlRadioButtons.Location = new System.Drawing.Point(123, 3);
             this.pnlRadioButtons.Name = "pnlRadioButtons";
-            this.pnlRadioButtons.Size = new System.Drawing.Size(506, 31);
+            this.pnlRadioButtons.Size = new System.Drawing.Size(504, 31);
             this.pnlRadioButtons.TabIndex = 1;
             this.pnlRadioButtons.TabStop = true;
             // 
@@ -327,7 +285,7 @@
             this.rbProfessor.AutoSize = true;
             this.rbProfessor.Dock = System.Windows.Forms.DockStyle.Right;
             this.rbProfessor.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbProfessor.Location = new System.Drawing.Point(372, 0);
+            this.rbProfessor.Location = new System.Drawing.Point(370, 0);
             this.rbProfessor.Name = "rbProfessor";
             this.rbProfessor.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.rbProfessor.Size = new System.Drawing.Size(134, 31);
@@ -368,10 +326,10 @@
             // 
             this.lblNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNome.AutoSize = true;
-            this.lblNome.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.Location = new System.Drawing.Point(3, 49);
+            this.lblNome.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNome.Location = new System.Drawing.Point(3, 51);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(115, 28);
+            this.lblNome.Size = new System.Drawing.Size(114, 24);
             this.lblNome.TabIndex = 0;
             this.lblNome.Text = "Nome:";
             this.lblNome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -381,10 +339,10 @@
             this.lblQtdDepartamentos.AutoSize = true;
             this.lblQtdDepartamentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdDepartamentos.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdDepartamentos.Location = new System.Drawing.Point(256, 508);
+            this.lblQtdDepartamentos.Location = new System.Drawing.Point(255, 504);
             this.lblQtdDepartamentos.Margin = new System.Windows.Forms.Padding(0);
             this.lblQtdDepartamentos.Name = "lblQtdDepartamentos";
-            this.lblQtdDepartamentos.Size = new System.Drawing.Size(121, 29);
+            this.lblQtdDepartamentos.Size = new System.Drawing.Size(120, 29);
             this.lblQtdDepartamentos.TabIndex = 0;
             this.lblQtdDepartamentos.Text = "Quantidade:";
             this.lblQtdDepartamentos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -394,10 +352,10 @@
             this.lblQtdProfessores.AutoSize = true;
             this.lblQtdProfessores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdProfessores.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdProfessores.Location = new System.Drawing.Point(512, 508);
+            this.lblQtdProfessores.Location = new System.Drawing.Point(510, 504);
             this.lblQtdProfessores.Margin = new System.Windows.Forms.Padding(0);
             this.lblQtdProfessores.Name = "lblQtdProfessores";
-            this.lblQtdProfessores.Size = new System.Drawing.Size(121, 29);
+            this.lblQtdProfessores.Size = new System.Drawing.Size(120, 29);
             this.lblQtdProfessores.TabIndex = 0;
             this.lblQtdProfessores.Text = "Quantidade:";
             this.lblQtdProfessores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -408,7 +366,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.lblQtdDepartamentosValor, 2);
             this.lblQtdDepartamentosValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdDepartamentosValor.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdDepartamentosValor.Location = new System.Drawing.Point(380, 508);
+            this.lblQtdDepartamentosValor.Location = new System.Drawing.Point(378, 504);
             this.lblQtdDepartamentosValor.Name = "lblQtdDepartamentosValor";
             this.lblQtdDepartamentosValor.Size = new System.Drawing.Size(114, 29);
             this.lblQtdDepartamentosValor.TabIndex = 0;
@@ -421,9 +379,9 @@
             this.tableLayoutPanel1.SetColumnSpan(this.lblQtdProfessoresValor, 2);
             this.lblQtdProfessoresValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdProfessoresValor.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdProfessoresValor.Location = new System.Drawing.Point(636, 508);
+            this.lblQtdProfessoresValor.Location = new System.Drawing.Point(633, 504);
             this.lblQtdProfessoresValor.Name = "lblQtdProfessoresValor";
-            this.lblQtdProfessoresValor.Size = new System.Drawing.Size(121, 29);
+            this.lblQtdProfessoresValor.Size = new System.Drawing.Size(120, 29);
             this.lblQtdProfessoresValor.TabIndex = 0;
             this.lblQtdProfessoresValor.Text = "45 / 99";
             this.lblQtdProfessoresValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -433,9 +391,9 @@
             this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.txtNome, 8);
             this.txtNome.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(124, 47);
+            this.txtNome.Location = new System.Drawing.Point(123, 47);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(506, 32);
+            this.txtNome.Size = new System.Drawing.Size(504, 32);
             this.txtNome.TabIndex = 5;
             // 
             // btnSalvar
@@ -445,25 +403,86 @@
             this.tableLayoutPanel1.SetColumnSpan(this.btnSalvar, 2);
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(643, 46);
+            this.btnSalvar.Location = new System.Drawing.Point(640, 46);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(107, 34);
+            this.btnSalvar.Size = new System.Drawing.Size(106, 34);
             this.btnSalvar.TabIndex = 6;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // CodPro
+            // 
+            this.CodPro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CodPro.Frozen = true;
+            this.CodPro.HeaderText = "Codigo";
+            this.CodPro.Name = "CodPro";
+            this.CodPro.ReadOnly = true;
+            this.CodPro.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CodPro.Visible = false;
+            // 
+            // Professor
+            // 
+            this.Professor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Professor.Frozen = true;
+            this.Professor.HeaderText = "Professor";
+            this.Professor.Name = "Professor";
+            this.Professor.ReadOnly = true;
+            this.Professor.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Professor.Width = 240;
+            // 
+            // CodDep
+            // 
+            this.CodDep.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CodDep.Frozen = true;
+            this.CodDep.HeaderText = "Codigo";
+            this.CodDep.Name = "CodDep";
+            this.CodDep.ReadOnly = true;
+            this.CodDep.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CodDep.Visible = false;
+            // 
+            // Departamento
+            // 
+            this.Departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Departamento.Frozen = true;
+            this.Departamento.HeaderText = "Departamento";
+            this.Departamento.Name = "Departamento";
+            this.Departamento.ReadOnly = true;
+            this.Departamento.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Departamento.Width = 233;
+            // 
+            // CodUni
+            // 
+            this.CodUni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CodUni.Frozen = true;
+            this.CodUni.HeaderText = "Codigo";
+            this.CodUni.Name = "CodUni";
+            this.CodUni.ReadOnly = true;
+            this.CodUni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CodUni.Visible = false;
+            // 
+            // Universidade
+            // 
+            this.Universidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Universidade.Frozen = true;
+            this.Universidade.HeaderText = "Universidade";
+            this.Universidade.Name = "Universidade";
+            this.Universidade.ReadOnly = true;
+            this.Universidade.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Universidade.Width = 233;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(780, 557);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "Principal";
             this.ShowIcon = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.tableLayoutPanel1.ResumeLayout(false);
