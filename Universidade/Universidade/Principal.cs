@@ -19,6 +19,7 @@ namespace Universidade
         private Departamento SelDepartamento { get; set; }
         private Professor SelProfessor { get; set; }
         private Random Rnd = new Random();
+        private int UniCount { get; set;  }
 
         public Principal()
         {
@@ -26,7 +27,6 @@ namespace Universidade
 
             InicializaListas();
             PopulaDataGrids();
-            AtualizaNumeros();
         }
 
         private void InicializaListas()
@@ -65,13 +65,13 @@ namespace Universidade
             Professores.Add(new Professor("Diego"));
             Professores.Add(new Professor("Laura"));
             Professores.Add(new Professor("Pedro"));
-            //Professores.Add(new Professor("Bernardo"));
-            //Professores.Add(new Professor("Manuela"));
-            //Professores.Add(new Professor("Gabriel"));
-            //Professores.Add(new Professor("Lucas"));
-            //Professores.Add(new Professor("Helena"));
-            //Professores.Add(new Professor("Matheus"));
-            //Professores.Add(new Professor("Rafael"));
+            Professores.Add(new Professor("Bernardo"));
+            Professores.Add(new Professor("Manuela"));
+            Professores.Add(new Professor("Gabriel"));
+            Professores.Add(new Professor("Lucas"));
+            Professores.Add(new Professor("Helena"));
+            Professores.Add(new Professor("Matheus"));
+            Professores.Add(new Professor("Rafael"));
             //Professores.Add(new Professor("Beatriz"));
             //Professores.Add(new Professor("Guilherme"));
             //Professores.Add(new Professor("Mariana"));
@@ -111,17 +111,16 @@ namespace Universidade
                 }
             }
 
-            /* Debug
-            for (int i = 0; i < UniDep.Count; i++)
-            {
-                Console.WriteLine(UniDep[i].Codigo + " " + UniDep[i].CodigoUniversidade + " " + UniDep[i].CodigoDepartamento);
-            }
+            /* Debug */
+            //for (int i = 0; i < UniDep.Count; i++)
+            //{
+            //    Console.WriteLine(UniDep[i].Codigo + " " + UniDep[i].CodigoUniversidade + " " + UniDep[i].CodigoDepartamento);
+            //}
 
-            for (int i = 0; i < UniDepPro.Count; i++)
-            {
-                Console.WriteLine(UniDepPro[i].Codigo + " " + UniDepPro[i].CodigoUniDep + " " + UniDepPro[i].CodigoProfessor);
-            }
-            */
+            //for (int i = 0; i < UniDepPro.Count; i++)
+            //{
+            //    Console.WriteLine(UniDepPro[i].Codigo + " " + UniDepPro[i].CodigoUniDep + " " + UniDepPro[i].CodigoProfessor);
+            //}
         }
 
         private void PopulaDataGrids()
@@ -144,9 +143,9 @@ namespace Universidade
 
         private void AtualizaNumeros()
         {
-            lblQtdUniversidadesValor.Text = Convert.ToString(dgvUniversidades.RowCount - 1);
-            lblQtdDepartamentosValor.Text = Convert.ToString(dgvDepartamentos.RowCount - 1);
-            lblQtdProfessoresValor.Text = Convert.ToString(dgvProfessores.RowCount - 1);
+            lblQtdUniversidadesValor.Text = Convert.ToString(UniCount) + " / " + Convert.ToString(Universidades.Count - 1);
+            lblQtdDepartamentosValor.Text = Convert.ToString(dgvDepartamentos.RowCount - 1) + " / " + Convert.ToString(Departamentos.Count - 1);
+            lblQtdProfessoresValor.Text = Convert.ToString(dgvProfessores.RowCount - 1) + " / " + Convert.ToString(Professores.Count - 1);
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -170,6 +169,11 @@ namespace Universidade
             }
         }
 
+        private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            AtualizaNumeros();
+        }
+
         private void dgvUniversidades_SelectionChanged(object sender, EventArgs e)
         {
             try
@@ -184,12 +188,14 @@ namespace Universidade
                 }
 
                 dgvDepartamentos.DataSource = (filtro == null) ? Departamentos : new BindingList<Departamento>(filtro);
-                dgvDepartamentos.Rows[0].Selected = true;
-                AtualizaNumeros();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                AtualizaNumeros();
             }
         }
 
@@ -216,19 +222,22 @@ namespace Universidade
 
                 if (dgvUniversidades.CurrentRow.Index > 0 && dgvDepartamentos.CurrentRow.Index > 0)
                 {
-                    int codigoUniDep = UniDep.First(x => x.CodigoUniversidade == SelUniversidade.Codigo && x.CodigoDepartamento == SelDepartamento.Codigo).Codigo;
+                    var codigoUniDep = UniDep.LastOrDefault(x => (x.Codigo == 0 || 
+                        x.CodigoUniversidade == SelUniversidade.Codigo && x.CodigoDepartamento == SelDepartamento.Codigo)).Codigo;
 
                     filtro = Professores.Where(x => x.Codigo == 0 ||
                         UniDepPro.Any(y => y.CodigoProfessor == x.Codigo && y.CodigoUniDep == codigoUniDep)).ToList();
                 }
 
                 dgvProfessores.DataSource = (filtro == null) ? Professores : new BindingList<Professor>(filtro);
-                dgvProfessores.Rows[0].Selected = true;
-                AtualizaNumeros();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                AtualizaNumeros();
             }
         }
 
@@ -237,38 +246,36 @@ namespace Universidade
             try
             {
                 SelProfessor = dgvProfessores.CurrentRow.DataBoundItem as Professor;
+                UniCount = 0;
+
+                foreach (var row in dgvUniversidades.Rows.Cast<DataGridViewRow>())
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                }
 
                 if (dgvProfessores.CurrentRow.Index == 0)
                 {
-
+                    UniCount = Universidades.Count - 1;
                 }
                 else
                 {
-                    //List<Professor> filtrado = null;
-
-                    if (dgvUniversidades.CurrentRow.Index == 0)
+                    foreach (var row in dgvUniversidades.Rows.Cast<DataGridViewRow>()
+                        .Where(x => (x.DataBoundItem as Universidade).Codigo > 0 &&
+                            UniDepPro.Any(y => y.CodigoProfessor == SelProfessor.Codigo &&
+                                UniDep.Any(z => z.Codigo == y.CodigoUniDep && z.CodigoUniversidade == (x.DataBoundItem as Universidade).Codigo))))
                     {
-                        dgvUniversidades.Rows
-                            .Cast<DataGridViewRow>()
-                            .FirstOrDefault(x => (x.DataBoundItem as Universidade).Codigo > 0 &&
-                                UniDepPro.Any(y => y.CodigoProfessor == SelProfessor.Codigo &&
-                                UniDep.Any(z => z.Codigo == y.CodigoUniDep))).DefaultCellStyle.BackColor = Color.Red;
+                        row.DefaultCellStyle.BackColor = Color.Pink;
+                        UniCount++;
                     }
-
-                    //if (dgvDepartamentos.CurrentRow.Index == 0)
-                    //{
-                    //    filtrado = Professores.Where(x => x.Codigo == 0 ||
-                    //        UniDepPro.Any(y => y.CodigoProfessor == x.Codigo &&
-                    //            UniDep.Any(z => z.Codigo == y.CodigoUniDep &&
-                    //                z.CodigoDepartamento == SelDepartamento.Codigo))).ToList();
-                    //}
                 }
-
-                AtualizaNumeros();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                AtualizaNumeros();
             }
         }
     }

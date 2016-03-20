@@ -46,17 +46,17 @@
             this.dgvProfessores = new System.Windows.Forms.DataGridView();
             this.CodPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Professor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSalvar = new System.Windows.Forms.Button();
             this.pnlRadioButtons = new System.Windows.Forms.Panel();
             this.rbProfessor = new System.Windows.Forms.RadioButton();
             this.rbDepartamento = new System.Windows.Forms.RadioButton();
             this.rbUniversidade = new System.Windows.Forms.RadioButton();
             this.lblNome = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
             this.lblQtdDepartamentos = new System.Windows.Forms.Label();
             this.lblQtdProfessores = new System.Windows.Forms.Label();
             this.lblQtdDepartamentosValor = new System.Windows.Forms.Label();
             this.lblQtdProfessoresValor = new System.Windows.Forms.Label();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUniversidades)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartamentos)).BeginInit();
@@ -69,28 +69,31 @@
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 8;
+            this.tableLayoutPanel1.ColumnCount = 11;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel1.Controls.Add(this.lblQtdUniversidadesValor, 0, 5);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel1.Controls.Add(this.lblQtdUniversidadesValor, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.lblQtdUniversidades, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.dgvUniversidades, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dgvDepartamentos, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dgvProfessores, 6, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnSalvar, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgvDepartamentos, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.dgvProfessores, 8, 2);
             this.tableLayoutPanel1.Controls.Add(this.pnlRadioButtons, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblNome, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblQtdDepartamentos, 4, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblQtdProfessores, 8, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblQtdDepartamentosValor, 5, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblQtdProfessoresValor, 9, 5);
             this.tableLayoutPanel1.Controls.Add(this.txtNome, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblQtdDepartamentos, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblQtdProfessores, 6, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblQtdDepartamentosValor, 4, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblQtdProfessoresValor, 7, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnSalvar, 9, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -101,20 +104,19 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 537);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblQtdUniversidadesValor
             // 
             this.lblQtdUniversidadesValor.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lblQtdUniversidadesValor, 2);
             this.lblQtdUniversidadesValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdUniversidadesValor.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdUniversidadesValor.Location = new System.Drawing.Point(121, 508);
-            this.lblQtdUniversidadesValor.Margin = new System.Windows.Forms.Padding(0);
+            this.lblQtdUniversidadesValor.Location = new System.Drawing.Point(124, 508);
             this.lblQtdUniversidadesValor.Name = "lblQtdUniversidadesValor";
-            this.lblQtdUniversidadesValor.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.lblQtdUniversidadesValor.Size = new System.Drawing.Size(121, 29);
-            this.lblQtdUniversidadesValor.TabIndex = 19;
-            this.lblQtdUniversidadesValor.Text = "1.234";
+            this.lblQtdUniversidadesValor.Size = new System.Drawing.Size(114, 29);
+            this.lblQtdUniversidadesValor.TabIndex = 0;
+            this.lblQtdUniversidadesValor.Text = "45 / 99";
             this.lblQtdUniversidadesValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblQtdUniversidades
@@ -126,9 +128,9 @@
             this.lblQtdUniversidades.Margin = new System.Windows.Forms.Padding(0);
             this.lblQtdUniversidades.Name = "lblQtdUniversidades";
             this.lblQtdUniversidades.Size = new System.Drawing.Size(121, 29);
-            this.lblQtdUniversidades.TabIndex = 17;
+            this.lblQtdUniversidades.TabIndex = 0;
             this.lblQtdUniversidades.Text = "Quantidade:";
-            this.lblQtdUniversidades.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblQtdUniversidades.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvUniversidades
             // 
@@ -136,6 +138,9 @@
             this.dgvUniversidades.AllowUserToDeleteRows = false;
             this.dgvUniversidades.AllowUserToResizeColumns = false;
             this.dgvUniversidades.AllowUserToResizeRows = false;
+            this.dgvUniversidades.BackgroundColor = System.Drawing.Color.White;
+            this.dgvUniversidades.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvUniversidades.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -148,7 +153,7 @@
             this.dgvUniversidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodUni,
             this.Universidade});
-            this.tableLayoutPanel1.SetColumnSpan(this.dgvUniversidades, 2);
+            this.tableLayoutPanel1.SetColumnSpan(this.dgvUniversidades, 3);
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,8 +170,9 @@
             this.dgvUniversidades.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.dgvUniversidades, 3);
             this.dgvUniversidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUniversidades.Size = new System.Drawing.Size(236, 412);
-            this.dgvUniversidades.TabIndex = 1;
+            this.dgvUniversidades.Size = new System.Drawing.Size(235, 412);
+            this.dgvUniversidades.TabIndex = 7;
+            this.dgvUniversidades.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             this.dgvUniversidades.SelectionChanged += new System.EventHandler(this.dgvUniversidades_SelectionChanged);
             // 
             // CodUni
@@ -191,6 +197,9 @@
             this.dgvDepartamentos.AllowUserToDeleteRows = false;
             this.dgvDepartamentos.AllowUserToResizeColumns = false;
             this.dgvDepartamentos.AllowUserToResizeRows = false;
+            this.dgvDepartamentos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDepartamentos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvDepartamentos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -203,7 +212,7 @@
             this.dgvDepartamentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodDep,
             this.Departamento});
-            this.tableLayoutPanel1.SetColumnSpan(this.dgvDepartamentos, 2);
+            this.tableLayoutPanel1.SetColumnSpan(this.dgvDepartamentos, 3);
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -213,15 +222,16 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDepartamentos.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDepartamentos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDepartamentos.Location = new System.Drawing.Point(260, 93);
+            this.dgvDepartamentos.Location = new System.Drawing.Point(259, 93);
             this.dgvDepartamentos.MultiSelect = false;
             this.dgvDepartamentos.Name = "dgvDepartamentos";
             this.dgvDepartamentos.ReadOnly = true;
             this.dgvDepartamentos.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.dgvDepartamentos, 3);
             this.dgvDepartamentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDepartamentos.Size = new System.Drawing.Size(236, 412);
-            this.dgvDepartamentos.TabIndex = 2;
+            this.dgvDepartamentos.Size = new System.Drawing.Size(235, 412);
+            this.dgvDepartamentos.TabIndex = 8;
+            this.dgvDepartamentos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             this.dgvDepartamentos.SelectionChanged += new System.EventHandler(this.dgvDepartamentos_SelectionChanged);
             // 
             // CodDep
@@ -246,6 +256,9 @@
             this.dgvProfessores.AllowUserToDeleteRows = false;
             this.dgvProfessores.AllowUserToResizeColumns = false;
             this.dgvProfessores.AllowUserToResizeRows = false;
+            this.dgvProfessores.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProfessores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvProfessores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -258,7 +271,7 @@
             this.dgvProfessores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodPro,
             this.Professor});
-            this.tableLayoutPanel1.SetColumnSpan(this.dgvProfessores, 2);
+            this.tableLayoutPanel1.SetColumnSpan(this.dgvProfessores, 3);
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -268,15 +281,16 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProfessores.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProfessores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProfessores.Location = new System.Drawing.Point(517, 93);
+            this.dgvProfessores.Location = new System.Drawing.Point(515, 93);
             this.dgvProfessores.MultiSelect = false;
             this.dgvProfessores.Name = "dgvProfessores";
             this.dgvProfessores.ReadOnly = true;
             this.dgvProfessores.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.dgvProfessores, 3);
             this.dgvProfessores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProfessores.Size = new System.Drawing.Size(240, 412);
-            this.dgvProfessores.TabIndex = 3;
+            this.dgvProfessores.Size = new System.Drawing.Size(242, 412);
+            this.dgvProfessores.TabIndex = 9;
+            this.dgvProfessores.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             this.dgvProfessores.SelectionChanged += new System.EventHandler(this.dgvProfessores_SelectionChanged);
             // 
             // CodPro
@@ -295,75 +309,57 @@
             this.Professor.ReadOnly = true;
             this.Professor.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalvar.AutoSize = true;
-            this.btnSalvar.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(645, 47);
-            this.btnSalvar.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(105, 32);
-            this.btnSalvar.TabIndex = 6;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
             // pnlRadioButtons
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.pnlRadioButtons, 6);
+            this.tableLayoutPanel1.SetColumnSpan(this.pnlRadioButtons, 8);
             this.pnlRadioButtons.Controls.Add(this.rbProfessor);
             this.pnlRadioButtons.Controls.Add(this.rbDepartamento);
             this.pnlRadioButtons.Controls.Add(this.rbUniversidade);
             this.pnlRadioButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRadioButtons.Location = new System.Drawing.Point(124, 3);
             this.pnlRadioButtons.Name = "pnlRadioButtons";
-            this.pnlRadioButtons.Size = new System.Drawing.Size(508, 31);
-            this.pnlRadioButtons.TabIndex = 7;
+            this.pnlRadioButtons.Size = new System.Drawing.Size(506, 31);
+            this.pnlRadioButtons.TabIndex = 1;
+            this.pnlRadioButtons.TabStop = true;
             // 
             // rbProfessor
             // 
-            this.rbProfessor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.rbProfessor.AutoSize = true;
-            this.rbProfessor.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbProfessor.Location = new System.Drawing.Point(389, 7);
+            this.rbProfessor.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rbProfessor.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbProfessor.Location = new System.Drawing.Point(372, 0);
             this.rbProfessor.Name = "rbProfessor";
-            this.rbProfessor.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.rbProfessor.Size = new System.Drawing.Size(116, 24);
-            this.rbProfessor.TabIndex = 2;
+            this.rbProfessor.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.rbProfessor.Size = new System.Drawing.Size(134, 31);
+            this.rbProfessor.TabIndex = 4;
+            this.rbProfessor.TabStop = true;
             this.rbProfessor.Text = "Professor";
             this.rbProfessor.UseVisualStyleBackColor = true;
             // 
             // rbDepartamento
             // 
-            this.rbDepartamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.rbDepartamento.AutoSize = true;
-            this.rbDepartamento.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDepartamento.Location = new System.Drawing.Point(194, 7);
+            this.rbDepartamento.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDepartamento.Location = new System.Drawing.Point(186, 2);
             this.rbDepartamento.Name = "rbDepartamento";
             this.rbDepartamento.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.rbDepartamento.Size = new System.Drawing.Size(143, 24);
-            this.rbDepartamento.TabIndex = 1;
+            this.rbDepartamento.Size = new System.Drawing.Size(156, 26);
+            this.rbDepartamento.TabIndex = 3;
+            this.rbDepartamento.TabStop = true;
             this.rbDepartamento.Text = "Departamento";
             this.rbDepartamento.UseVisualStyleBackColor = true;
             // 
             // rbUniversidade
             // 
-            this.rbUniversidade.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.rbUniversidade.AutoSize = true;
             this.rbUniversidade.Checked = true;
-            this.rbUniversidade.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbUniversidade.Location = new System.Drawing.Point(0, 7);
+            this.rbUniversidade.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rbUniversidade.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbUniversidade.Location = new System.Drawing.Point(0, 0);
             this.rbUniversidade.Name = "rbUniversidade";
             this.rbUniversidade.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.rbUniversidade.Size = new System.Drawing.Size(143, 24);
-            this.rbUniversidade.TabIndex = 0;
+            this.rbUniversidade.Size = new System.Drawing.Size(156, 31);
+            this.rbUniversidade.TabIndex = 2;
             this.rbUniversidade.TabStop = true;
             this.rbUniversidade.Text = "Universidade";
             this.rbUniversidade.UseVisualStyleBackColor = true;
@@ -372,77 +368,91 @@
             // 
             this.lblNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNome.AutoSize = true;
-            this.lblNome.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.Location = new System.Drawing.Point(3, 52);
+            this.lblNome.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNome.Location = new System.Drawing.Point(3, 49);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(115, 22);
-            this.lblNome.TabIndex = 4;
+            this.lblNome.Size = new System.Drawing.Size(115, 28);
+            this.lblNome.TabIndex = 0;
             this.lblNome.Text = "Nome:";
             this.lblNome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtNome
-            // 
-            this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.txtNome, 6);
-            this.txtNome.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(124, 47);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(508, 32);
-            this.txtNome.TabIndex = 5;
             // 
             // lblQtdDepartamentos
             // 
             this.lblQtdDepartamentos.AutoSize = true;
             this.lblQtdDepartamentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdDepartamentos.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdDepartamentos.Location = new System.Drawing.Point(257, 508);
+            this.lblQtdDepartamentos.Location = new System.Drawing.Point(256, 508);
             this.lblQtdDepartamentos.Margin = new System.Windows.Forms.Padding(0);
             this.lblQtdDepartamentos.Name = "lblQtdDepartamentos";
             this.lblQtdDepartamentos.Size = new System.Drawing.Size(121, 29);
-            this.lblQtdDepartamentos.TabIndex = 13;
+            this.lblQtdDepartamentos.TabIndex = 0;
             this.lblQtdDepartamentos.Text = "Quantidade:";
-            this.lblQtdDepartamentos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblQtdDepartamentos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblQtdProfessores
             // 
             this.lblQtdProfessores.AutoSize = true;
             this.lblQtdProfessores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdProfessores.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdProfessores.Location = new System.Drawing.Point(514, 508);
+            this.lblQtdProfessores.Location = new System.Drawing.Point(512, 508);
             this.lblQtdProfessores.Margin = new System.Windows.Forms.Padding(0);
             this.lblQtdProfessores.Name = "lblQtdProfessores";
             this.lblQtdProfessores.Size = new System.Drawing.Size(121, 29);
-            this.lblQtdProfessores.TabIndex = 14;
+            this.lblQtdProfessores.TabIndex = 0;
             this.lblQtdProfessores.Text = "Quantidade:";
-            this.lblQtdProfessores.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblQtdProfessores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblQtdDepartamentosValor
             // 
             this.lblQtdDepartamentosValor.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lblQtdDepartamentosValor, 2);
             this.lblQtdDepartamentosValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdDepartamentosValor.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdDepartamentosValor.Location = new System.Drawing.Point(378, 508);
-            this.lblQtdDepartamentosValor.Margin = new System.Windows.Forms.Padding(0);
+            this.lblQtdDepartamentosValor.Location = new System.Drawing.Point(380, 508);
             this.lblQtdDepartamentosValor.Name = "lblQtdDepartamentosValor";
-            this.lblQtdDepartamentosValor.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.lblQtdDepartamentosValor.Size = new System.Drawing.Size(121, 29);
-            this.lblQtdDepartamentosValor.TabIndex = 9;
-            this.lblQtdDepartamentosValor.Text = "1.234";
+            this.lblQtdDepartamentosValor.Size = new System.Drawing.Size(114, 29);
+            this.lblQtdDepartamentosValor.TabIndex = 0;
+            this.lblQtdDepartamentosValor.Text = "45 / 99";
             this.lblQtdDepartamentosValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblQtdProfessoresValor
             // 
             this.lblQtdProfessoresValor.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lblQtdProfessoresValor, 2);
             this.lblQtdProfessoresValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblQtdProfessoresValor.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdProfessoresValor.Location = new System.Drawing.Point(635, 508);
-            this.lblQtdProfessoresValor.Margin = new System.Windows.Forms.Padding(0);
+            this.lblQtdProfessoresValor.Location = new System.Drawing.Point(636, 508);
             this.lblQtdProfessoresValor.Name = "lblQtdProfessoresValor";
-            this.lblQtdProfessoresValor.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.lblQtdProfessoresValor.Size = new System.Drawing.Size(125, 29);
-            this.lblQtdProfessoresValor.TabIndex = 18;
-            this.lblQtdProfessoresValor.Text = "1.234";
+            this.lblQtdProfessoresValor.Size = new System.Drawing.Size(121, 29);
+            this.lblQtdProfessoresValor.TabIndex = 0;
+            this.lblQtdProfessoresValor.Text = "45 / 99";
             this.lblQtdProfessoresValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.SetColumnSpan(this.txtNome, 8);
+            this.txtNome.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.Location = new System.Drawing.Point(124, 47);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(506, 32);
+            this.txtNome.TabIndex = 5;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.btnSalvar, 2);
+            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvar.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.Location = new System.Drawing.Point(643, 46);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(107, 34);
+            this.btnSalvar.TabIndex = 6;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // Principal
             // 
