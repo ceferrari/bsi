@@ -17,6 +17,7 @@ namespace Universidade
         static Listas()
         {
             InicializaListas();
+            ListasAleatorias();
         }
 
         private static void InicializaListas()
@@ -78,12 +79,10 @@ namespace Universidade
 
             UniDepProList = new HashSet<UniDepPro>();
             UniDepProList.Add(new UniDepPro(new Tuple<int, int>(0, 0)));
-
-            Aleatorios();
         }
 
         /* Atribui Departamentos e Professores aleatoriamente */
-        private static void Aleatorios()
+        private static void ListasAleatorias()
         {
             for (int i = 1; i < Universidades.Count; i++)
             {
@@ -115,16 +114,14 @@ namespace Universidade
         /* Debug */
         private static void PrintChaves()
         {
-            List<UniDep> UniDepAux = UniDepList.ToList();
-            for (int i = 0; i < UniDepList.Count; i++)
+            foreach (var x in UniDepList)
             {
-                Console.WriteLine(UniDepAux[i].Codigo + " " + UniDepAux[i].Chaves.Item1 + " " + UniDepAux[i].Chaves.Item2);
+                Console.WriteLine(x.Codigo + " " + x.Chaves.Item1 + " " + x.Chaves.Item2);
             }
 
-            List<UniDepPro> UniDepProAux = UniDepProList.ToList();
-            for (int i = 0; i < UniDepProList.Count; i++)
+            foreach (var x in UniDepProList)
             {
-                Console.WriteLine(UniDepProAux[i].Codigo + " " + UniDepProAux[i].Chaves.Item1 + " " + UniDepProAux[i].Chaves.Item2);
+                Console.WriteLine(x.Codigo + " " + x.Chaves.Item1 + " " + x.Chaves.Item2);
             }
         }
     }

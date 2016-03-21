@@ -15,7 +15,6 @@ namespace Universidade
         private Departamento SelDepartamento { get; set; }
         private Professor SelProfessor { get; set; }
         private int UniCount { get; set; }
-        private Random Rnd = new Random();
 
         public Principal()
         {
@@ -73,7 +72,7 @@ namespace Universidade
                     Listas.Professores.Add(new Professor(nome));
                 }
 
-                var tipo = pnlRadioButtons.Controls.OfType<RadioButton>().FirstOrDefault(x => x.Checked).Text;
+                var tipo = gbNovo.Controls.OfType<RadioButton>().FirstOrDefault(x => x.Checked).Text;
                 MessageBox.Show(tipo + " \"" + nome + "\" cadastrado(a) com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNome.Clear();
             }
@@ -129,11 +128,8 @@ namespace Universidade
 
                 if (dgvUniversidades.CurrentRow.Index > 0 && dgvDepartamentos.CurrentRow.Index > 0)
                 {
-                    var codigoUniDep = Listas.UniDepList.LastOrDefault(x => (x.Codigo == 0 || 
-                        x.Chaves.Item1 == SelUniversidade.Codigo && x.Chaves.Item2 == SelDepartamento.Codigo)).Codigo;
-
                     filtro = Listas.Professores.Where(x => x.Codigo == 0 ||
-                        Listas.UniDepProList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == codigoUniDep)).ToList();
+                        Listas.UniDepProList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == GetCodUniDep())).ToList();
                 }
 
                 dgvProfessores.DataSource = (filtro == null) ? Listas.Professores : new BindingList<Professor>(filtro);
@@ -176,6 +172,11 @@ namespace Universidade
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public int GetCodUniDep()
+        {
+            return Listas.UniDepList.LastOrDefault(x => (x.Codigo == 0 || x.Chaves.Item1 == SelUniversidade.Codigo && x.Chaves.Item2 == SelDepartamento.Codigo)).Codigo;
         }
 
         private void dgvUniversidades_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

@@ -32,23 +32,28 @@ namespace Universidade
             {
                 dgvVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo != 0 && Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Objeto.Codigo)).ToList();
                 dgvNaoVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo != 0 && !Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Objeto.Codigo)).ToList();
+                EscondeColunas();
             }
             else if (Objeto.GetType().Name.Equals("Departamento"))
             {
                 dgvVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo != 0 && Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).ToList();
                 dgvNaoVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo != 0 && !Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).ToList();
+                EscondeColunas();
             }
             else // if (Objeto.GetType().Name.Equals("Professor"))
             {
-
+                var codUniDep = Principal.GetCodUniDep();
+                dgvVinculados.DataSource = Listas.UniDepList.Where(x => x.Codigo != 0 && Listas.UniDepProList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).Select(x => x.Chaves).ToList();
+                dgvNaoVinculados.DataSource = Listas.UniDepList.Where(x => x.Codigo != 0 && !Listas.UniDepProList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).Select(x => x.Chaves).ToList();
             }
 
-            try {
-                dgvVinculados.Columns["Codigo"].Visible = false;
-                dgvNaoVinculados.Columns["Codigo"].Visible = false;
-            } catch (Exception ex) { Console.WriteLine(ex.Message); }
-
             AtualizaNumeros();
+        }
+
+        private void EscondeColunas()
+        {
+            dgvVinculados.Columns["Codigo"].Visible = false;
+            dgvNaoVinculados.Columns["Codigo"].Visible = false;
         }
 
         private void AtualizaLabels()
@@ -103,9 +108,12 @@ namespace Universidade
                     throw new Exception("O nome não pode ser em branco.");
                 }
 
-                Objeto.Nome = txtNome.Text;
-                txtNome.Enabled = false;
-                MessageBox.Show("Nome alterado com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (txtNome.Enabled)
+                {
+                    Objeto.Nome = txtNome.Text;
+                    txtNome.Enabled = false;
+                    MessageBox.Show("Nome alterado com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -126,7 +134,10 @@ namespace Universidade
         {
             if (dgvVinculados.RowCount > 0)
             {
-                Listas.UniDepList.RemoveWhere(x => x.Chaves.Equals(GetChaves(sender)));
+                Tuple<int, int> chaves = GetChaves(sender);
+                /* Remove todos os professores de todos os departamentos da respectiva universidade e depois remove os departamentos */
+                Listas.UniDepProList.RemoveWhere(x => Listas.UniDepList.Any(y => y.Codigo == x.Chaves.Item1 && y.Chaves.Equals(chaves)));
+                Listas.UniDepList.RemoveWhere(x => x.Chaves.Equals(chaves));
                 PopulaDataGrids();
             }
         }

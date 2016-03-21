@@ -87,6 +87,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(555, 432);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -99,7 +100,7 @@
             this.lblQtdNaoVinculados.Location = new System.Drawing.Point(301, 400);
             this.lblQtdNaoVinculados.Name = "lblQtdNaoVinculados";
             this.lblQtdNaoVinculados.Size = new System.Drawing.Size(148, 32);
-            this.lblQtdNaoVinculados.TabIndex = 11;
+            this.lblQtdNaoVinculados.TabIndex = 0;
             this.lblQtdNaoVinculados.Text = "Quantidade:";
             this.lblQtdNaoVinculados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -112,7 +113,7 @@
             this.lblVinculados.Location = new System.Drawing.Point(3, 85);
             this.lblVinculados.Name = "lblVinculados";
             this.lblVinculados.Size = new System.Drawing.Size(248, 43);
-            this.lblVinculados.TabIndex = 9;
+            this.lblVinculados.TabIndex = 0;
             this.lblVinculados.Text = "Departamentos vinculados:";
             this.lblVinculados.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
@@ -125,7 +126,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(406, 50);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(146, 32);
-            this.btnSalvar.TabIndex = 7;
+            this.btnSalvar.TabIndex = 3;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -171,7 +172,7 @@
             this.tableLayoutPanel1.SetRowSpan(this.dgvVinculados, 2);
             this.dgvVinculados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVinculados.Size = new System.Drawing.Size(248, 266);
-            this.dgvVinculados.TabIndex = 0;
+            this.dgvVinculados.TabIndex = 4;
             // 
             // dgvNaoVinculados
             // 
@@ -214,7 +215,7 @@
             this.tableLayoutPanel1.SetRowSpan(this.dgvNaoVinculados, 2);
             this.dgvNaoVinculados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNaoVinculados.Size = new System.Drawing.Size(251, 266);
-            this.dgvNaoVinculados.TabIndex = 1;
+            this.dgvNaoVinculados.TabIndex = 7;
             // 
             // btnVincular
             // 
@@ -226,7 +227,7 @@
             this.btnVincular.Location = new System.Drawing.Point(257, 230);
             this.btnVincular.Name = "btnVincular";
             this.btnVincular.Size = new System.Drawing.Size(38, 31);
-            this.btnVincular.TabIndex = 2;
+            this.btnVincular.TabIndex = 5;
             this.btnVincular.Text = "<<";
             this.btnVincular.UseVisualStyleBackColor = false;
             this.btnVincular.Click += new System.EventHandler(this.btnVincular_Click);
@@ -241,7 +242,7 @@
             this.btnDesvincular.Location = new System.Drawing.Point(257, 267);
             this.btnDesvincular.Name = "btnDesvincular";
             this.btnDesvincular.Size = new System.Drawing.Size(38, 31);
-            this.btnDesvincular.TabIndex = 3;
+            this.btnDesvincular.TabIndex = 6;
             this.btnDesvincular.Text = ">>";
             this.btnDesvincular.UseVisualStyleBackColor = false;
             this.btnDesvincular.Click += new System.EventHandler(this.btnDesvincular_Click);
@@ -255,7 +256,7 @@
             this.lblTitulo.Location = new System.Drawing.Point(3, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(248, 47);
-            this.lblTitulo.TabIndex = 4;
+            this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Universidade:";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -268,7 +269,7 @@
             this.txtNome.Location = new System.Drawing.Point(257, 7);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(295, 32);
-            this.txtNome.TabIndex = 5;
+            this.txtNome.TabIndex = 1;
             // 
             // btnEditar
             // 
@@ -279,7 +280,7 @@
             this.btnEditar.Location = new System.Drawing.Point(257, 50);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(143, 32);
-            this.btnEditar.TabIndex = 6;
+            this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
@@ -293,7 +294,7 @@
             this.lblNaoVinculados.Location = new System.Drawing.Point(301, 85);
             this.lblNaoVinculados.Name = "lblNaoVinculados";
             this.lblNaoVinculados.Size = new System.Drawing.Size(251, 43);
-            this.lblNaoVinculados.TabIndex = 8;
+            this.lblNaoVinculados.TabIndex = 0;
             this.lblNaoVinculados.Text = "Departamentos não vinculados:";
             this.lblNaoVinculados.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
@@ -305,7 +306,7 @@
             this.lblQtdVinculados.Location = new System.Drawing.Point(3, 400);
             this.lblQtdVinculados.Name = "lblQtdVinculados";
             this.lblQtdVinculados.Size = new System.Drawing.Size(149, 32);
-            this.lblQtdVinculados.TabIndex = 10;
+            this.lblQtdVinculados.TabIndex = 0;
             this.lblQtdVinculados.Text = "Quantidade:";
             this.lblQtdVinculados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -317,7 +318,7 @@
             this.lblQtdVinculadosValor.Location = new System.Drawing.Point(158, 400);
             this.lblQtdVinculadosValor.Name = "lblQtdVinculadosValor";
             this.lblQtdVinculadosValor.Size = new System.Drawing.Size(93, 32);
-            this.lblQtdVinculadosValor.TabIndex = 12;
+            this.lblQtdVinculadosValor.TabIndex = 0;
             this.lblQtdVinculadosValor.Text = "8 / 10";
             this.lblQtdVinculadosValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -329,7 +330,7 @@
             this.lblQtdNaoVinculadosValor.Location = new System.Drawing.Point(455, 400);
             this.lblQtdNaoVinculadosValor.Name = "lblQtdNaoVinculadosValor";
             this.lblQtdNaoVinculadosValor.Size = new System.Drawing.Size(97, 32);
-            this.lblQtdNaoVinculadosValor.TabIndex = 13;
+            this.lblQtdNaoVinculadosValor.TabIndex = 0;
             this.lblQtdNaoVinculadosValor.Text = "8 / 10";
             this.lblQtdNaoVinculadosValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
