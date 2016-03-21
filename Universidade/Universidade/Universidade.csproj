@@ -49,7 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Departamento.cs" />
-    <Compile Include="Nomeavel.cs" />
+    <Compile Include="INomeavel.cs" />
+    <Compile Include="IRelacionavel.cs" />
+    <Compile Include="Listas.cs" />
     <Compile Include="UniDepPro.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>

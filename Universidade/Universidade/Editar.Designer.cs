@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblQtdNaoVinculados = new System.Windows.Forms.Label();
             this.lblVinculados = new System.Windows.Forms.Label();
@@ -130,13 +134,42 @@
             // 
             this.dgvVinculados.AllowUserToAddRows = false;
             this.dgvVinculados.AllowUserToDeleteRows = false;
-            this.dgvVinculados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVinculados.AllowUserToResizeColumns = false;
+            this.dgvVinculados.AllowUserToResizeRows = false;
+            this.dgvVinculados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVinculados.BackgroundColor = System.Drawing.Color.White;
+            this.dgvVinculados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVinculados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvVinculados.ColumnHeadersHeight = 30;
+            this.dgvVinculados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvVinculados.ColumnHeadersVisible = false;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvVinculados, 2);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVinculados.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVinculados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvVinculados.GridColor = System.Drawing.SystemColors.Control;
             this.dgvVinculados.Location = new System.Drawing.Point(3, 131);
+            this.dgvVinculados.MultiSelect = false;
             this.dgvVinculados.Name = "dgvVinculados";
             this.dgvVinculados.ReadOnly = true;
+            this.dgvVinculados.RowHeadersVisible = false;
+            this.dgvVinculados.RowHeadersWidth = 30;
+            this.dgvVinculados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.tableLayoutPanel1.SetRowSpan(this.dgvVinculados, 2);
+            this.dgvVinculados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVinculados.Size = new System.Drawing.Size(248, 266);
             this.dgvVinculados.TabIndex = 0;
             // 
@@ -144,13 +177,42 @@
             // 
             this.dgvNaoVinculados.AllowUserToAddRows = false;
             this.dgvNaoVinculados.AllowUserToDeleteRows = false;
-            this.dgvNaoVinculados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNaoVinculados.AllowUserToResizeColumns = false;
+            this.dgvNaoVinculados.AllowUserToResizeRows = false;
+            this.dgvNaoVinculados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvNaoVinculados.BackgroundColor = System.Drawing.Color.White;
+            this.dgvNaoVinculados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNaoVinculados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvNaoVinculados.ColumnHeadersHeight = 30;
+            this.dgvNaoVinculados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvNaoVinculados.ColumnHeadersVisible = false;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvNaoVinculados, 3);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNaoVinculados.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvNaoVinculados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvNaoVinculados.GridColor = System.Drawing.SystemColors.Control;
             this.dgvNaoVinculados.Location = new System.Drawing.Point(301, 131);
+            this.dgvNaoVinculados.MultiSelect = false;
             this.dgvNaoVinculados.Name = "dgvNaoVinculados";
             this.dgvNaoVinculados.ReadOnly = true;
+            this.dgvNaoVinculados.RowHeadersVisible = false;
+            this.dgvNaoVinculados.RowHeadersWidth = 30;
+            this.dgvNaoVinculados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.tableLayoutPanel1.SetRowSpan(this.dgvNaoVinculados, 2);
+            this.dgvNaoVinculados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNaoVinculados.Size = new System.Drawing.Size(251, 266);
             this.dgvNaoVinculados.TabIndex = 1;
             // 
@@ -167,6 +229,7 @@
             this.btnVincular.TabIndex = 2;
             this.btnVincular.Text = "<<";
             this.btnVincular.UseVisualStyleBackColor = false;
+            this.btnVincular.Click += new System.EventHandler(this.btnVincular_Click);
             // 
             // btnDesvincular
             // 
@@ -181,6 +244,7 @@
             this.btnDesvincular.TabIndex = 3;
             this.btnDesvincular.Text = ">>";
             this.btnDesvincular.UseVisualStyleBackColor = false;
+            this.btnDesvincular.Click += new System.EventHandler(this.btnDesvincular_Click);
             // 
             // lblTitulo
             // 
@@ -282,6 +346,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editar_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVinculados)).EndInit();

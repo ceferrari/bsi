@@ -1,6 +1,6 @@
 ﻿namespace Universidade
 {
-    public class Departamento : Nomeavel
+    public class Departamento : INomeavel
     {
         public static int Cont { get; set; }
         public int Codigo { get; set; }

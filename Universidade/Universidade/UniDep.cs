@@ -2,7 +2,7 @@
 
 namespace Universidade
 {
-    public class UniDep
+    public class UniDep : IRelacionavel
     {
         public static int Cont { get; set; }
         public int Codigo { get; set; }

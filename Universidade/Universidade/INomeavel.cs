@@ -1,7 +1,8 @@
 ﻿namespace Universidade
 {
-    public interface Nomeavel
+    public interface INomeavel
     {
+        int Codigo { get; set; }
         string Nome { get; set; }
     }
 }
