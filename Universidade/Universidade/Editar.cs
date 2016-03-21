@@ -24,6 +24,16 @@ namespace Universidade
         private void Editar_FormClosing(object sender, FormClosingEventArgs e)
         {
             Principal.Editar = null;
+            AtualizaDgvPrincipal(Principal.dgvUniversidades);
+            AtualizaDgvPrincipal(Principal.dgvDepartamentos);
+            AtualizaDgvPrincipal(Principal.dgvProfessores);
+        }
+
+        private void AtualizaDgvPrincipal(DataGridView dgv)
+        {
+            int index = dgv.CurrentRow.Index;
+            dgv.Rows[0].Selected = true;
+            dgv.Rows[index].Selected = true;
         }
 
         private void PopulaDataGrids()
@@ -158,7 +168,7 @@ namespace Universidade
             }
             else // if (Objeto.GetType().Name.Equals("Professor"))
             {
-                return new Tuple<int, int>(item1, item2);
+                return new Tuple<int, int>(0, 0);
             }
         }
     }
