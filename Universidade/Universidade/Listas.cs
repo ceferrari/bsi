@@ -78,7 +78,7 @@ namespace Universidade
             UniDepList.Add(new UniDep(new Tuple<int, int>(0, 0)));
 
             UniDepProList = new HashSet<UniDepPro>();
-            UniDepProList.Add(new UniDepPro(new Tuple<int, int>(0, 0)));
+            UniDepProList.Add(new UniDepPro(new Tuple<UniDep, int>(UniDepList.First(), 0)));
         }
 
         /* Atribui Departamentos e Professores aleatoriamente */
@@ -89,11 +89,7 @@ namespace Universidade
                 for (int j = 0; j < Rnd.Next(1, Departamentos.Count); j++)
                 {
                     Tuple<int, int> chaves = new Tuple<int, int>(Universidades[i].Codigo, Rnd.Next(1, Departamentos.Count));
-
-                    if (!UniDepList.Any(x => x.Chaves.Equals(chaves)))
-                    {
-                        UniDepList.Add(new UniDep(chaves));
-                    }
+                    UniDepList.Add(new UniDep(chaves));
                 }
             }
 
@@ -101,27 +97,23 @@ namespace Universidade
             {
                 for (int j = 0; j < Rnd.Next(1, Professores.Count); j++)
                 {
-                    Tuple<int, int> chaves = new Tuple<int, int>(UniDepList.ToList()[i].Codigo, Rnd.Next(1, Professores.Count));
-
-                    if (!UniDepProList.Any(x => x.Chaves.Equals(chaves)))
-                    {
-                        UniDepProList.Add(new UniDepPro(chaves));
-                    }
+                    Tuple<UniDep, int> chaves = new Tuple<UniDep, int>(UniDepList.ToList()[i], Rnd.Next(1, Professores.Count));
+                    UniDepProList.Add(new UniDepPro(chaves));
                 }
             }
         }
 
         /* Debug */
-        private static void PrintChaves()
+        public static void PrintChaves()
         {
             foreach (var x in UniDepList)
             {
-                Console.WriteLine(x.Codigo + " " + x.Chaves.Item1 + " " + x.Chaves.Item2);
+                Console.WriteLine(x.Chaves);
             }
 
             foreach (var x in UniDepProList)
             {
-                Console.WriteLine(x.Codigo + " " + x.Chaves.Item1 + " " + x.Chaves.Item2);
+                Console.WriteLine(x.Chaves.Item1.Chaves + " " + x.Chaves.Item2);
             }
         }
     }

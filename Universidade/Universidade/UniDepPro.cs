@@ -2,17 +2,24 @@
 
 namespace Universidade
 {
-    public class UniDepPro : IRelacionavel
+    public class UniDepPro : IRelacionavel<Tuple<UniDep, int>>
     {
-        public static int Cont { get; set; }
-        public int Codigo { get; set; }
-        public Tuple<int, int> Chaves { get; set; }
         /* Chaves.Item1 = CodigoUniDep, Chaves.Item2 = CodigoProfessor */
+        public Tuple<UniDep, int> Chaves { get; set; }
 
-        public UniDepPro(Tuple<int, int> chaves)
+        public UniDepPro(Tuple<UniDep, int> chaves)
         {
-            Codigo = Cont++;
             Chaves = chaves;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Chaves.Equals((obj as UniDepPro).Chaves);
+        }
+
+        public override int GetHashCode()
+        {
+            return new { Chaves.Item1, Chaves.Item2 }.GetHashCode();
         }
     }
 }

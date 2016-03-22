@@ -72,10 +72,12 @@ namespace Universidade
                     Listas.Professores.Add(new Professor(nome));
                 }
 
-                var tipo = gbNovo.Controls.OfType<RadioButton>().FirstOrDefault(x => x.Checked).Text;
+                var tipo = tlpNovo.Controls.OfType<RadioButton>().FirstOrDefault(x => x.Checked).Text;
                 MessageBox.Show(tipo + " \"" + nome + "\" cadastrado(a) com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNome.Clear();
             }
+
+            Listas.PrintChaves();
         }
 
         private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -115,21 +117,21 @@ namespace Universidade
                 if (dgvUniversidades.CurrentRow.Index == 0 && dgvDepartamentos.CurrentRow.Index > 0)
                 {
                     filtro = Listas.Professores.Where(x => x.Codigo == 0 ||
-                        Listas.UniDepProList.Any(y => y.Chaves.Item2 == x.Codigo &&
-                            Listas.UniDepList.Any(z => z.Codigo == y.Chaves.Item1 && z.Chaves.Item2 == SelDepartamento.Codigo))).ToList();
+                        Listas.UniDepList.Any(y => y.Chaves.Item2 == SelDepartamento.Codigo &&
+                            Listas.UniDepProList.Any(z => z.Chaves.Item2 == x.Codigo && z.Chaves.Item1.Equals(y)))).ToList();
                 }
 
                 if (dgvUniversidades.CurrentRow.Index > 0 && dgvDepartamentos.CurrentRow.Index == 0)
                 {
                     filtro = Listas.Professores.Where(x => x.Codigo == 0 ||
-                        Listas.UniDepProList.Any(y => y.Chaves.Item2 == x.Codigo &&
-                            Listas.UniDepList.Any(z => z.Codigo == y.Chaves.Item1 && z.Chaves.Item1 == SelUniversidade.Codigo))).ToList();
+                        Listas.UniDepList.Any(y => y.Chaves.Item1 == SelUniversidade.Codigo && 
+                            Listas.UniDepProList.Any(z => z.Chaves.Item2 == x.Codigo && z.Chaves.Item1.Equals(y)))).ToList();
                 }
 
                 if (dgvUniversidades.CurrentRow.Index > 0 && dgvDepartamentos.CurrentRow.Index > 0)
                 {
                     filtro = Listas.Professores.Where(x => x.Codigo == 0 ||
-                        Listas.UniDepProList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == GetCodUniDep())).ToList();
+                        Listas.UniDepProList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1.Equals(GetUniDep()))).ToList();
                 }
 
                 dgvProfessores.DataSource = (filtro == null) ? Listas.Professores : new BindingList<Professor>(filtro);
@@ -156,8 +158,8 @@ namespace Universidade
                 {
                     foreach (var row in dgvUniversidades.Rows.Cast<DataGridViewRow>()
                         .Where(x => (x.DataBoundItem as Universidade).Codigo > 0 &&
-                            Listas.UniDepProList.Any(y => y.Chaves.Item2 == SelProfessor.Codigo &&
-                                Listas.UniDepList.Any(z => z.Codigo == y.Chaves.Item1 && z.Chaves.Item1 == (x.DataBoundItem as Universidade).Codigo))))
+                            Listas.UniDepProList.Any(y => y.Chaves.Item2 == SelProfessor.Codigo && 
+                                y.Chaves.Item1.Chaves.Item1 == (x.DataBoundItem as Universidade).Codigo)))
                     {
                         row.DefaultCellStyle.BackColor = Color.Pink;
                         UniCount++;
@@ -174,9 +176,9 @@ namespace Universidade
             }
         }
 
-        public int GetCodUniDep()
+        public UniDep GetUniDep()
         {
-            return Listas.UniDepList.LastOrDefault(x => (x.Codigo == 0 || x.Chaves.Item1 == SelUniversidade.Codigo && x.Chaves.Item2 == SelDepartamento.Codigo)).Codigo;
+            return Listas.UniDepList.LastOrDefault(x => x.Chaves.Item1 == SelUniversidade.Codigo && x.Chaves.Item2 == SelDepartamento.Codigo);
         }
 
         private void dgvUniversidades_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

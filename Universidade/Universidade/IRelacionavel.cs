@@ -2,9 +2,10 @@
 
 namespace Universidade
 {
-    public interface IRelacionavel
+    public interface IRelacionavel<T> where T : IComparable
     {
-        int Codigo { get; set; }
-        Tuple<int, int> Chaves { get; set; }
+        T Chaves { get; set; }
+        bool Equals(object obj);
+        int GetHashCode();
     }
 }

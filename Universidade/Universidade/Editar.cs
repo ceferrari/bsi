@@ -40,21 +40,21 @@ namespace Universidade
         {
             if (Objeto.GetType().Name.Equals("Universidade"))
             {
-                dgvVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo != 0 && Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Objeto.Codigo)).ToList();
-                dgvNaoVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo != 0 && !Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Objeto.Codigo)).ToList();
+                dgvVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo > 0 && Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Objeto.Codigo)).ToList();
+                dgvNaoVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo > 0 && !Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Objeto.Codigo)).ToList();
                 EscondeColunas();
             }
             else if (Objeto.GetType().Name.Equals("Departamento"))
             {
-                dgvVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo != 0 && Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).ToList();
-                dgvNaoVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo != 0 && !Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).ToList();
+                dgvVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo > 0 && Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).ToList();
+                dgvNaoVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo > 0 && !Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).ToList();
                 EscondeColunas();
             }
             else // if (Objeto.GetType().Name.Equals("Professor"))
             {
-                var codUniDep = Principal.GetCodUniDep();
-                dgvVinculados.DataSource = Listas.UniDepList.Where(x => x.Codigo != 0 && Listas.UniDepProList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).Select(x => x.Chaves).ToList();
-                dgvNaoVinculados.DataSource = Listas.UniDepList.Where(x => x.Codigo != 0 && !Listas.UniDepProList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).Select(x => x.Chaves).ToList();
+                var codUniDep = Principal.GetUniDep();
+                dgvVinculados.DataSource = Listas.UniDepProList.Where(x => x.Chaves.Item2 == Objeto.Codigo).Select(x => x.Chaves.Item1).ToList();
+                dgvNaoVinculados.DataSource = Listas.UniDepList.Where(x => x.Chaves.Item1 > 0 && Listas.UniDepProList.Any(y => y.Chaves.Item2 != Objeto.Codigo)).ToList();
             }
 
             AtualizaNumeros();
@@ -146,7 +146,7 @@ namespace Universidade
             {
                 Tuple<int, int> chaves = GetChaves(sender);
                 /* Remove todos os professores de todos os departamentos da respectiva universidade e depois remove os departamentos */
-                Listas.UniDepProList.RemoveWhere(x => Listas.UniDepList.Any(y => y.Codigo == x.Chaves.Item1 && y.Chaves.Equals(chaves)));
+                Listas.UniDepProList.RemoveWhere(x => Listas.UniDepList.Any(y => y.Chaves.Item1.Equals(chaves)));
                 Listas.UniDepList.RemoveWhere(x => x.Chaves.Equals(chaves));
                 PopulaDataGrids();
             }
