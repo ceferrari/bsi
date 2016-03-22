@@ -139,7 +139,6 @@
             this.dgvVinculados.AllowUserToResizeRows = false;
             this.dgvVinculados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVinculados.BackgroundColor = System.Drawing.Color.White;
-            this.dgvVinculados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -173,6 +172,7 @@
             this.dgvVinculados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVinculados.Size = new System.Drawing.Size(248, 266);
             this.dgvVinculados.TabIndex = 4;
+            this.dgvVinculados.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             // 
             // dgvNaoVinculados
             // 
@@ -182,7 +182,6 @@
             this.dgvNaoVinculados.AllowUserToResizeRows = false;
             this.dgvNaoVinculados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvNaoVinculados.BackgroundColor = System.Drawing.Color.White;
-            this.dgvNaoVinculados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -216,6 +215,7 @@
             this.dgvNaoVinculados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNaoVinculados.Size = new System.Drawing.Size(251, 266);
             this.dgvNaoVinculados.TabIndex = 7;
+            this.dgvNaoVinculados.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             // 
             // btnVincular
             // 

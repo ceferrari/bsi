@@ -2,9 +2,10 @@
 
 namespace Universidade
 {
+    /* Relacionamento entre Universidade e Departamentor */
     public class UniDep : IRelacionavel<Tuple<int, int>>
     {
-        /* Chaves.Item1 = CodigoUniversidade, Chaves.Item2 = CodigoDepartamento */
+        /* Chaves.Item1 = CodigoUniversidade // Chaves.Item2 = CodigoDepartamento */
         public Tuple<int, int> Chaves { get; set; }
         
         public UniDep(Tuple<int, int> chaves)
@@ -14,7 +15,7 @@ namespace Universidade
 
         public override bool Equals(object obj)
         {
-            return Chaves.Equals((obj as UniDep).Chaves);
+            return (obj == null) ? false : Chaves.Equals((obj as UniDep).Chaves);
         }
 
         public override int GetHashCode()

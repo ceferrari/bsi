@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,15 +9,20 @@ namespace Universidade
     public partial class Editar : Form
     {
         private Principal Principal { get; set; }
-        private INomeavel Objeto { get; set; }
+        private INomeavel Nomeavel { get; set; }
 
-        public Editar(INomeavel objeto, Principal principal)
+        public Editar(INomeavel nomeavel, Principal principal)
         {
             InitializeComponent();
-
             Principal = principal;
-            Objeto = objeto;
-
+            Nomeavel = nomeavel;
+            if (Nomeavel is Professor)
+            {
+                CriaColunas("Universidade", 35);
+                CriaColunas("Departamento", 65);
+                dgvVinculados.DefaultCellStyle.Font = new Font("Consolas", 10F);
+                dgvNaoVinculados.DefaultCellStyle.Font = new Font("Consolas", 10F);
+            }
             PopulaDataGrids();
             AtualizaLabels();
         }
@@ -24,64 +30,70 @@ namespace Universidade
         private void Editar_FormClosing(object sender, FormClosingEventArgs e)
         {
             Principal.Editar = null;
-            AtualizaDgvPrincipal(Principal.dgvUniversidades);
-            AtualizaDgvPrincipal(Principal.dgvDepartamentos);
-            AtualizaDgvPrincipal(Principal.dgvProfessores);
+            AtualizaTelaPrincipal(Principal.dgvUniversidades);
+            AtualizaTelaPrincipal(Principal.dgvDepartamentos);
+            AtualizaTelaPrincipal(Principal.dgvProfessores);
         }
 
-        private void AtualizaDgvPrincipal(DataGridView dgv)
+        private void AtualizaTelaPrincipal(DataGridView dgv)
         {
             int index = dgv.CurrentRow.Index;
             dgv.Rows[0].Selected = true;
             dgv.Rows[index].Selected = true;
         }
 
+        private void CriaColunas(string nome, int fillWeight)
+        {
+            dgvVinculados.Columns.Add(new DataGridViewTextBoxColumn() { Name = nome, FillWeight = fillWeight });
+            dgvNaoVinculados.Columns.Add(new DataGridViewTextBoxColumn() { Name = nome, FillWeight = fillWeight });
+        }
+
+        private void EscondeColunas(string nome)
+        {
+            dgvVinculados.Columns[nome].Visible = false;
+            dgvNaoVinculados.Columns[nome].Visible = false;
+        }
+
         private void PopulaDataGrids()
         {
-            if (Objeto.GetType().Name.Equals("Universidade"))
+            if (Nomeavel is Universidade)
             {
-                dgvVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo > 0 && Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Objeto.Codigo)).ToList();
-                dgvNaoVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo > 0 && !Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Objeto.Codigo)).ToList();
-                EscondeColunas();
+                dgvVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo > 0 && Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Nomeavel.Codigo)).ToList();
+                dgvNaoVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo > 0 && !Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Nomeavel.Codigo)).ToList();
+                EscondeColunas("Codigo");
             }
-            else if (Objeto.GetType().Name.Equals("Departamento"))
+            else if (Nomeavel is Departamento)
             {
-                dgvVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo > 0 && Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).ToList();
-                dgvNaoVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo > 0 && !Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Objeto.Codigo)).ToList();
-                EscondeColunas();
+                dgvVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo > 0 && Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Nomeavel.Codigo)).ToList();
+                dgvNaoVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo > 0 && !Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Nomeavel.Codigo)).ToList();
+                EscondeColunas("Codigo");
             }
-            else // if (Objeto.GetType().Name.Equals("Professor"))
+            else // (Nomeavel is Professor)
             {
-                var codUniDep = Principal.GetUniDep();
-                dgvVinculados.DataSource = Listas.UniDepProList.Where(x => x.Chaves.Item2 == Objeto.Codigo).Select(x => x.Chaves.Item1).ToList();
-                dgvNaoVinculados.DataSource = Listas.UniDepList.Where(x => x.Chaves.Item1 > 0 && Listas.UniDepProList.Any(y => y.Chaves.Item2 != Objeto.Codigo)).ToList();
+                dgvVinculados.DataSource = Listas.UniDepProList.Where(x => x.Chaves.Item2 == Nomeavel.Codigo).Select(x => x.Chaves.Item1).ToList();
+                dgvNaoVinculados.DataSource = Listas.UniDepList.Where(x => x.Chaves.Item1 > 0 && Listas.UniDepProList.Any(y => y.Chaves.Item2 != Nomeavel.Codigo)).ToList();
+                EscondeColunas("Chaves");
             }
 
             AtualizaNumeros();
         }
 
-        private void EscondeColunas()
-        {
-            dgvVinculados.Columns["Codigo"].Visible = false;
-            dgvNaoVinculados.Columns["Codigo"].Visible = false;
-        }
-
         private void AtualizaLabels()
         {
-            lblTitulo.Text = Objeto.GetType().Name + ":";
-            txtNome.Text = Objeto.Nome;
+            lblTitulo.Text = Nomeavel.GetType().Name + ":";
+            txtNome.Text = Nomeavel.Nome;
 
-            if (Objeto.GetType().Name.Equals("Universidade"))
+            if (Nomeavel is Universidade)
             {
                 lblVinculados.Text = "Departamentos vinculados:";
                 lblNaoVinculados.Text = "Departamentos não vinculados:";
             }
-            else if (Objeto.GetType().Name.Equals("Departamento"))
+            else if (Nomeavel is Departamento)
             {
                 lblVinculados.Text = "Universidades vinculadas:";
                 lblNaoVinculados.Text = "Universidades não vinculadas:";
             }
-            else // if (Objeto.GetType().Name.Equals("Professor"))
+            else // (Nomeavel is Professor)
             {
                 lblVinculados.Text = "Universidades > Departamentos vinculados:";
                 lblNaoVinculados.Text = "Universidades > Departamentos não vinculados:";
@@ -120,7 +132,7 @@ namespace Universidade
 
                 if (txtNome.Enabled)
                 {
-                    Objeto.Nome = txtNome.Text;
+                    Nomeavel.Nome = txtNome.Text;
                     txtNome.Enabled = false;
                     MessageBox.Show("Nome alterado com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -155,20 +167,33 @@ namespace Universidade
         private Tuple<int, int> GetChaves(object sender)
         {
             DataGridView dgv = (sender as Button).Text.Equals("<<") ? dgvNaoVinculados : dgvVinculados;
-            int item1 = Objeto.Codigo;
+            int item1 = Nomeavel.Codigo;
             int item2 = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
 
-            if (Objeto.GetType().Name.Equals("Universidade"))
+            if (Nomeavel is Universidade)
             {
                 return new Tuple<int, int>(item1, item2);
             }
-            else if (Objeto.GetType().Name.Equals("Departamento"))
+            else if (Nomeavel is Departamento)
             {
                 return new Tuple<int, int>(item2, item1);
             }
-            else // if (Objeto.GetType().Name.Equals("Professor"))
+            else // (Nomeavel is Professor)
             {
                 return new Tuple<int, int>(0, 0);
+            }
+        }
+
+        private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (Nomeavel is Professor)
+            {
+                foreach (var row in (sender as DataGridView).Rows.Cast<DataGridViewRow>())
+                {
+                    var item = row.DataBoundItem as UniDep;
+                    row.Cells["Universidade"].Value = Listas.Universidades.FirstOrDefault(x => x.Codigo == item.Chaves.Item1).Nome;
+                    row.Cells["Departamento"].Value = Listas.Departamentos.FirstOrDefault(x => x.Codigo == item.Chaves.Item2).Nome;
+                }
             }
         }
     }

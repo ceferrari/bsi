@@ -7,9 +7,9 @@ namespace Universidade
 {
     public static class Listas
     {
-        public static BindingList<Universidade> Universidades { get; private set; }
-        public static BindingList<Departamento> Departamentos { get; private set; }
-        public static BindingList<Professor> Professores { get; private set; }
+        public static BindingList<INomeavel> Universidades { get; private set; }
+        public static BindingList<INomeavel> Departamentos { get; private set; }
+        public static BindingList<INomeavel> Professores { get; private set; }
         public static HashSet<UniDep> UniDepList { get; private set; }
         public static HashSet<UniDepPro> UniDepProList { get; private set; }
         private static Random Rnd = new Random();
@@ -22,7 +22,7 @@ namespace Universidade
 
         private static void InicializaListas()
         {
-            Universidades = new BindingList<Universidade>();
+            Universidades = new BindingList<INomeavel>();
             Universidades.Add(new Universidade("** TODOS **"));
             Universidades.Add(new Universidade("UNIVEM"));
             Universidades.Add(new Universidade("UNIMAR"));
@@ -37,7 +37,7 @@ namespace Universidade
             Universidades.Add(new Universidade("UFSCAR"));
             Universidades.Add(new Universidade("UNIFEI"));
 
-            Departamentos = new BindingList<Departamento>();
+            Departamentos = new BindingList<INomeavel>();
             Departamentos.Add(new Departamento("** TODOS **"));
             Departamentos.Add(new Departamento("Administração"));
             Departamentos.Add(new Departamento("Ciência da Computação"));
@@ -50,7 +50,7 @@ namespace Universidade
             Departamentos.Add(new Departamento("Processos Gerenciais"));
             Departamentos.Add(new Departamento("Sistemas de Informação"));
 
-            Professores = new BindingList<Professor>();
+            Professores = new BindingList<INomeavel>();
             Professores.Add(new Professor("** TODOS **"));
             Professores.Add(new Professor("Carlos"));
             Professores.Add(new Professor("Diego"));
@@ -104,7 +104,7 @@ namespace Universidade
         }
 
         /* Debug */
-        public static void PrintChaves()
+        private static void PrintChaves()
         {
             foreach (var x in UniDepList)
             {
