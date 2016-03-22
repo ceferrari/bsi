@@ -24,20 +24,17 @@ namespace Universidade
 
         private void PopulaDataGrids()
         {
-            dgvUniversidades.AutoGenerateColumns = false;
-            dgvUniversidades.DataSource = Listas.Universidades;
-            dgvUniversidades.Columns["CodUni"].DataPropertyName = "Codigo";
-            dgvUniversidades.Columns["Universidade"].DataPropertyName = "Nome";
+            AjustaColunas(dgvUniversidades, "CodUni", "Universidade");
+            AjustaColunas(dgvDepartamentos, "CodDep", "Departamento");
+            AjustaColunas(dgvProfessores, "CodPro", "Professor");
+        }
 
-            dgvDepartamentos.AutoGenerateColumns = false;
-            dgvDepartamentos.DataSource = Listas.Departamentos;
-            dgvDepartamentos.Columns["CodDep"].DataPropertyName = "Codigo";
-            dgvDepartamentos.Columns["Departamento"].DataPropertyName = "Nome";
-
-            dgvProfessores.AutoGenerateColumns = false;
-            dgvProfessores.DataSource = Listas.Professores;
-            dgvProfessores.Columns["CodPro"].DataPropertyName = "Codigo";
-            dgvProfessores.Columns["Professor"].DataPropertyName = "Nome";
+        private void AjustaColunas(DataGridView dgv, string codigo, string nome)
+        {
+            dgv.AutoGenerateColumns = false;
+            dgv.DataSource = Listas.Universidades;
+            dgv.Columns[codigo].DataPropertyName = "Codigo";
+            dgv.Columns[nome].DataPropertyName = "Nome";
         }
 
         private void EstilizaPrimeiraLinha(DataGridView dgv)
@@ -51,6 +48,11 @@ namespace Universidade
             lblQtdUniversidadesValor.Text = Convert.ToString(dgvUniversidades.RowCount - 1 - UniCount) + " / " + Convert.ToString(Listas.Universidades.Count - 1);
             lblQtdDepartamentosValor.Text = Convert.ToString(dgvDepartamentos.RowCount - 1) + " / " + Convert.ToString(Listas.Departamentos.Count - 1);
             lblQtdProfessoresValor.Text = Convert.ToString(dgvProfessores.RowCount - 1) + " / " + Convert.ToString(Listas.Professores.Count - 1);
+        }
+
+        public UniDep GetUniDep()
+        {
+            return Listas.UniDepList.LastOrDefault(x => x.Chaves.Item1 == SelUniversidade.Codigo && x.Chaves.Item2 == SelDepartamento.Codigo);
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -76,8 +78,15 @@ namespace Universidade
                 MessageBox.Show(tipo + " \"" + nome + "\" cadastrado(a) com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNome.Clear();
             }
+        }
 
-            Listas.PrintChaves();
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Editar == null)
+            {
+                Editar = new Editar((sender as DataGridView).CurrentRow.DataBoundItem as INomeavel, this);
+                Editar.Show();
+            }
         }
 
         private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -173,35 +182,6 @@ namespace Universidade
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-        }
-
-        public UniDep GetUniDep()
-        {
-            return Listas.UniDepList.LastOrDefault(x => x.Chaves.Item1 == SelUniversidade.Codigo && x.Chaves.Item2 == SelDepartamento.Codigo);
-        }
-
-        private void dgvUniversidades_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            ShowEditar(SelUniversidade);
-        }
-
-        private void dgvDepartamentos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            ShowEditar(SelDepartamento);
-        }
-
-        private void dgvProfessores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            ShowEditar(SelProfessor);
-        }
-
-        private void ShowEditar(INomeavel objeto)
-        {
-            if (Editar == null)
-            {
-                Editar = new Editar(objeto, this);
-                Editar.Show();
             }
         }
     }
