@@ -13,14 +13,14 @@ namespace Universidade
             Chaves = chaves;
         }
 
-        public override bool Equals(object obj)
-        {
-            return (obj == null) ? false : Chaves.Equals((obj as UniDep).Chaves);
-        }
-
         public override int GetHashCode()
         {
             return new { Chaves.Item1, Chaves.Item2 }.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return (obj == null) ? false : Chaves.Equals((obj as UniDep).Chaves);
         }
 
         public int CompareTo(UniDep other)
