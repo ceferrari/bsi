@@ -10,14 +10,15 @@ namespace Universidade
         public static BindingList<INomeavel> Universidades { get; private set; }
         public static BindingList<INomeavel> Departamentos { get; private set; }
         public static BindingList<INomeavel> Professores { get; private set; }
-        public static HashSet<UniDep> UniDepList { get; private set; }
-        public static HashSet<UniDepPro> UniDepProList { get; private set; }
+        public static SortedSet<UniDep> UniDepList { get; private set; }
+        public static SortedSet<UniDepPro> UniDepProList { get; private set; }
         private static Random Rnd = new Random();
 
         static Listas()
         {
             InicializaListas();
-            ListasAleatorias();
+            VinculosAleatorios();
+            //PrintChaves();
         }
 
         private static void InicializaListas()
@@ -74,15 +75,15 @@ namespace Universidade
             Professores.Add(new Professor("Murilo"));
             Professores.Add(new Professor("Vitor"));
 
-            UniDepList = new HashSet<UniDep>();
+            UniDepList = new SortedSet<UniDep>();
             UniDepList.Add(new UniDep(new Tuple<int, int>(0, 0)));
 
-            UniDepProList = new HashSet<UniDepPro>();
+            UniDepProList = new SortedSet<UniDepPro>();
             UniDepProList.Add(new UniDepPro(new Tuple<UniDep, int>(UniDepList.First(), 0)));
         }
 
-        /* Atribui Departamentos e Professores aleatoriamente */
-        private static void ListasAleatorias()
+        /* Popula as listas de classes de relacionamentos (UniDepList e UniDepProList) aleatoriamente */
+        private static void VinculosAleatorios()
         {
             for (int i = 1; i < Universidades.Count; i++)
             {

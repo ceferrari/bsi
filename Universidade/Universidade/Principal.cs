@@ -24,15 +24,15 @@ namespace Universidade
 
         private void PopulaDataGrids()
         {
-            AjustaColunas(dgvUniversidades, "CodUni", "Universidade");
-            AjustaColunas(dgvDepartamentos, "CodDep", "Departamento");
-            AjustaColunas(dgvProfessores, "CodPro", "Professor");
+            AjustaColunas(dgvUniversidades, Listas.Universidades, "CodUni", "Universidade");
+            AjustaColunas(dgvDepartamentos, Listas.Departamentos, "CodDep", "Departamento");
+            AjustaColunas(dgvProfessores, Listas.Professores, "CodPro", "Professor");
         }
 
-        private void AjustaColunas(DataGridView dgv, string codigo, string nome)
+        private void AjustaColunas(DataGridView dgv, BindingList<INomeavel> source, string codigo, string nome)
         {
             dgv.AutoGenerateColumns = false;
-            dgv.DataSource = Listas.Universidades;
+            dgv.DataSource = source;
             dgv.Columns[codigo].DataPropertyName = "Codigo";
             dgv.Columns[nome].DataPropertyName = "Nome";
         }

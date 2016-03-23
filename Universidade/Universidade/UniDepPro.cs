@@ -2,8 +2,8 @@
 
 namespace Universidade
 {
-    /* Relacionamento entre a Relação (Universidade,Departamento) e Professor */
-    public class UniDepPro : IRelacionavel<Tuple<UniDep, int>>
+    /* Relacionamento entre UniDep - Relação (Universidade, Departamento) e Professor */
+    public class UniDepPro : IRelacionavel<Tuple<UniDep, int>>, IComparable<UniDepPro>
     {
         /* Chaves.Item1 = UniDep // Chaves.Item2 = CodigoProfessor */
         public Tuple<UniDep, int> Chaves { get; set; }
@@ -21,6 +21,12 @@ namespace Universidade
         public override int GetHashCode()
         {
             return new { Chaves.Item1, Chaves.Item2 }.GetHashCode();
+        }
+
+        public int CompareTo(UniDepPro other)
+        {
+            int result = Chaves.Item1.CompareTo(other.Chaves.Item1);
+            return result == 1 ? result : Chaves.Item2.CompareTo(other.Chaves.Item2);
         }
     }
 }
