@@ -3,7 +3,7 @@
 namespace Universidade
 {
     /* Relacionamento entre UniDep - Relação (Universidade, Departamento) e Professor */
-    public class UniDepPro : IRelacionavel<Tuple<UniDep, int>>, IComparable<UniDepPro>
+    public class UniDepPro : IRelacionavel<UniDep>, IComparable
     {
         /* Chaves.Item1 = UniDep // Chaves.Item2 = CodigoProfessor */
         public Tuple<UniDep, int> Chaves { get; set; }
@@ -23,10 +23,9 @@ namespace Universidade
             return (obj == null) ? false : Chaves.Equals((obj as UniDepPro).Chaves);
         }
 
-        public int CompareTo(UniDepPro other)
+        public int CompareTo(object other)
         {
-            int result = Chaves.Item1.CompareTo(other.Chaves.Item1);
-            return result == 1 ? result : Chaves.Item2.CompareTo(other.Chaves.Item2);
+            return Chaves.Equals((other as UniDepPro).Chaves) ? 1 : 0;
         }
     }
 }

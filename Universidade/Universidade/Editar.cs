@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static Universidade.Listas;
 
 namespace Universidade
 {
@@ -58,20 +58,20 @@ namespace Universidade
         {
             if (Nomeavel is Universidade)
             {
-                dgvVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo > 0 && Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Nomeavel.Codigo)).ToList();
-                dgvNaoVinculados.DataSource = Listas.Departamentos.Where(x => x.Codigo > 0 && !Listas.UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Nomeavel.Codigo)).ToList();
-                EscondeColuna("Codigo");
+                dgvVinculados.DataSource = Departamentos.Where(x => x.Codigo > 0 && UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Nomeavel.Codigo)).ToList();
+                dgvNaoVinculados.DataSource = Departamentos.Where(x => x.Codigo > 0 && !UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Nomeavel.Codigo)).ToList();
+                //EscondeColuna("Codigo");
             }
             else if (Nomeavel is Departamento)
             {
-                dgvVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo > 0 && Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Nomeavel.Codigo)).ToList();
-                dgvNaoVinculados.DataSource = Listas.Universidades.Where(x => x.Codigo > 0 && !Listas.UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Nomeavel.Codigo)).ToList();
-                EscondeColuna("Codigo");
+                dgvVinculados.DataSource = Universidades.Where(x => x.Codigo > 0 && UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Nomeavel.Codigo)).ToList();
+                dgvNaoVinculados.DataSource = Universidades.Where(x => x.Codigo > 0 && !UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Nomeavel.Codigo)).ToList();
+                //EscondeColuna("Codigo");
             }
             else // (Nomeavel is Professor)
             {
-                dgvVinculados.DataSource = Listas.UniDepProList.Where(x => x.Chaves.Item2 == Nomeavel.Codigo).Select(x => x.Chaves.Item1).ToList();
-                dgvNaoVinculados.DataSource = Listas.UniDepList.Where(x => x.Chaves.Item1 > 0 && Listas.UniDepProList.Any(y => y.Chaves.Item2 != Nomeavel.Codigo)).ToList();
+                dgvVinculados.DataSource = UniDepProList.Where(x => x.Chaves.Item2 == Nomeavel.Codigo).Select(x => x.Chaves.Item1).ToList();
+                dgvNaoVinculados.DataSource = UniDepList.Where(x => x.Chaves.Item1 > 0 && !UniDepProList.Any(y => y.Chaves.Item1.Equals(x) && y.Chaves.Item2 == Nomeavel.Codigo)).ToList();
                 EscondeColuna("Chaves");
             }
 
@@ -103,8 +103,8 @@ namespace Universidade
         private void AtualizaNumeros()
         {
             string total = Convert.ToString(dgvVinculados.RowCount + dgvNaoVinculados.RowCount);
-            lblQtdVinculadosValor.Text = dgvVinculados.RowCount.ToString() + " / " + total;
-            lblQtdNaoVinculadosValor.Text = dgvNaoVinculados.RowCount.ToString() + " / " + total;
+            lblQtdVinculadosValor.Text = dgvVinculados.RowCount + " / " + total;
+            lblQtdNaoVinculadosValor.Text = dgvNaoVinculados.RowCount + " / " + total;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -145,11 +145,11 @@ namespace Universidade
             {
                 if (Nomeavel is Professor)
                 {
-                    Listas.UniDepProList.Add(new UniDepPro(GetChaves(sender) as Tuple<UniDep, int>));
+                    UniDepProList.Add(new UniDepPro(GetChaves(dgvNaoVinculados) as Tuple<UniDep, int>));
                 }
                 else
                 {
-                    Listas.UniDepList.Add(new UniDep(GetChaves(sender) as Tuple<int, int>));
+                    UniDepList.Add(new UniDep(GetChaves(dgvNaoVinculados) as Tuple<int, int>));
                 }
 
                 PopulaDataGrids();
@@ -162,32 +162,34 @@ namespace Universidade
             {
                 if (Nomeavel is Professor)
                 {
-                    Tuple<UniDep, int> chaves = GetChaves(sender) as Tuple<UniDep, int>;
-                    Listas.UniDepProList.RemoveWhere(x => x.Chaves.Item2 == Nomeavel.Codigo && Listas.UniDepList.Any(y => y.Chaves.Item1.Equals(chaves)));
+                    var chaves = GetChaves(dgvVinculados) as Tuple<UniDep, int>;
+                    UniDepProList.RemoveWhere(x => x.Chaves.Equals(chaves));
                 }
                 else
                 {
-                    Tuple<int, int> chaves = GetChaves(sender) as Tuple<int, int>;
-                    /* Remove todos os professores de todos os departamentos da respectiva universidade e depois remove os departamentos */
-                    Listas.UniDepProList.RemoveWhere(x => Listas.UniDepList.Any(y => y.Chaves.Item1.Equals(chaves)));
-                    Listas.UniDepList.RemoveWhere(x => x.Chaves.Equals(chaves));
+                    var chaves = GetChaves(dgvVinculados) as Tuple<int, int>;
+                    UniDepProList.RemoveWhere(x => x.Chaves.Item1.Chaves.Equals(chaves));
+                    UniDepList.RemoveWhere(x => x.Chaves.Equals(chaves));
                 }
                 
                 PopulaDataGrids();
             }
         }
 
-        private IComparable GetChaves(object sender)
+        private IComparable GetChaves(DataGridView dgv)
         {
-            DataGridView dgv = (sender as Button).Text.Equals(">>") ? dgvVinculados : dgvNaoVinculados;
-
-            if (Nomeavel is Professor)
+            if (Nomeavel is Universidade)
+            {
+                return new Tuple<int, int>(Nomeavel.Codigo, Convert.ToInt32(dgv.CurrentRow.Cells["Codigo"].Value));
+            }
+            else if (Nomeavel is Departamento)
+            {
+                return new Tuple<int, int>(Convert.ToInt32(dgv.CurrentRow.Cells["Codigo"].Value), Nomeavel.Codigo);
+            }
+            else // (Nomeavel is Professor)
             {
                 return new Tuple<UniDep, int>(dgv.CurrentRow.DataBoundItem as UniDep, Nomeavel.Codigo);
             }
-            
-            int aux = Convert.ToInt32(dgv.CurrentRow.Cells["Codigo"].Value);
-            return (Nomeavel is Universidade) ? new Tuple<int, int>(Nomeavel.Codigo, aux) : new Tuple<int, int>(aux, Nomeavel.Codigo);
         }
 
         private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -197,8 +199,8 @@ namespace Universidade
                 foreach (var row in (sender as DataGridView).Rows.Cast<DataGridViewRow>())
                 {
                     var item = row.DataBoundItem as UniDep;
-                    row.Cells["Universidade"].Value = Listas.Universidades.FirstOrDefault(x => x.Codigo == item.Chaves.Item1).Nome;
-                    row.Cells["Departamento"].Value = Listas.Departamentos.FirstOrDefault(x => x.Codigo == item.Chaves.Item2).Nome;
+                    row.Cells["Universidade"].Value = Universidades.FirstOrDefault(x => x.Codigo == item.Chaves.Item1).Nome;
+                    row.Cells["Departamento"].Value = Departamentos.FirstOrDefault(x => x.Codigo == item.Chaves.Item2).Nome;
                 }
             }
         }

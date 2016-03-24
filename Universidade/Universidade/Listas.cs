@@ -10,9 +10,9 @@ namespace Universidade
         public static BindingList<INomeavel> Universidades { get; private set; }
         public static BindingList<INomeavel> Departamentos { get; private set; }
         public static BindingList<INomeavel> Professores { get; private set; }
-        public static SortedSet<UniDep> UniDepList { get; private set; }
-        public static SortedSet<UniDepPro> UniDepProList { get; private set; }
-        private static Random Rnd = new Random();
+        public static HashSet<UniDep> UniDepList { get; private set; }
+        public static HashSet<UniDepPro> UniDepProList { get; private set; }
+        private static readonly Random Rnd = new Random();
 
         static Listas()
         {
@@ -23,82 +23,92 @@ namespace Universidade
 
         private static void InicializaListas()
         {
-            Universidades = new BindingList<INomeavel>();
-            Universidades.Add(new Universidade("** TODOS **"));
-            Universidades.Add(new Universidade("UNIVEM"));
-            Universidades.Add(new Universidade("UNIMAR"));
-            Universidades.Add(new Universidade("UNESP"));
-            Universidades.Add(new Universidade("UNICAMP"));
-            Universidades.Add(new Universidade("USP"));
-            Universidades.Add(new Universidade("PUC"));
-            Universidades.Add(new Universidade("MACKENZIE"));
-            Universidades.Add(new Universidade("ITA"));
-            Universidades.Add(new Universidade("UFMG"));
-            Universidades.Add(new Universidade("UFRJ"));
-            Universidades.Add(new Universidade("UFSCAR"));
-            Universidades.Add(new Universidade("UNIFEI"));
+            Universidades = new BindingList<INomeavel>
+            {
+                new Universidade("** TODOS **"),
+                new Universidade("UNIVEM"),
+                new Universidade("UNIMAR"),
+                new Universidade("UNESP"),
+                new Universidade("UNICAMP"),
+                new Universidade("USP"),
+                new Universidade("PUC"),
+                new Universidade("MACKENZIE"),
+                new Universidade("ITA"),
+                new Universidade("UFMG"),
+                new Universidade("UFRJ"),
+                new Universidade("UFSCAR"),
+                new Universidade("UNIFEI")
+            };
 
-            Departamentos = new BindingList<INomeavel>();
-            Departamentos.Add(new Departamento("** TODOS **"));
-            Departamentos.Add(new Departamento("Administração"));
-            Departamentos.Add(new Departamento("Ciência da Computação"));
-            Departamentos.Add(new Departamento("Ciências Contábeis"));
-            Departamentos.Add(new Departamento("Design de Interiores"));
-            Departamentos.Add(new Departamento("Design Gráfico"));
-            Departamentos.Add(new Departamento("Direito"));
-            Departamentos.Add(new Departamento("Engenharia de Produção"));
-            Departamentos.Add(new Departamento("Gestão de Recursos Humanos"));
-            Departamentos.Add(new Departamento("Processos Gerenciais"));
-            Departamentos.Add(new Departamento("Sistemas de Informação"));
+            Departamentos = new BindingList<INomeavel>
+            {
+                new Departamento("** TODOS **"),
+                new Departamento("Administração"),
+                new Departamento("Ciência da Computação"),
+                new Departamento("Ciências Contábeis"),
+                new Departamento("Design de Interiores"),
+                new Departamento("Design Gráfico"),
+                new Departamento("Direito"),
+                new Departamento("Engenharia de Produção"),
+                new Departamento("Gestão de Recursos Humanos"),
+                new Departamento("Processos Gerenciais"),
+                new Departamento("Sistemas de Informação")
+            };
 
-            Professores = new BindingList<INomeavel>();
-            Professores.Add(new Professor("** TODOS **"));
-            Professores.Add(new Professor("Carlos"));
-            Professores.Add(new Professor("Diego"));
-            Professores.Add(new Professor("Laura"));
-            Professores.Add(new Professor("Pedro"));
-            Professores.Add(new Professor("Bernardo"));
-            Professores.Add(new Professor("Manuela"));
-            Professores.Add(new Professor("Gabriel"));
-            Professores.Add(new Professor("Lucas"));
-            Professores.Add(new Professor("Helena"));
-            Professores.Add(new Professor("Matheus"));
-            Professores.Add(new Professor("Rafael"));
-            Professores.Add(new Professor("Beatriz"));
-            Professores.Add(new Professor("Guilherme"));
-            Professores.Add(new Professor("Mariana"));
-            Professores.Add(new Professor("Felipe"));
-            Professores.Add(new Professor("Gustavo"));
-            Professores.Add(new Professor("Henrique"));
-            Professores.Add(new Professor("Rafaela"));
-            Professores.Add(new Professor("Daniel"));
-            Professores.Add(new Professor("Murilo"));
-            Professores.Add(new Professor("Vitor"));
+            Professores = new BindingList<INomeavel>
+            {
+                new Professor("** TODOS **"),
+                new Professor("Carlos"),
+                new Professor("Diego"),
+                new Professor("Laura"),
+                new Professor("Pedro"),
+                new Professor("Bernardo"),
+                new Professor("Manuela"),
+                new Professor("Gabriel"),
+                new Professor("Lucas"),
+                new Professor("Helena"),
+                new Professor("Matheus"),
+                new Professor("Rafael"),
+                new Professor("Beatriz"),
+                new Professor("Guilherme"),
+                new Professor("Mariana"),
+                new Professor("Felipe"),
+                new Professor("Gustavo"),
+                new Professor("Henrique"),
+                new Professor("Rafaela"),
+                new Professor("Daniel"),
+                new Professor("Murilo"),
+                new Professor("Vitor")
+            };
 
-            UniDepList = new SortedSet<UniDep>();
-            UniDepList.Add(new UniDep(new Tuple<int, int>(0, 0)));
+            UniDepList = new HashSet<UniDep>
+            {
+                new UniDep(new Tuple<int, int>(0, 0))
+            };
 
-            UniDepProList = new SortedSet<UniDepPro>();
-            UniDepProList.Add(new UniDepPro(new Tuple<UniDep, int>(UniDepList.First(), 0)));
+            UniDepProList = new HashSet<UniDepPro>
+            {
+                new UniDepPro(new Tuple<UniDep, int>(UniDepList.First(), 0))
+            };
         }
 
         /* Popula as listas de classes de relacionamentos (UniDepList e UniDepProList) aleatoriamente */
         private static void VinculosAleatorios()
         {
-            for (int i = 1; i < Universidades.Count; i++)
+            for (var i = 1; i < Universidades.Count; i++)
             {
-                for (int j = 0; j < Rnd.Next(1, Departamentos.Count); j++)
+                for (var j = 0; j < Rnd.Next(1, Departamentos.Count); j++)
                 {
-                    Tuple<int, int> chaves = new Tuple<int, int>(Universidades[i].Codigo, Rnd.Next(1, Departamentos.Count));
+                    var chaves = new Tuple<int, int>(Universidades[i].Codigo, Rnd.Next(1, Departamentos.Count));
                     UniDepList.Add(new UniDep(chaves));
                 }
             }
 
-            for (int i = 1; i < UniDepList.Count; i++)
+            for (var i = 1; i < UniDepList.Count; i++)
             {
-                for (int j = 0; j < Rnd.Next(1, Professores.Count); j++)
+                for (var j = 0; j < Rnd.Next(1, Professores.Count); j++)
                 {
-                    Tuple<UniDep, int> chaves = new Tuple<UniDep, int>(UniDepList.ToList()[i], Rnd.Next(1, Professores.Count));
+                    var chaves = new Tuple<UniDep, int>(UniDepList.ToList()[i], Rnd.Next(1, Professores.Count));
                     UniDepProList.Add(new UniDepPro(chaves));
                 }
             }

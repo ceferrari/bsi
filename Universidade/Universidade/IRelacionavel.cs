@@ -4,7 +4,7 @@ namespace Universidade
 {
     public interface IRelacionavel<T> where T : IComparable
     {
-        T Chaves { get; set; }
+        Tuple<T, int> Chaves { get; set; }
         int GetHashCode();
         bool Equals(object obj);
     }
