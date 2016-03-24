@@ -14,7 +14,6 @@ namespace Universidade
         private Universidade SelUniversidade { get; set; }
         private Departamento SelDepartamento { get; set; }
         private Professor SelProfessor { get; set; }
-        private int UniCount { get; set; }
 
         public Principal()
         {
@@ -45,9 +44,9 @@ namespace Universidade
 
         private void AtualizaNumeros()
         {
-            lblQtdUniversidadesValor.Text = Convert.ToString(dgvUniversidades.RowCount - 1 - UniCount) + " / " + Convert.ToString(Universidades.Count - 1);
-            lblQtdDepartamentosValor.Text = Convert.ToString(dgvDepartamentos.RowCount - 1) + " / " + Convert.ToString(Departamentos.Count - 1);
-            lblQtdProfessoresValor.Text = Convert.ToString(dgvProfessores.RowCount - 1) + " / " + Convert.ToString(Professores.Count - 1);
+            lblQtdUniversidadesValor.Text = (dgvUniversidades.RowCount - 1) + " / " + (Universidades.Count - 1);
+            lblQtdDepartamentosValor.Text = (dgvDepartamentos.RowCount - 1) + " / " + (Departamentos.Count - 1);
+            lblQtdProfessoresValor.Text = (dgvProfessores.RowCount - 1) + " / " + (Professores.Count - 1);
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -148,8 +147,8 @@ namespace Universidade
                     }
                 }
 
-                UniCount = filtered.RowCount - rows.Count(x => UniDepProList.Any(y => y.Chaves.Item2 == SelProfessor.Codigo));
-                AtualizaNumeros();
+                var qtdAtual = (sender.CurrentRow.Index == 0) ? Universidades.Count - 1 : rows.Count(x => x.DefaultCellStyle.BackColor == Color.Pink);
+                lblQtdUniversidadesValor.Text =  qtdAtual + " / " + (Universidades.Count - 1);
             }
 
             return (filter == null) ? source : new BindingList<INomeavel>(filter.ToList<INomeavel>());

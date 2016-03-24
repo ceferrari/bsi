@@ -32,74 +32,73 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpVinculos = new System.Windows.Forms.TableLayoutPanel();
             this.lblQtdNaoVinculados = new System.Windows.Forms.Label();
             this.lblVinculados = new System.Windows.Forms.Label();
-            this.btnSalvar = new System.Windows.Forms.Button();
             this.dgvVinculados = new System.Windows.Forms.DataGridView();
             this.dgvNaoVinculados = new System.Windows.Forms.DataGridView();
             this.btnVincular = new System.Windows.Forms.Button();
             this.btnDesvincular = new System.Windows.Forms.Button();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.lblNaoVinculados = new System.Windows.Forms.Label();
             this.lblQtdVinculados = new System.Windows.Forms.Label();
             this.lblQtdVinculadosValor = new System.Windows.Forms.Label();
             this.lblQtdNaoVinculadosValor = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.gbEditar = new System.Windows.Forms.GroupBox();
+            this.tlpEditar = new System.Windows.Forms.TableLayoutPanel();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.tlpVinculos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVinculados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNaoVinculados)).BeginInit();
+            this.gbEditar.SuspendLayout();
+            this.tlpEditar.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tlpVinculos
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tlpVinculos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18F));
-            this.tableLayoutPanel1.Controls.Add(this.lblQtdNaoVinculados, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblVinculados, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnSalvar, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dgvVinculados, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.dgvNaoVinculados, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnVincular, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnDesvincular, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.lblTitulo, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtNome, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnEditar, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblNaoVinculados, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lblQtdVinculados, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblQtdVinculadosValor, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblQtdNaoVinculadosValor, 5, 5);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(555, 432);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tlpVinculos.ColumnCount = 6;
+            this.tlpVinculos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
+            this.tlpVinculos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18F));
+            this.tlpVinculos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tlpVinculos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19F));
+            this.tlpVinculos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9F));
+            this.tlpVinculos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18F));
+            this.tlpVinculos.Controls.Add(this.lblQtdNaoVinculados, 3, 4);
+            this.tlpVinculos.Controls.Add(this.lblVinculados, 0, 1);
+            this.tlpVinculos.Controls.Add(this.dgvVinculados, 0, 2);
+            this.tlpVinculos.Controls.Add(this.dgvNaoVinculados, 3, 2);
+            this.tlpVinculos.Controls.Add(this.btnVincular, 2, 2);
+            this.tlpVinculos.Controls.Add(this.btnDesvincular, 2, 3);
+            this.tlpVinculos.Controls.Add(this.lblNaoVinculados, 3, 1);
+            this.tlpVinculos.Controls.Add(this.lblQtdVinculados, 0, 4);
+            this.tlpVinculos.Controls.Add(this.lblQtdVinculadosValor, 1, 4);
+            this.tlpVinculos.Controls.Add(this.lblQtdNaoVinculadosValor, 5, 4);
+            this.tlpVinculos.Controls.Add(this.gbEditar, 0, 0);
+            this.tlpVinculos.Location = new System.Drawing.Point(13, 13);
+            this.tlpVinculos.Name = "tlpVinculos";
+            this.tlpVinculos.RowCount = 5;
+            this.tlpVinculos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24F));
+            this.tlpVinculos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
+            this.tlpVinculos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.5F));
+            this.tlpVinculos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.5F));
+            this.tlpVinculos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.tlpVinculos.Size = new System.Drawing.Size(555, 432);
+            this.tlpVinculos.TabIndex = 0;
             // 
             // lblQtdNaoVinculados
             // 
             this.lblQtdNaoVinculados.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.lblQtdNaoVinculados, 2);
+            this.tlpVinculos.SetColumnSpan(this.lblQtdNaoVinculados, 2);
             this.lblQtdNaoVinculados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblQtdNaoVinculados.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdNaoVinculados.Location = new System.Drawing.Point(301, 400);
+            this.lblQtdNaoVinculados.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQtdNaoVinculados.Location = new System.Drawing.Point(301, 403);
             this.lblQtdNaoVinculados.Name = "lblQtdNaoVinculados";
-            this.lblQtdNaoVinculados.Size = new System.Drawing.Size(148, 32);
+            this.lblQtdNaoVinculados.Size = new System.Drawing.Size(148, 29);
             this.lblQtdNaoVinculados.TabIndex = 0;
             this.lblQtdNaoVinculados.Text = "Quantidade:";
             this.lblQtdNaoVinculados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -107,29 +106,15 @@
             // lblVinculados
             // 
             this.lblVinculados.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.lblVinculados, 2);
+            this.tlpVinculos.SetColumnSpan(this.lblVinculados, 2);
             this.lblVinculados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblVinculados.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVinculados.Location = new System.Drawing.Point(3, 85);
+            this.lblVinculados.Location = new System.Drawing.Point(3, 103);
             this.lblVinculados.Name = "lblVinculados";
-            this.lblVinculados.Size = new System.Drawing.Size(248, 43);
+            this.lblVinculados.Size = new System.Drawing.Size(248, 38);
             this.lblVinculados.TabIndex = 0;
             this.lblVinculados.Text = "Departamentos vinculados:";
             this.lblVinculados.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // btnSalvar
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.btnSalvar, 2);
-            this.btnSalvar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvar.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(406, 50);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(146, 32);
-            this.btnSalvar.TabIndex = 3;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // dgvVinculados
             // 
@@ -150,7 +135,7 @@
             this.dgvVinculados.ColumnHeadersHeight = 30;
             this.dgvVinculados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvVinculados.ColumnHeadersVisible = false;
-            this.tableLayoutPanel1.SetColumnSpan(this.dgvVinculados, 2);
+            this.tlpVinculos.SetColumnSpan(this.dgvVinculados, 2);
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -161,16 +146,16 @@
             this.dgvVinculados.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVinculados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVinculados.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvVinculados.Location = new System.Drawing.Point(3, 131);
+            this.dgvVinculados.Location = new System.Drawing.Point(3, 144);
             this.dgvVinculados.MultiSelect = false;
             this.dgvVinculados.Name = "dgvVinculados";
             this.dgvVinculados.ReadOnly = true;
             this.dgvVinculados.RowHeadersVisible = false;
             this.dgvVinculados.RowHeadersWidth = 30;
             this.dgvVinculados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.tableLayoutPanel1.SetRowSpan(this.dgvVinculados, 2);
+            this.tlpVinculos.SetRowSpan(this.dgvVinculados, 2);
             this.dgvVinculados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVinculados.Size = new System.Drawing.Size(248, 266);
+            this.dgvVinculados.Size = new System.Drawing.Size(248, 256);
             this.dgvVinculados.TabIndex = 4;
             this.dgvVinculados.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             // 
@@ -193,7 +178,7 @@
             this.dgvNaoVinculados.ColumnHeadersHeight = 30;
             this.dgvNaoVinculados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvNaoVinculados.ColumnHeadersVisible = false;
-            this.tableLayoutPanel1.SetColumnSpan(this.dgvNaoVinculados, 3);
+            this.tlpVinculos.SetColumnSpan(this.dgvNaoVinculados, 3);
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -204,16 +189,16 @@
             this.dgvNaoVinculados.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvNaoVinculados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNaoVinculados.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvNaoVinculados.Location = new System.Drawing.Point(301, 131);
+            this.dgvNaoVinculados.Location = new System.Drawing.Point(301, 144);
             this.dgvNaoVinculados.MultiSelect = false;
             this.dgvNaoVinculados.Name = "dgvNaoVinculados";
             this.dgvNaoVinculados.ReadOnly = true;
             this.dgvNaoVinculados.RowHeadersVisible = false;
             this.dgvNaoVinculados.RowHeadersWidth = 30;
             this.dgvNaoVinculados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.tableLayoutPanel1.SetRowSpan(this.dgvNaoVinculados, 2);
+            this.tlpVinculos.SetRowSpan(this.dgvNaoVinculados, 2);
             this.dgvNaoVinculados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNaoVinculados.Size = new System.Drawing.Size(251, 266);
+            this.dgvNaoVinculados.Size = new System.Drawing.Size(251, 256);
             this.dgvNaoVinculados.TabIndex = 7;
             this.dgvNaoVinculados.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             // 
@@ -224,7 +209,7 @@
             this.btnVincular.AutoSize = true;
             this.btnVincular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVincular.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVincular.Location = new System.Drawing.Point(257, 230);
+            this.btnVincular.Location = new System.Drawing.Point(257, 238);
             this.btnVincular.Name = "btnVincular";
             this.btnVincular.Size = new System.Drawing.Size(38, 31);
             this.btnVincular.TabIndex = 5;
@@ -239,7 +224,7 @@
             this.btnDesvincular.AutoSize = true;
             this.btnDesvincular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDesvincular.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesvincular.Location = new System.Drawing.Point(257, 267);
+            this.btnDesvincular.Location = new System.Drawing.Point(257, 275);
             this.btnDesvincular.Name = "btnDesvincular";
             this.btnDesvincular.Size = new System.Drawing.Size(38, 31);
             this.btnDesvincular.TabIndex = 6;
@@ -247,53 +232,15 @@
             this.btnDesvincular.UseVisualStyleBackColor = false;
             this.btnDesvincular.Click += new System.EventHandler(this.btnDesvincular_Click);
             // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.lblTitulo, 2);
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitulo.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(3, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(248, 47);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Universidade:";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtNome
-            // 
-            this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.txtNome, 4);
-            this.txtNome.Enabled = false;
-            this.txtNome.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(257, 7);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(295, 32);
-            this.txtNome.TabIndex = 1;
-            // 
-            // btnEditar
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.btnEditar, 2);
-            this.btnEditar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(257, 50);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(143, 32);
-            this.btnEditar.TabIndex = 2;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
             // lblNaoVinculados
             // 
             this.lblNaoVinculados.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.lblNaoVinculados, 3);
+            this.tlpVinculos.SetColumnSpan(this.lblNaoVinculados, 3);
             this.lblNaoVinculados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblNaoVinculados.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNaoVinculados.Location = new System.Drawing.Point(301, 85);
+            this.lblNaoVinculados.Location = new System.Drawing.Point(301, 103);
             this.lblNaoVinculados.Name = "lblNaoVinculados";
-            this.lblNaoVinculados.Size = new System.Drawing.Size(251, 43);
+            this.lblNaoVinculados.Size = new System.Drawing.Size(251, 38);
             this.lblNaoVinculados.TabIndex = 0;
             this.lblNaoVinculados.Text = "Departamentos não vinculados:";
             this.lblNaoVinculados.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -302,10 +249,10 @@
             // 
             this.lblQtdVinculados.AutoSize = true;
             this.lblQtdVinculados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblQtdVinculados.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdVinculados.Location = new System.Drawing.Point(3, 400);
+            this.lblQtdVinculados.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQtdVinculados.Location = new System.Drawing.Point(3, 403);
             this.lblQtdVinculados.Name = "lblQtdVinculados";
-            this.lblQtdVinculados.Size = new System.Drawing.Size(149, 32);
+            this.lblQtdVinculados.Size = new System.Drawing.Size(149, 29);
             this.lblQtdVinculados.TabIndex = 0;
             this.lblQtdVinculados.Text = "Quantidade:";
             this.lblQtdVinculados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -314,10 +261,10 @@
             // 
             this.lblQtdVinculadosValor.AutoSize = true;
             this.lblQtdVinculadosValor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblQtdVinculadosValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdVinculadosValor.Location = new System.Drawing.Point(158, 400);
+            this.lblQtdVinculadosValor.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQtdVinculadosValor.Location = new System.Drawing.Point(158, 403);
             this.lblQtdVinculadosValor.Name = "lblQtdVinculadosValor";
-            this.lblQtdVinculadosValor.Size = new System.Drawing.Size(93, 32);
+            this.lblQtdVinculadosValor.Size = new System.Drawing.Size(93, 29);
             this.lblQtdVinculadosValor.TabIndex = 0;
             this.lblQtdVinculadosValor.Text = "8 / 10";
             this.lblQtdVinculadosValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -326,46 +273,138 @@
             // 
             this.lblQtdNaoVinculadosValor.AutoSize = true;
             this.lblQtdNaoVinculadosValor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblQtdNaoVinculadosValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQtdNaoVinculadosValor.Location = new System.Drawing.Point(455, 400);
+            this.lblQtdNaoVinculadosValor.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQtdNaoVinculadosValor.Location = new System.Drawing.Point(455, 403);
             this.lblQtdNaoVinculadosValor.Name = "lblQtdNaoVinculadosValor";
-            this.lblQtdNaoVinculadosValor.Size = new System.Drawing.Size(97, 32);
+            this.lblQtdNaoVinculadosValor.Size = new System.Drawing.Size(97, 29);
             this.lblQtdNaoVinculadosValor.TabIndex = 0;
             this.lblQtdNaoVinculadosValor.Text = "8 / 10";
             this.lblQtdNaoVinculadosValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // gbEditar
+            // 
+            this.tlpVinculos.SetColumnSpan(this.gbEditar, 6);
+            this.gbEditar.Controls.Add(this.tlpEditar);
+            this.gbEditar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbEditar.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbEditar.Location = new System.Drawing.Point(0, 0);
+            this.gbEditar.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.gbEditar.Name = "gbEditar";
+            this.gbEditar.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.gbEditar.Size = new System.Drawing.Size(555, 100);
+            this.gbEditar.TabIndex = 8;
+            this.gbEditar.TabStop = false;
+            this.gbEditar.Text = "Editar";
+            // 
+            // tlpEditar
+            // 
+            this.tlpEditar.ColumnCount = 3;
+            this.tlpEditar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46F));
+            this.tlpEditar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27F));
+            this.tlpEditar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27F));
+            this.tlpEditar.Controls.Add(this.btnEditar, 1, 1);
+            this.tlpEditar.Controls.Add(this.lblTitulo, 0, 0);
+            this.tlpEditar.Controls.Add(this.txtNome, 1, 0);
+            this.tlpEditar.Controls.Add(this.btnSalvar, 2, 1);
+            this.tlpEditar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpEditar.Location = new System.Drawing.Point(3, 23);
+            this.tlpEditar.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.tlpEditar.Name = "tlpEditar";
+            this.tlpEditar.RowCount = 2;
+            this.tlpEditar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpEditar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpEditar.Size = new System.Drawing.Size(549, 74);
+            this.tlpEditar.TabIndex = 4;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Location = new System.Drawing.Point(255, 37);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.btnEditar.MaximumSize = new System.Drawing.Size(0, 32);
+            this.btnEditar.MinimumSize = new System.Drawing.Size(0, 32);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(142, 32);
+            this.btnEditar.TabIndex = 2;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitulo.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(3, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(246, 37);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Universidade:";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpEditar.SetColumnSpan(this.txtNome, 2);
+            this.txtNome.Enabled = false;
+            this.txtNome.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.Location = new System.Drawing.Point(255, 1);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(291, 32);
+            this.txtNome.TabIndex = 1;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvar.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.Location = new System.Drawing.Point(403, 37);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.btnSalvar.MaximumSize = new System.Drawing.Size(0, 32);
+            this.btnSalvar.MinimumSize = new System.Drawing.Size(0, 32);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(143, 32);
+            this.btnSalvar.TabIndex = 3;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // Editar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 457);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tlpVinculos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "Editar";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Editar";
+            this.Text = "(Universidade) UNIVEM";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editar_FormClosing);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tlpVinculos.ResumeLayout(false);
+            this.tlpVinculos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVinculados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNaoVinculados)).EndInit();
+            this.gbEditar.ResumeLayout(false);
+            this.tlpEditar.ResumeLayout(false);
+            this.tlpEditar.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlpVinculos;
         private System.Windows.Forms.DataGridView dgvVinculados;
-        private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.DataGridView dgvNaoVinculados;
         private System.Windows.Forms.Button btnVincular;
         private System.Windows.Forms.Button btnDesvincular;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Label lblVinculados;
         private System.Windows.Forms.Label lblNaoVinculados;
@@ -373,5 +412,9 @@
         private System.Windows.Forms.Label lblQtdNaoVinculados;
         private System.Windows.Forms.Label lblQtdVinculadosValor;
         private System.Windows.Forms.Label lblQtdNaoVinculadosValor;
+        private System.Windows.Forms.GroupBox gbEditar;
+        private System.Windows.Forms.TableLayoutPanel tlpEditar;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.Button btnSalvar;
     }
 }

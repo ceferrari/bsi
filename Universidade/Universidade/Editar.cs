@@ -30,9 +30,19 @@ namespace Universidade
         private void Editar_FormClosing(object sender, FormClosingEventArgs e)
         {
             Principal.Editar = null;
-            AtualizaTelaPrincipal(Principal.dgvUniversidades);
-            AtualizaTelaPrincipal(Principal.dgvDepartamentos);
-            AtualizaTelaPrincipal(Principal.dgvProfessores);
+
+            if (Nomeavel is Universidade)
+            {
+                AtualizaTelaPrincipal(Principal.dgvUniversidades);
+            }
+            else if (Nomeavel is Departamento)
+            {
+                AtualizaTelaPrincipal(Principal.dgvDepartamentos);
+            }
+            else // (Nomeavel is Professor)
+            {
+                AtualizaTelaPrincipal(Principal.dgvProfessores);
+            }
         }
 
         private void AtualizaTelaPrincipal(DataGridView dgv)
@@ -85,16 +95,19 @@ namespace Universidade
 
             if (Nomeavel is Universidade)
             {
+                Text = "(Universidade) " + Nomeavel.Nome;
                 lblVinculados.Text = "Departamentos vinculados:";
                 lblNaoVinculados.Text = "Departamentos não vinculados:";
             }
             else if (Nomeavel is Departamento)
             {
+                Text = "(Departamento) " + Nomeavel.Nome;
                 lblVinculados.Text = "Universidades vinculadas:";
                 lblNaoVinculados.Text = "Universidades não vinculadas:";
             }
             else // (Nomeavel is Professor)
             {
+                Text = "(Professor) " + Nomeavel.Nome;
                 lblVinculados.Text = "Universidades > Departamentos vinculados:";
                 lblNaoVinculados.Text = "Universidades > Departamentos não vinculados:";
             }
@@ -102,7 +115,7 @@ namespace Universidade
 
         private void AtualizaNumeros()
         {
-            string total = Convert.ToString(dgvVinculados.RowCount + dgvNaoVinculados.RowCount);
+            var total = Convert.ToString(dgvVinculados.RowCount + dgvNaoVinculados.RowCount);
             lblQtdVinculadosValor.Text = dgvVinculados.RowCount + " / " + total;
             lblQtdNaoVinculadosValor.Text = dgvNaoVinculados.RowCount + " / " + total;
         }
@@ -126,12 +139,13 @@ namespace Universidade
                     throw new Exception("O nome não pode ser em branco.");
                 }
 
-                if (txtNome.Enabled)
+                if (txtNome.Enabled && !txtNome.Text.Equals(Nomeavel.Nome))
                 {
                     Nomeavel.Nome = txtNome.Text;
-                    txtNome.Enabled = false;
                     MessageBox.Show("Nome alterado com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+                txtNome.Enabled = false;
             }
             catch (Exception ex)
             {
