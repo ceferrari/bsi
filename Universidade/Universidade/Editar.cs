@@ -60,13 +60,13 @@ namespace Universidade
             {
                 dgvVinculados.DataSource = Departamentos.Where(x => x.Codigo > 0 && UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Nomeavel.Codigo)).ToList();
                 dgvNaoVinculados.DataSource = Departamentos.Where(x => x.Codigo > 0 && !UniDepList.Any(y => y.Chaves.Item2 == x.Codigo && y.Chaves.Item1 == Nomeavel.Codigo)).ToList();
-                //EscondeColuna("Codigo");
+                EscondeColuna("Codigo");
             }
             else if (Nomeavel is Departamento)
             {
                 dgvVinculados.DataSource = Universidades.Where(x => x.Codigo > 0 && UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Nomeavel.Codigo)).ToList();
                 dgvNaoVinculados.DataSource = Universidades.Where(x => x.Codigo > 0 && !UniDepList.Any(y => y.Chaves.Item1 == x.Codigo && y.Chaves.Item2 == Nomeavel.Codigo)).ToList();
-                //EscondeColuna("Codigo");
+                EscondeColuna("Codigo");
             }
             else // (Nomeavel is Professor)
             {
