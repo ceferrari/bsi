@@ -140,11 +140,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{1291727d-16b3-4e2b-959c-278e96dbaeca}</Project>
+      <Project>{3b0050ad-be7b-470c-a70f-f4de7d56dc10}</Project>
       <Name>Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infra\Infra.csproj">
-      <Project>{e30f8868-2e58-47b0-8d88-bd2c2bfec9b0}</Project>
+      <Project>{3abbeca3-03bc-491c-9ffb-b8ca37a73a07}</Project>
       <Name>Infra</Name>
     </ProjectReference>
   </ItemGroup>
