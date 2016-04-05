@@ -7,7 +7,7 @@ namespace View
 {
     public partial class Login : Form
     {
-        public CadUsuario CadUsuario { get; set; }
+        public NovoUsuario NovoUsuario { get; set; }
 
         public Login()
         {
@@ -21,10 +21,10 @@ namespace View
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (CadUsuario == null)
+            if (NovoUsuario == null)
             {
-                CadUsuario = new CadUsuario(this);
-                CadUsuario.Show();
+                NovoUsuario = new NovoUsuario(this);
+                NovoUsuario.Show();
                 Hide();
             }
         }

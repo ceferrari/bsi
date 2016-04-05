@@ -23,6 +23,17 @@ namespace View
             Application.Exit();
         }
 
+        private void lnkLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Tem certeza que deseja sair do sistema?", "Info", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation);
+
+            if (result == DialogResult.Yes)
+            {
+                new Login().Show();
+                Dispose();
+            }
+        }
+
         private void InicializaDataGridView()
         {
             dgvProdutos.AutoGenerateColumns = false;
@@ -159,7 +170,6 @@ namespace View
                 {
                     row.DefaultCellStyle.BackColor = Color.Pink;
                     row.DefaultCellStyle.SelectionBackColor = Color.Pink;
-
                 }
                 else
                 {

@@ -38,9 +38,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="ConfigDB.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>ConfigDB.Designer.cs</LastGenOutput>

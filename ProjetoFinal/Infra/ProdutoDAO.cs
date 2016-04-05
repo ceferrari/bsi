@@ -13,7 +13,7 @@ namespace Infra
             var sql = "SELECT * FROM Produtos";
 
             using (var dal = new ProjetoFinalDAL())
-            using (var command = new SqlCommand(sql, dal.sqlConnection))
+            using (var command = new SqlCommand(sql, dal.Connection))
             using (var reader = command.ExecuteReader())
             {
                 var Produtos = new BindingList<Produto>();
@@ -32,7 +32,7 @@ namespace Infra
             var sql = "SELECT * FROM Produtos WHERE Codigo = " + codigo;
 
             using (var dal = new ProjetoFinalDAL())
-            using (var command = new SqlCommand(sql, dal.sqlConnection))
+            using (var command = new SqlCommand(sql, dal.Connection))
             using (var reader = command.ExecuteReader())
             {
                 reader.Read();
@@ -45,7 +45,7 @@ namespace Infra
             var sql = "INSERT INTO Produtos (Descricao, Preco, EstoqueAtual, EstoqueMinimo, PrecisaReposicao, DataAlteracao) VALUES (@descricao, @preco, @atual, @minimo, @reposicao, @alteracao)";
 
             using (var dal = new ProjetoFinalDAL())
-            using (var command = new SqlCommand(sql, dal.sqlConnection))
+            using (var command = new SqlCommand(sql, dal.Connection))
             {
                 Parametriza(command, produto);
                 command.ExecuteNonQuery();
@@ -57,7 +57,7 @@ namespace Infra
             var sql = "UPDATE Produtos SET Descricao = @descricao, Preco = @preco, EstoqueAtual = @atual, EstoqueMinimo = @minimo, PrecisaReposicao = @reposicao, DataAlteracao = @alteracao WHERE Codigo = @codigo";
 
             using (var dal = new ProjetoFinalDAL())
-            using (var command = new SqlCommand(sql, dal.sqlConnection))
+            using (var command = new SqlCommand(sql, dal.Connection))
             {
                 Parametriza(command, produto);
                 command.ExecuteNonQuery();
@@ -69,7 +69,7 @@ namespace Infra
             var sql = "DELETE FROM Produtos WHERE Codigo = @codigo";
 
             using (var dal = new ProjetoFinalDAL())
-            using (var command = new SqlCommand(sql, dal.sqlConnection))
+            using (var command = new SqlCommand(sql, dal.Connection))
             {
                 Parametriza(command, produto);
                 command.ExecuteNonQuery();

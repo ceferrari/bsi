@@ -5,17 +5,17 @@ namespace Infra
 {
     public class ProjetoFinalDAL : IDisposable
     {
-        public SqlConnection sqlConnection { get; private set; }
+        public SqlConnection Connection { get; private set; }
 
         public ProjetoFinalDAL()
         {
-            sqlConnection = new SqlConnection(ConfigDB.Default.ProjetoFinalConnection);
-            sqlConnection.Open();
+            Connection = new SqlConnection(ConfigDB.Default.ProjetoFinalConnection);
+            Connection.Open();
         }
 
         public void Dispose()
         {
-            sqlConnection.Close();
+            Connection.Close();
         }
     }
 }

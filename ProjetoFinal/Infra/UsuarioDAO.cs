@@ -11,7 +11,7 @@ namespace Infra
             var sql = "SELECT * FROM Usuarios WHERE Email = @email AND Senha = @senha";
 
             using (var dal = new ProjetoFinalDAL())
-            using (var command = new SqlCommand(sql, dal.sqlConnection))
+            using (var command = new SqlCommand(sql, dal.Connection))
             {
                 command.Parameters.AddWithValue("@email", email);
                 command.Parameters.AddWithValue("@senha", senha);
@@ -29,7 +29,7 @@ namespace Infra
             var sql = "INSERT INTO Usuarios (Nome, Email, Senha) VALUES (@nome, @email, @senha)";
 
             using (var dal = new ProjetoFinalDAL())
-            using (var command = new SqlCommand(sql, dal.sqlConnection))
+            using (var command = new SqlCommand(sql, dal.Connection))
             {
                 Parametriza(command, usuario);
                 command.ExecuteNonQuery();

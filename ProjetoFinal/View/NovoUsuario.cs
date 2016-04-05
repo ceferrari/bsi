@@ -5,19 +5,19 @@ using System.Windows.Forms;
 
 namespace View
 {
-    public partial class CadUsuario : Form
+    public partial class NovoUsuario : Form
     {
         private Login Login { get; set; }
 
-        public CadUsuario(Login login)
+        public NovoUsuario(Login login)
         {
             InitializeComponent();
             Login = login;
         }
 
-        private void CadUsuario_FormClosing(object sender, FormClosingEventArgs e)
+        private void NovoUsuario_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Login.CadUsuario = null;
+            Login.NovoUsuario = null;
             Login.Show();
         }
 
