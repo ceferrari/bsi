@@ -27,14 +27,14 @@ namespace Infra
             }
         }
 
-        public Produto Recupera(int id)
+        public Produto Recupera(int codigo)
         {
-            var sql = "SELECT * FROM Produtos WHERE codigo = " + id;
+            var sql = "SELECT * FROM Produtos WHERE Codigo = " + codigo;
 
             using (var dal = new ProjetoFinalDAL())
             using (var command = new SqlCommand(sql, dal.sqlConnection))
             using (var reader = command.ExecuteReader())
-            { 
+            {
                 reader.Read();
                 return Cria(reader);
             }

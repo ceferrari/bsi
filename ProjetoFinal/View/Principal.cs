@@ -10,11 +10,17 @@ namespace View
     {
         private Produto Selecionado { get; set; }
 
-        public Principal()
+        public Principal(Usuario logado)
         {
             InitializeComponent();
             InicializaDataGridView();
             tabEstoque.SelectedTab = tpListagem;
+            lblBemVindo.Text = "Bem-vindo, " + logado.Nome + "!";
+        }
+
+        private void Principal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void InicializaDataGridView()

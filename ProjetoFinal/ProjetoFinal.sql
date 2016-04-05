@@ -7,6 +7,21 @@ CREATE DATABASE ProjetoFinal
 
 USE ProjetoFinal
 
+CREATE TABLE Usuarios (
+	"Codigo" INT IDENTITY (1, 1) NOT NULL,
+	"Nome" NVARCHAR (128) NOT NULL,
+	"Email" NVARCHAR (128) NOT NULL,
+	"Senha" NVARCHAR (64) NOT NULL,
+	CONSTRAINT "PK_Usuarios" PRIMARY KEY (
+		"Codigo"
+	)
+);
+
+INSERT INTO Usuarios 
+(Nome, Email, Senha) 
+VALUES 
+('Carlos Eduardo Ferrari', 'carled@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92');
+
 CREATE TABLE Produtos (
 	"Codigo" INT IDENTITY (1, 1) NOT NULL,
 	"Descricao" NVARCHAR (128) NOT NULL,
@@ -20,7 +35,9 @@ CREATE TABLE Produtos (
 	)
 );
 
-INSERT INTO Produtos (Descricao, Preco, EstoqueAtual, EstoqueMinimo, PrecisaReposicao, DataAlteracao) VALUES 
+INSERT INTO Produtos 
+(Descricao, Preco, EstoqueAtual, EstoqueMinimo, PrecisaReposicao, DataAlteracao) 
+VALUES 
 ('Caneta', 23.90, 56, 40, 'N', GETDATE()),
 ('Lápis', 12.56, 42, 50, 'S', GETDATE()),
 ('Caderno', 11.74, 62, 30, 'N', GETDATE()),
