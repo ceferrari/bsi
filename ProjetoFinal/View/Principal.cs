@@ -123,6 +123,7 @@ namespace View
                 if (dr == DialogResult.Yes)
                 {
                     new ProdutoDAO().Remove(Selecionado);
+                    MessageBox.Show("Produto " + Selecionado.Descricao + " excluído com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AtualizaDataGridView();
                 }
 
@@ -205,6 +206,7 @@ namespace View
                 if (String.IsNullOrWhiteSpace(txtCodigo.Text))
                 {
                     new ProdutoDAO().Insere(new Produto(0, descricao, preco, atual, minimo));
+                    MessageBox.Show("Produto " + descricao + " cadastrado com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AtualizaDataGridView();
                 }
                 else
@@ -213,6 +215,7 @@ namespace View
                     Selecionado.SetPreco(preco);
                     Selecionado.SetEstoqueAtual(atual);
                     Selecionado.SetEstoqueMinimo(minimo);
+                    MessageBox.Show("Produto " + Selecionado.Descricao + " atualizado com sucesso!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AtualizaSelecionado();
                 }
 

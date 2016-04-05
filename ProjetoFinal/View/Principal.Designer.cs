@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.tabEstoque = new System.Windows.Forms.TabControl();
             this.tpCadastro = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -49,6 +49,11 @@
             this.lblCodigo = new System.Windows.Forms.Label();
             this.tpListagem = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnInserir = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnRetirar = new System.Windows.Forms.Button();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,13 +63,8 @@
             this.PrecisaReposicao = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DataAlteracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lnkLogout = new System.Windows.Forms.LinkLabel();
             this.lblBemVindo = new System.Windows.Forms.Label();
-            this.btnInserir = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnRetirar = new System.Windows.Forms.Button();
+            this.lnkLogout = new System.Windows.Forms.LinkLabel();
             this.tabEstoque.SuspendLayout();
             this.tpCadastro.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -360,6 +360,66 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(620, 363);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // btnInserir
+            // 
+            this.btnInserir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnInserir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInserir.Image = ((System.Drawing.Image)(resources.GetObject("btnInserir.Image")));
+            this.btnInserir.Location = new System.Drawing.Point(542, 3);
+            this.btnInserir.Name = "btnInserir";
+            this.btnInserir.Size = new System.Drawing.Size(75, 66);
+            this.btnInserir.TabIndex = 2;
+            this.btnInserir.UseVisualStyleBackColor = true;
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
+            this.btnExcluir.Location = new System.Drawing.Point(542, 291);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 69);
+            this.btnExcluir.TabIndex = 6;
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNovo.Image = ((System.Drawing.Image)(resources.GetObject("btnNovo.Image")));
+            this.btnNovo.Location = new System.Drawing.Point(542, 219);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 66);
+            this.btnNovo.TabIndex = 5;
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
+            this.btnEditar.Location = new System.Drawing.Point(542, 147);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 66);
+            this.btnEditar.TabIndex = 4;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnRetirar
+            // 
+            this.btnRetirar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRetirar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRetirar.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirar.Image")));
+            this.btnRetirar.Location = new System.Drawing.Point(542, 75);
+            this.btnRetirar.Name = "btnRetirar";
+            this.btnRetirar.Size = new System.Drawing.Size(75, 66);
+            this.btnRetirar.TabIndex = 3;
+            this.btnRetirar.UseVisualStyleBackColor = true;
+            this.btnRetirar.Click += new System.EventHandler(this.btnRetirar_Click);
+            // 
             // dgvProdutos
             // 
             this.dgvProdutos.AllowUserToAddRows = false;
@@ -368,11 +428,11 @@
             this.dgvProdutos.AllowUserToResizeRows = false;
             this.dgvProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvProdutos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvProdutos.BackgroundColor = System.Drawing.Color.White;
             this.dgvProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -393,7 +453,7 @@
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProdutos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -495,6 +555,16 @@
             this.panel1.Size = new System.Drawing.Size(634, 32);
             this.panel1.TabIndex = 2;
             // 
+            // lblBemVindo
+            // 
+            this.lblBemVindo.AutoSize = true;
+            this.lblBemVindo.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBemVindo.Location = new System.Drawing.Point(12, 5);
+            this.lblBemVindo.Name = "lblBemVindo";
+            this.lblBemVindo.Size = new System.Drawing.Size(315, 19);
+            this.lblBemVindo.TabIndex = 1;
+            this.lblBemVindo.Text = "Bem-vindo, Carlos Eduardo Ferrari!";
+            // 
             // lnkLogout
             // 
             this.lnkLogout.AutoSize = true;
@@ -506,76 +576,6 @@
             this.lnkLogout.TabStop = true;
             this.lnkLogout.Text = "Logout";
             this.lnkLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLogout_LinkClicked);
-            // 
-            // lblBemVindo
-            // 
-            this.lblBemVindo.AutoSize = true;
-            this.lblBemVindo.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBemVindo.Location = new System.Drawing.Point(12, 5);
-            this.lblBemVindo.Name = "lblBemVindo";
-            this.lblBemVindo.Size = new System.Drawing.Size(315, 19);
-            this.lblBemVindo.TabIndex = 1;
-            this.lblBemVindo.Text = "Bem-vindo, Carlos Eduardo Ferrari!";
-            // 
-            // btnInserir
-            // 
-            this.btnInserir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnInserir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInserir.Image = ((System.Drawing.Image)(resources.GetObject("btnInserir.Image")));
-            this.btnInserir.Location = new System.Drawing.Point(542, 3);
-            this.btnInserir.Name = "btnInserir";
-            this.btnInserir.Size = new System.Drawing.Size(75, 66);
-            this.btnInserir.TabIndex = 2;
-            this.btnInserir.UseVisualStyleBackColor = true;
-            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
-            this.btnExcluir.Location = new System.Drawing.Point(542, 291);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 69);
-            this.btnExcluir.TabIndex = 6;
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNovo.Image = ((System.Drawing.Image)(resources.GetObject("btnNovo.Image")));
-            this.btnNovo.Location = new System.Drawing.Point(542, 219);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(75, 66);
-            this.btnNovo.TabIndex = 5;
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.Location = new System.Drawing.Point(542, 147);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 66);
-            this.btnEditar.TabIndex = 4;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnRetirar
-            // 
-            this.btnRetirar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRetirar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRetirar.Image = ((System.Drawing.Image)(resources.GetObject("btnRetirar.Image")));
-            this.btnRetirar.Location = new System.Drawing.Point(542, 75);
-            this.btnRetirar.Name = "btnRetirar";
-            this.btnRetirar.Size = new System.Drawing.Size(75, 66);
-            this.btnRetirar.TabIndex = 3;
-            this.btnRetirar.UseVisualStyleBackColor = true;
-            this.btnRetirar.Click += new System.EventHandler(this.btnRetirar_Click);
             // 
             // Principal
             // 

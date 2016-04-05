@@ -22,7 +22,7 @@ namespace Domain
         {
             if (!IsValidEmail(email))
             {
-                throw new Exception("E-mail imválido!");
+                throw new Exception("E-mail inválido!");
             }
 
             Email = email;
