@@ -47,6 +47,11 @@ namespace TrabalhoPO.Controllers
             return Json(produto);
         }
 
+        public ActionResult ExcluirModal(int id)
+        {
+            return PartialView(db.Produtos.Find(id));
+        }
+
         [HttpPost]
         public ActionResult Salvar(Produto produto)
         {

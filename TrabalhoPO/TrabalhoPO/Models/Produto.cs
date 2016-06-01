@@ -125,7 +125,7 @@ namespace TrabalhoPO.Models
         {
             if (qtd > EstoqueMinimo)
             {
-                throw new Exception("Nâo é possível definir um valor negativo para o Estoque Mínimo.");
+                throw new Exception("O Estoque Mínimo não pode ser negativo.");
             }
 
             SetEstoqueMinimo(EstoqueMinimo - qtd);

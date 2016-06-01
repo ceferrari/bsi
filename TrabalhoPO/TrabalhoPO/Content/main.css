@@ -30,6 +30,7 @@ nav {
 
 article {
     order: 1;
+    flex: 1;
 }
 
 aside {
@@ -41,8 +42,15 @@ aside {
     color: #bbb;
 }
 
+hr {
+    margin-left: 22px; 
+    margin-right: 22px; 
+}
+
 h2 {
     font-weight: bolder;
+    padding-left: 22px; 
+    padding-right: 22px; 
 }
 
 .table > tbody > tr > td {
@@ -105,4 +113,8 @@ input#EstoqueMinimo {
 .btn-custom .fa {
     font-size: 1em;
     padding-right: 5px;
+}
+
+#ExcluirModal .modal-header {
+    color: #a94442;
 }

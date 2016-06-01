@@ -29,10 +29,10 @@
         @Html.LabelFor(x => x.EstoqueAtual, "Estoque Atual:", new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
             @Html.TextBoxFor(x => x.EstoqueAtual, Model.EstoqueAtual.ToString("N0"), new { @class = "form-control" })
-            <a href="#" onclick="retira(@Model.Id);" class="input-group-addon">
+            <a href="#" onclick="retira();" class="input-group-addon">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </a>
-            <a href="#" onclick="insere(@Model.Id);" class="input-group-addon">
+            <a href="#" onclick="insere();" class="input-group-addon">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
@@ -41,10 +41,10 @@
         @Html.LabelFor(x => x.EstoqueMinimo, "Estoque Mínimo:", new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
             @Html.TextBoxFor(x => x.EstoqueMinimo, Model.EstoqueMinimo.ToString("N0"), new { @class = "form-control" })
-            <a href="#" onclick="aumentaMinimo(@Model.Id);" class="input-group-addon">
+            <a href="#" onclick="diminuiMinimo();" class="input-group-addon">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </a>
-            <a href="#" onclick="aumentaMinimo(@Model.Id);" class="input-group-addon">
+            <a href="#" onclick="aumentaMinimo();" class="input-group-addon">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
@@ -73,7 +73,7 @@
                     <span class="fa fa-plus" aria-hidden="true"></span>
                     Novo
                 </a>
-                <a href="@Url.Action("Excluir", "Produtos", new { id = Model.Id })" class="btn btn-danger btn-custom">
+                <a href="#" onclick="excluirModal(@Model.Id);" class="btn btn-danger btn-custom">
                     <span class="fa fa-trash-o" aria-hidden="true"></span>
                     Excluir
                 </a>
@@ -85,3 +85,34 @@
         </div>
     </div>
 }
+
+<div id="ExcluirModal" class="modal fade in" role="dialog">
+    <div id='Excluir' class="modal-dialog">
+    </div>
+</div>
+
+<script type="text/javascript">
+    function insere() {
+        var valor = parseInt($("#EstoqueAtual").val());
+        $("#EstoqueAtual").val(++valor);
+    }
+    function retira() {
+        var valor = parseInt($("#EstoqueAtual").val());
+        $("#EstoqueAtual").val(--valor);
+    }
+    function aumentaMinimo() {
+        var valor = parseInt($("#EstoqueMinimo").val());
+        $("#EstoqueMinimo").val(++valor);
+    }
+    function diminuiMinimo() {
+        var valor = parseInt($("#EstoqueMinimo").val());
+        $("#EstoqueMinimo").val(--valor);
+    }
+    function excluirModal(Id) {
+        var url = "@Url.Action("ExcluirModal", "Produtos")";
+        $.get(url, { id: Id }, function (data) {
+            $('#Excluir').html(data);
+            $('#ExcluirModal').modal('show');
+        });
+    }
+</script>

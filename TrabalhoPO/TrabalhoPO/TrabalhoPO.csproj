@@ -169,6 +169,7 @@
     <Content Include="Views\Produtos\Detalhes.cshtml" />
     <Content Include="Views\Produtos\Editar.cshtml" />
     <Content Include="Views\Produtos\Criar.cshtml" />
+    <Content Include="Views\Produtos\ExcluirModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
