@@ -1,0 +1,111 @@
+﻿@model TrabalhoPO.Models.Produto
+
+<h2>Detalhes do Produto</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="col-sm-4">Campo</th>
+                    <th class="col-sm-8">Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>Id</strong>
+                    </td>
+                    <td>
+                        @Model.Id
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Descrição</strong>
+                    </td>
+                    <td>
+                        @Model.Descricao
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Preço</strong>
+                    </td>
+                    <td>
+                        R$ @Model.Preco
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Estoque Atual</strong>
+                    </td>
+                    <td>
+                        @Model.EstoqueAtual
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Estoque Mínimo</strong>
+                    </td>
+                    <td>
+                        @Model.EstoqueMinimo
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Precisa Reposição</strong>
+                    </td>
+                    <td>
+                        @Html.Raw(Model.PrecisaReposicao == true ? "Sim" : "Não")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Categoria</strong>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Detalhes", "Categorias")">
+                            @((ViewBag.Categorias as IList<TrabalhoPO.Models.Categoria>).Where(x => x.Id == Model.Categoria).First().Descricao)
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Data Alteração</strong>
+                    </td>
+                    <td>
+                        @Model.DataAlteracao.Value.ToString("dd/MM/yyyy")
+                        <span class="fa fa-at" aria-hidden="true"></span>
+                        @Model.DataAlteracao.Value.ToString("HH:mm:ss")
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-1">
+            <span class="pull-left">
+                <a href="#" onclick="history.back();return false;" class="btn btn-default btn-custom">
+                    <span class="fa fa-arrow-left" aria-hidden="true"></span>
+                    Voltar
+                </a>
+            </span>
+            <span class="pull-right">
+                <a href="@Url.Action("Criar", "Produtos")" class="btn btn-success btn-custom">
+                    <span class="fa fa-plus" aria-hidden="true"></span>
+                    Novo
+                </a>
+                <a href="@Url.Action("Excluir", "Produtos", new { id = Model.Id })" class="btn btn-danger btn-custom">
+                    <span class="fa fa-trash-o" aria-hidden="true"></span>
+                    Excluir
+                </a>
+                <a href="@Url.Action("Editar", "Produtos", new { id = Model.Id })" class="btn btn-warning btn-custom">
+                    <span class="fa fa-edit" aria-hidden="true"></span>
+                    Editar
+                </a>
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+﻿@model IList<TrabalhoPO.Models.Produto>
+
+<h2>
+    <span>Lista de Produtos</span>
+    <a href="@Url.Action("Criar", "Produtos")" class="btn btn-success btn-custom pull-right">
+        <span class="fa fa-plus" aria-hidden="true"></span>
+        Novo
+    </a>
+</h2>
+<hr />
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Estoque Atual</th>
+            <th>Estoque Mínimo</th>
+            <th>Precisa Repor?</th>
+            <th>Categoria</th>
+            <th>Data Alteração</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr id="produto@(produto.Id)">
+                <td>
+                    @produto.Id
+                </td>
+                <td>
+                    @produto.Descricao
+                </td>
+                <td>
+                    <span class="pull-left">
+                        R$
+                    </span>
+                    <span class="pull-right">
+                        @produto.Preco
+                    </span>
+                </td>
+                <td class="text-right no-text-decoration">
+                    <span class="pull-left">
+                        <a href="#" onclick="retira(@produto.Id);">
+                            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                        </a>
+                        <a href="#" onclick="insere(@produto.Id);">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        </a>
+                    </span>
+                    <span class="pull-right" id="estoqueAtual@(produto.Id)">
+                        @produto.EstoqueAtual.ToString("N0")
+                    </span>
+                </td>
+                <td class="text-right no-text-decoration">
+                    <span class="pull-left">
+                        <a href="#" onclick="diminuiMinimo(@produto.Id);">
+                            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                        </a>
+                        <a href="#" onclick="aumentaMinimo(@produto.Id);">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        </a>
+                    </span>
+                    <span class="pull-right" id="estoqueMinimo@(produto.Id)">
+                        @produto.EstoqueMinimo.ToString("N0")
+                    </span>
+                </td>
+                <td class="text-center" id="precisaReposicao@(produto.Id)">
+                    @Html.Raw(produto.PrecisaReposicao == true ? "Sim" : "Não")
+                </td>
+                <td>
+                    <a href="@Url.Action("Detalhes", "Categorias", new { id = produto.Categoria })">
+                        @((ViewBag.Categorias as IList<TrabalhoPO.Models.Categoria>).Where(x => x.Id == produto.Categoria).First().Descricao)
+                    </a>
+                </td>
+                <td id="dataAlteracao@(produto.Id)">
+                    @produto.DataAlteracao.Value.ToString("dd/MM/yyyy")
+                    @@
+                    @produto.DataAlteracao.Value.ToString("HH:mm:ss")
+                </td>
+                <td class="text-center">
+                    <a href="@Url.Action("Detalhes", "Produtos", new { id = produto.Id })" class="btn btn-sm btn-primary">
+                        <span class="fa fa-eye" aria-hidden="true"></span>
+                    </a>
+                    <a href="@Url.Action("Editar", "Produtos", new { id = produto.Id })" class="btn btn-sm btn-warning">
+                        <span class="fa fa-edit" aria-hidden="true"></span>
+                    </a>
+                    <a href="#" onclick="exclui(@produto.Id);" class="btn btn-sm btn-danger">
+                        <span class="fa fa-trash-o" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    function insere(Id) {
+        var url = "@Url.Action("Insere", "Produtos")";
+        $.post(url, { id: Id }, atualiza);
+    }
+    function retira(Id) {
+        var url = "@Url.Action("Retira", "Produtos")";
+        $.post(url, { id: Id }, atualiza);
+    }
+    function aumentaMinimo(Id) {
+        var url = "@Url.Action("AumentaMinimo", "Produtos")";
+        $.post(url, { id: Id }, atualiza);
+    }
+    function diminuiMinimo(Id) {
+        var url = "@Url.Action("DiminuiMinimo", "Produtos")";
+        $.post(url, { id: Id }, atualiza);
+    }
+    function atualiza(resposta) {
+        $("#estoqueAtual" + resposta.Id).html(resposta.EstoqueAtual);
+        $("#estoqueMinimo" + resposta.Id).html(resposta.EstoqueMinimo);
+        $("#precisaReposicao" + resposta.Id).html(resposta.PrecisaReposicao == true ? "Sim" : "Não");
+        var dataAlteracao = new Date(parseInt(resposta.DataAlteracao.substr(6)));
+        var day = (dataAlteracao.getDate() < 10 ? '0' : '') + dataAlteracao.getDate();
+        var month = (dataAlteracao.getMonth() < 9 ? '0' : '') + (dataAlteracao.getMonth() + 1);
+        var year = (dataAlteracao.getFullYear() < 10 ? '0' : '') + dataAlteracao.getFullYear();
+        var hour = (dataAlteracao.getHours() < 10 ? '0' : '') + dataAlteracao.getHours();
+        var min = (dataAlteracao.getMinutes() < 10 ? '0' : '') + dataAlteracao.getMinutes();
+        var sec = (dataAlteracao.getSeconds() < 10 ? '0' : '') + dataAlteracao.getSeconds();
+        $("#dataAlteracao" + resposta.Id).html(day+"/"+month+"/"+year+" @@ "+hour+":"+min+":"+sec);
+    }
+    function exclui(Id) {
+        var url = "@Url.Action("Excluir", "Produtos")";
+        $.post(url, { id: Id }, function (resposta) {
+            $("#produto" + resposta.Id).remove();
+        });
+    }
+</script>
