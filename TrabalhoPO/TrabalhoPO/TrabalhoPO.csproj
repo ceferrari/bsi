@@ -156,13 +156,14 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="DAL\MyContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\IIdentificavel.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,9 +178,14 @@
     <Content Include="Views\Produtos\Detalhes.cshtml" />
     <Content Include="Views\Produtos\Editar.cshtml" />
     <Content Include="Views\Produtos\Criar.cshtml" />
-    <Content Include="Views\Produtos\ExcluirModal.cshtml" />
-    <Content Include="Views\Shared\_divExcluirModal.cshtml" />
-    <Content Include="Views\Shared\_botoes.cshtml" />
+    <Content Include="Views\Shared\_Botoes.cshtml" />
+    <Content Include="Views\Categorias\Index.cshtml" />
+    <Content Include="Views\Categorias\Detalhes.cshtml" />
+    <Content Include="Views\Categorias\Editar.cshtml" />
+    <Content Include="Views\Categorias\Criar.cshtml" />
+    <Content Include="Views\Shared\_ModalExcluir.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -189,8 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Categorias\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

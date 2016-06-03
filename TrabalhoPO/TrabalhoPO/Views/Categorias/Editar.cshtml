@@ -1,0 +1,29 @@
+﻿@model TrabalhoPO.Models.Categoria
+
+@{ ViewBag.Title = "Editar"; }
+
+<h2>Editar Categoria</h2>
+<hr />
+
+@using (Html.BeginForm("Salvar", "Categorias", null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        @Html.Label("IdAux", null, new { @class = "hidden" })
+        @Html.LabelFor(x => x.Id, "Id:", new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-9">
+            @Html.TextBox("IdAux", Model.Id.ToString("N0"), new { @class = "form-control", disabled = "disabled" })
+            @Html.TextBoxFor(x => x.Id, Model.Id.ToString(), new { @class = "form-control", @type = "hidden" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Descricao, "Descrição:", new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-9">
+            @Html.TextBoxFor(x => x.Descricao, Model.Descricao, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-2">
+            @Html.Partial("_Botoes", Model)
+        </div>
+    </div>
+}

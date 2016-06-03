@@ -1,6 +1,6 @@
 ﻿@model TrabalhoPO.Models.Produto
 
-@{ ViewBag.View = "Criar"; }
+@{ ViewBag.Title = "Criar"; }
 
 <h2>Editar Produto</h2>
 <hr />
@@ -64,7 +64,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-9 col-sm-offset-2">
-            @Html.Partial("_botoes", Model)
+            @Html.Partial("_Botoes", Model)
         </div>
     </div>
 }

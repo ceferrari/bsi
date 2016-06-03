@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace TrabalhoPO.Models
 {
     [Table("Produtos")]
-    public class Produto
+    public class Produto : IIdentificavel
     {
         public int Id { get; set; }
         public string Descricao { get; set; }

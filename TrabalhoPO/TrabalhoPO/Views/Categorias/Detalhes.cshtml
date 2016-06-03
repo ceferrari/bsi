@@ -1,8 +1,8 @@
-﻿@model TrabalhoPO.Models.Produto
+﻿@model TrabalhoPO.Models.Categoria
 
 @{ ViewBag.Title = "Detalhes"; }
 
-<h2>Detalhes do Produto</h2>
+<h2>Detalhes do Categoria</h2>
 <hr />
 
 <div class="row">
@@ -21,7 +21,7 @@
                     </td>
                     <td>
                         @Model.Id
-                </td>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -33,47 +33,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <strong>Preço</strong>
+                        <strong>Qtd. Produtos</strong>
                     </td>
                     <td>
-                        R$ @Model.Preco
+                        @((ViewBag.Produtos as IList<TrabalhoPO.Models.Produto>).Count(x => x.Categoria == Model.Id))
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <strong>Estoque Atual</strong>
-                    </td>
-                    <td>
-                        @Model.EstoqueAtual
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Estoque Mínimo</strong>
-                    </td>
-                    <td>
-                        @Model.EstoqueMinimo
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Precisa Reposição</strong>
-                    </td>
-                    <td>
-                        @Html.Raw(Model.PrecisaReposicao == true ? "Sim" : "Não")
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Categoria</strong>
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Detalhes", "Categorias")">
-                            @((ViewBag.Categorias as IList<TrabalhoPO.Models.Categoria>).Where(x => x.Id == Model.Categoria).First().Descricao)
-                        </a>
-                    </td>
-                </tr>
-                <tr>
+                @*<tr>
                     <td>
                         <strong>Data Alteração</strong>
                     </td>
@@ -82,7 +48,7 @@
                         @@
                         @Model.DataAlteracao.Value.ToString("HH:mm:ss")
                     </td>
-                </tr>
+                </tr>*@
             </tbody>
         </table>
     </div>

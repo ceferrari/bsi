@@ -1,0 +1,46 @@
+﻿@model TrabalhoPO.Models.Usuario
+
+@{ Layout = "~/Views/Shared/_LayoutHome.cshtml"; ViewBag.Title = "Login"; }
+
+@using (Html.BeginForm("Login", "Home", null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group text-center">
+        <h2>Login</h2>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Email, String.Empty, new { @class = "control-label" })
+        <div class="col-sm-12 input-group">
+            <div class="input-group-addon">
+                <span class="fa fa-at" aria-hidden="true"></span>
+            </div>
+            @Html.TextBoxFor(x => x.Email, null, new { @class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Senha, String.Empty, new { @class = "control-label" })
+        <div class="col-sm-12 input-group">
+            <div class="input-group-addon">
+                <span class="fa fa-key" aria-hidden="true"></span>
+            </div>
+            @Html.PasswordFor(x => x.Senha, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+            <button type="submit" class="btn btn-primary btn-block btn-custom">
+                <span class="fa fa-user-plus" aria-hidden="true"></span>
+                Registrar
+            </button>
+        </div>
+        <div class="col-sm-6">
+            <button type="submit" class="btn btn-primary btn-block btn-custom">
+                <span class="fa fa-key" aria-hidden="true"></span>
+                Login
+            </button>
+        </div>
+    </div>
+}

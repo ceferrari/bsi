@@ -65,22 +65,23 @@ function atualiza(resposta) {
     $("#DataAlteracao" + resposta.Id).html(day + "/" + month + "/" + year + " @ " + hour + ":" + min + ":" + sec);
 }
 
-function excluirModal(Id) {
-    var url = "/Produtos/ExcluirModal";
+function excluirModal(Model, Id) {
+    var url = "/" + Model + "s/ExcluirModal";
     $.get(url, { id: Id }, function (data) {
-        $('#Excluir').html(data);
-        $('#ExcluirModal').modal('show');
+        $("body").append("<div id='ExcluirModal' class='modal fade in' role='dialog'></div>");
+        $("#ExcluirModal").html(data);
+        $("#ExcluirModal").modal("show");
     });
 }
 
-function exclui(Id) {
-    var url = "/Produtos/Excluir";
+function exclui(Model, Id) {
+    var url = "/" + Model + "s/Excluir";
     $.post(url, { id: Id }, function (resposta) {
-        if ($("#Produto" + resposta.Id).length) {
-            $("#Produto" + resposta.Id).remove();
+        if ($("#" + Model + resposta.Id).length) {
+            $("#" + Model + resposta.Id).remove();
         }
         else {
-            window.location.href = "/Produtos/Index";
+            window.location.href = "/" + Model + "s/Index";
         }
     });
 }

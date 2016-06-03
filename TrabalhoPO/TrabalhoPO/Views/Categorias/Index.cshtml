@@ -1,0 +1,56 @@
+﻿@model IList<TrabalhoPO.Models.Categoria>
+
+@{ ViewBag.Title = "Index"; }
+
+<h2>
+    <span>Lista de Categorias</span>
+    <a href="@Url.Action("Criar", "Categorias")" class="btn btn-success btn-custom pull-right">
+        <span class="fa fa-plus" aria-hidden="true"></span>
+        Nova
+    </a>
+</h2>
+<hr />
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Descrição</th>
+            <th>Qtd. Produtos</th>
+            @*<th>Data Alteração</th>*@
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categoria in Model)
+        {
+            <tr id="Categoria@(categoria.Id)">
+                <td>
+                    @categoria.Id
+                </td>
+                <td>
+                    @categoria.Descricao
+                </td>
+                <td>
+                    @((ViewBag.Produtos as IList<TrabalhoPO.Models.Produto>).Count(x => x.Categoria == categoria.Id))
+                </td>
+                @*<td id="DataAlteracao@(categoria.Id)">
+                    @categoria.DataAlteracao.Value.ToString("dd/MM/yyyy")
+                    @@
+                    @categoria.DataAlteracao.Value.ToString("HH:mm:ss")
+                </td>*@
+                <td class="text-center">
+                    <a href="@Url.Action("Detalhes", "Categorias", new { id = categoria.Id })" class="btn btn-sm btn-primary">
+                        <span class="fa fa-eye" aria-hidden="true"></span>
+                    </a>
+                    <a href="@Url.Action("Editar", "Categorias", new { id = categoria.Id })" class="btn btn-sm btn-warning">
+                        <span class="fa fa-edit" aria-hidden="true"></span>
+                    </a>
+                    <a href="#" onclick="excluirModal('@("Categoria")', @categoria.Id);" class="btn btn-sm btn-danger">
+                        <span class="fa fa-trash-o" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
