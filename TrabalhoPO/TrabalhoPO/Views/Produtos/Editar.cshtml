@@ -1,14 +1,17 @@
 ﻿@model TrabalhoPO.Models.Produto
 
+@{ ViewBag.View = "Editar"; }
+
 <h2>Editar Produto</h2>
 <hr />
 
 @using (Html.BeginForm("Salvar", "Produtos", null, FormMethod.Post, new { @class = "form-horizontal" }))
 {
     <div class="form-group">
+        @Html.Label("IdAux", null, new { @class = "hidden" })
         @Html.LabelFor(x => x.Id, "Id:", new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9">
-            @Html.TextBoxFor(x => x.Id, Model.Id.ToString("N0"), new { @class = "form-control", disabled = "disabled" })
+            @Html.TextBox("IdAux", Model.Id.ToString("N0"), new { @class = "form-control", disabled = "disabled" })
             @Html.TextBoxFor(x => x.Id, Model.Id.ToString(), new { @class = "form-control", @type = "hidden" })
         </div>
     </div>
@@ -29,10 +32,10 @@
         @Html.LabelFor(x => x.EstoqueAtual, "Estoque Atual:", new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
             @Html.TextBoxFor(x => x.EstoqueAtual, Model.EstoqueAtual.ToString("N0"), new { @class = "form-control" })
-            <a href="#" onclick="retira();" class="input-group-addon">
+            <a href="#" onclick="retira(null);" class="input-group-addon">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </a>
-            <a href="#" onclick="insere();" class="input-group-addon">
+            <a href="#" onclick="insere(null);" class="input-group-addon">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
@@ -41,10 +44,10 @@
         @Html.LabelFor(x => x.EstoqueMinimo, "Estoque Mínimo:", new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
             @Html.TextBoxFor(x => x.EstoqueMinimo, Model.EstoqueMinimo.ToString("N0"), new { @class = "form-control" })
-            <a href="#" onclick="diminuiMinimo();" class="input-group-addon">
+            <a href="#" onclick="diminuiMinimo(null);" class="input-group-addon">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </a>
-            <a href="#" onclick="aumentaMinimo();" class="input-group-addon">
+            <a href="#" onclick="aumentaMinimo(null);" class="input-group-addon">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
@@ -62,57 +65,9 @@
     </div>
     <div class="form-group">
         <div class="col-sm-9 col-sm-offset-2">
-            <span class="pull-left">
-                <a href="#" onclick="history.back();return false;" class="btn btn-default btn-custom">
-                    <span class="fa fa-arrow-left" aria-hidden="true"></span>
-                    Voltar
-                </a>
-            </span>
-            <span class="pull-right">
-                <a href="@Url.Action("Criar", "Produtos")" class="btn btn-success btn-custom">
-                    <span class="fa fa-plus" aria-hidden="true"></span>
-                    Novo
-                </a>
-                <a href="#" onclick="excluirModal(@Model.Id);" class="btn btn-danger btn-custom">
-                    <span class="fa fa-trash-o" aria-hidden="true"></span>
-                    Excluir
-                </a>
-                <button type="submit" class="btn btn-primary btn-custom">
-                    <span class="fa fa-save" aria-hidden="true"></span>
-                    Salvar
-                </button>
-            </span>
+            @Html.Partial("_botoes", Model)
         </div>
     </div>
 }
 
-<div id="ExcluirModal" class="modal fade in" role="dialog">
-    <div id='Excluir' class="modal-dialog">
-    </div>
-</div>
-
-<script type="text/javascript">
-    function insere() {
-        var valor = parseInt($("#EstoqueAtual").val());
-        $("#EstoqueAtual").val(++valor);
-    }
-    function retira() {
-        var valor = parseInt($("#EstoqueAtual").val());
-        $("#EstoqueAtual").val(--valor);
-    }
-    function aumentaMinimo() {
-        var valor = parseInt($("#EstoqueMinimo").val());
-        $("#EstoqueMinimo").val(++valor);
-    }
-    function diminuiMinimo() {
-        var valor = parseInt($("#EstoqueMinimo").val());
-        $("#EstoqueMinimo").val(--valor);
-    }
-    function excluirModal(Id) {
-        var url = "@Url.Action("ExcluirModal", "Produtos")";
-        $.get(url, { id: Id }, function (data) {
-            $('#Excluir').html(data);
-            $('#ExcluirModal').modal('show');
-        });
-    }
-</script>
+@Html.Partial("_divExcluirModal")

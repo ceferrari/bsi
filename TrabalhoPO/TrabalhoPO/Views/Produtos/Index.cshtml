@@ -1,5 +1,7 @@
 ﻿@model IList<TrabalhoPO.Models.Produto>
 
+@{ ViewBag.View = "Index"; }
+
 <h2>
     <span>Lista de Produtos</span>
     <a href="@Url.Action("Criar", "Produtos")" class="btn btn-success btn-custom pull-right">
@@ -96,46 +98,4 @@
     </tbody>
 </table>
 
-<div id="ExcluirModal" class="modal fade in" role="dialog">
-    <div id='Excluir' class="modal-dialog">
-    </div>
-</div>
-
-<script type="text/javascript">
-    function insere(Id) {
-        var url = "@Url.Action("Insere", "Produtos")";
-        $.post(url, { id: Id }, atualiza);
-    }
-    function retira(Id) {
-        var url = "@Url.Action("Retira", "Produtos")";
-        $.post(url, { id: Id }, atualiza);
-    }
-    function aumentaMinimo(Id) {
-        var url = "@Url.Action("AumentaMinimo", "Produtos")";
-        $.post(url, { id: Id }, atualiza);
-    }
-    function diminuiMinimo(Id) {
-        var url = "@Url.Action("DiminuiMinimo", "Produtos")";
-        $.post(url, { id: Id }, atualiza);
-    }
-    function atualiza(resposta) {
-        $("#EstoqueAtual" + resposta.Id).html(resposta.EstoqueAtual);
-        $("#EstoqueMinimo" + resposta.Id).html(resposta.EstoqueMinimo);
-        $("#PrecisaReposicao" + resposta.Id).html(resposta.PrecisaReposicao == true ? "Sim" : "Não");
-        var dataAlteracao = new Date(parseInt(resposta.DataAlteracao.substr(6)));
-        var day = (dataAlteracao.getDate() < 10 ? '0' : '') + dataAlteracao.getDate();
-        var month = (dataAlteracao.getMonth() < 9 ? '0' : '') + (dataAlteracao.getMonth() + 1);
-        var year = (dataAlteracao.getFullYear() < 10 ? '0' : '') + dataAlteracao.getFullYear();
-        var hour = (dataAlteracao.getHours() < 10 ? '0' : '') + dataAlteracao.getHours();
-        var min = (dataAlteracao.getMinutes() < 10 ? '0' : '') + dataAlteracao.getMinutes();
-        var sec = (dataAlteracao.getSeconds() < 10 ? '0' : '') + dataAlteracao.getSeconds();
-        $("#DataAlteracao" + resposta.Id).html(day+"/"+month+"/"+year+" @@ "+hour+":"+min+":"+sec);
-    }
-    function excluirModal(Id) {
-        var url = "@Url.Action("ExcluirModal", "Produtos")";
-        $.get(url, { id: Id }, function (data) {
-            $('#Excluir').html(data);
-            $('#ExcluirModal').modal('show');
-        });
-    }
-</script>
+@Html.Partial("_divExcluirModal")

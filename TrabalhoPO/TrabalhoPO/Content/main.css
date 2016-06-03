@@ -95,16 +95,6 @@ a .glyphicon:hover {
     color: #777;
 }
 
-.input-group[class*=col-] {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-input#EstoqueAtual,
-input#EstoqueMinimo {
-    border-right: none;
-}
-
 .btn-custom {
     font-size: 16px;
     min-width: 100px;
@@ -115,6 +105,17 @@ input#EstoqueMinimo {
     padding-right: 5px;
 }
 
+.input-group[class*=col-] {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
 #ExcluirModal .modal-header {
     color: #a94442;
+}
+
+#EstoqueAtual,
+#EstoqueMinimo {
+    border-right: none;
 }

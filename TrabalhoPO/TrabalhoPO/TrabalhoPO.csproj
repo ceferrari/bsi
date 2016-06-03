@@ -122,6 +122,9 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -140,9 +143,14 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="bundleconfig.json" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\main.min.js">
+      <DependentUpon>main.js</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +178,8 @@
     <Content Include="Views\Produtos\Editar.cshtml" />
     <Content Include="Views\Produtos\Criar.cshtml" />
     <Content Include="Views\Produtos\ExcluirModal.cshtml" />
+    <Content Include="Views\Shared\_divExcluirModal.cshtml" />
+    <Content Include="Views\Shared\_botoes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

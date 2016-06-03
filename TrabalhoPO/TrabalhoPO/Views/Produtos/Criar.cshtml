@@ -1,5 +1,7 @@
 ﻿@model TrabalhoPO.Models.Produto
 
+@{ ViewBag.View = "Criar"; }
+
 <h2>Editar Produto</h2>
 <hr />
 
@@ -62,18 +64,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-9 col-sm-offset-2">
-            <span class="pull-left">
-                <a href="#" onclick="history.back();return false;" class="btn btn-default btn-custom">
-                    <span class="fa fa-arrow-left" aria-hidden="true"></span>
-                    Voltar
-                </a>
-            </span>
-            <span class="pull-right">
-                <button type="submit" class="btn btn-primary btn-custom">
-                    <span class="fa fa-save" aria-hidden="true"></span>
-                    Salvar
-                </button>
-            </span>
+            @Html.Partial("_botoes", Model)
         </div>
     </div>
 }

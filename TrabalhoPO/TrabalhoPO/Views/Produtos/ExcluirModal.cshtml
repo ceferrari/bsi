@@ -21,17 +21,3 @@
         </button>
     </div>
 </div>
-
-<script type="text/javascript">
-    function exclui(Id) {
-        var url = "@Url.Action("Excluir", "Produtos")";
-        $.post(url, { id: Id }, function (resposta) {
-            if ($("#Produto" + resposta.Id).length) {
-                $("#Produto" + resposta.Id).remove();
-            }
-            else {
-                window.location.href = "@Url.Action("Index", "Produtos")";
-            }
-        });
-    }
-</script>
