@@ -1,22 +1,22 @@
 ﻿$(document).ready(function () {
     $("#Preco").on("paste focusout", function () {
         var valor = parseFloat($(this).val().replace(/\./g, '').replace(',', '.')).toFixed(2);
-        $(this).val(isNaN(valor) ? 0.0 : (valor * 1).toLocaleString());
+        $(this).val((isNaN(valor) || valor < 0 ? 0 : (valor * 1)).toLocaleString([], { minimumFractionDigits: 2 }));
     });
 
     $("#EstoqueAtual, #EstoqueMinimo").on("paste focusout", function () {
         var valor = parseInt($(this).val().replace(/\./g, ''));
-        $(this).val(isNaN(valor) ? 0 : (valor * 1).toLocaleString());
+        $(this).val(isNaN(valor) || valor < 0 ? 0 : (valor * 1).toLocaleString());
     });
 });
 
 function altera(div, qtd) {
     var valor = parseInt($(div).val().replace(/\./g, ''));
-    $(div).val((valor + qtd).toLocaleString());
+    $(div).val((valor + qtd) < 0 ? 0 : (valor + qtd).toLocaleString());
 }
 
 function insere(Id) {
-    if (Id === null) {
+    if (Id === 0 || Id === null) {
         altera("#EstoqueAtual", 1);
     } else {
         var url = "/Produtos/Insere";
@@ -25,7 +25,7 @@ function insere(Id) {
 }
 
 function retira(Id) {
-    if (Id === null) {
+    if (Id === 0 || Id === null) {
         altera("#EstoqueAtual", -1);
     } else {
         var url = "/Produtos/Retira";
@@ -34,7 +34,7 @@ function retira(Id) {
 }
 
 function aumentaMinimo(Id) {
-    if (Id === null) {
+    if (Id === 0 || Id === null) {
         altera("#EstoqueMinimo", 1);
     } else {
         var url = "/Produtos/AumentaMinimo";
@@ -43,7 +43,7 @@ function aumentaMinimo(Id) {
 }
 
 function diminuiMinimo(Id) {
-    if (Id === null) {
+    if (Id === 0 || Id === null) {
         altera("#EstoqueMinimo", -1);
     } else {
         var url = "/Produtos/DiminuiMinimo";
@@ -77,8 +77,8 @@ function excluirModal(Model, Id) {
 function exclui(Model, Id) {
     var url = "/" + Model + "s/Excluir";
     $.post(url, { id: Id }, function (resposta) {
-        if ($("#" + Model + resposta.Id).length) {
-            $("#" + Model + resposta.Id).remove();
+        if ($("#" + Model + Id).length) {
+            $("#" + Model + Id).remove();
         }
         else {
             window.location.href = "/" + Model + "s/Index";

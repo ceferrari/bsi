@@ -1,6 +1,9 @@
 ﻿@model TrabalhoPO.Models.Usuario
 
-@{ Layout = "~/Views/Shared/_LayoutHome.cshtml"; ViewBag.Title = "Login"; }
+@{ 
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Login"; 
+}
 
 @using (Html.BeginForm("Login", "Home", null, FormMethod.Post, new { @class = "form-horizontal" }))
 {

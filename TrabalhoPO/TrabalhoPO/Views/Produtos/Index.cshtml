@@ -1,6 +1,9 @@
 ﻿@model IList<TrabalhoPO.Models.Produto>
 
-@{ ViewBag.Title = "Index"; }
+@{
+    ViewBag.Title = "Lista";
+    ViewBag.Modelo = "Produto";
+}
 
 <h2>
     <span>Lista de Produtos</span>
@@ -89,7 +92,7 @@
                     <a href="@Url.Action("Editar", "Produtos", new { id = produto.Id })" class="btn btn-sm btn-warning">
                         <span class="fa fa-edit" aria-hidden="true"></span>
                     </a>
-                    <a href="#" onclick="excluirModal('@("Produto")', @produto.Id);" class="btn btn-sm btn-danger">
+                    <a href="#" onclick="excluirModal('@ViewBag.Modelo', @produto.Id);" class="btn btn-sm btn-danger">
                         <span class="fa fa-trash-o" aria-hidden="true"></span>
                     </a>
                 </td>

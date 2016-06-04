@@ -7,7 +7,7 @@
             <h4 class="modal-title">
                 <span class="fa fa-warning" aria-hidden="true"></span>
                 &nbsp;
-                <strong>Excluir @(Model is TrabalhoPO.Models.Produto ? "Produto" : "Categoria")</strong>
+                <strong>Excluir @ViewBag.Modelo</strong>
             </h4>
         </div>
         <div class="modal-body">
@@ -18,7 +18,7 @@
             </h4>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger btn-custom" data-dismiss="modal" onclick="exclui(@Model.Id);">
+            <button type="button" class="btn btn-danger btn-custom" data-dismiss="modal" onclick="exclui('@ViewBag.Modelo', @Model.Id);">
                 Confirmar
             </button>
             <button type="button" class="btn btn-default btn-custom" data-dismiss="modal">

@@ -1,6 +1,9 @@
 ﻿@model TrabalhoPO.Models.Produto
 
-@{ ViewBag.Title = "Detalhes"; }
+@{
+    ViewBag.Title = "Detalhes";
+    ViewBag.Modelo = "Produto";
+}
 
 <h2>Detalhes do Produto</h2>
 <hr />
@@ -68,7 +71,7 @@
                         <strong>Categoria</strong>
                     </td>
                     <td>
-                        <a href="@Url.Action("Detalhes", "Categorias")">
+                        <a href="@Url.Action("Detalhes", "Categorias", new { id = Model.Categoria })">
                             @((ViewBag.Categorias as IList<TrabalhoPO.Models.Categoria>).Where(x => x.Id == Model.Categoria).First().Descricao)
                         </a>
                     </td>
