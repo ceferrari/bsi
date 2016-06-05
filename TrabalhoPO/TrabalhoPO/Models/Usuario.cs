@@ -1,6 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -9,58 +9,40 @@ namespace TrabalhoPO.Models
     [Table("Usuarios")]
     public class Usuario
     {
+        [NotMapped]
+        private string _senha;
+
+        [NotMapped]
+        private string _confirmarSenha;
+
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(128)]
         public string Nome { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        public string Senha { get; set; }
 
-        public Usuario()
+        [Required]
+        [StringLength(64)]
+        [DataType(DataType.Password)]
+        [Compare("ConfirmarSenha")]
+        public string Senha
         {
-
+            get { return _senha; }
+            set { _senha = BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(value))).Replace("-", ""); }
         }
 
-        public Usuario(int id, string nome, string email, string senha = null)
+        [NotMapped]
+        [StringLength(64)]
+        [DataType(DataType.Password)]
+        public string ConfirmarSenha
         {
-            Id = id;
-            Nome = nome;
-            SetEmail(email);
-            Senha = senha;
-        }
-
-        private bool SetEmail(string email)
-        {
-            if (!IsValidEmail(email))
-            {
-                throw new Exception("E-mail inválido!");
-            }
-
-            Email = email;
-            return true;
-        }
-
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public static string sha256(string password)
-        {
-            SHA256Managed crypt = new SHA256Managed();
-            StringBuilder hash = new StringBuilder();
-            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(password), 0, Encoding.UTF8.GetByteCount(password));
-            foreach (byte b in crypto)
-            {
-                hash.Append(b.ToString("x2"));
-            }
-            return hash.ToString();
+            get { return _confirmarSenha; }
+            set { _confirmarSenha = BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(value))).Replace("-", ""); }
         }
     }
 }

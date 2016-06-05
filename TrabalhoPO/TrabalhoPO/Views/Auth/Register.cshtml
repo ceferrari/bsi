@@ -1,0 +1,67 @@
+﻿@model TrabalhoPO.Models.Usuario
+
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Novo Usuário";
+}
+
+@using (Html.BeginForm("Register", "Auth", null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group text-center">
+        <h2>Registrar</h2>
+        @Html.ValidationSummary(true)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Nome, String.Empty, new { @class = "control-label" })
+        <div class="col-sm-12 input-group">
+            <div class="input-group-addon">
+                <span class="fa fa-user" aria-hidden="true"></span>
+            </div>
+            @Html.TextBoxFor(x => x.Nome, new { @class = "form-control", placeholder = "Nome" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Email, String.Empty, new { @class = "control-label" })
+        <div class="col-sm-12 input-group">
+            <div class="input-group-addon">
+                <span class="fa fa-at" aria-hidden="true"></span>
+            </div>
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "E-mail" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Senha, String.Empty, new { @class = "control-label" })
+        <div class="col-sm-12 input-group">
+            <div class="input-group-addon">
+                <span class="fa fa-asterisk" aria-hidden="true"></span>
+            </div>
+            @Html.PasswordFor(x => x.Senha, new { @class = "form-control", placeholder = "Senha" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.ConfirmarSenha, String.Empty, new { @class = "control-label" })
+        <div class="col-sm-12 input-group">
+            <div class="input-group-addon">
+                <span class="fa fa-asterisk" aria-hidden="true"></span>
+            </div>
+            @Html.PasswordFor(x => x.ConfirmarSenha, new { @class = "form-control", placeholder = "Confirmar Senha" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+            <a href="@Url.Action("Login", "Auth")" class="btn btn-default btn-block btn-custom">
+                <span class="fa fa-remove" aria-hidden="true"></span>
+                Cancelar
+            </a>
+        </div>
+        <div class="col-sm-6">
+            <button type="submit" class="btn btn-primary btn-block btn-custom">
+                <span class="fa fa-save" aria-hidden="true"></span>
+                Salvar
+            </button>
+        </div>
+    </div>
+}

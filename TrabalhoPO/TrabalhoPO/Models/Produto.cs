@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrabalhoPO.Models
@@ -7,11 +8,20 @@ namespace TrabalhoPO.Models
     public class Produto : IIdentificavel
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(128)]
         public string Descricao { get; set; }
+        [Required]
+        [Range(0, 500, ErrorMessage = "O preço deve estar entre R$ 0,00 e R$ 500,0.")]
         public decimal Preco { get; set; }
+        [Required]
+        [Range(0, 500)]
         public int EstoqueAtual { get; set; }
+        [Required]
+        [Range(0, 500)]
         public int EstoqueMinimo { get; set; }
         public bool? PrecisaReposicao { get; set; }
+        [Required]
         public int Categoria { get; set; }
         public DateTime? DataAlteracao { get; set; }
 

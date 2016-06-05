@@ -24,8 +24,26 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Produtos", "Index", "Produtos")</li>
-                        <li>@Html.ActionLink("Categorias", "Index", "Categorias")</li>
+                        <li>
+                            <a href="@Url.Action("Index", "Produtos")">
+                                <span class="fa fa-list-alt" aria-hidden="true"></span>
+                                Produtos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Categorias")">
+                                <span class="fa fa-list" aria-hidden="true"></span>
+                                Categorias
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="@Url.Action("Logout", "Auth")">
+                                <span class="fa fa-sign-out" aria-hidden="true"></span>
+                                Logout
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

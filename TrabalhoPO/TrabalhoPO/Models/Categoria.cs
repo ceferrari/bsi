@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrabalhoPO.Models
@@ -7,6 +8,8 @@ namespace TrabalhoPO.Models
     public class Categoria : IIdentificavel
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(128)]
         public string Descricao { get; set; }
 
         public Categoria()
