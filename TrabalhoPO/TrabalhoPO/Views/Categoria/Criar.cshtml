@@ -1,14 +1,15 @@
 ﻿@model TrabalhoPO.Models.Categoria
 
 @{
-    ViewBag.Title = "Nova";
+    ViewBag.Titulo = "Nova Categoria";
     ViewBag.Modelo = "Categoria";
+    ViewBag.Acao = "Criar";
 }
 
-<h2>Editar Categoria</h2>
+<h2>@ViewBag.Titulo</h2>
 <hr />
 
-@using (Html.BeginForm("Criar", "Categorias", null, FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm((string)ViewBag.Acao, (string)ViewBag.Modelo, null, FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 

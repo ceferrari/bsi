@@ -1,11 +1,12 @@
 ﻿@model TrabalhoPO.Models.Produto
 
 @{
-    ViewBag.Title = "Editar";
+    ViewBag.Titulo = "Editar Produto";
     ViewBag.Modelo = "Produto";
+    ViewBag.Acao = "Editar";
 }
 
-<h2>Editar Produto</h2>
+<h2>@ViewBag.Titulo</h2>
 <hr />
 
 @if (ViewBag.Message != null)
@@ -18,7 +19,7 @@
     </div>
 }
 
-@using (Html.BeginForm("Editar", "Produtos", null, FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm((string)ViewBag.Acao, (string)ViewBag.Modelo, null, FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 

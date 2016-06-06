@@ -7,9 +7,9 @@
     </a>
 </span>
 <span class="pull-right">
-    @if (ViewBag.Title != "Criar")
+    @if (ViewBag.Acao != "Criar")
     {
-        <a href="@Url.Action("Criar", ViewBag.Modelo + "s")" class="btn btn-success btn-custom">
+        <a href="@Url.Action("Criar", ViewBag.Modelo)" class="btn btn-success btn-custom">
             <span class="fa fa-plus" aria-hidden="true"></span>
             @(Model is TrabalhoPO.Models.Categoria ? "Nova" : "Novo")
         </a>
@@ -18,14 +18,14 @@
             Excluir
         </a>
     }
-    @if (ViewBag.Title == "Detalhes")
+    @if (ViewBag.Acao == "Detalhes")
     {
-        <a href="@Url.Action("Editar", ViewBag.Modelo + "s", new { id = Model.Id })" class="btn btn-warning btn-custom">
+        <a href="@Url.Action("Editar", ViewBag.Modelo, new { id = Model.Id })" class="btn btn-warning btn-custom">
             <span class="fa fa-edit" aria-hidden="true"></span>
             Editar
         </a>
     }
-    @if (ViewBag.Title != "Detalhes")
+    @if (ViewBag.Acao != "Detalhes")
     {
         <button type="submit" class="btn btn-primary btn-custom">
             <span class="fa fa-save" aria-hidden="true"></span>

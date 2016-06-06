@@ -1,14 +1,15 @@
 ﻿@model TrabalhoPO.Models.Produto
 
 @{ 
-    ViewBag.Title = "Novo";
+    ViewBag.Titulo = "Novo Produto";
     ViewBag.Modelo = "Produto";
+    ViewBag.Acao = "Criar";
 }
 
-<h2>Novo Produto</h2>
+<h2>@ViewBag.Titulo</h2>
 <hr />
 
-@using (Html.BeginForm("Criar", "Produtos", null, FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm((string)ViewBag.Acao, (string)ViewBag.Modelo, null, FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 

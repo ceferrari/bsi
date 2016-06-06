@@ -1,10 +1,12 @@
 ﻿@model TrabalhoPO.Models.Usuario
 
 @{
-    ViewBag.Title = "Novo Usuário";
+    ViewBag.Titulo = "Novo Usuário";
+    ViewBag.Modelo = "Auth";
+    ViewBag.Acao = "Register";
 }
 
-@using (Html.BeginForm("Register", "Auth", null, FormMethod.Post, new { @class = "form-horizontal form-auth" }))
+@using (Html.BeginForm((string)ViewBag.Acao, (string)ViewBag.Modelo, null, FormMethod.Post, new { @class = "form-horizontal form-auth" }))
 {
     @Html.AntiForgeryToken()
 

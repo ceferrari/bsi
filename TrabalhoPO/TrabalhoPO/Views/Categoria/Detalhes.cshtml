@@ -1,11 +1,12 @@
-﻿@model TrabalhoPO.Models.Produto
+﻿@model TrabalhoPO.Models.Categoria
 
 @{
-    ViewBag.Title = "Detalhes";
-    ViewBag.Modelo = "Produto";
+    ViewBag.Titulo = "Detalhes da Categoria";
+    ViewBag.Modelo = "Categoria";
+    ViewBag.Acao = "Detalhes";
 }
 
-<h2>Detalhes do Produto</h2>
+<h2>@ViewBag.Titulo</h2>
 <hr />
 
 <div class="row">
@@ -24,7 +25,7 @@
                     </td>
                     <td>
                         @Model.Id
-                </td>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -36,44 +37,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <strong>Preço</strong>
+                        <strong>Qtd. Produtos</strong>
                     </td>
                     <td>
-                        R$ @Model.Preco
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Estoque Atual</strong>
-                    </td>
-                    <td>
-                        @Model.EstoqueAtual
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Estoque Mínimo</strong>
-                    </td>
-                    <td>
-                        @Model.EstoqueMinimo
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Precisa Reposição</strong>
-                    </td>
-                    <td>
-                        @Html.Raw(Model.PrecisaReposicao == true ? "Sim" : "Não")
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Categoria</strong>
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Detalhes", "Categorias", new { id = Model.Categoria })">
-                            @((ViewBag.Categorias as IList<TrabalhoPO.Models.Categoria>).Where(x => x.Id == Model.Categoria).First().Descricao)
-                        </a>
+                        @((ViewBag.Produtos as IList<TrabalhoPO.Models.Produto>).Count(x => x.Categoria == Model.Id))
                     </td>
                 </tr>
                 <tr>

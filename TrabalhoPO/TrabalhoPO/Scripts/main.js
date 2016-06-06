@@ -18,7 +18,7 @@ $(document).on("hidden.bs.modal", "#ExcluirModal", function () {
 });
 
 function excluirModal(Model, Id) {
-    var url = "/" + Model + "s/ExcluirModal";
+    var url = "/" + Model + "/ExcluirModal";
     $.get(url, { id: Id }, function (data) {
         $("body").append("<div id='ExcluirModal' class='modal fade in' role='dialog'></div>");
         $("#ExcluirModal").html(data);
@@ -27,13 +27,13 @@ function excluirModal(Model, Id) {
 }
 
 function exclui(Model, Id) {
-    var url = "/" + Model + "s/Excluir";
+    var url = "/" + Model + "/Excluir";
     $.post(url, { id: Id }, function (resposta) {
         if ($("#" + Model + Id).length) {
             $("#" + Model + Id).remove();
         }
         else {
-            window.location.href = "/" + Model + "s/Index";
+            window.location.href = "/" + Model + "/Index";
         }
     });
 }
@@ -47,7 +47,7 @@ function insere(Id) {
     if (Id === 0 || Id === null) {
         altera("#EstoqueAtual", 1);
     } else {
-        var url = "/Produtos/Insere";
+        var url = "/Produto/Insere";
         $.post(url, { id: Id }, atualiza);
     }
 }
@@ -56,7 +56,7 @@ function retira(Id) {
     if (Id === 0 || Id === null) {
         altera("#EstoqueAtual", -1);
     } else {
-        var url = "/Produtos/Retira";
+        var url = "/Produto/Retira";
         $.post(url, { id: Id }, atualiza);
     }
 }
@@ -65,7 +65,7 @@ function aumentaMinimo(Id) {
     if (Id === 0 || Id === null) {
         altera("#EstoqueMinimo", 1);
     } else {
-        var url = "/Produtos/AumentaMinimo";
+        var url = "/Produto/AumentaMinimo";
         $.post(url, { id: Id }, atualiza);
     }
 }
@@ -74,7 +74,7 @@ function diminuiMinimo(Id) {
     if (Id === 0 || Id === null) {
         altera("#EstoqueMinimo", -1);
     } else {
-        var url = "/Produtos/DiminuiMinimo";
+        var url = "/Produto/DiminuiMinimo";
         $.post(url, { id: Id }, atualiza);
     }
 }

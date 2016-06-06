@@ -1,13 +1,14 @@
 ﻿@model IList<TrabalhoPO.Models.Categoria>
 
 @{
-    ViewBag.Title = "Lista";
+    ViewBag.Titulo = "Lista de Categorias";
     ViewBag.Modelo = "Categoria";
+    ViewBag.Acao = "Lista";
 }
 
 <h2>
-    <span>Lista de Categorias</span>
-    <a href="@Url.Action("Criar", "Categorias")" class="btn btn-success btn-custom pull-right">
+    <span>@ViewBag.Titulo</span>
+    <a href="@Url.Action("Criar", (string)ViewBag.Modelo)" class="btn btn-success btn-custom pull-right">
         <span class="fa fa-plus" aria-hidden="true"></span>
         Nova
     </a>
@@ -43,15 +44,7 @@
                     @categoria.DataAlteracao.Value.ToString("HH:mm:ss")
                 </td>
                 <td class="text-center">
-                    <a href="@Url.Action("Detalhes", "Categorias", new { id = categoria.Id })" class="btn btn-sm btn-primary">
-                        <span class="fa fa-eye" aria-hidden="true"></span>
-                    </a>
-                    <a href="@Url.Action("Editar", "Categorias", new { id = categoria.Id })" class="btn btn-sm btn-warning">
-                        <span class="fa fa-edit" aria-hidden="true"></span>
-                    </a>
-                    <a href="#" onclick="excluirModal('@("Categoria")', @categoria.Id);" class="btn btn-sm btn-danger">
-                        <span class="fa fa-trash-o" aria-hidden="true"></span>
-                    </a>
+                    @Html.Partial("_BotoesIndex", categoria)
                 </td>
             </tr>
         }

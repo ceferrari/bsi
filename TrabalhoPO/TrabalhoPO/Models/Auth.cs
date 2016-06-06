@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace TrabalhoPO.Models
 {
-    public class LoginModel
+    public class Auth
     {
         [Required(ErrorMessage = "O campo E-mail é obrigatório.")]
         [StringLength(128, ErrorMessage = "O E-mail deve ter no máximo {1} caracteres.")]

@@ -7,16 +7,21 @@ using TrabalhoPO.Models;
 namespace TrabalhoPO.Controllers
 {
     [Authorize]
-    public class CategoriasController : Controller
+    public class CategoriaController : Controller
     {
         private MyContext db = new MyContext();
 
-        public CategoriasController()
+        public CategoriaController()
         {
             ViewBag.Produtos = db.Produtos.ToList();
         }
 
         public ActionResult Index()
+        {
+            return RedirectToAction("Lista");
+        }
+
+        public ActionResult Lista()
         {
             return View(db.Categorias.ToList());
         }

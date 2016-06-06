@@ -1,13 +1,14 @@
 ﻿@model IList<TrabalhoPO.Models.Produto>
 
 @{
-    ViewBag.Title = "Lista";
+    ViewBag.Titulo = "Lista de Produtos";
     ViewBag.Modelo = "Produto";
+    ViewBag.Acao = "Lista";
 }
 
 <h2>
-    <span>Lista de Produtos</span>
-    <a href="@Url.Action("Criar", "Produtos")" class="btn btn-success btn-custom pull-right">
+    <span>@ViewBag.Titulo</span>
+    <a href="@Url.Action("Criar", (string)ViewBag.Modelo)" class="btn btn-success btn-custom pull-right">
         <span class="fa fa-plus" aria-hidden="true"></span>
         Novo
     </a>
@@ -76,7 +77,7 @@
                     @Html.Raw(produto.PrecisaReposicao == true ? "Sim" : "Não")
                 </td>
                 <td>
-                    <a href="@Url.Action("Detalhes", "Categorias", new { id = produto.Categoria })">
+                    <a href="@Url.Action("Detalhes", "Categoria", new { id = produto.Categoria })">
                         @((ViewBag.Categorias as IList<TrabalhoPO.Models.Categoria>).Where(x => x.Id == produto.Categoria).First().Descricao)
                     </a>
                 </td>
@@ -86,15 +87,7 @@
                     @produto.DataAlteracao.Value.ToString("HH:mm:ss")
                 </td>
                 <td class="text-center">
-                    <a href="@Url.Action("Detalhes", "Produtos", new { id = produto.Id })" class="btn btn-sm btn-primary">
-                        <span class="fa fa-eye" aria-hidden="true"></span>
-                    </a>
-                    <a href="@Url.Action("Editar", "Produtos", new { id = produto.Id })" class="btn btn-sm btn-warning">
-                        <span class="fa fa-edit" aria-hidden="true"></span>
-                    </a>
-                    <a href="#" onclick="excluirModal('@ViewBag.Modelo', @produto.Id);" class="btn btn-sm btn-danger">
-                        <span class="fa fa-trash-o" aria-hidden="true"></span>
-                    </a>
+                    @Html.Partial("_BotoesIndex", produto)
                 </td>
             </tr>
         }

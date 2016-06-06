@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
-    <title>@(ViewBag.Title == "Lista" ? "Lista de " + ViewBag.Modelo + "s" : ViewBag.Title + " " + ViewBag.Modelo) - Trabalho PO</title>
+    <title>@ViewBag.Titulo - Trabalho PO</title>
     <meta name="description" content="Trabalho PO">
     @Styles.Render("~/Content/bootstrap.min.css")
     @Styles.Render("~/Content/font-awesome.min.css")
     @Styles.Render("~/Content/main.min.css")
 </head>
 <body>
-    @if (!Request.IsAuthenticated || ViewBag.Title == "Login" || ViewBag.Title == "Register")
+    @if (!Request.IsAuthenticated || ViewBag.Titulo == "Login" || ViewBag.Titulo == "Register")
     {
         <main>
             <div class="container-auth">
@@ -32,18 +32,18 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        @Html.ActionLink("Trabalho PO", "Index", "Produtos", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Trabalho PO", "Lista", "Produto", null, new { @class = "navbar-brand" })
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="@Url.Action("Index", "Produtos")">
+                                <a href="@Url.Action("Lista", "Produto")">
                                     <span class="fa fa-list-ol" aria-hidden="true"></span>
                                     Produtos
                                 </a>
                             </li>
                             <li>
-                                <a href="@Url.Action("Index", "Categorias")">
+                                <a href="@Url.Action("Lista", "Categoria")">
                                     <span class="fa fa-list-ol" aria-hidden="true"></span>
                                     Categorias
                                 </a>

@@ -20,7 +20,7 @@ namespace TrabalhoPO.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(LoginModel model)
+        public ActionResult Login(Auth model)
         {
             if (!ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace TrabalhoPO.Controllers
         {
             if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
             {
-                return Url.Action("Index", "Produtos");
+                return Url.Action("Index", "Produto");
             }
 
             return returnUrl;
