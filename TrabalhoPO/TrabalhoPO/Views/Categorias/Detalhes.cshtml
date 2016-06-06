@@ -42,7 +42,7 @@
                         @((ViewBag.Produtos as IList<TrabalhoPO.Models.Produto>).Count(x => x.Categoria == Model.Id))
                     </td>
                 </tr>
-                @*<tr>
+                <tr>
                     <td>
                         <strong>Data Alteração</strong>
                     </td>
@@ -51,7 +51,7 @@
                         @@
                         @Model.DataAlteracao.Value.ToString("HH:mm:ss")
                     </td>
-                </tr>*@
+                </tr>
             </tbody>
         </table>
     </div>

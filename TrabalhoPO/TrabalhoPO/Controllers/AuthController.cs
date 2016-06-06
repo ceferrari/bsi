@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using TrabalhoPO.DAL;
 using TrabalhoPO.Models;
+using TrabalhoPO.Shared;
 
 namespace TrabalhoPO.Controllers
 {
@@ -11,6 +12,7 @@ namespace TrabalhoPO.Controllers
     public class AuthController : Controller
     {
         private MyContext db = new MyContext();
+        private Utils utils = new Utils();
 
         public ActionResult Login()
         {
@@ -25,7 +27,8 @@ namespace TrabalhoPO.Controllers
                 return View();
             }
 
-            var usuario = db.Usuarios.Where(x => x.Email.Equals(model.Email) && x.Senha.Equals(model.Senha)).FirstOrDefault();
+            var senha = utils._SHA256(model.Senha);
+            var usuario = db.Usuarios.Where(x => x.Email.Equals(model.Email) && x.Senha.Equals(senha)).FirstOrDefault();
 
             if (usuario != null)
             {
@@ -75,16 +78,19 @@ namespace TrabalhoPO.Controllers
         [HttpPost]
         public ActionResult Register(Usuario usuario)
         {
-            if (db.Usuarios.Any(x => x.Email.Equals(usuario.Email)))
-            {
-                ModelState.AddModelError("", "E-mail já cadastrado no sistema.");
-            }
-
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
+            if (db.Usuarios.Any(x => x.Email.Equals(usuario.Email)))
+            {
+                ModelState.AddModelError("", "E-mail já cadastrado no sistema.");
+
+                return View();
+            }
+
+            usuario.Senha = utils._SHA256(usuario.Senha);
             db.Usuarios.Add(usuario);
             db.SaveChanges();
 

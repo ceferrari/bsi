@@ -38,6 +38,17 @@ aside {
     order: 2;
 }
 
+.container-auth, .row-auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-auth {
+    flex: 1;
+    max-width: 25%;
+}
+
 .cinza {
     color: #bbb;
 }
@@ -110,12 +121,14 @@ a .glyphicon:hover {
     padding-right: 15px;
 }
 
+.center-block, .nofloat { 
+    float: none !important;
+}
 
 #ExcluirModal .modal-header {
     color: #a94442;
 }
 
-#EstoqueAtual,
-#EstoqueMinimo {
+#EstoqueAtual, #EstoqueMinimo {
     border-right: none;
 }

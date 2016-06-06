@@ -17,6 +17,7 @@ namespace TrabalhoPO.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<Usuario>().Ignore(x => x.ConfirmarSenha);
         }
     }
 }

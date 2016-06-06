@@ -32,11 +32,44 @@ namespace TrabalhoPO.Controllers
             return View(db.Categorias.Find(id));
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Editar(Categoria categoria)
+        {
+            if (ModelState.IsValid)
+            {
+                Salvar(categoria);
+
+                ViewBag.Message = "Categoria editada com sucesso!";
+            }
+
+            ViewBag.Produtos = db.Produtos.ToList();
+
+            return View(categoria);
+        }
+
         public ActionResult Criar()
         {
             ViewBag.Produtos = db.Produtos.ToList();
 
             return View(new Categoria());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Criar(Categoria categoria)
+        {
+            if (ModelState.IsValid)
+            {
+                Salvar(categoria);
+
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.Produtos = db.Produtos.ToList();
+            ViewBag.NextId = db.Categorias.Max(x => x.Id) + 1;
+
+            return View(categoria);
         }
 
         public ActionResult Excluir(int id)
@@ -53,13 +86,11 @@ namespace TrabalhoPO.Controllers
             return PartialView("~/Views/Shared/_ModalExcluir.cshtml", db.Categorias.Find(id));
         }
 
-        [HttpPost]
-        public ActionResult Salvar(Categoria categoria)
+        public void Salvar(Categoria categoria)
         {
+            categoria.SetDataAlteracao();
             db.Set<Categoria>().AddOrUpdate(categoria);
             db.SaveChanges();
-
-            return RedirectToAction("Index");
         }
     }
 }

@@ -8,50 +8,29 @@ namespace TrabalhoPO.Models
     public class Produto : IIdentificavel
     {
         public int Id { get; set; }
+
         [Required]
         [StringLength(128)]
         public string Descricao { get; set; }
+
         [Required]
-        [Range(0, 500, ErrorMessage = "O preço deve estar entre R$ 0,00 e R$ 500,0.")]
+        [Range(0, 500)]
         public decimal Preco { get; set; }
+
         [Required]
-        [Range(0, 500)]
+        [Range(0, 5000)]
         public int EstoqueAtual { get; set; }
+
         [Required]
-        [Range(0, 500)]
+        [Range(0, 2000)]
         public int EstoqueMinimo { get; set; }
+
         public bool? PrecisaReposicao { get; set; }
+
         [Required]
         public int Categoria { get; set; }
+
         public DateTime? DataAlteracao { get; set; }
-
-        public Produto()
-        {
-
-        }
-
-        public Produto(int id, string descricao, decimal preco, int atual, int minimo) : 
-            this(id, descricao, preco, atual, minimo, null, null)
-        {
-
-        }
-
-        public Produto(int id, string descricao, decimal preco, int atual, int minimo, bool? reposicao, DateTime? alteracao)
-        {
-            Id = id;
-            SetDescricao(descricao);
-            SetPreco(preco);
-            SetEstoqueAtual(atual);
-            SetEstoqueMinimo(minimo);
-            if (reposicao != null)
-            {
-                PrecisaReposicao = reposicao;
-            }
-            if (alteracao != null)
-            {
-                DataAlteracao = alteracao;
-            }
-        }
 
         public bool SetDescricao(string descricao)
         {

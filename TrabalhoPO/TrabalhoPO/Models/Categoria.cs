@@ -8,20 +8,12 @@ namespace TrabalhoPO.Models
     public class Categoria : IIdentificavel
     {
         public int Id { get; set; }
+
         [Required]
         [StringLength(128)]
         public string Descricao { get; set; }
 
-        public Categoria()
-        {
-
-        }
-
-        public Categoria(int id, string descricao)
-        {
-            Id = id;
-            SetDescricao(descricao);
-        }
+        public DateTime? DataAlteracao { get; set; }
 
         public bool SetDescricao(string descricao)
         {
@@ -31,8 +23,14 @@ namespace TrabalhoPO.Models
             }
 
             Descricao = descricao;
+            SetDataAlteracao();
 
             return true;
+        }
+
+        public void SetDataAlteracao()
+        {
+            DataAlteracao = DateTime.Now;
         }
     }
 }

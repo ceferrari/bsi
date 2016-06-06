@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
@@ -10,16 +11,12 @@ namespace TrabalhoPO.Models
     {
         [Required]
         [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        private string _senha;
-        public string Senha
-        {
-            get { return _senha; }
-            set { _senha = BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(value))).Replace("-", ""); }
-        }
+        public string Senha { get; set; }
 
         [HiddenInput]
         public string ReturnUrl { get; set; }

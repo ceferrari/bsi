@@ -23,20 +23,21 @@ VALUES
 CREATE TABLE Categorias (
 	"Id" INT IDENTITY (1, 1) NOT NULL,
 	"Descricao" NVARCHAR (128) NOT NULL,
+	"DataAlteracao" DATETIME NOT NULL,
 	CONSTRAINT "PK_Categorias" PRIMARY KEY ("Id")
 );
 
 INSERT INTO Categorias
-(Descricao) 
+(Descricao, DataAlteracao)
 VALUES 
-('Alimentos'),
-('Bebidas'),
-('Brinquedos'),
-('Eletrodomésticos'),
-('Escritório'),
-('Informática'),
-('Móveis'),
-('Vestuário')
+('Alimentos',		GETDATE()),
+('Bebidas',		GETDATE()),
+('Brinquedos',		GETDATE()),
+('Eletrodomésticos',	GETDATE()),
+('Escritório',		GETDATE()),
+('Informática',		GETDATE()),
+('Móveis',		GETDATE()),
+('Vestuário',		GETDATE())
 
 CREATE TABLE Produtos (
 	"Id" INT IDENTITY (1, 1) NOT NULL,

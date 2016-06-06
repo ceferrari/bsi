@@ -20,7 +20,7 @@
             <th>Id</th>
             <th>Descrição</th>
             <th>Qtd. Produtos</th>
-            @*<th>Data Alteração</th>*@
+            <th>Data Alteração</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -37,11 +37,11 @@
                 <td>
                     @((ViewBag.Produtos as IList<TrabalhoPO.Models.Produto>).Count(x => x.Categoria == categoria.Id))
                 </td>
-                @*<td id="DataAlteracao@(categoria.Id)">
+                <td id="DataAlteracao@(categoria.Id)">
                     @categoria.DataAlteracao.Value.ToString("dd/MM/yyyy")
                     @@
                     @categoria.DataAlteracao.Value.ToString("HH:mm:ss")
-                </td>*@
+                </td>
                 <td class="text-center">
                     <a href="@Url.Action("Detalhes", "Categorias", new { id = categoria.Id })" class="btn btn-sm btn-primary">
                         <span class="fa fa-eye" aria-hidden="true"></span>

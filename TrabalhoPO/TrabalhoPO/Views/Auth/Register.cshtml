@@ -1,17 +1,15 @@
 ﻿@model TrabalhoPO.Models.Usuario
 
 @{
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";
     ViewBag.Title = "Novo Usuário";
 }
 
-@using (Html.BeginForm("Register", "Auth", null, FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Register", "Auth", null, FormMethod.Post, new { @class = "form-horizontal form-auth" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-group text-center">
         <h2>Registrar</h2>
-        @Html.ValidationSummary(true)
     </div>
 
     <div class="form-group">
@@ -22,6 +20,9 @@
             </div>
             @Html.TextBoxFor(x => x.Nome, new { @class = "form-control", placeholder = "Nome" })
         </div>
+        <div class="col-sm-12 text-danger">
+            @Html.ValidationMessageFor(x => x.Nome)
+        </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.Email, String.Empty, new { @class = "control-label" })
@@ -30,6 +31,9 @@
                 <span class="fa fa-at" aria-hidden="true"></span>
             </div>
             @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "E-mail" })
+        </div>
+        <div class="col-sm-12 text-danger">
+            @Html.ValidationMessageFor(x => x.Email)
         </div>
     </div>
     <div class="form-group">
@@ -40,6 +44,9 @@
             </div>
             @Html.PasswordFor(x => x.Senha, new { @class = "form-control", placeholder = "Senha" })
         </div>
+        <div class="col-sm-12 text-danger">
+            @Html.ValidationMessageFor(x => x.Senha)
+        </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.ConfirmarSenha, String.Empty, new { @class = "control-label" })
@@ -48,6 +55,9 @@
                 <span class="fa fa-asterisk" aria-hidden="true"></span>
             </div>
             @Html.PasswordFor(x => x.ConfirmarSenha, new { @class = "form-control", placeholder = "Confirmar Senha" })
+        </div>
+        <div class="col-sm-12 text-danger">
+            @Html.ValidationMessageFor(x => x.ConfirmarSenha)
         </div>
     </div>
     <div class="form-group">

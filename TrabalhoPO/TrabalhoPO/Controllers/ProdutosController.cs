@@ -32,11 +32,45 @@ namespace TrabalhoPO.Controllers
             return View(db.Produtos.Find(id));
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Editar(Produto produto)
+        {
+            if (ModelState.IsValid)
+            {
+                Salvar(produto);
+
+                ViewBag.Message = "Produto editado com sucesso!";
+            }
+
+            ViewBag.Categorias = db.Categorias.ToList();
+
+            return View(produto);
+        }
+
         public ActionResult Criar()
         {
             ViewBag.Categorias = db.Categorias.ToList();
+            ViewBag.NextId = db.Produtos.Select(x => x.Id).Max() + 1;
 
             return View(new Produto());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Criar(Produto produto)
+        {
+            if (ModelState.IsValid)
+            {
+                Salvar(produto);
+
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.Categorias = db.Categorias.ToList();
+            ViewBag.NextId = db.Produtos.Max(x => x.Id) + 1;
+
+            return View(produto);
         }
 
         public ActionResult Excluir(int id)
@@ -53,14 +87,11 @@ namespace TrabalhoPO.Controllers
             return PartialView("~/Views/Shared/_ModalExcluir.cshtml", db.Produtos.Find(id));
         }
 
-        [HttpPost]
-        public ActionResult Salvar(Produto produto)
+        public void Salvar(Produto produto)
         {
             produto.AtualizaCampos();
             db.Set<Produto>().AddOrUpdate(produto);
             db.SaveChanges();
-
-            return RedirectToAction("Index");
         }
 
         public ActionResult Insere(int id)

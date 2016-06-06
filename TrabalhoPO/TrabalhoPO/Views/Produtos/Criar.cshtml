@@ -8,13 +8,19 @@
 <h2>Novo Produto</h2>
 <hr />
 
-@using (Html.BeginForm("Salvar", "Produtos", null, FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Criar", "Produtos", null, FormMethod.Post, new { @class = "form-horizontal" }))
 {
+    @Html.AntiForgeryToken()
+
     <div class="form-group">
+        @Html.Label("IdAux", null, new { @class = "col-sm-2 control-label hidden" })
         @Html.LabelFor(x => x.Id, "Id:", new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9">
-            @Html.TextBoxFor(x => x.Id, Model.Id.ToString("N0"), new { @class = "form-control", disabled = "disabled" })
+            @Html.TextBox("IdAux", (string)ViewBag.NextId.ToString(), new { @class = "form-control", disabled = "disabled" })
             @Html.TextBoxFor(x => x.Id, Model.Id.ToString(), new { @class = "form-control", @type = "hidden" })
+        </div>
+        <div class="col-sm-9 col-sm-offset-2 text-danger">
+            @Html.ValidationMessageFor(x => x.Id)
         </div>
     </div>
     <div class="form-group">
@@ -22,12 +28,18 @@
         <div class="col-sm-9">
             @Html.TextBoxFor(x => x.Descricao, Model.Descricao, new { @class = "form-control" })
         </div>
+        <div class="col-sm-9 col-sm-offset-2 text-danger">
+            @Html.ValidationMessageFor(x => x.Descricao)
+        </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.Preco, "Preço:", new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
             <span class="input-group-addon cinza"><strong>R$</strong></span>
             @Html.TextBoxFor(x => x.Preco, "0,00", new { @class = "form-control" })
+        </div>
+        <div class="col-sm-9 col-sm-offset-2 text-danger">
+            @Html.ValidationMessageFor(x => x.Preco)
         </div>
     </div>
     <div class="form-group">
@@ -41,6 +53,9 @@
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
+        <div class="col-sm-9 col-sm-offset-2 text-danger">
+            @Html.ValidationMessageFor(x => x.EstoqueAtual)
+        </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.EstoqueMinimo, "Estoque Mínimo:", new { @class = "col-sm-2 control-label" })
@@ -53,6 +68,9 @@
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
+        <div class="col-sm-9 col-sm-offset-2 text-danger">
+            @Html.ValidationMessageFor(x => x.EstoqueMinimo)
+        </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.Categoria, "Categoria:", new { @class = "col-sm-2 control-label" })
@@ -63,6 +81,9 @@
                     <option value="@categoria.Id">@categoria.Descricao</option>
                 }
             </select>
+        </div>
+        <div class="col-sm-9 col-sm-offset-2 text-danger">
+            @Html.ValidationMessageFor(x => x.Categoria)
         </div>
     </div>
     <div class="form-group">
