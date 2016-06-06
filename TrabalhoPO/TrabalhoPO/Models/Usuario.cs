@@ -8,26 +8,25 @@ namespace TrabalhoPO.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(128)]
+        [Required(ErrorMessage = "O campo Nome é obrigatório.")]
+        [StringLength(128, ErrorMessage = "O Nome deve ter no máximo {1} caracteres.")]
         public string Nome { get; set; }
 
-        [Required]
-        [StringLength(128)]
+        [Required(ErrorMessage = "O campo E-mail é obrigatório.")]
+        [StringLength(128, ErrorMessage = "O E-mail deve ter no máximo {1} caracteres.")]
+        [EmailAddress(ErrorMessage = "O valor informado não é um endereço de e-mail válido.")]
         [DataType(DataType.EmailAddress)]
-        [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(64)]
+        [Required(ErrorMessage = "O campo Senha é obrigatório.")]
+        [StringLength(64, ErrorMessage = "A Senha deve ter no máximo {1} caracteres.")]
         [DataType(DataType.Password)]
-        [Compare("ConfirmarSenha")]
         public string Senha { get; set; }
 
-        [Required]
-        [StringLength(64)]
+        [Required(ErrorMessage = "O campo Confirmar Senha é obrigatório.")]
+        [Compare("Senha", ErrorMessage = "As senhas não conferem.")]
         [DataType(DataType.Password)]
-        [NotMapped]
+        //[NotMapped]
         public string ConfirmarSenha { get; set; }
     }
 }

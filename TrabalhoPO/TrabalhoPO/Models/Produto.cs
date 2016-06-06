@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TrabalhoPO.Resources;
 
 namespace TrabalhoPO.Models
 {
@@ -9,25 +10,25 @@ namespace TrabalhoPO.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(128)]
+        [Required(ErrorMessage = "O campo Descrição é obrigatório.")]
+        [StringLength(128, ErrorMessage = "A Descrição deve ter no máximo {1} caracteres.")]
         public string Descricao { get; set; }
 
-        [Required]
-        [Range(0, 500)]
+        [Required(ErrorMessage = "O campo Preço é obrigatório.")]
+        [RegularExpression(@"^(?!0)(?:\d{1,3}|1(?:\.\d{3})+),\d{2}$", ErrorMessage = "O valor do Preço deve estar entre R$ 0,00 e R$ 500,00.")]
         public decimal Preco { get; set; }
 
-        [Required]
-        [Range(0, 5000)]
+        [Required(ErrorMessage = "O campo Estoque Atual é obrigatório.")]
+        [RegularExpression(@"^(?!0)(?:\d{1,3}|[1-4](?:\.\d{3})+)$", ErrorMessage = "O valor do Estoque Atual deve estar entre 0 e 5.000.")]
         public int EstoqueAtual { get; set; }
 
-        [Required]
-        [Range(0, 2000)]
+        [Required(ErrorMessage = "O campo Estoque Mínimo é obrigatório.")]
+        [RegularExpression(@"^(?!0)(?:\d{1,3}|1(?:\.\d{3})+)$", ErrorMessage = "O valor do Estoque Mínimo deve estar entre 0 e 2.000.")]
         public int EstoqueMinimo { get; set; }
 
         public bool? PrecisaReposicao { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Categoria é obrigatório.")]
         public int Categoria { get; set; }
 
         public DateTime? DataAlteracao { get; set; }

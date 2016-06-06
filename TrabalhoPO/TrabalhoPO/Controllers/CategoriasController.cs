@@ -11,24 +11,23 @@ namespace TrabalhoPO.Controllers
     {
         private MyContext db = new MyContext();
 
-        public ActionResult Index()
+        public CategoriasController()
         {
             ViewBag.Produtos = db.Produtos.ToList();
+        }
 
+        public ActionResult Index()
+        {
             return View(db.Categorias.ToList());
         }
 
         public ActionResult Detalhes(int id)
         {
-            ViewBag.Produtos = db.Produtos.ToList();
-
             return View(db.Categorias.Find(id));
         }
 
         public ActionResult Editar(int id)
         {
-            ViewBag.Produtos = db.Produtos.ToList();
-
             return View(db.Categorias.Find(id));
         }
 
@@ -43,14 +42,12 @@ namespace TrabalhoPO.Controllers
                 ViewBag.Message = "Categoria editada com sucesso!";
             }
 
-            ViewBag.Produtos = db.Produtos.ToList();
-
             return View(categoria);
         }
 
         public ActionResult Criar()
         {
-            ViewBag.Produtos = db.Produtos.ToList();
+            ViewBag.NextId = db.Categorias.Max(x => x.Id) + 1;
 
             return View(new Categoria());
         }
@@ -66,7 +63,6 @@ namespace TrabalhoPO.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Produtos = db.Produtos.ToList();
             ViewBag.NextId = db.Categorias.Max(x => x.Id) + 1;
 
             return View(categoria);

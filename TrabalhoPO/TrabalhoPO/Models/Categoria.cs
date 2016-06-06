@@ -9,8 +9,8 @@ namespace TrabalhoPO.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(128)]
+        [Required(ErrorMessage = "O campo Descrição é obrigatório.")]
+        [StringLength(128, ErrorMessage = "A Descrição deve ter no máximo {1} caracteres.")]
         public string Descricao { get; set; }
 
         public DateTime? DataAlteracao { get; set; }

@@ -83,14 +83,28 @@ namespace TrabalhoPO.Controllers
                 return View();
             }
 
+            var jaCadastrado = false;
+
+            if (db.Usuarios.Any(x => x.Nome.Equals(usuario.Nome)))
+            {
+                ModelState.AddModelError("Nome", "Nome já cadastrado no sistema.");
+
+                jaCadastrado = true;
+            }
+
             if (db.Usuarios.Any(x => x.Email.Equals(usuario.Email)))
             {
-                ModelState.AddModelError("", "E-mail já cadastrado no sistema.");
+                ModelState.AddModelError("Email", "E-mail já cadastrado no sistema.");
 
+                jaCadastrado = true;
+            }
+
+            if (jaCadastrado)
+            {
                 return View();
             }
 
-            usuario.Senha = utils._SHA256(usuario.Senha);
+            usuario.Senha = usuario.ConfirmarSenha = utils._SHA256(usuario.Senha);
             db.Usuarios.Add(usuario);
             db.SaveChanges();
 

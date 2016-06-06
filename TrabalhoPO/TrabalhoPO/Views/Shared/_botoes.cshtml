@@ -1,7 +1,7 @@
 ﻿@model TrabalhoPO.Models.IIdentificavel
 
 <span class="pull-left">
-    <a href="#" onclick="history.back();return false;" class="btn btn-default btn-custom">
+    <a href="#" onclick="javascript:history.go(-1)" class="btn btn-default btn-custom">
         <span class="fa fa-arrow-left" aria-hidden="true"></span>
         Voltar
     </a>
@@ -9,7 +9,7 @@
 <span class="pull-right">
     @if (ViewBag.Title != "Criar")
     {
-        <a href="@Url.Action("Criar", "Produtos")" class="btn btn-success btn-custom">
+        <a href="@Url.Action("Criar", ViewBag.Modelo + "s")" class="btn btn-success btn-custom">
             <span class="fa fa-plus" aria-hidden="true"></span>
             @(Model is TrabalhoPO.Models.Categoria ? "Nova" : "Novo")
         </a>
@@ -20,7 +20,7 @@
     }
     @if (ViewBag.Title == "Detalhes")
     {
-        <a href="@Url.Action("Editar", "Produtos", new { id = Model.Id })" class="btn btn-warning btn-custom">
+        <a href="@Url.Action("Editar", ViewBag.Modelo + "s", new { id = Model.Id })" class="btn btn-warning btn-custom">
             <span class="fa fa-edit" aria-hidden="true"></span>
             Editar
         </a>

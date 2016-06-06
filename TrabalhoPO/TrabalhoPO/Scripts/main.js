@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('.input-validation-error').parents('.form-group').addClass('has-error');
+    $(".input-validation-error").parents(".form-group").addClass("has-error");
 
     $("#Preco").on("paste focusout", function () {
         var valor = parseFloat($(this).val().replace(/\./g, '').replace(',', '.')).toFixed(2);
@@ -12,9 +12,35 @@
     });
 });
 
+$(document).on("hidden.bs.modal", "#ExcluirModal", function () {
+    $(this).remove();
+    history.go(-1);
+});
+
+function excluirModal(Model, Id) {
+    var url = "/" + Model + "s/ExcluirModal";
+    $.get(url, { id: Id }, function (data) {
+        $("body").append("<div id='ExcluirModal' class='modal fade in' role='dialog'></div>");
+        $("#ExcluirModal").html(data);
+        $("#ExcluirModal").modal("show");
+    });
+}
+
+function exclui(Model, Id) {
+    var url = "/" + Model + "s/Excluir";
+    $.post(url, { id: Id }, function (resposta) {
+        if ($("#" + Model + Id).length) {
+            $("#" + Model + Id).remove();
+        }
+        else {
+            window.location.href = "/" + Model + "s/Index";
+        }
+    });
+}
+
 function altera(div, qtd) {
     var valor = parseInt($(div).val().replace(/\./g, ''));
-    $(div).val((valor + qtd) < 0 ? 0 : (valor + qtd).toLocaleString());
+    $(div).val(valor + qtd < 0 ? 0 : (valor + qtd).toLocaleString());
 }
 
 function insere(Id) {
@@ -65,25 +91,4 @@ function atualiza(resposta) {
     var min = (dataAlteracao.getMinutes() < 10 ? '0' : '') + dataAlteracao.getMinutes();
     var sec = (dataAlteracao.getSeconds() < 10 ? '0' : '') + dataAlteracao.getSeconds();
     $("#DataAlteracao" + resposta.Id).html(day + "/" + month + "/" + year + " @ " + hour + ":" + min + ":" + sec);
-}
-
-function excluirModal(Model, Id) {
-    var url = "/" + Model + "s/ExcluirModal";
-    $.get(url, { id: Id }, function (data) {
-        $("body").append("<div id='ExcluirModal' class='modal fade in' role='dialog'></div>");
-        $("#ExcluirModal").html(data);
-        $("#ExcluirModal").modal("show");
-    });
-}
-
-function exclui(Model, Id) {
-    var url = "/" + Model + "s/Excluir";
-    $.post(url, { id: Id }, function (resposta) {
-        if ($("#" + Model + Id).length) {
-            $("#" + Model + Id).remove();
-        }
-        else {
-            window.location.href = "/" + Model + "s/Index";
-        }
-    });
 }

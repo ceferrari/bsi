@@ -12,13 +12,14 @@ CREATE TABLE Usuarios (
 	"Nome" NVARCHAR (128) NOT NULL,
 	"Email" NVARCHAR (128) NOT NULL,
 	"Senha" NVARCHAR (64) NOT NULL,
+	"ConfirmarSenha" NVARCHAR (64) NOT NULL,
 	CONSTRAINT "PK_Usuarios" PRIMARY KEY ("Id")
 );
 
 INSERT INTO Usuarios 
-(Nome, Email, Senha) 
+(Nome, Email, Senha, ConfirmarSenha) 
 VALUES 
-('Carlos Eduardo Ferrari', 'carled@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92');
+('Carlos Eduardo Ferrari', 'carled@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92');
 
 CREATE TABLE Categorias (
 	"Id" INT IDENTITY (1, 1) NOT NULL,
