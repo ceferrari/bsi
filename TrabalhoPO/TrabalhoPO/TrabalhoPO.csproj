@@ -215,6 +215,8 @@
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\IntegerModelBinder.cs" />
+    <Compile Include="Shared\DecimalModelBinder.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Shared\Utils.cs" />
   </ItemGroup>

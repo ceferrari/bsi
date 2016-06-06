@@ -2,6 +2,7 @@
 using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Routing;
+using TrabalhoPO.Shared;
 
 namespace TrabalhoPO
 {
@@ -12,6 +13,12 @@ namespace TrabalhoPO
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+            ModelBinders.Binders.Add(typeof(int), new IntegerModelBinder());
+            ModelBinders.Binders.Add(typeof(int?), new IntegerModelBinder());
+            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+            ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
+
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
         }
     }

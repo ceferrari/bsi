@@ -14,15 +14,18 @@ namespace TrabalhoPO.Models
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "O campo Preço é obrigatório.")]
-        [RegularExpression(@"^(?!0)(?:\d{1,3}|1(?:\.\d{3})+),\d{2}$", ErrorMessage = "O valor do Preço deve estar entre R$ 0,00 e R$ 500,00.")]
+        [Range(typeof(decimal), "0,01", "500,00", ErrorMessage = "O valor do Preço deve estar entre R$ {1} e R$ {2}.")]
+        //[RegularExpression(@"^(?!0)(?:\d{1,3}|1(?:\.\d{3})+),\d{2}$", ErrorMessage = "O valor do Preço deve estar entre R$ 0,00 e R$ 500,00.")]
         public decimal Preco { get; set; }
 
         [Required(ErrorMessage = "O campo Estoque Atual é obrigatório.")]
-        [RegularExpression(@"^(?!0)(?:\d{1,3}|[1-4](?:\.\d{3})+)$", ErrorMessage = "O valor do Estoque Atual deve estar entre 0 e 5.000.")]
+        [Range(0, 5000, ErrorMessage = "O valor do Estoque Atual deve estar entre 0 e 5.000.")]
+        //[RegularExpression(@"^(?!0)(?:\d{1,3}|[1-4](?:\.\d{3})+)$", ErrorMessage = "O valor do Estoque Atual deve estar entre 0 e 5.000.")]
         public int EstoqueAtual { get; set; }
 
         [Required(ErrorMessage = "O campo Estoque Mínimo é obrigatório.")]
-        [RegularExpression(@"^(?!0)(?:\d{1,3}|1(?:\.\d{3})+)$", ErrorMessage = "O valor do Estoque Mínimo deve estar entre 0 e 2.000.")]
+        [Range(0, 2000, ErrorMessage = "O valor do Estoque Mínimo deve estar entre 0 e 2.000.")]
+        //[RegularExpression(@"^(?!0)(?:\d{1,3}|1(?:\.\d{3})+)$", ErrorMessage = "O valor do Estoque Mínimo deve estar entre 0 e 2.000.")]
         public int EstoqueMinimo { get; set; }
 
         public bool? PrecisaReposicao { get; set; }

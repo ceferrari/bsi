@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Cryptography;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace TrabalhoPO.Models
