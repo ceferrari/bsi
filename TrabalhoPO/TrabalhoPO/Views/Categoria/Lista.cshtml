@@ -8,7 +8,7 @@
 
 <h2>
     <span>@ViewBag.Titulo</span>
-    <a href="@Url.Action("Criar", (string)ViewBag.Modelo)" class="btn btn-success btn-custom pull-right">
+    <a href="@Url.Action("Criar", ViewBag.Modelo)" class="btn btn-success btn-custom pull-right">
         <span class="fa fa-plus" aria-hidden="true"></span>
         Nova
     </a>
@@ -35,8 +35,8 @@
                 <td>
                     @categoria.Descricao
                 </td>
-                <td>
-                    @((ViewBag.Produtos as IList<TrabalhoPO.Models.Produto>).Count(x => x.Categoria == categoria.Id))
+                <td class="text-right">
+                    @((ViewBag.Produtos as IList<TrabalhoPO.Models.Produto>).Count(x => x.Categoria == categoria.Id).ToString("N0"))
                 </td>
                 <td id="DataAlteracao@(categoria.Id)">
                     @categoria.DataAlteracao.Value.ToString("dd/MM/yyyy")

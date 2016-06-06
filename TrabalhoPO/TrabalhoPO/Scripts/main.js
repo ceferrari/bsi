@@ -80,8 +80,8 @@ function diminuiMinimo(Id) {
 }
 
 function atualiza(resposta) {
-    $("#EstoqueAtual" + resposta.Id).html(resposta.EstoqueAtual);
-    $("#EstoqueMinimo" + resposta.Id).html(resposta.EstoqueMinimo);
+    $("#EstoqueAtual" + resposta.Id).html(resposta.EstoqueAtual.toLocaleString());
+    $("#EstoqueMinimo" + resposta.Id).html(resposta.EstoqueMinimo.toLocaleString());
     $("#PrecisaReposicao" + resposta.Id).html(resposta.PrecisaReposicao === true ? "Sim" : "Não");
     var dataAlteracao = new Date(parseInt(resposta.DataAlteracao.substr(6)));
     var day = (dataAlteracao.getDate() < 10 ? '0' : '') + dataAlteracao.getDate();

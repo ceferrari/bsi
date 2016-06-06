@@ -20,7 +20,7 @@ header {
 main {
     flex: 1;
     display: flex;
-    overflow: auto;
+    overflow-y: scroll;
 }
 
 nav {
@@ -36,6 +36,23 @@ article {
 aside {
     flex: 0 0 256px;
     order: 2;
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.navbar-toggle {
+    z-index: 3;
+}
+
+.navbar-left {
+    margin-left: -35px !important;
 }
 
 .container-auth, .row-auth {
@@ -60,8 +77,6 @@ hr {
 
 h2 {
     font-weight: bolder;
-    padding-left: 22px; 
-    padding-right: 22px; 
 }
 
 .table > tbody > tr > td {
@@ -73,10 +88,6 @@ h2 {
 .no-text-decoration a:hover,
 .no-text-decoration a:visited {
     text-decoration: none;
-}
-
-a .fa {
-    font-size: 1.3em;
 }
 
 .fa.fa-plus-circle {
@@ -93,6 +104,10 @@ a .fa {
 .fa.fa-minus-square-o {
     color: #333;
     border-color: #ccc;
+}
+
+a .fa {
+    font-size: 1.3em;
 }
 
 a .glyphicon {
@@ -121,7 +136,7 @@ a .glyphicon:hover {
     padding-right: 15px;
 }
 
-.center-block, .nofloat { 
+.center-block { 
     float: none !important;
 }
 

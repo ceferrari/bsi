@@ -210,7 +210,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Categoria.cs" />
-    <Compile Include="Models\IIdentificavel.cs" />
+    <Compile Include="Models\Interfaces\IIdentificavel.cs" />
     <Compile Include="Models\Auth.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />

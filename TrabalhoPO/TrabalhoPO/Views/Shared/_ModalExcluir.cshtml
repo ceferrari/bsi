@@ -1,5 +1,9 @@
 ﻿@model TrabalhoPO.Models.IIdentificavel
 
+@{
+    ViewBag.Modelo = Model is TrabalhoPO.Models.Produto ? "Produto" : "Categoria";
+}
+
 <div id='Excluir' class='modal-dialog'>
     <div class="modal-content">
         <div class="modal-header">

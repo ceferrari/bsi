@@ -17,7 +17,7 @@
         @Html.Label("IdAux", null, new { @class = "col-sm-2 control-label hidden" })
         @Html.LabelFor(x => x.Id, "Id:", new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9">
-            @Html.TextBoxFor(x => x.Id, (string)ViewBag.NextId.ToString(), new { @class = "form-control", disabled = "disabled" })
+            @Html.TextBox("IdAux", (string)ViewBag.NextId.ToString(), new { @class = "form-control", disabled = "disabled" })
             @Html.TextBoxFor(x => x.Id, Model.Id.ToString(), new { @class = "form-control", @type = "hidden" })
         </div>
         <div class="col-sm-9 col-sm-offset-2 text-danger">

@@ -8,7 +8,7 @@
 
 <h2>
     <span>@ViewBag.Titulo</span>
-    <a href="@Url.Action("Criar", (string)ViewBag.Modelo)" class="btn btn-success btn-custom pull-right">
+    <a href="@Url.Action("Criar", ViewBag.Modelo)" class="btn btn-success btn-custom pull-right">
         <span class="fa fa-plus" aria-hidden="true"></span>
         Novo
     </a>
@@ -23,7 +23,7 @@
             <th>Preço</th>
             <th>Estoque Atual</th>
             <th>Estoque Mínimo</th>
-            <th>Precisa Repor?</th>
+            <th>Reposição</th>
             <th>Categoria</th>
             <th>Data Alteração</th>
             <th>Ações</th>
