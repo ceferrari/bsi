@@ -204,7 +204,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
-    <Compile Include="Controllers\ErroController.cs" />
+    <Compile Include="Controllers\ModalController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAL\MyContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -213,11 +213,13 @@
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Interfaces\IIdentificavel.cs" />
     <Compile Include="Models\Auth.cs" />
+    <Compile Include="Models\Modal.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\IntegerModelBinder.cs" />
     <Compile Include="Shared\DecimalModelBinder.cs" />
+    <Compile Include="Shared\Layout.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Shared\Utils.cs" />
   </ItemGroup>
@@ -240,7 +242,7 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Shared\_BotoesIndex.cshtml" />
-    <Content Include="Views\Shared\_ModalErro.cshtml" />
+    <Content Include="Views\Shared\_Modal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -251,9 +253,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Erro\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -140,7 +140,7 @@ a .glyphicon:hover {
     float: none !important;
 }
 
-.modal-header {
+#ExcluirModal .modal-header {
     color: #a94442;
 }
 

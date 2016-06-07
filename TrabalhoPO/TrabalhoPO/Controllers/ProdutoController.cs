@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using TrabalhoPO.DAL;
 using TrabalhoPO.Models;
+using TrabalhoPO.Shared;
 
 namespace TrabalhoPO.Controllers
 {
@@ -11,6 +12,7 @@ namespace TrabalhoPO.Controllers
     public class ProdutoController : Controller
     {
         private MyContext db = new MyContext();
+        private Utils utils = new Utils();
 
         public ProdutoController()
         {
@@ -88,7 +90,7 @@ namespace TrabalhoPO.Controllers
             return PartialView("~/Views/Shared/_ModalExcluir.cshtml", db.Produtos.Find(id));
         }
 
-        public void Salvar(Produto produto)
+        private void Salvar(Produto produto)
         {
             produto.AtualizaCampos();
             db.Set<Produto>().AddOrUpdate(produto);
@@ -116,7 +118,7 @@ namespace TrabalhoPO.Controllers
             }
             catch (Exception ex)
             {
-                return JavaScript("erroModal('" + ex.Message + "');");
+                return utils.ModalJS(ex.Message);
             }
         }
 

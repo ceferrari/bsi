@@ -36,10 +36,10 @@ function exclui(Model, Id) {
     });
 }
 
-function erroModal(Mensagem) {
-    var url = "/Erro/ErroModal";
-    $.get(url, { mensagem: Mensagem }, function (data) {
-        appendModal("ErroModal", data)
+function modal(Model, Acao) {
+    var url = "/Modal/" + (Acao || "Erro");
+    $.get(url, { jsonModel: Model }, function (data) {
+        appendModal(data.Id, data)
     });
 }
 

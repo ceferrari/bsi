@@ -87,7 +87,7 @@ namespace TrabalhoPO.Controllers
             return PartialView("~/Views/Shared/_ModalExcluir.cshtml", db.Categorias.Find(id));
         }
 
-        public void Salvar(Categoria categoria)
+        private void Salvar(Categoria categoria)
         {
             categoria.SetDataAlteracao();
             db.Set<Categoria>().AddOrUpdate(categoria);
