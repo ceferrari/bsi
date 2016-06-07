@@ -44,7 +44,7 @@ namespace TrabalhoPO.Controllers
             {
                 Salvar(categoria);
 
-                ViewBag.Message = "Categoria editada com sucesso!";
+                ViewBag.Mensagem = "Categoria editada com sucesso!";
             }
 
             return View(categoria);

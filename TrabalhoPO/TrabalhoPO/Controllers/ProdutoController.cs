@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Migrations;
+﻿using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web.Mvc;
 using TrabalhoPO.DAL;
@@ -44,7 +45,7 @@ namespace TrabalhoPO.Controllers
             {
                 Salvar(produto);
 
-                ViewBag.Message = "Produto editado com sucesso!";
+                ViewBag.Mensagem = "Produto editado com sucesso!";
             }
 
             return View(produto);
@@ -105,11 +106,18 @@ namespace TrabalhoPO.Controllers
 
         public ActionResult Retira(int id)
         {
-            Produto produto = db.Produtos.Find(id);
-            produto.Retira(1);
-            db.SaveChanges();
+            try
+            {
+                Produto produto = db.Produtos.Find(id);
+                produto.Retira(1);
+                db.SaveChanges();
 
-            return Json(produto);
+                return Json(produto);
+            }
+            catch (Exception ex)
+            {
+                return JavaScript("erroModal('" + ex.Message + "');");
+            }
         }
 
         public ActionResult AumentaMinimo(int id)

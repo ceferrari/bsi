@@ -20,9 +20,7 @@ $(document).on("hidden.bs.modal", "#ExcluirModal", function () {
 function excluirModal(Model, Id) {
     var url = "/" + Model + "/ExcluirModal";
     $.get(url, { id: Id }, function (data) {
-        $("body").append("<div id='ExcluirModal' class='modal fade in' role='dialog'></div>");
-        $("#ExcluirModal").html(data);
-        $("#ExcluirModal").modal("show");
+        appendModal("ExcluirModal", data)
     });
 }
 
@@ -36,6 +34,19 @@ function exclui(Model, Id) {
             window.location.href = "/" + Model + "/Index";
         }
     });
+}
+
+function erroModal(Mensagem) {
+    var url = "/Erro/ErroModal";
+    $.get(url, { mensagem: Mensagem }, function (data) {
+        appendModal("ErroModal", data)
+    });
+}
+
+function appendModal(id, data) {
+    $("body").append("<div id='" + id + "' class='modal fade in' role='dialog'></div>");
+    $("#" + id).html(data);
+    $("#" + id).modal("show");
 }
 
 function altera(div, qtd) {
