@@ -13,7 +13,7 @@
             <span class="fa fa-plus" aria-hidden="true"></span>
             @(Model is TrabalhoPO.Models.Categoria ? "Nova" : "Novo")
         </a>
-        <a href="#" onclick="excluirModal('@ViewBag.Modelo', @Model.Id);" class="btn btn-danger btn-custom">
+        <a href="#" onclick="excluiModal('@ViewBag.Modelo', @Model.Id);" class="btn btn-danger btn-custom">
             <span class="fa fa-trash-o" aria-hidden="true"></span>
             Excluir
         </a>

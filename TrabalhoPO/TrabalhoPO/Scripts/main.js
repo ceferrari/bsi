@@ -22,18 +22,18 @@ function appendModal(id, data) {
     $("#" + id).modal("show");
 }
 
-function modal(Modal, Acao) {
+function modal(Params, Acao) {
     var url = "/Modal/" + (Acao || "Erro");
-    if (!isJson(Modal)) {
-        Modal = "{ 'Mensagem':'" + Modal + "'}";
+    if (!isJson(Params)) {
+        Params = "{ 'Mensagem':'" + Params + "'}";
     }
-    $.get(url, { json: Modal }, function (data) {
+    $.get(url, { json: Params }, function (data) {
         appendModal(data.Id, data)
     });
 }
 
-function excluirModal(Model, Id) {
-    var url = "/" + Model + "/ExcluirModal";
+function excluiModal(Model, Id) {
+    var url = "/" + Model + "/Excluir";
     $.get(url, { id: Id }, function (data) {
         appendModal("ExcluirModal", data)
     });

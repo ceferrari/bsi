@@ -247,7 +247,6 @@
     <Content Include="Views\Categoria\Detalhes.cshtml" />
     <Content Include="Views\Categoria\Editar.cshtml" />
     <Content Include="Views\Categoria\Criar.cshtml" />
-    <Content Include="Views\Shared\_ModalExcluir.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Shared\_BotoesIndex.cshtml" />

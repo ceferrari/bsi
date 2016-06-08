@@ -80,9 +80,18 @@ namespace TrabalhoPO.Controllers
 
         public ActionResult Excluir(int id)
         {
+            Produto produto = db.Produtos.Find(id);
+            object obj = new { modelo = "Produto", id = produto.Id, descricao = produto.Descricao };
+
+            return RedirectToAction("Excluir", "Modal", obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Excluir(Produto produto)
+        {
             try
             {
-                Produto produto = db.Produtos.Find(id);
                 db.Produtos.Remove(produto);
                 db.SaveChanges();
 
@@ -94,11 +103,6 @@ namespace TrabalhoPO.Controllers
             }
         }
 
-        public ActionResult ExcluirModal(int id)
-        {
-            return PartialView("~/Views/Shared/_ModalExcluir.cshtml", db.Produtos.Find(id));
-        }
-
         private void Salvar(Produto produto)
         {
             produto.AtualizaCampos();
@@ -106,6 +110,8 @@ namespace TrabalhoPO.Controllers
             db.SaveChanges();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Insere(int id)
         {
             try
@@ -122,6 +128,8 @@ namespace TrabalhoPO.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Retira(int id)
         {
             try
@@ -140,6 +148,8 @@ namespace TrabalhoPO.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AumentaMinimo(int id)
         {
             try
@@ -156,6 +166,8 @@ namespace TrabalhoPO.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult DiminuiMinimo(int id)
         {
             try

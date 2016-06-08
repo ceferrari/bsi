@@ -15,7 +15,7 @@ namespace TrabalhoPO.Controllers
             modal.IconeCabecalho = modal.IconeCabecalho ?? "fa fa-check-circle";
             modal.Titulo = modal.Titulo ?? "Sucesso";
             modal.Mensagem = modal.Mensagem ?? "Operação concluída com êxito.";
-            modal.TextoBotao = modal.TextoBotao ?? "Fechar";
+            modal.TextoBotaoPadrao = modal.TextoBotaoPadrao ?? "Fechar";
 
             return PartialView("~/Views/Shared/_Modal.cshtml", modal);
         }
@@ -29,7 +29,7 @@ namespace TrabalhoPO.Controllers
             modal.IconeCabecalho = modal.IconeCabecalho ?? "fa fa-warning";
             modal.Titulo = modal.Titulo ?? "Alerta";
             modal.Mensagem = modal.Mensagem ?? "Ocorreu um erro inesperado. Tente novamente.";
-            modal.TextoBotao = modal.TextoBotao ?? "Fechar";
+            modal.TextoBotaoPadrao = modal.TextoBotaoPadrao ?? "Fechar";
 
             return PartialView("~/Views/Shared/_Modal.cshtml", modal);
         }
@@ -40,10 +40,29 @@ namespace TrabalhoPO.Controllers
 
             modal.Id = modal.Id ?? "ErroModal";
             modal.ClasseCabecalho = modal.ClasseCabecalho ?? "text-danger";
-            modal.IconeCabecalho = modal.IconeCabecalho ?? "fa fa-times-cricle";
+            modal.IconeCabecalho = modal.IconeCabecalho ?? "fa fa-times-circle";
             modal.Titulo = modal.Titulo ?? "Erro";
             modal.Mensagem = modal.Mensagem ?? "Erro desconhecido. Entre em contato com o administrador.";
-            modal.TextoBotao = modal.TextoBotao ?? "Fechar";
+            modal.TextoBotaoPadrao = modal.TextoBotaoPadrao ?? "Fechar";
+
+            return PartialView("~/Views/Shared/_Modal.cshtml", modal);
+        }
+
+        public ActionResult Excluir(string modelo, string id, string descricao)
+        {
+            string mensagem = modelo.Equals("Produto") ? " o produto " : " a categoria ";
+
+            Modal modal = new Modal();
+
+            modal.Id = "ExcluirModal";
+            modal.ClasseCabecalho = "text-danger";
+            modal.IconeCabecalho = "fa fa-times-circle";
+            modal.Titulo = "Excluir " + modelo;
+            modal.Mensagem = "Tem certeza que deseja excluir" + mensagem + "<strong>" + id + " - " + descricao + "</strong> ?";
+            modal.TextoBotaoPadrao = "Fechar";
+            modal.TextoBotaoSecundario = "Confirmar";
+            modal.ClasseBotaoSecundario = "btn btn-danger btn-custom";
+            modal.AcaoBotaoSecundario = "exclui('" + modelo + "', " + id + ")";
 
             return PartialView("~/Views/Shared/_Modal.cshtml", modal);
         }
