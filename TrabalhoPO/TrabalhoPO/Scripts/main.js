@@ -12,10 +12,23 @@
     });
 });
 
-$(document).on("hidden.bs.modal", "#ExcluirModal", function () {
+$(document).on("hidden.bs.modal", ".modal", function () {
     $(this).remove();
     history.go(-1);
 });
+
+function appendModal(id, data) {
+    $("body").append("<div id='" + id + "' class='modal fade in' role='dialog'></div>");
+    $("#" + id).html(data);
+    $("#" + id).modal("show");
+}
+
+function modal(Model, Acao) {
+    var url = "/Modal/" + (Acao || "Erro");
+    $.get(url, { jsonModel: Model }, function (data) {
+        appendModal(data.Id, data)
+    });
+}
 
 function excluirModal(Model, Id) {
     var url = "/" + Model + "/ExcluirModal";
@@ -34,19 +47,6 @@ function exclui(Model, Id) {
             window.location.href = "/" + Model + "/Index";
         }
     });
-}
-
-function modal(Model, Acao) {
-    var url = "/Modal/" + (Acao || "Erro");
-    $.get(url, { jsonModel: Model }, function (data) {
-        appendModal(data.Id, data)
-    });
-}
-
-function appendModal(id, data) {
-    $("body").append("<div id='" + id + "' class='modal fade in' role='dialog'></div>");
-    $("#" + id).html(data);
-    $("#" + id).modal("show");
 }
 
 function altera(div, qtd) {

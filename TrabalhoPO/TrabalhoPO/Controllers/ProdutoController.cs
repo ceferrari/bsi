@@ -41,16 +41,16 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(Produto produto)
+        public void Editar(Produto produto)
         {
             if (ModelState.IsValid)
             {
                 Salvar(produto);
 
-                ViewBag.Mensagem = "Produto editado com sucesso!";
-            }
+                ModelState.AddModelError("", "Could not verify token");
 
-            return View(produto);
+                utils.ModalJS("Produto editado com sucesso!", "Sucesso");
+            }
         }
 
         public ActionResult Criar()
@@ -78,11 +78,18 @@ namespace TrabalhoPO.Controllers
 
         public ActionResult Excluir(int id)
         {
-            Produto produto = db.Produtos.Find(id);
-            db.Produtos.Remove(produto);
-            db.SaveChanges();
+            try
+            {
+                Produto produto = db.Produtos.Find(id);
+                db.Produtos.Remove(produto);
+                db.SaveChanges();
 
-            return Json(produto);
+                return Json(produto);
+            }
+            catch (Exception ex)
+            {
+                return utils.ModalJS(ex.Message);
+            }
         }
 
         public ActionResult ExcluirModal(int id)
@@ -99,11 +106,18 @@ namespace TrabalhoPO.Controllers
 
         public ActionResult Insere(int id)
         {
-            Produto produto = db.Produtos.Find(id);
-            produto.Insere(1);
-            db.SaveChanges();
+            try
+            {
+                Produto produto = db.Produtos.Find(id);
+                produto.Insere(1);
+                db.SaveChanges();
 
-            return Json(produto);
+                return Json(produto);
+            }
+            catch (Exception ex)
+            {
+                return utils.ModalJS(ex.Message);
+            }
         }
 
         public ActionResult Retira(int id)
@@ -124,20 +138,34 @@ namespace TrabalhoPO.Controllers
 
         public ActionResult AumentaMinimo(int id)
         {
-            Produto produto = db.Produtos.Find(id);
-            produto.SetEstoqueMinimo(produto.EstoqueMinimo + 1);
-            db.SaveChanges();
+            try
+            {
+                Produto produto = db.Produtos.Find(id);
+                produto.SetEstoqueMinimo(produto.EstoqueMinimo + 1);
+                db.SaveChanges();
 
-            return Json(produto);
+                return Json(produto);
+            }
+            catch (Exception ex)
+            {
+                return utils.ModalJS(ex.Message);
+            }
         }
 
         public ActionResult DiminuiMinimo(int id)
         {
-            Produto produto = db.Produtos.Find(id);
-            produto.SetEstoqueMinimo(produto.EstoqueMinimo - 1);
-            db.SaveChanges();
+            try
+            {
+                Produto produto = db.Produtos.Find(id);
+                produto.SetEstoqueMinimo(produto.EstoqueMinimo - 1);
+                db.SaveChanges();
 
-            return Json(produto);
+                return Json(produto);
+            }
+            catch (Exception ex)
+            {
+                return utils.ModalJS(ex.Message);
+            }
         }
     }
 }

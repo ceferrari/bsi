@@ -9,16 +9,6 @@
 <h2>@ViewBag.Titulo</h2>
 <hr />
 
-@if (ViewBag.Mensagem != null)
-{
-    <div class="row text-center">
-        <div class="col-sm-10 center-block alert alert-success">
-            <span class="fa fa-check" aria-hidden="true"></span>
-            @ViewBag.Mensagem
-        </div>
-    </div>
-}
-
 @using (Html.BeginForm((string)ViewBag.Acao, (string)ViewBag.Modelo, null, FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
