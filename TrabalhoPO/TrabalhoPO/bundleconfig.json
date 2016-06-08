@@ -10,5 +10,11 @@
     "inputFiles": [
       "Scripts/main.js"
     ]
+  },
+  {
+    "outputFileName": "Scripts/produto.js",
+    "inputFiles": [
+      "Scripts/produto.js"
+    ]
   }
 ]

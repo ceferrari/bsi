@@ -6,9 +6,9 @@ namespace TrabalhoPO.Controllers
 {
     public class ModalController : Controller
     {
-        public ActionResult Sucesso(string jsonModel)
+        public ActionResult Sucesso(string json)
         {
-            Modal modal = new JavaScriptSerializer().Deserialize<Modal>(jsonModel);
+            Modal modal = new JavaScriptSerializer().Deserialize<Modal>(json);
 
             modal.Id = modal.Id ?? "SucessoModal";
             modal.ClasseCabecalho = modal.ClasseCabecalho ?? "text-success";
@@ -20,29 +20,29 @@ namespace TrabalhoPO.Controllers
             return PartialView("~/Views/Shared/_Modal.cshtml", modal);
         }
 
-        public ActionResult Alerta(string jsonModel)
+        public ActionResult Alerta(string json)
         {
-            Modal modal = new JavaScriptSerializer().Deserialize<Modal>(jsonModel);
+            Modal modal = new JavaScriptSerializer().Deserialize<Modal>(json);
 
             modal.Id = modal.Id ?? "AlertaModal";
             modal.ClasseCabecalho = modal.ClasseCabecalho ?? "text-warning";
             modal.IconeCabecalho = modal.IconeCabecalho ?? "fa fa-warning";
             modal.Titulo = modal.Titulo ?? "Alerta";
-            modal.Mensagem = modal.Mensagem ?? "Mensagem padrão de alerta.";
+            modal.Mensagem = modal.Mensagem ?? "Ocorreu um erro inesperado. Tente novamente.";
             modal.TextoBotao = modal.TextoBotao ?? "Fechar";
 
             return PartialView("~/Views/Shared/_Modal.cshtml", modal);
         }
 
-        public ActionResult Erro(string jsonModel)
+        public ActionResult Erro(string json)
         {
-            Modal modal = new JavaScriptSerializer().Deserialize<Modal>(jsonModel);
+            Modal modal = new JavaScriptSerializer().Deserialize<Modal>(json);
 
             modal.Id = modal.Id ?? "ErroModal";
             modal.ClasseCabecalho = modal.ClasseCabecalho ?? "text-danger";
             modal.IconeCabecalho = modal.IconeCabecalho ?? "fa fa-times-cricle";
             modal.Titulo = modal.Titulo ?? "Erro";
-            modal.Mensagem = modal.Mensagem ?? "Ocorreu um erro inesperado. Tente novamente.";
+            modal.Mensagem = modal.Mensagem ?? "Erro desconhecido. Entre em contato com o administrador.";
             modal.TextoBotao = modal.TextoBotao ?? "Fechar";
 
             return PartialView("~/Views/Shared/_Modal.cshtml", modal);

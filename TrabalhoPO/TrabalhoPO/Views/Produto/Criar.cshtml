@@ -9,7 +9,7 @@
 <h2>@ViewBag.Titulo</h2>
 <hr />
 
-@using (Html.BeginForm((string)ViewBag.Acao, (string)ViewBag.Modelo, null, FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm((string)ViewBag.Acao, (string)ViewBag.Modelo, FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 
@@ -92,4 +92,8 @@
             @Html.Partial("_Botoes", Model)
         </div>
     </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/produto.min.js")
 }

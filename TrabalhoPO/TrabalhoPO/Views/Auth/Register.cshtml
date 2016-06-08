@@ -6,7 +6,7 @@
     ViewBag.Acao = "Register";
 }
 
-@using (Html.BeginForm((string)ViewBag.Acao, (string)ViewBag.Modelo, null, FormMethod.Post, new { @class = "form-horizontal form-auth" }))
+@using (Html.BeginForm((string)ViewBag.Acao, (string)ViewBag.Modelo, FormMethod.Post, new { @class = "form-horizontal form-auth" }))
 {
     @Html.AntiForgeryToken()
 

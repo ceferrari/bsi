@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using TrabalhoPO.DAL;
 using TrabalhoPO.Models;
@@ -41,16 +43,16 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public void Editar(Produto produto)
+        public ActionResult Editar(Produto produto)
         {
             if (ModelState.IsValid)
             {
                 Salvar(produto);
 
-                ModelState.AddModelError("", "Could not verify token");
-
-                utils.ModalJS("Produto editado com sucesso!", "Sucesso");
+                //return new HttpStatusCodeResult(HttpStatusCode.OK, "Produto editado com sucesso!");
             }
+
+            return View(produto);
         }
 
         public ActionResult Criar()
@@ -88,7 +90,7 @@ namespace TrabalhoPO.Controllers
             }
             catch (Exception ex)
             {
-                return utils.ModalJS(ex.Message);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
             }
         }
 
@@ -116,7 +118,7 @@ namespace TrabalhoPO.Controllers
             }
             catch (Exception ex)
             {
-                return utils.ModalJS(ex.Message);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
             }
         }
 
@@ -132,7 +134,9 @@ namespace TrabalhoPO.Controllers
             }
             catch (Exception ex)
             {
-                return utils.ModalJS(ex.Message);
+                string mensagem = utils.Modal(ex.Message);
+
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, mensagem);
             }
         }
 
@@ -148,7 +152,7 @@ namespace TrabalhoPO.Controllers
             }
             catch (Exception ex)
             {
-                return utils.ModalJS(ex.Message);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
             }
         }
 
@@ -164,7 +168,7 @@ namespace TrabalhoPO.Controllers
             }
             catch (Exception ex)
             {
-                return utils.ModalJS(ex.Message);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
             }
         }
     }
