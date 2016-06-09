@@ -68,20 +68,3 @@ function sucesso(result) {
 function erro(result) {
     modal(result.statusText, "Erro");
 }
-
-$('form').submit(function () {
-    $.ajax({
-        url: this.action,
-        type: this.method,
-        data: $(this).serialize(),
-        success: function (result) {
-            alert(JSON.stringify($(this)[0]));
-            var path = $(this)[0].url.split('/');
-            modal(path[3] + " editado com sucesso!", "Sucesso");
-        },
-        error: function (result) {
-            modal(result.statusText, "Erro");
-        }
-    });
-    return false;
-});

@@ -16,6 +16,24 @@ function isJson(str) {
     return true;
 }
 
+function isHtml(str) {
+    return /<[a-z\][\s\S]*>/i.test(str);
+}
+
+function replaceHtml(str) {
+    document.open();
+    document.write(str);
+    document.close();
+}
+
+function htmlOrModal(str, modalType) {
+    if (isHtml(str)) {
+        replaceHtml(str);
+    } else {
+        modal(str, modalType);
+    }
+}
+
 function appendModal(id) {
     $("body").append("<div id='" + id + "' class='modal fade in' role='dialog'></div>");
 }
@@ -52,3 +70,18 @@ function exclui(Model, Id) {
         }
     });
 }
+
+$('form').submit(function () {
+    $.ajax({
+        url: this.action,
+        type: this.method,
+        data: $(this).serialize(),
+        success: function (result) {
+            htmlOrModal(result, "Sucesso");
+        },
+        error: function (result) {
+            htmlOrModal(result, "Erro");
+        }
+    });
+    return false;
+});

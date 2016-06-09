@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using TrabalhoPO.DAL;
 using TrabalhoPO.Models;
@@ -36,23 +38,30 @@ namespace TrabalhoPO.Controllers
             return View(db.Produtos.Find(id));
         }
 
+        [HttpGet]
         public ActionResult Editar(int id)
         {
             return View(db.Produtos.Find(id));
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Editar(Produto produto)
         {
-            if (ModelState.IsValid)
+            try
             {
-                Salvar(produto);
+                if (ModelState.IsValid)
+                {
+                    Salvar(produto);
 
-                //return new HttpStatusCodeResult(HttpStatusCode.OK, "Produto editado com sucesso!");
+                    return Json("Produto editado com sucesso!");
+                }
+
+                return View(produto);
             }
-
-            return View(produto);
+            catch (Exception ex)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
 
         public ActionResult Criar()
