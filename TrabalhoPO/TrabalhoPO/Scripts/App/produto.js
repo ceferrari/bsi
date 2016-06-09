@@ -69,7 +69,7 @@ function erro(result) {
     modal(result.statusText, "Erro");
 }
 
-$('form2').submit(function () {
+$('form').submit(function () {
     $.ajax({
         url: this.action,
         type: this.method,

@@ -1,4 +1,4 @@
-﻿namespace TrabalhoPO.Models
+﻿namespace TrabalhoPO.Models.Interfaces
 {
     public interface IIdentificavel
     {

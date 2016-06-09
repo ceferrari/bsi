@@ -26,7 +26,7 @@
                     @Html.Raw(Model.TextoBotaoSecundario)
                 </button>
             }
-            <button type="button" class="btn btn-default btn-custom" data-dismiss="modal">
+            <button type="button" class="@Html.Raw(Model.ClasseBotaoPadrao)" data-dismiss="modal">
                 @Html.Raw(Model.TextoBotaoPadrao)
             </button>
         </div>

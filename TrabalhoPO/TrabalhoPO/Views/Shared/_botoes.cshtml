@@ -1,4 +1,4 @@
-﻿@model TrabalhoPO.Models.IIdentificavel
+﻿@model TrabalhoPO.Models.Interfaces.IIdentificavel
 
 <span class="pull-left">
     <a href="#" onclick="javascript:history.go(-1)" class="btn btn-default btn-custom">
@@ -13,7 +13,7 @@
             <span class="fa fa-plus" aria-hidden="true"></span>
             @(Model is TrabalhoPO.Models.Categoria ? "Nova" : "Novo")
         </a>
-        <a href="#" onclick="excluiModal('@ViewBag.Modelo', @Model.Id);" class="btn btn-danger btn-custom">
+        <a href="@Url.Action("Excluir", ViewBag.Modelo, new { id = Model.Id })" class="btn btn-danger btn-custom">
             <span class="fa fa-trash-o" aria-hidden="true"></span>
             Excluir
         </a>

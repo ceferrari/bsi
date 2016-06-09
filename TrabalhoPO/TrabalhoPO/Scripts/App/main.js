@@ -16,26 +16,28 @@ function isJson(str) {
     return true;
 }
 
-function appendModal(id, data) {
+function appendModal(id) {
     $("body").append("<div id='" + id + "' class='modal fade in' role='dialog'></div>");
-    $("#" + id).html(data);
-    $("#" + id).modal("show");
 }
 
-function modal(Params, Acao) {
-    var url = "/Modal/" + (Acao || "Erro");
-    if (!isJson(Params)) {
-        Params = "{ 'Mensagem':'" + Params + "'}";
+function showModal(id, data) {
+    appendModal(id);
+    $("#" + id).html(data).modal("show");
+}
+
+$("a[data-toggle=modal]").on("click", function () {
+    var id = $(this).data("target");
+    appendModal(id);
+    $("#" + id).load(this.href).modal("show");
+});
+
+function modal(Modal, Tipo) {
+    var url = "/Home/Modal";
+    if (!isJson(Modal)) {
+        Modal = "{ 'Mensagem':'" + Modal + "'}";
     }
-    $.get(url, { json: Params }, function (data) {
-        appendModal(data.Id, data)
-    });
-}
-
-function excluiModal(Model, Id) {
-    var url = "/" + Model + "/Excluir";
-    $.get(url, { id: Id }, function (data) {
-        appendModal("ExcluirModal", data)
+    $.get(url, { jsonModal: Modal, tipo: Tipo }, function (data) {
+        showModal(data.Id, data)
     });
 }
 

@@ -2,10 +2,10 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TrabalhoPO.DAL;
 using TrabalhoPO.Models;
+using TrabalhoPO.Models.Factories;
 using TrabalhoPO.Shared;
 
 namespace TrabalhoPO.Controllers
@@ -81,9 +81,15 @@ namespace TrabalhoPO.Controllers
         public ActionResult Excluir(int id)
         {
             Produto produto = db.Produtos.Find(id);
-            object obj = new { modelo = "Produto", id = produto.Id, descricao = produto.Descricao };
 
-            return RedirectToAction("Excluir", "Modal", obj);
+            Modal modal = new ModalFactory().criar(TipoModal.Excluir, new Modal()
+            {
+                Titulo = "Excluir Produto",
+                Mensagem = "Tem certeza que deseja excluir o produto <strong>" + produto.Id + " - " + produto.Descricao + "</strong> ?",
+                AcaoBotaoSecundario = "exclui('Produto'," + id + ")"
+            });
+
+            return PartialView("~/Views/Shared/_Modal.cshtml", modal);
         }
 
         [HttpPost]
@@ -111,7 +117,6 @@ namespace TrabalhoPO.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Insere(int id)
         {
             try
@@ -129,7 +134,6 @@ namespace TrabalhoPO.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Retira(int id)
         {
             try
@@ -142,14 +146,11 @@ namespace TrabalhoPO.Controllers
             }
             catch (Exception ex)
             {
-                string mensagem = utils.Modal(ex.Message);
-
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, mensagem);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
             }
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult AumentaMinimo(int id)
         {
             try
@@ -167,7 +168,6 @@ namespace TrabalhoPO.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult DiminuiMinimo(int id)
         {
             try

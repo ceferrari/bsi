@@ -1,4 +1,4 @@
-﻿@model TrabalhoPO.Models.IIdentificavel
+﻿@model TrabalhoPO.Models.Interfaces.IIdentificavel
 
 <a href="@Url.Action("Detalhes", ViewBag.Modelo, new { id = Model.Id })" class="btn btn-sm btn-primary">
     <span class="fa fa-eye" aria-hidden="true"></span>
@@ -6,6 +6,6 @@
 <a href="@Url.Action("Editar", ViewBag.Modelo, new { id = Model.Id })" class="btn btn-sm btn-warning">
     <span class="fa fa-edit" aria-hidden="true"></span>
 </a>
-<a href="#" onclick="excluiModal('@ViewBag.Modelo', @Model.Id);" class="btn btn-sm btn-danger">
+<a href="@Url.Action("Excluir", ViewBag.Modelo, new { id = Model.Id })" class="btn btn-sm btn-danger" data-toggle="modal" data-target="ExcluirModal">
     <span class="fa fa-trash-o" aria-hidden="true"></span>
 </a>
