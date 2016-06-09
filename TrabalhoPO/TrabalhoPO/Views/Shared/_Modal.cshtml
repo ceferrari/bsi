@@ -1,34 +1,36 @@
 ﻿@model TrabalhoPO.Models.Modal
 
-<div id='@Html.Raw(Model.Id)' class='modal-dialog'>
-    <div class="modal-content">
-        <div class="modal-header @Html.Raw(Model.ClasseCabecalho)">
-            <button type="button" class="close" data-dismiss="modal">
-                &times;
-            </button>
-            <h4 class="modal-title">
-                <span class="@Html.Raw(Model.IconeCabecalho)" aria-hidden="true"></span>
-                &nbsp;
-                <strong>
-                    @Html.Raw(Model.Titulo)
-                </strong>
-            </h4>
-        </div>
-        <div class="modal-body">
-            <h4>
-                @Html.Raw(Model.Mensagem)
-            </h4>
-        </div>
-        <div class="modal-footer">
-            @if (Model.TextoBotaoSecundario != null && Model.AcaoBotaoSecundario != null)
-            {
-                <button type="button" class="@Html.Raw(Model.ClasseBotaoSecundario)" data-dismiss="modal" onclick="@Html.Raw(Model.AcaoBotaoSecundario)">
-                    @Html.Raw(Model.TextoBotaoSecundario)
+<div id='@Html.Raw(Model.Id)' class='modal fade in' role='dialog'>
+    <div class='modal-dialog'>
+        <div class="modal-content">
+            <div class="modal-header @Html.Raw(Model.ClasseCabecalho)">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
                 </button>
-            }
-            <button type="button" class="@Html.Raw(Model.ClasseBotaoPadrao)" data-dismiss="modal">
-                @Html.Raw(Model.TextoBotaoPadrao)
-            </button>
+                <h4 class="modal-title">
+                    <span class="@Html.Raw(Model.IconeCabecalho)" aria-hidden="true"></span>
+                    &nbsp;
+                    <strong>
+                        @Html.Raw(Model.Titulo)
+                    </strong>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <h4>
+                    @Html.Raw(Model.Mensagem)
+                </h4>
+            </div>
+            <div class="modal-footer">
+                @if (Model.TextoBotaoSecundario != null && Model.AcaoBotaoSecundario != null)
+            {
+                    <button type="button" class="@Html.Raw(Model.ClasseBotaoSecundario)" data-dismiss="modal" onclick="@Html.Raw(Model.AcaoBotaoSecundario)">
+                        @Html.Raw(Model.TextoBotaoSecundario)
+                    </button>
+                }
+                <button type="button" class="@Html.Raw(Model.ClasseBotaoPadrao)" data-dismiss="modal">
+                    @Html.Raw(Model.TextoBotaoPadrao)
+                </button>
+            </div>
         </div>
     </div>
 </div>

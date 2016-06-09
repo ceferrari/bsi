@@ -1,27 +1,29 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TrabalhoPO.DAL;
 using TrabalhoPO.Models;
 using TrabalhoPO.Models.Factories;
-using TrabalhoPO.Shared;
 
 namespace TrabalhoPO.Controllers
 {
     [Authorize]
     public class ProdutoController : Controller
     {
+        #region Propriedades e Construtores
+
         private MyContext db = new MyContext();
-        private Utils utils = new Utils();
 
         public ProdutoController()
         {
             ViewBag.Categorias = db.Categorias.ToList();
         }
+
+        #endregion
+
+        #region Métodos GET
 
         public ActionResult Index()
         {
@@ -38,13 +40,38 @@ namespace TrabalhoPO.Controllers
             return View(db.Produtos.Find(id));
         }
 
-        [HttpGet]
         public ActionResult Editar(int id)
         {
             return View(db.Produtos.Find(id));
         }
 
+        public ActionResult Criar()
+        {
+            ViewBag.NextId = db.Produtos.Max(x => x.Id) + 1;
+
+            return View(new Produto());
+        }
+
+        public ActionResult Excluir(int id)
+        {
+            Produto produto = db.Produtos.Find(id);
+
+            Modal modal = new ModalFactory().criar(TipoModal.Excluir, new Modal()
+            {
+                Titulo = "Excluir Produto",
+                Mensagem = "Tem certeza que deseja excluir o produto <strong>" + produto.Id + " - " + produto.Descricao + "</strong> ?",
+                AcaoBotaoSecundario = "exclui('Produto'," + id + ")"
+            });
+
+            return PartialView("~/Views/Shared/_Modal.cshtml", modal);
+        }
+
+        #endregion
+
+        #region Métodos POST
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Editar(Produto produto)
         {
             try
@@ -64,41 +91,27 @@ namespace TrabalhoPO.Controllers
             }
         }
 
-        public ActionResult Criar()
-        {
-            ViewBag.NextId = db.Produtos.Max(x => x.Id) + 1;
-
-            return View(new Produto());
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Criar(Produto produto)
         {
-            if (ModelState.IsValid)
+            try
             {
-                Salvar(produto);
+                if (ModelState.IsValid)
+                {
+                    Salvar(produto);
 
-                return RedirectToAction("Index");
+                    return Json("Produto criado com sucesso!");
+                }
+
+                ViewBag.NextId = db.Produtos.Max(x => x.Id) + 1;
+
+                return View(produto);
             }
-
-            ViewBag.NextId = db.Produtos.Max(x => x.Id) + 1;
-
-            return View(produto);
-        }
-
-        public ActionResult Excluir(int id)
-        {
-            Produto produto = db.Produtos.Find(id);
-
-            Modal modal = new ModalFactory().criar(TipoModal.Excluir, new Modal()
+            catch (Exception ex)
             {
-                Titulo = "Excluir Produto",
-                Mensagem = "Tem certeza que deseja excluir o produto <strong>" + produto.Id + " - " + produto.Descricao + "</strong> ?",
-                AcaoBotaoSecundario = "exclui('Produto'," + id + ")"
-            });
-
-            return PartialView("~/Views/Shared/_Modal.cshtml", modal);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
 
         [HttpPost]
@@ -118,14 +131,8 @@ namespace TrabalhoPO.Controllers
             }
         }
 
-        private void Salvar(Produto produto)
-        {
-            produto.AtualizaCampos();
-            db.Set<Produto>().AddOrUpdate(produto);
-            db.SaveChanges();
-        }
-
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Insere(int id)
         {
             try
@@ -143,6 +150,7 @@ namespace TrabalhoPO.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Retira(int id)
         {
             try
@@ -160,6 +168,7 @@ namespace TrabalhoPO.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AumentaMinimo(int id)
         {
             try
@@ -177,6 +186,7 @@ namespace TrabalhoPO.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult DiminuiMinimo(int id)
         {
             try
@@ -192,5 +202,18 @@ namespace TrabalhoPO.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
             }
         }
+
+        #endregion
+
+        #region Métodos Privados
+
+        private void Salvar(Produto produto)
+        {
+            produto.AtualizaCampos();
+            db.Set<Produto>().AddOrUpdate(produto);
+            db.SaveChanges();
+        }
+
+        #endregion
     }
 }

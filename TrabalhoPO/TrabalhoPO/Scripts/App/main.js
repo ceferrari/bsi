@@ -3,8 +3,18 @@
 });
 
 $(document).on("hidden.bs.modal", ".modal", function () {
+    var url = window.location.href;
+    if (/Criar/i.test(url)) {
+        window.location.href = url.replace(/Criar.*/, 'Index');
+        return false;
+    } 
+    if (/Editar/i.test(url)) {
+        $.get(window.location.href, function (data) {
+            replaceHtml(data);
+        });
+        return false;
+    }
     $(this).remove();
-    //history.go(-1);
 });
 
 function isJson(str) {
@@ -34,19 +44,15 @@ function htmlOrModal(str, modalType) {
     }
 }
 
-function appendModal(id) {
-    $("body").append("<div id='" + id + "' class='modal fade in' role='dialog'></div>");
-}
-
-function showModal(id, data) {
-    appendModal(id);
-    $("#" + id).html(data).modal("show");
+function showModal(data) {
+    $("body").append(data);
+    $(".modal").modal("show");
 }
 
 $("a[data-toggle=modal]").on("click", function () {
-    var id = $(this).data("target");
-    appendModal(id);
-    $("#" + id).load(this.href).modal("show");
+    $.get(this.href, function (data) {
+        showModal(data);
+    });
 });
 
 function modal(Modal, Tipo) {
@@ -55,13 +61,19 @@ function modal(Modal, Tipo) {
         Modal = "{ 'Mensagem':'" + Modal + "'}";
     }
     $.get(url, { jsonModal: Modal, tipo: Tipo }, function (data) {
-        showModal(data.Id, data)
+        showModal(data)
     });
 }
 
+function AddAntiForgeryToken(data) {
+    data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+    return data;
+};
+
 function exclui(Model, Id) {
     var url = "/" + Model + "/Excluir";
-    $.post(url, { id: Id }, function (resposta) {
+    var data = AddAntiForgeryToken({ id: Id });
+    $.post(url, data, function (resposta) {
         if ($("#" + Model + Id).length) {
             $("#" + Model + Id).remove();
         }
@@ -71,11 +83,11 @@ function exclui(Model, Id) {
     });
 }
 
-$('form').submit(function () {
+$(".form-crud").submit(function () {
     $.ajax({
         url: this.action,
         type: this.method,
-        data: $(this).serialize(),
+        data: AddAntiForgeryToken($(this).serialize()),
         success: function (result) {
             htmlOrModal(result, "Sucesso");
         },

@@ -20,7 +20,8 @@ function insere(Id) {
         altera("#EstoqueAtual", 1);
     } else {
         var url = "/Produto/Insere";
-        $.post(url, { id: Id }).done(sucesso).fail(erro);
+        var data = AddAntiForgeryToken({ id: Id });
+        $.post(url, data).done(sucesso).fail(erro);
     }
 }
 
@@ -29,7 +30,8 @@ function retira(Id) {
         altera("#EstoqueAtual", -1);
     } else {
         var url = "/Produto/Retira";
-        $.post(url, { id: Id }).done(sucesso).fail(erro);
+        var data = AddAntiForgeryToken({ id: Id });
+        $.post(url, data).done(sucesso).fail(erro);
     }
 }
 
@@ -38,7 +40,8 @@ function aumentaMinimo(Id) {
         altera("#EstoqueMinimo", 1);
     } else {
         var url = "/Produto/AumentaMinimo";
-        $.post(url, { id: Id }).done(sucesso).fail(erro);
+        var data = AddAntiForgeryToken({ id: Id });
+        $.post(url, data).done(sucesso).fail(erro);
     }
 }
 
@@ -47,7 +50,8 @@ function diminuiMinimo(Id) {
         altera("#EstoqueMinimo", -1);
     } else {
         var url = "/Produto/DiminuiMinimo";
-        $.post(url, { id: Id }).done(sucesso).fail(erro);
+        var data = AddAntiForgeryToken({ id: Id });
+        $.post(url, data).done(sucesso).fail(erro);
     }
 }
 

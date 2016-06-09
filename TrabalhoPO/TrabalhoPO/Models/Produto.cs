@@ -38,7 +38,7 @@ namespace TrabalhoPO.Models
 
         public bool SetDescricao(string descricao)
         {
-            if (descricao.Equals(""))
+            if (String.IsNullOrWhiteSpace(descricao))
             {
                 throw new Exception("O campo Descrição não pode ser vazio.");
             }
@@ -53,7 +53,7 @@ namespace TrabalhoPO.Models
         {
             if (preco < 0)
             {
-                throw new Exception("Nâo é possível definir um valor negativo para o Preço.");
+                throw new Exception("O Preço não pode ser negativo.");
             }
 
             Preco = preco;
@@ -66,7 +66,7 @@ namespace TrabalhoPO.Models
         {
             if (qtd < 0)
             {
-                throw new Exception("O valor informado é inválido.");
+                throw new Exception("O Estoque Atual não pode ser negativo.");
             }
 
             EstoqueAtual = qtd;
@@ -79,7 +79,7 @@ namespace TrabalhoPO.Models
         {
             if (qtd < 0)
             {
-                throw new Exception("O valor informado é inválido.");
+                throw new Exception("O Estoque Mínimo não pode ser negativo.");
             }
 
             EstoqueMinimo = qtd;

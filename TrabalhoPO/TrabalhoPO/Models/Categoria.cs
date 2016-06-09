@@ -18,7 +18,7 @@ namespace TrabalhoPO.Models
 
         public bool SetDescricao(string descricao)
         {
-            if (descricao.Equals(""))
+            if (String.IsNullOrWhiteSpace(descricao))
             {
                 throw new Exception("O campo Descrição não pode ser vazio.");
             }
