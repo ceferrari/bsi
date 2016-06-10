@@ -1,0 +1,49 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Meus Contatos
+    </div>
+    <div class="panel-body">
+        <div class="col-md-6">
+            <a class="btn btn-primary" href="#/contatos/novo">
+                <i class="glyphicon glyphicon-file"></i>
+                Novo
+            </a>
+        </div>
+        <div class="col-xs-10 col-lg-6 col-md-6">
+            <div class="input-group">
+                <input type="text" id="searchText" class="form-control pull-right" placeholder="Buscar..." ng-model="search_txt">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="text-muted glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="table table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Sobrenome</td>
+                        <td>Nome</td>
+                        <td>Email</td>
+                        <td>Celular</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="contato in contatos | filter:search_txt ">
+                        <td>{{contato.sobrenome}}</td>
+                        <td>{{contato.nome}}</td>
+                        <td>{{contato.email}}</td>
+                        <td>{{contato.celular}}</td>
+                        <td>
+                            <a class="btn btn-primary" href="#/contatos/{{contato.id}}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

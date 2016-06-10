@@ -1,0 +1,65 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h3 class="modal-title">
+        Apagar Contato - {{contato.nome}} {{contato.sobrenome}}
+    </h3>
+</div>
+<div class="modal-body">
+    <div class="container">
+        <form class="form-horizontal" role="form" id="contatoForm" name="contatoForm">
+            <!--<div class="col-sx-12 col-sm-8 col-md-6 col-lg-6">-->
+            <div class="form-group">
+                <label class="control-label">
+                    Nome
+                </label>
+                <div class="controls">
+                    <input type="text" data-ng-model="contato.nome" class="form-control" ng-disabled="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">
+                    Sobrenome
+                </label>
+                <div class="controls">
+                    <input type="text" data-ng-model="contato.sobrenome" class="form-control" ng-disabled="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">
+                    E-mail
+                </label>
+                <div class="controls">
+                    <input type="text" data-ng-model="contato.email" class="form-control" ng-disabled="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">
+                    Celular #
+                </label>
+                <div class="controls">
+                    <input type="text" data-ng-model="contato.celular" class="form-control" ng-disabled="true">
+                </div>
+            </div>
+            <!--</div>-->
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="row">
+        <div class="col-md-6 pull-left">
+            <div data-ng-show="error" class="text-danger">
+                <strong data-ng-bind="error"></strong>
+            </div>
+        </div>
+        <div class="col-md-6 pull-right">
+            <button class="btn btn-warning" ng-click="cancel()">
+                <i class="glyphicon glyphicon-thumbs-down"></i>
+                Cancelar
+            </button>
+            <button class="btn btn-danger" ng-click="ok(contato)">
+                <i class="glyphicon glyphicon-trash"></i>
+                Confirmar
+            </button>
+        </div>
+    </div>
+</div>
