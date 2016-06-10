@@ -23,11 +23,9 @@ function ($http, $q) {
 
         $http.post(controllerQuery, _contato)
           .then(function (result) {
-              alert(1);
               deferred.resolve();
           },
           function (error) {
-              alert(JSON.stringify(error));
               deferred.reject();
           });
         return deferred.promise;
