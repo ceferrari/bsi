@@ -49,7 +49,7 @@ namespace TrabalhoPO
                 }
                 else
                 {
-                    httpContext.Response.Redirect("~/Error");
+                    httpContext.Response.Redirect("~/Home/Erro");
                 }
             }
         }

@@ -7,6 +7,11 @@ namespace TrabalhoPO.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Erro()
+        {
+            return View("~/Views/Shared/Erro.cshtml");
+        }
+
         public ActionResult Modal(string jsonModal, string tipo)
         {
             Modal modal = new ModalFactory().criar(tipo, new JavaScriptSerializer().Deserialize<Modal>(jsonModal));

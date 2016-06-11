@@ -23,7 +23,7 @@
             <div class="input-group-addon">
                 <span class="fa fa-at" aria-hidden="true"></span>
             </div>
-            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "E-mail" })
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @type = "email", placeholder = "E-mail" })
         </div>
         <div class="col-sm-12 text-danger">
             @Html.ValidationMessageFor(x => x.Email)

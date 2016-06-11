@@ -133,7 +133,7 @@ namespace TrabalhoPO.Controllers
 
         #endregion
 
-        #region Métodos Privados
+        #region Métodos Privados e Protegidos
 
         private void Salvar(Categoria categoria)
         {
