@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Globalization;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -7,18 +8,21 @@ using TrabalhoPO.Shared;
 
 namespace TrabalhoPO
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.GetCultureInfo("pt-BR");
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("pt-BR");
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
-            ModelBinders.Binders.Add(typeof(int), new IntegerModelBinder());
-            ModelBinders.Binders.Add(typeof(int?), new IntegerModelBinder());
-            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
-            ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
+            //ModelBinders.Binders.Add(typeof(int), new IntegerModelBinder());
+            //ModelBinders.Binders.Add(typeof(int?), new IntegerModelBinder());
+            //ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+            //ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
         }

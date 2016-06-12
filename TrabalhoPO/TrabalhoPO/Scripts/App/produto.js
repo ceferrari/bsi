@@ -1,57 +1,59 @@
 ﻿$(document).ready(function () {
     $("#Preco").on("paste focusout", function () {
-        var valor = parseFloat($(this).val().replace(/\./g, '').replace(',', '.')).toFixed(2);
-        $(this).val((isNaN(valor) || valor < 0 ? 0 : (valor * 1)).toLocaleString([], { minimumFractionDigits: 2 }));
+        var val = $(this).val().toLocaleString();
+        alert(val);
+        //var valor = parseFloat($(this).val().replace(/\./g, '').replace(',', '.')).toFixed(2);
+        //$(this).val((isNaN(valor) || valor < 0 ? 0 : (valor * 1)).toLocaleString([], { minimumFractionDigits: 2 }));
     });
 
     $("#EstoqueAtual, #EstoqueMinimo").on("paste focusout", function () {
-        var valor = parseInt($(this).val().replace(/\./g, ''));
-        $(this).val(isNaN(valor) || valor < 0 ? 0 : (valor * 1).toLocaleString());
+        //var valor = parseInt($(this).val().replace(/\./g, ''));
+        //$(this).val(isNaN(valor) || valor < 0 ? 0 : (valor * 1).toLocaleString());
     });
 });
+
+function getPost(Controller, Action, Id) {
+    $.getJSON("/" + Controller + "/Get", { id: Id }, function (data) {
+        alert(JSON.stringify(data));
+        Model = AddAntiForgeryToken(data);
+        $.post("/" + Controller + "/" + Action, Model).done(sucesso).fail(erro);
+    });
+}
 
 function altera(div, qtd) {
     var valor = parseInt($(div).val().replace(/\./g, ''));
     $(div).val(valor + qtd < 0 ? 0 : (valor + qtd).toLocaleString());
 }
 
-function insere(Id) {
-    if (Id === 0 || Id === null) {
-        altera("#EstoqueAtual", 1);
+function aumentaAtual(Id) {
+    if (Id) {
+        getPost("Produto", "AumentaAtual", Id);
     } else {
-        var url = "/Produto/Insere";
-        var data = AddAntiForgeryToken({ id: Id });
-        $.post(url, data).done(sucesso).fail(erro);
+        altera("#EstoqueAtual", 1);
     }
 }
 
-function retira(Id) {
-    if (Id === 0 || Id === null) {
-        altera("#EstoqueAtual", -1);
+function diminuiAtual(Id) {
+    if (Id) {
+        getPost("Produto", "DiminuiAtual", Id);
     } else {
-        var url = "/Produto/Retira";
-        var data = AddAntiForgeryToken({ id: Id });
-        $.post(url, data).done(sucesso).fail(erro);
+        altera("#EstoqueAtual", -1);
     }
 }
 
 function aumentaMinimo(Id) {
-    if (Id === 0 || Id === null) {
-        altera("#EstoqueMinimo", 1);
+    if (Id) {
+        getPost("Produto", "AumentaMinimo", Id);
     } else {
-        var url = "/Produto/AumentaMinimo";
-        var data = AddAntiForgeryToken({ id: Id });
-        $.post(url, data).done(sucesso).fail(erro);
+        altera("#EstoqueMinimo", 1);
     }
 }
 
 function diminuiMinimo(Id) {
-    if (Id === 0 || Id === null) {
-        altera("#EstoqueMinimo", -1);
+    if (Id) {
+        getPost("Produto", "DiminuiMinimo", Id);
     } else {
-        var url = "/Produto/DiminuiMinimo";
-        var data = AddAntiForgeryToken({ id: Id });
-        $.post(url, data).done(sucesso).fail(erro);
+        altera("#EstoqueMinimo", -1);
     }
 }
 

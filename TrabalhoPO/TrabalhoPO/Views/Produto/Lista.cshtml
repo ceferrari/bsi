@@ -51,15 +51,15 @@
                 </td>
                 <td class="text-right no-text-decoration">
                     <span class="pull-left">
-                        <a href="#" onclick="retira(@produto.Id);">
+                        <a href="#" onclick="diminuiAtual(@produto.Id);">
                             <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
                         </a>
-                        <a href="#" onclick="insere(@produto.Id);">
+                        <a href="#" onclick="aumentaAtual(@produto.Id);">
                             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
                         </a>
                     </span>
                     <span class="pull-right" id="EstoqueAtual@(produto.Id)">
-                        @produto.EstoqueAtual.ToString("N0")
+                        @produto.EstoqueAtual
                     </span>
                 </td>
                 <td class="text-right no-text-decoration">
@@ -72,7 +72,7 @@
                         </a>
                     </span>
                     <span class="pull-right" id="EstoqueMinimo@(produto.Id)">
-                        @produto.EstoqueMinimo.ToString("N0")
+                        @produto.EstoqueMinimo
                     </span>
                 </td>
                 <td class="text-center" id="PrecisaReposicao@(produto.Id)">
@@ -84,9 +84,7 @@
                     </a>
                 </td>
                 <td id="DataAlteracao@(produto.Id)">
-                    @produto.DataAlteracao.Value.ToString("dd/MM/yyyy")
-                    @@
-                    @produto.DataAlteracao.Value.ToString("HH:mm:ss")
+                    @produto.DataAlteracao
                 </td>
                 <td class="text-center">
                     @Html.Partial("_BotoesIndex", produto)

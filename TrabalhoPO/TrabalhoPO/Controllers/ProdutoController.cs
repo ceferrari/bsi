@@ -10,11 +10,9 @@ using TrabalhoPO.Models.Factories;
 namespace TrabalhoPO.Controllers
 {
     [Authorize]
-    public class ProdutoController : Controller
+    public class ProdutoController : BaseController
     {
         #region Propriedades e Construtores
-
-        private MyContext db = new MyContext();
 
         public ProdutoController()
         {
@@ -33,6 +31,11 @@ namespace TrabalhoPO.Controllers
         public ActionResult Lista()
         {
             return View(db.Produtos.ToList());
+        }
+
+        public ActionResult Get(int id)
+        {
+            return Json(db.Produtos.Find(id), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Detalhes(int id)
@@ -133,12 +136,11 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Insere(int id)
+        public ActionResult AumentaAtual(Produto produto)
         {
             try
             {
-                Produto produto = db.Produtos.Find(id);
-                produto.Insere(1);
+                produto.AumentaAtual(1);
                 db.SaveChanges();
 
                 return Json(produto);
@@ -151,12 +153,18 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Retira(int id)
+        public ActionResult DiminuiAtual(Produto produto)
         {
             try
             {
-                Produto produto = db.Produtos.Find(id);
-                produto.Retira(1);
+                produto.DiminuiAtual(1);
+
+                if (!ModelState.IsValid)
+                {
+                    var err = ModelState.Values.SelectMany(x => x.Errors);
+                    //throw new Exception();
+                }
+                
                 db.SaveChanges();
 
                 return Json(produto);
@@ -169,11 +177,10 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AumentaMinimo(int id)
+        public ActionResult AumentaMinimo(Produto produto)
         {
             try
             {
-                Produto produto = db.Produtos.Find(id);
                 produto.SetEstoqueMinimo(produto.EstoqueMinimo + 1);
                 db.SaveChanges();
 
@@ -187,11 +194,10 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DiminuiMinimo(int id)
+        public ActionResult DiminuiMinimo(Produto produto)
         {
             try
             {
-                Produto produto = db.Produtos.Find(id);
                 produto.SetEstoqueMinimo(produto.EstoqueMinimo - 1);
                 db.SaveChanges();
 

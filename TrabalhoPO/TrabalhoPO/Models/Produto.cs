@@ -12,28 +12,37 @@ namespace TrabalhoPO.Models
 
         [Required(ErrorMessage = "O campo Descrição é obrigatório.")]
         [StringLength(128, ErrorMessage = "A Descrição deve ter no máximo {1} caracteres.")]
+        [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "O campo Preço é obrigatório.")]
         [Range(typeof(decimal), "0,01", "500,00", ErrorMessage = "O valor do Preço deve estar entre R$ {1} e R$ {2}.")]
-        //[RegularExpression(@"^(?!0)(?:\d{1,3}|1(?:\.\d{3})+),\d{2}$", ErrorMessage = "O valor do Preço deve estar entre R$ 0,00 e R$ 500,00.")]
+        [Display(Name = "Preço")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N4}")]
+        [DataType(DataType.Currency)]
         public decimal Preco { get; set; }
 
         [Required(ErrorMessage = "O campo Estoque Atual é obrigatório.")]
         [Range(0, 5000, ErrorMessage = "O valor do Estoque Atual deve estar entre 0 e 5.000.")]
-        //[RegularExpression(@"^(?!0)(?:\d{1,3}|[1-4](?:\.\d{3})+)$", ErrorMessage = "O valor do Estoque Atual deve estar entre 0 e 5.000.")]
+        [Display(Name = "Estoque Atual")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N0}")]
         public int EstoqueAtual { get; set; }
 
         [Required(ErrorMessage = "O campo Estoque Mínimo é obrigatório.")]
         [Range(0, 2000, ErrorMessage = "O valor do Estoque Mínimo deve estar entre 0 e 2.000.")]
-        //[RegularExpression(@"^(?!0)(?:\d{1,3}|1(?:\.\d{3})+)$", ErrorMessage = "O valor do Estoque Mínimo deve estar entre 0 e 2.000.")]
+        [Display(Name = "Estoque Mínimo")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N0}")]
         public int EstoqueMinimo { get; set; }
 
+        [Display(Name = "Precisa Reposição")]
         public bool? PrecisaReposicao { get; set; }
 
         [Required(ErrorMessage = "O campo Categoria é obrigatório.")]
         public int Categoria { get; set; }
 
+        [Display(Name = "Data Alteração")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.DateTime)]
         public DateTime? DataAlteracao { get; set; }
 
         public bool SetDescricao(string descricao)
@@ -66,7 +75,7 @@ namespace TrabalhoPO.Models
         {
             if (qtd < 0)
             {
-                throw new Exception("O Estoque Atual não pode ser negativo.");
+                //throw new Exception("O Estoque Atual não pode ser negativo.");
             }
 
             EstoqueAtual = qtd;
@@ -88,18 +97,18 @@ namespace TrabalhoPO.Models
             return true;
         }
 
-        public bool Insere(int qtd)
+        public bool AumentaAtual(int qtd)
         {
             SetEstoqueAtual(EstoqueAtual + qtd);
 
             return true;
         }
 
-        public bool Retira(int qtd)
+        public bool DiminuiAtual(int qtd)
         {
             if (qtd > EstoqueAtual)
             {
-                throw new Exception("Estoque insuficiente para a operação solicitada.");
+                //throw new Exception("Estoque insuficiente para a operação solicitada.");
             }
 
             SetEstoqueAtual(EstoqueAtual - qtd);

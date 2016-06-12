@@ -1,6 +1,6 @@
 ﻿@model TrabalhoPO.Models.Produto
 
-@{ 
+@{
     ViewBag.Titulo = "Novo Produto";
     ViewBag.Modelo = "Produto";
     ViewBag.Acao = "Criar";
@@ -14,43 +14,43 @@
     @Html.AntiForgeryToken()
 
     <div class="form-group">
-        @Html.Label("IdAux", null, new { @class = "col-sm-2 control-label hidden" })
-        @Html.LabelFor(x => x.Id, "Id:", new { @class = "col-sm-2 control-label" })
+        @Html.Label("IdAux", new { @class = "col-sm-2 control-label hidden" })
+        @Html.LabelFor(x => x.Id, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9">
             @Html.TextBox("IdAux", (string)ViewBag.NextId.ToString(), new { @class = "form-control", disabled = "disabled" })
-            @Html.TextBoxFor(x => x.Id, Model.Id.ToString(), new { @class = "form-control", @type = "hidden" })
+            @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @type = "hidden" })
         </div>
         <div class="col-sm-9 col-sm-offset-2 text-danger">
             @Html.ValidationMessageFor(x => x.Id)
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.Descricao, "Descrição:", new { @class = "col-sm-2 control-label" })
+        @Html.LabelFor(x => x.Descricao, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9">
-            @Html.TextBoxFor(x => x.Descricao, Model.Descricao, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.Descricao, new { @class = "form-control" })
         </div>
         <div class="col-sm-9 col-sm-offset-2 text-danger">
             @Html.ValidationMessageFor(x => x.Descricao)
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.Preco, "Preço:", new { @class = "col-sm-2 control-label" })
+        @Html.LabelFor(x => x.Preco, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
             <span class="input-group-addon cinza"><strong>R$</strong></span>
-            @Html.TextBoxFor(x => x.Preco, "0,00", new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.Preco, new { @class = "form-control" })
         </div>
         <div class="col-sm-9 col-sm-offset-2 text-danger">
             @Html.ValidationMessageFor(x => x.Preco)
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.EstoqueAtual, "Estoque Atual:", new { @class = "col-sm-2 control-label" })
+        @Html.LabelFor(x => x.EstoqueAtual, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
-            @Html.TextBoxFor(x => x.EstoqueAtual, Model.EstoqueAtual.ToString("N0"), new { @class = "form-control" })
-            <a href="#" onclick="retira(@Model.Id);" class="input-group-addon">
+            @Html.TextBoxFor(x => x.EstoqueAtual, new { @class = "form-control" })
+            <a href="#" onclick="diminuiAtual(@Model.Id);" class="input-group-addon">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </a>
-            <a href="#" onclick="insere(@Model.Id);" class="input-group-addon">
+            <a href="#" onclick="aumentaAtual(@Model.Id);" class="input-group-addon">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
@@ -59,9 +59,9 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.EstoqueMinimo, "Estoque Mínimo:", new { @class = "col-sm-2 control-label" })
+        @Html.LabelFor(x => x.EstoqueMinimo, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
-            @Html.TextBoxFor(x => x.EstoqueMinimo, Model.EstoqueMinimo.ToString("N0"), new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.EstoqueMinimo, new { @class = "form-control" })
             <a href="#" onclick="diminuiMinimo(@Model.Id);" class="input-group-addon">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </a>
@@ -74,14 +74,11 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.Categoria, "Categoria:", new { @class = "col-sm-2 control-label" })
+        @Html.LabelFor(x => x.Categoria, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9">
-            <select class="form-control" id="Categoria" name="Categoria">
-                @foreach (var categoria in ViewBag.Categorias)
-                {
-                    <option value="@categoria.Id">@categoria.Descricao</option>
-                }
-            </select>
+            @Html.DropDownListFor(x => x.Categoria,
+                new SelectList(ViewBag.Categorias, "Id", "Descricao", (ViewBag.Categorias as IList<TrabalhoPO.Models.Categoria>).First().Id),
+                new { @class = "form-control" })
         </div>
         <div class="col-sm-9 col-sm-offset-2 text-danger">
             @Html.ValidationMessageFor(x => x.Categoria)

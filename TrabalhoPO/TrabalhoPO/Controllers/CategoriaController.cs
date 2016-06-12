@@ -10,11 +10,9 @@ using TrabalhoPO.Models.Factories;
 namespace TrabalhoPO.Controllers
 {
     [Authorize]
-    public class CategoriaController : Controller
+    public class CategoriaController : BaseController
     {
         #region Propriedades e Construtores
-
-        private MyContext db = new MyContext();
 
         public CategoriaController()
         {

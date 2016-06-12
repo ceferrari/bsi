@@ -9,11 +9,8 @@ using TrabalhoPO.Shared;
 namespace TrabalhoPO.Controllers
 {
     [AllowAnonymous]
-    public class AuthController : Controller
+    public class AuthController : BaseController
     {
-        private MyContext db = new MyContext();
-        private Utils utils = new Utils();
-
         public ActionResult Login()
         {
             return View();
@@ -27,7 +24,7 @@ namespace TrabalhoPO.Controllers
                 return View();
             }
 
-            var senha = utils._SHA256(model.Senha);
+            var senha = new Utils()._SHA256(model.Senha);
             var usuario = db.Usuarios.Where(x => x.Email.Equals(model.Email) && x.Senha.Equals(senha)).FirstOrDefault();
 
             if (usuario != null)
@@ -104,7 +101,7 @@ namespace TrabalhoPO.Controllers
                 return View();
             }
 
-            usuario.Senha = usuario.ConfirmarSenha = utils._SHA256(usuario.Senha);
+            usuario.Senha = usuario.ConfirmarSenha = new Utils()._SHA256(usuario.Senha);
             db.Usuarios.Add(usuario);
             db.SaveChanges();
 

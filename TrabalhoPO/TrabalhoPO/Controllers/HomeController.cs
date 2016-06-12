@@ -5,7 +5,7 @@ using TrabalhoPO.Models.Factories;
 
 namespace TrabalhoPO.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Erro()
         {
