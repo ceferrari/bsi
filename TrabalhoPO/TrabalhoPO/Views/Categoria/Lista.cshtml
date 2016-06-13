@@ -30,7 +30,7 @@
         {
             <tr id="Categoria@(categoria.Id)">
                 <td>
-                    @categoria.Id
+                    @categoria.Id.ToString("N0")
                 </td>
                 <td>
                     @categoria.Descricao
@@ -39,9 +39,7 @@
                     @((ViewBag.Produtos as IList<TrabalhoPO.Models.Produto>).Count(x => x.Categoria == categoria.Id).ToString("N0"))
                 </td>
                 <td id="DataAlteracao@(categoria.Id)">
-                    @categoria.DataAlteracao.Value.ToString("dd/MM/yyyy")
-                    @@
-                    @categoria.DataAlteracao.Value.ToString("HH:mm:ss")
+                    @categoria.DataAlteracao.Value.ToString("dd/MM/yyyy @ HH:mm:ss")
                 </td>
                 <td class="text-center">
                     @Html.Partial("_BotoesIndex", categoria)

@@ -1,19 +1,18 @@
 ﻿$(document).ready(function () {
     $("#Preco").on("paste focusout", function () {
-        var val = $(this).val().toLocaleString();
-        alert(val);
-        //var valor = parseFloat($(this).val().replace(/\./g, '').replace(',', '.')).toFixed(2);
-        //$(this).val((isNaN(valor) || valor < 0 ? 0 : (valor * 1)).toLocaleString([], { minimumFractionDigits: 2 }));
+        var valor = parseFloat($(this).val().replace(/\./g, '').replace(',', '.')).toFixed(2);
+        $(this).val((isNaN(valor) || valor < 0 ? 0 : (valor * 1)).toLocaleString([], { minimumFractionDigits: 2 }));
     });
 
     $("#EstoqueAtual, #EstoqueMinimo").on("paste focusout", function () {
-        //var valor = parseInt($(this).val().replace(/\./g, ''));
-        //$(this).val(isNaN(valor) || valor < 0 ? 0 : (valor * 1).toLocaleString());
+        var valor = parseInt($(this).val().replace(/\./g, ''));
+        $(this).val(isNaN(valor) || valor < 0 ? 0 : (valor * 1).toLocaleString());
     });
 });
 
 function getPost(Controller, Action, Id) {
     $.getJSON("/" + Controller + "/Get", { id: Id }, function (data) {
+        data.Preco = data.Preco.toLocaleString();
         alert(JSON.stringify(data));
         Model = AddAntiForgeryToken(data);
         $.post("/" + Controller + "/" + Action, Model).done(sucesso).fail(erro);

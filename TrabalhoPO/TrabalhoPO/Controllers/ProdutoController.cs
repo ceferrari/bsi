@@ -3,7 +3,6 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using TrabalhoPO.DAL;
 using TrabalhoPO.Models;
 using TrabalhoPO.Models.Factories;
 
@@ -35,6 +34,9 @@ namespace TrabalhoPO.Controllers
 
         public ActionResult Get(int id)
         {
+            var json = Json(db.Produtos.Find(id), JsonRequestBehavior.AllowGet);
+
+            var x = 1;
             return Json(db.Produtos.Find(id), JsonRequestBehavior.AllowGet);
         }
 
@@ -159,7 +161,7 @@ namespace TrabalhoPO.Controllers
             {
                 produto.DiminuiAtual(1);
 
-                if (!ModelState.IsValid)
+                if (!TryValidateModel(produto))
                 {
                     var err = ModelState.Values.SelectMany(x => x.Errors);
                     //throw new Exception();

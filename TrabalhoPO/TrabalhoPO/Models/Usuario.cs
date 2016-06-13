@@ -15,6 +15,7 @@ namespace TrabalhoPO.Models
         [Required(ErrorMessage = "O campo E-mail é obrigatório.")]
         [StringLength(128, ErrorMessage = "O E-mail deve ter no máximo {1} caracteres.")]
         [EmailAddress(ErrorMessage = "O valor informado não é um endereço de e-mail válido.")]
+        [Display(Name = "E-mail")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
@@ -25,6 +26,7 @@ namespace TrabalhoPO.Models
 
         [Required(ErrorMessage = "O campo Confirmar Senha é obrigatório.")]
         [Compare("Senha", ErrorMessage = "As senhas não conferem.")]
+        [Display(Name = "Confirmar Senha")]
         [DataType(DataType.Password)]
         //[NotMapped]
         public string ConfirmarSenha { get; set; }

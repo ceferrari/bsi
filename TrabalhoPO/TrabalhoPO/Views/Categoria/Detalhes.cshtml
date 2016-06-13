@@ -22,7 +22,7 @@
                 <strong>Id</strong>
             </td>
             <td>
-                @Model.Id
+                @Model.Id.ToString("N0")
             </td>
         </tr>
         <tr>
@@ -46,9 +46,7 @@
                 <strong>Data Alteração</strong>
             </td>
             <td>
-                @Model.DataAlteracao.Value.ToString("dd/MM/yyyy")
-                @@
-                @Model.DataAlteracao.Value.ToString("HH:mm:ss")
+                @Model.DataAlteracao.Value.ToString("dd/MM/yyyy @ HH:mm:ss")
             </td>
         </tr>
     </tbody>

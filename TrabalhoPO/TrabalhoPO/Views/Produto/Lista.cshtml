@@ -36,7 +36,7 @@
         {
             <tr id="Produto@(produto.Id)">
                 <td>
-                    @produto.Id
+                    @produto.Id.ToString("N0")
                 </td>
                 <td>
                     @produto.Descricao
@@ -46,7 +46,7 @@
                         R$
                     </span>
                     <span class="pull-right">
-                        @produto.Preco
+                        @produto.Preco.ToString("N2")
                     </span>
                 </td>
                 <td class="text-right no-text-decoration">
@@ -59,7 +59,7 @@
                         </a>
                     </span>
                     <span class="pull-right" id="EstoqueAtual@(produto.Id)">
-                        @produto.EstoqueAtual
+                        @produto.EstoqueAtual.ToString("N0")
                     </span>
                 </td>
                 <td class="text-right no-text-decoration">
@@ -72,11 +72,11 @@
                         </a>
                     </span>
                     <span class="pull-right" id="EstoqueMinimo@(produto.Id)">
-                        @produto.EstoqueMinimo
+                        @produto.EstoqueMinimo.ToString("N0")
                     </span>
                 </td>
                 <td class="text-center" id="PrecisaReposicao@(produto.Id)">
-                    @Html.Raw(produto.PrecisaReposicao == true ? "Sim" : "Não")
+                    @(produto.PrecisaReposicao == true ? "Sim" : "Não")
                 </td>
                 <td>
                     <a href="@Url.Action("Detalhes", "Categoria", new { id = produto.Categoria })">
@@ -84,7 +84,7 @@
                     </a>
                 </td>
                 <td id="DataAlteracao@(produto.Id)">
-                    @produto.DataAlteracao
+                    @produto.DataAlteracao.Value.ToString("dd/MM/yyyy @ HH:mm:ss")
                 </td>
                 <td class="text-center">
                     @Html.Partial("_BotoesIndex", produto)
@@ -95,5 +95,5 @@
 </table>
 
 @section Scripts {
-    @Scripts.Render("~/Scripts/App/produto.min.js")
+    @Scripts.Render("~/Scripts/produto")
 }

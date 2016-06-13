@@ -3,7 +3,6 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using TrabalhoPO.DAL;
 using TrabalhoPO.Models;
 using TrabalhoPO.Models.Factories;
 

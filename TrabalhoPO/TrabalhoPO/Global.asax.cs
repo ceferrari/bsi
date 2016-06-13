@@ -1,8 +1,10 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 using TrabalhoPO.Shared;
 
@@ -18,11 +20,17 @@ namespace TrabalhoPO
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //ModelBinders.Binders.Add(typeof(int), new IntegerModelBinder());
-            //ModelBinders.Binders.Add(typeof(int?), new IntegerModelBinder());
-            //ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
-            //ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
+            ClientDataTypeModelValidatorProvider.ResourceClassKey = "ValidationMessages";
+            DefaultModelBinder.ResourceClassKey = "ValidationMessages";
+
+            ModelBinders.Binders.Add(typeof(int), new IntegerModelBinder());
+            ModelBinders.Binders.Add(typeof(int?), new IntegerModelBinder());
+            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+            ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
+            ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
+            ModelBinders.Binders.Add(typeof(DateTime?), new DateTimeModelBinder());
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
         }

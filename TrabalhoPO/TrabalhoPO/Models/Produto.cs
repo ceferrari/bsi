@@ -16,20 +16,20 @@ namespace TrabalhoPO.Models
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "O campo Preço é obrigatório.")]
-        [Range(typeof(decimal), "0,01", "500,00", ErrorMessage = "O valor do Preço deve estar entre R$ {1} e R$ {2}.")]
+        [Range(typeof(decimal), "0,01", "1500,00", ErrorMessage = "O valor do Preço deve estar entre R$ {1} e R$ {2}.")]
         [Display(Name = "Preço")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N4}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N2}")]
         [DataType(DataType.Currency)]
         public decimal Preco { get; set; }
 
         [Required(ErrorMessage = "O campo Estoque Atual é obrigatório.")]
-        [Range(0, 5000, ErrorMessage = "O valor do Estoque Atual deve estar entre 0 e 5.000.")]
+        [Range(0, 5000, ErrorMessage = "O valor do Estoque Atual deve estar entre {1} e {2}.")]
         [Display(Name = "Estoque Atual")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N0}")]
         public int EstoqueAtual { get; set; }
 
         [Required(ErrorMessage = "O campo Estoque Mínimo é obrigatório.")]
-        [Range(0, 2000, ErrorMessage = "O valor do Estoque Mínimo deve estar entre 0 e 2.000.")]
+        [Range(0, 2000, ErrorMessage = "O valor do Estoque Mínimo deve estar entre {1} e {2}.")]
         [Display(Name = "Estoque Mínimo")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N0}")]
         public int EstoqueMinimo { get; set; }

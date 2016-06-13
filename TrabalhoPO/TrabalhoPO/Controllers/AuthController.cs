@@ -2,7 +2,6 @@
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
-using TrabalhoPO.DAL;
 using TrabalhoPO.Models;
 using TrabalhoPO.Shared;
 

@@ -24,7 +24,7 @@
                 <strong>Id</strong>
             </td>
             <td>
-                @Model.Id
+                @Model.Id.ToString("N0")
         </td>
         </tr>
         <tr>
@@ -40,7 +40,7 @@
                 <strong>Preço</strong>
             </td>
             <td>
-                R$ @Model.Preco
+                R$ @Model.Preco.ToString("N2")
             </td>
         </tr>
         <tr>
@@ -48,7 +48,7 @@
                 <strong>Estoque Atual</strong>
             </td>
             <td>
-                @Model.EstoqueAtual
+                @Model.EstoqueAtual.ToString("N0")
             </td>
         </tr>
         <tr>
@@ -56,7 +56,7 @@
                 <strong>Estoque Mínimo</strong>
             </td>
             <td>
-                @Model.EstoqueMinimo
+                @Model.EstoqueMinimo.ToString("N0")
             </td>
         </tr>
         <tr>
@@ -64,7 +64,7 @@
                 <strong>Precisa Reposição</strong>
             </td>
             <td>
-                @Html.Raw(Model.PrecisaReposicao == true ? "Sim" : "Não")
+                @(Model.PrecisaReposicao == true ? "Sim" : "Não")
             </td>
         </tr>
         <tr>
@@ -82,7 +82,7 @@
                 <strong>Data Alteração</strong>
             </td>
             <td>
-                @Model.DataAlteracao
+                @Model.DataAlteracao.Value.ToString("dd/MM/yyyy @ HH:mm:ss")
             </td>
         </tr>
     </tbody>
@@ -92,7 +92,3 @@
         @Html.Partial("_Botoes", Model)
     </div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/Scripts/App/produto.min.js")
-}

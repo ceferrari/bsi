@@ -17,7 +17,7 @@
         @Html.Label("IdAux", new { @class = "col-sm-2 control-label hidden" })
         @Html.LabelFor(x => x.Id, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9">
-            @Html.TextBox("IdAux", (string)ViewBag.NextId.ToString(), new { @class = "form-control", disabled = "disabled" })
+            @Html.TextBox("IdAux", (string)ViewBag.NextId.ToString("N0"), new { @class = "form-control", disabled = "disabled" })
             @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @type = "hidden" })
         </div>
         <div class="col-sm-9 col-sm-offset-2 text-danger">
@@ -37,7 +37,7 @@
         @Html.LabelFor(x => x.Preco, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
             <span class="input-group-addon cinza"><strong>R$</strong></span>
-            @Html.TextBoxFor(x => x.Preco, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.Preco, "{0:N2}", new { @class = "form-control" })
         </div>
         <div class="col-sm-9 col-sm-offset-2 text-danger">
             @Html.ValidationMessageFor(x => x.Preco)
@@ -46,11 +46,11 @@
     <div class="form-group">
         @Html.LabelFor(x => x.EstoqueAtual, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
-            @Html.TextBoxFor(x => x.EstoqueAtual, new { @class = "form-control" })
-            <a href="#" onclick="diminuiAtual(@Model.Id);" class="input-group-addon">
+            @Html.TextBoxFor(x => x.EstoqueAtual, "{0:N0}", new { @class = "form-control" })
+            <a href="#" onclick="diminuiAtual();" class="input-group-addon">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </a>
-            <a href="#" onclick="aumentaAtual(@Model.Id);" class="input-group-addon">
+            <a href="#" onclick="aumentaAtual();" class="input-group-addon">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
@@ -61,11 +61,11 @@
     <div class="form-group">
         @Html.LabelFor(x => x.EstoqueMinimo, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
-            @Html.TextBoxFor(x => x.EstoqueMinimo, new { @class = "form-control" })
-            <a href="#" onclick="diminuiMinimo(@Model.Id);" class="input-group-addon">
+            @Html.TextBoxFor(x => x.EstoqueMinimo, "{0:N0}", new { @class = "form-control" })
+            <a href="#" onclick="diminuiMinimo();" class="input-group-addon">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </a>
-            <a href="#" onclick="aumentaMinimo(@Model.Id);" class="input-group-addon">
+            <a href="#" onclick="aumentaMinimo();" class="input-group-addon">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
@@ -92,5 +92,5 @@
 }
 
 @section Scripts {
-    @Scripts.Render("~/Scripts/App/produto.min.js")
+    @Scripts.Render("~/Scripts/produto")
 }

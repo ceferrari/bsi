@@ -18,11 +18,11 @@ namespace TrabalhoPO.Shared
             {
                 try
                 {
-                    actualValue = Convert.ToDecimal(valueProviderResult.AttemptedValue, CultureInfo.CurrentCulture);
+                    actualValue = decimal.Parse(valueProviderResult.AttemptedValue, CultureInfo.CurrentCulture);
                 }
-                catch (FormatException e)
+                catch (FormatException ex)
                 {
-                    modelState.Errors.Add(e);
+                    modelState.Errors.Add(ex);
                 }
             }
 

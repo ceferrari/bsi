@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Globalization;
 using System.Web.Mvc;
 
 namespace TrabalhoPO.Shared
 {
-    public class IntegerModelBinder : IModelBinder
+    public class DateTimeModelBinder : IModelBinder
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
@@ -18,7 +17,8 @@ namespace TrabalhoPO.Shared
             {
                 try
                 {
-                    actualValue = int.Parse(valueProviderResult.AttemptedValue, NumberStyles.AllowThousands, CultureInfo.CurrentCulture);
+                    var miliseconds = valueProviderResult.AttemptedValue.Replace("/Date(", "").Replace(")/", "");
+                    actualValue = (new DateTime(1970, 1, 1)).AddMilliseconds(double.Parse(miliseconds));
                 }
                 catch (FormatException ex)
                 {
