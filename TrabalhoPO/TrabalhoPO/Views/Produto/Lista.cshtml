@@ -51,10 +51,10 @@
                 </td>
                 <td class="text-right no-text-decoration">
                     <span class="pull-left">
-                        <a href="#" onclick="diminuiAtual(@produto.Id);">
+                        <a href="#" onmousedown="diminuiAtual(@produto.Id);" onmouseup="release();">
                             <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
                         </a>
-                        <a href="#" onclick="aumentaAtual(@produto.Id);">
+                        <a href="#" onmousedown="aumentaAtual(@produto.Id);" onmouseup="release();">
                             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
                         </a>
                     </span>
@@ -64,10 +64,10 @@
                 </td>
                 <td class="text-right no-text-decoration">
                     <span class="pull-left">
-                        <a href="#" onclick="diminuiMinimo(@produto.Id);">
+                        <a href="#" onmousedown="diminuiMinimo(@produto.Id);" onmouseup="release();">
                             <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
                         </a>
-                        <a href="#" onclick="aumentaMinimo(@produto.Id);">
+                        <a href="#" onmousedown="aumentaMinimo(@produto.Id);" onmouseup="release();">
                             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
                         </a>
                     </span>

@@ -10,16 +10,23 @@
     });
 });
 
-function getPost(Controller, Action, Id) {
-    $.getJSON("/" + Controller + "/Get", { id: Id }, function (data) {
-        Model = AddAntiForgeryToken(data);
-        $.post("/" + Controller + "/" + Action, Model).done(sucesso).fail(erro);
-    });
+function postProduto(Acao, Id) {
+    Id = AddAntiForgeryToken({ id: Id });
+    $.post("/Produto/" + Acao, Id).done(sucesso).fail(erro);
 }
 
-function postId(Controller, Action, Id) {
-    Model = AddAntiForgeryToken({ id: Id });
-    $.post("/" + Controller + "/" + Action, Model).done(sucesso).fail(erro);
+function hold(Funcao, Acao_Div, Id_Qtd) {
+    Funcao(Acao_Div, Id_Qtd);
+    timeout = setTimeout(function () {
+        interval = setInterval(function () {
+            Funcao(Acao_Div, Id_Qtd);
+        }, 100);
+    }, 500);
+}
+
+function release() {
+    clearTimeout(timeout);
+    clearInterval(interval);
 }
 
 function altera(div, qtd) {
@@ -29,33 +36,33 @@ function altera(div, qtd) {
 
 function aumentaAtual(Id) {
     if (Id) {
-        postId("Produto", "AumentaAtual", Id);
+        hold(postProduto, "AumentaAtual", Id);
     } else {
-        altera("#EstoqueAtual", 1);
+        hold(altera, "#EstoqueAtual", 1);
     }
 }
 
 function diminuiAtual(Id) {
     if (Id) {
-        postId("Produto", "DiminuiAtual", Id);
+        hold(postProduto, "DiminuiAtual", Id);
     } else {
-        altera("#EstoqueAtual", -1);
+        hold(altera, "#EstoqueAtual", -1);
     }
 }
 
 function aumentaMinimo(Id) {
     if (Id) {
-        postId("Produto", "AumentaMinimo", Id);
+        hold(postProduto, "AumentaMinimo", Id);
     } else {
-        altera("#EstoqueMinimo", 1);
+        hold(altera, "#EstoqueMinimo", 1);
     }
 }
 
 function diminuiMinimo(Id) {
     if (Id) {
-        postId("Produto", "DiminuiMinimo", Id);
+        hold(postProduto, "DiminuiMinimo", Id);
     } else {
-        altera("#EstoqueMinimo", -1);
+        hold(altera, "#EstoqueMinimo", -1);
     }
 }
 

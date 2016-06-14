@@ -1,13 +1,9 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-using System.Globalization;
+﻿using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using TrabalhoPO.Models;
 using TrabalhoPO.Models.Factories;
-using TrabalhoPO.Shared;
 
 namespace TrabalhoPO.Controllers
 {

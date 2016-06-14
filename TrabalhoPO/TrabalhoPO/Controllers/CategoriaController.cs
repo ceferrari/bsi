@@ -1,7 +1,6 @@
-﻿using System;
-using System.Data.Entity.Migrations;
+﻿using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using TrabalhoPO.Models;
 using TrabalhoPO.Models.Factories;
@@ -21,6 +20,11 @@ namespace TrabalhoPO.Controllers
         #endregion
 
         #region Métodos GET
+
+        public ActionResult Get(int id)
+        {
+            return Json(db.Categorias.Find(id), JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult Index()
         {
@@ -69,74 +73,53 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(Categoria categoria)
+        public async Task<ActionResult> Editar(Categoria categoria)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    Salvar(categoria);
+                await Salvar(categoria);
 
-                    return Json("Categoria editada com sucesso!");
-                }
+                return Json("Categoria editada com sucesso!");
+            }
 
-                return View(categoria);
-            }
-            catch (Exception ex)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
-            }
+            return View(categoria);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Criar(Categoria categoria)
+        public async Task<ActionResult> Criar(Categoria categoria)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    Salvar(categoria);
+                await Salvar(categoria);
 
-                    return Json("Categoria criada com sucesso!");
-                }
-
-                ViewBag.NextId = db.Categorias.Max(x => x.Id) + 1;
-
-                return View(categoria);
+                return Json("Categoria criada com sucesso!");
             }
-            catch (Exception ex)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
-            }
+
+            ViewBag.NextId = db.Categorias.Max(x => x.Id) + 1;
+
+            return View(categoria);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Excluir(Categoria categoria)
+        public async Task<ActionResult> Excluir(Categoria categoria)
         {
-            try
-            {
-                db.Categorias.Remove(categoria);
-                db.SaveChanges();
+            db.Categorias.Remove(db.Categorias.Find(categoria.Id));
+            await db.SaveChangesAsync();
 
-                return Json(categoria);
-            }
-            catch (Exception ex)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
-            }
+            return Json(categoria);
         }
 
         #endregion
 
         #region Métodos Privados e Protegidos
 
-        private void Salvar(Categoria categoria)
+        private async Task Salvar(Categoria categoria)
         {
             categoria.SetDataAlteracao();
             db.Set<Categoria>().AddOrUpdate(categoria);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
 
         #endregion
