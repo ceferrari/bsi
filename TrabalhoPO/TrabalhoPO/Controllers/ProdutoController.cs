@@ -79,11 +79,9 @@ namespace TrabalhoPO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Editar(Produto produto)
         {
-            await Task.FromResult(0);
-
             if (ModelState.IsValid)
             {
-                Salvar(produto);
+                await Salvar(produto);
 
                 return Json("Produto editado com sucesso!");
             }
@@ -95,11 +93,9 @@ namespace TrabalhoPO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Criar(Produto produto)
         {
-            await Task.FromResult(0);
-
             if (ModelState.IsValid)
             {
-                Salvar(produto);
+                await Salvar(produto);
 
                 return Json("Produto criado com sucesso!");
             }
@@ -113,56 +109,52 @@ namespace TrabalhoPO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Excluir(Produto produto)
         {
-            await Task.Run(() => {
-                db.Produtos.Remove(produto);
-                db.SaveChanges();
-            });
+            db.Produtos.Remove(db.Produtos.Find(produto.Id));
+            await db.SaveChangesAsync();
 
             return Json(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AumentaAtual(Produto produto)
+        public async Task<ActionResult> AumentaAtual(int id)
         {
-            await Task.Run(() => {
-                produto.AumentaAtual(1);
-                db.SaveChanges();
-            });
+            var produto = await db.Produtos.FindAsync(id);
+            produto.AumentaAtual(1);
+            await db.SaveChangesAsync();
 
             return Json(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DiminuiAtual(Produto produto)
+        public async Task<ActionResult> DiminuiAtual(int id)
         {
+            var produto = await db.Produtos.FindAsync(id);
             produto.DiminuiAtual(1);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Json(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AumentaMinimo(Produto produto)
+        public async Task<ActionResult> AumentaMinimo(int id)
         {
-            await Task.Run(() => {
-                produto.AumentaMinimo(1);
-                db.SaveChanges();
-            });
+            var produto = await db.Produtos.FindAsync(id);
+            produto.AumentaMinimo(1);
+            await db.SaveChangesAsync();
 
             return Json(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DiminuiMinimo(Produto produto)
+        public async Task<ActionResult> DiminuiMinimo(int id)
         {
-            await Task.Run(() => {
-                produto.DiminuiMinimo(1);
-                db.SaveChanges();
-            });
+            var produto = await db.Produtos.FindAsync(id);
+            produto.DiminuiMinimo(1);
+            await db.SaveChangesAsync();
 
             return Json(produto);
         }
@@ -171,11 +163,11 @@ namespace TrabalhoPO.Controllers
 
         #region Métodos Privados e Protegidos
 
-        private void Salvar(Produto produto)
+        private async Task Salvar(Produto produto)
         {
             produto.AtualizaCampos();
             db.Set<Produto>().AddOrUpdate(produto);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
 
         #endregion

@@ -17,6 +17,11 @@ function getPost(Controller, Action, Id) {
     });
 }
 
+function postId(Controller, Action, Id) {
+    Model = AddAntiForgeryToken({ id: Id });
+    $.post("/" + Controller + "/" + Action, Model).done(sucesso).fail(erro);
+}
+
 function altera(div, qtd) {
     var valor = parseInt($(div).val().replace(/\./g, ''));
     $(div).val(valor + qtd < 0 ? 0 : (valor + qtd).toLocaleString());
@@ -24,7 +29,7 @@ function altera(div, qtd) {
 
 function aumentaAtual(Id) {
     if (Id) {
-        getPost("Produto", "AumentaAtual", Id);
+        postId("Produto", "AumentaAtual", Id);
     } else {
         altera("#EstoqueAtual", 1);
     }
@@ -32,7 +37,7 @@ function aumentaAtual(Id) {
 
 function diminuiAtual(Id) {
     if (Id) {
-        getPost("Produto", "DiminuiAtual", Id);
+        postId("Produto", "DiminuiAtual", Id);
     } else {
         altera("#EstoqueAtual", -1);
     }
@@ -40,7 +45,7 @@ function diminuiAtual(Id) {
 
 function aumentaMinimo(Id) {
     if (Id) {
-        getPost("Produto", "AumentaMinimo", Id);
+        postId("Produto", "AumentaMinimo", Id);
     } else {
         altera("#EstoqueMinimo", 1);
     }
@@ -48,7 +53,7 @@ function aumentaMinimo(Id) {
 
 function diminuiMinimo(Id) {
     if (Id) {
-        getPost("Produto", "DiminuiMinimo", Id);
+        postId("Produto", "DiminuiMinimo", Id);
     } else {
         altera("#EstoqueMinimo", -1);
     }
