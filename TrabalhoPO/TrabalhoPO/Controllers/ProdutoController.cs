@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Data.Entity.Migrations;
+using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using TrabalhoPO.Models;
 using TrabalhoPO.Models.Factories;
+using TrabalhoPO.Shared;
 
 namespace TrabalhoPO.Controllers
 {
@@ -22,6 +25,11 @@ namespace TrabalhoPO.Controllers
 
         #region Métodos GET
 
+        public ActionResult Get(int id)
+        {
+            return Json(db.Produtos.Find(id), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Index()
         {
             return RedirectToAction("Lista");
@@ -30,14 +38,6 @@ namespace TrabalhoPO.Controllers
         public ActionResult Lista()
         {
             return View(db.Produtos.ToList());
-        }
-
-        public ActionResult Get(int id)
-        {
-            var json = Json(db.Produtos.Find(id), JsonRequestBehavior.AllowGet);
-
-            var x = 1;
-            return Json(db.Produtos.Find(id), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Detalhes(int id)
@@ -77,138 +77,94 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(Produto produto)
+        public async Task<ActionResult> Editar(Produto produto)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    Salvar(produto);
+            await Task.FromResult(0);
 
-                    return Json("Produto editado com sucesso!");
-                }
-
-                return View(produto);
-            }
-            catch (Exception ex)
+            if (ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
+                Salvar(produto);
+
+                return Json("Produto editado com sucesso!");
             }
+
+            return View(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Criar(Produto produto)
+        public async Task<ActionResult> Criar(Produto produto)
         {
-            try
+            await Task.FromResult(0);
+
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    Salvar(produto);
+                Salvar(produto);
 
-                    return Json("Produto criado com sucesso!");
-                }
-
-                ViewBag.NextId = db.Produtos.Max(x => x.Id) + 1;
-
-                return View(produto);
+                return Json("Produto criado com sucesso!");
             }
-            catch (Exception ex)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
-            }
+
+            ViewBag.NextId = db.Produtos.Max(x => x.Id) + 1;
+
+            return View(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Excluir(Produto produto)
+        public async Task<ActionResult> Excluir(Produto produto)
         {
-            try
-            {
+            await Task.Run(() => {
                 db.Produtos.Remove(produto);
                 db.SaveChanges();
+            });
 
-                return Json(produto);
-            }
-            catch (Exception ex)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
-            }
+            return Json(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AumentaAtual(Produto produto)
+        public async Task<ActionResult> AumentaAtual(Produto produto)
         {
-            try
-            {
+            await Task.Run(() => {
                 produto.AumentaAtual(1);
                 db.SaveChanges();
+            });
 
-                return Json(produto);
-            }
-            catch (Exception ex)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
-            }
+            return Json(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DiminuiAtual(Produto produto)
+        public async Task<ActionResult> DiminuiAtual(Produto produto)
         {
-            try
-            {
-                produto.DiminuiAtual(1);
+            produto.DiminuiAtual(1);
+            db.SaveChanges();
 
-                if (!TryValidateModel(produto))
-                {
-                    var err = ModelState.Values.SelectMany(x => x.Errors);
-                    //throw new Exception();
-                }
-                
-                db.SaveChanges();
-
-                return Json(produto);
-            }
-            catch (Exception ex)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
-            }
+            return Json(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AumentaMinimo(Produto produto)
+        public async Task<ActionResult> AumentaMinimo(Produto produto)
         {
-            try
-            {
-                produto.SetEstoqueMinimo(produto.EstoqueMinimo + 1);
+            await Task.Run(() => {
+                produto.AumentaMinimo(1);
                 db.SaveChanges();
+            });
 
-                return Json(produto);
-            }
-            catch (Exception ex)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
-            }
+            return Json(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DiminuiMinimo(Produto produto)
+        public async Task<ActionResult> DiminuiMinimo(Produto produto)
         {
-            try
-            {
-                produto.SetEstoqueMinimo(produto.EstoqueMinimo - 1);
+            await Task.Run(() => {
+                produto.DiminuiMinimo(1);
                 db.SaveChanges();
+            });
 
-                return Json(produto);
-            }
-            catch (Exception ex)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
-            }
+            return Json(produto);
         }
 
         #endregion

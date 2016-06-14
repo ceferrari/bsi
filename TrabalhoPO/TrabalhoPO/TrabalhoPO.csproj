@@ -197,6 +197,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\AsIsBundleOrderer.cs" />
     <Compile Include="Shared\DateTimeModelBinder.cs" />
+    <Compile Include="Shared\HandleExceptionAttribute.cs" />
     <Compile Include="Shared\IntegerModelBinder.cs" />
     <Compile Include="Shared\DecimalModelBinder.cs" />
     <Compile Include="Startup.cs" />

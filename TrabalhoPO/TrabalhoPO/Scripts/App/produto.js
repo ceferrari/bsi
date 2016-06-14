@@ -12,8 +12,6 @@
 
 function getPost(Controller, Action, Id) {
     $.getJSON("/" + Controller + "/Get", { id: Id }, function (data) {
-        data.Preco = data.Preco.toLocaleString();
-        alert(JSON.stringify(data));
         Model = AddAntiForgeryToken(data);
         $.post("/" + Controller + "/" + Action, Model).done(sucesso).fail(erro);
     });

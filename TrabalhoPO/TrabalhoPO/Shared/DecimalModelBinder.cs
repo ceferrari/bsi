@@ -8,27 +8,34 @@ namespace TrabalhoPO.Shared
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            ValueProviderResult valueProviderResult = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
+            object result = null;
 
-            ModelState modelState = new ModelState { Value = valueProviderResult };
+            var modelName = bindingContext.ModelName;
+            var attemptedValue = bindingContext.ValueProvider.GetValue(modelName).AttemptedValue;
 
-            object actualValue = null;
+            var wantedSeperator = NumberFormatInfo.CurrentInfo.NumberDecimalSeparator;
+            var alternateSeperator = (wantedSeperator == "," ? "." : ",");
 
-            if (!String.IsNullOrWhiteSpace(valueProviderResult.AttemptedValue))
+            if (attemptedValue.IndexOf(wantedSeperator) == -1 && attemptedValue.IndexOf(alternateSeperator) != -1)
             {
-                try
-                {
-                    actualValue = decimal.Parse(valueProviderResult.AttemptedValue, CultureInfo.CurrentCulture);
-                }
-                catch (FormatException ex)
-                {
-                    modelState.Errors.Add(ex);
-                }
+                attemptedValue = attemptedValue.Replace(alternateSeperator, wantedSeperator);
             }
 
-            bindingContext.ModelState.Add(bindingContext.ModelName, modelState);
+            try
+            {
+                if (bindingContext.ModelMetadata.IsNullableValueType && string.IsNullOrWhiteSpace(attemptedValue))
+                {
+                    return null;
+                }
 
-            return actualValue;
+                result = decimal.Parse(attemptedValue, NumberStyles.Any);
+            }
+            catch (FormatException ex)
+            {
+                bindingContext.ModelState.AddModelError(modelName, ex);
+            }
+
+            return result;
         }
     }
 }

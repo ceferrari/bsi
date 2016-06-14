@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using TrabalhoPO.Shared;
 
 namespace TrabalhoPO
 {
@@ -6,7 +7,7 @@ namespace TrabalhoPO
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            //filters.Add(new HandleExceptionAttribute());
             filters.Add(new AuthorizeAttribute());
         }
     }

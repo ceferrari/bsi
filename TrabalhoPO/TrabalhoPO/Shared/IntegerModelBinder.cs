@@ -8,27 +8,26 @@ namespace TrabalhoPO.Shared
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            ValueProviderResult valueProviderResult = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
+            object result = null;
 
-            ModelState modelState = new ModelState { Value = valueProviderResult };
+            var modelName = bindingContext.ModelName;
+            var attemptedValue = bindingContext.ValueProvider.GetValue(modelName).AttemptedValue;
 
-            object actualValue = null;
-
-            if (!String.IsNullOrWhiteSpace(valueProviderResult.AttemptedValue))
+            try
             {
-                try
+                if (bindingContext.ModelMetadata.IsNullableValueType && string.IsNullOrWhiteSpace(attemptedValue))
                 {
-                    actualValue = int.Parse(valueProviderResult.AttemptedValue, NumberStyles.AllowThousands, CultureInfo.CurrentCulture);
+                    return null;
                 }
-                catch (FormatException ex)
-                {
-                    modelState.Errors.Add(ex);
-                }
+
+                result = int.Parse(attemptedValue, NumberStyles.AllowThousands, CultureInfo.CurrentCulture);
+            }
+            catch (FormatException ex)
+            {
+                bindingContext.ModelState.AddModelError(modelName, ex);
             }
 
-            bindingContext.ModelState.Add(bindingContext.ModelName, modelState);
-
-            return actualValue;
+            return result;
         }
     }
 }

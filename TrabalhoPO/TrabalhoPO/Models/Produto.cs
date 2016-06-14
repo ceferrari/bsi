@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Threading.Tasks;
 using TrabalhoPO.Models.Interfaces;
 
 namespace TrabalhoPO.Models
@@ -45,7 +46,7 @@ namespace TrabalhoPO.Models
         [DataType(DataType.DateTime)]
         public DateTime? DataAlteracao { get; set; }
 
-        public bool SetDescricao(string descricao)
+        public void SetDescricao(string descricao)
         {
             if (String.IsNullOrWhiteSpace(descricao))
             {
@@ -54,11 +55,9 @@ namespace TrabalhoPO.Models
 
             Descricao = descricao;
             SetDataAlteracao();
-
-            return true;
         }
 
-        public bool SetPreco(decimal preco)
+        public void SetPreco(decimal preco)
         {
             if (preco < 0)
             {
@@ -67,24 +66,20 @@ namespace TrabalhoPO.Models
 
             Preco = preco;
             SetDataAlteracao();
-
-            return true;
         }
 
-        public bool SetEstoqueAtual(int qtd)
+        public void SetEstoqueAtual(int qtd)
         {
             if (qtd < 0)
             {
-                //throw new Exception("O Estoque Atual não pode ser negativo.");
+                throw new Exception("O Estoque Atual não pode ser negativo.");
             }
 
             EstoqueAtual = qtd;
             AtualizaCampos();
-
-            return true;
         }
 
-        public bool SetEstoqueMinimo(int qtd)
+        public void SetEstoqueMinimo(int qtd)
         {
             if (qtd < 0)
             {
@@ -93,37 +88,29 @@ namespace TrabalhoPO.Models
 
             EstoqueMinimo = qtd;
             AtualizaCampos();
-
-            return true;
         }
 
-        public bool AumentaAtual(int qtd)
+        public void AumentaAtual(int qtd)
         {
             SetEstoqueAtual(EstoqueAtual + qtd);
-
-            return true;
         }
 
-        public bool DiminuiAtual(int qtd)
+        public void DiminuiAtual(int qtd)
         {
             if (qtd > EstoqueAtual)
             {
-                //throw new Exception("Estoque insuficiente para a operação solicitada.");
+                throw new Exception("Estoque insuficiente para a operação solicitada.");
             }
 
             SetEstoqueAtual(EstoqueAtual - qtd);
-
-            return true;
         }
 
-        public bool AumentaMinimo(int qtd)
+        public void AumentaMinimo(int qtd)
         {
             SetEstoqueMinimo(EstoqueMinimo + qtd);
-
-            return true;
         }
 
-        public bool DiminuiMinimo(int qtd)
+        public void DiminuiMinimo(int qtd)
         {
             if (qtd > EstoqueMinimo)
             {
@@ -131,8 +118,6 @@ namespace TrabalhoPO.Models
             }
 
             SetEstoqueMinimo(EstoqueMinimo - qtd);
-
-            return true;
         }
 
         public void AtualizaCampos()
