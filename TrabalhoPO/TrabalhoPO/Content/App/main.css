@@ -79,8 +79,16 @@ h2 {
     font-weight: bolder;
 }
 
+.table td {
+    border: 1px solid #ddd;
+}
+
+.table > thead > tr > th {
+    border-bottom: 1px solid #ddd;
+}
+
 .table > tbody > tr > td {
-     vertical-align: middle;
+    vertical-align: middle;
 }
 
 .no-text-decoration a, 
@@ -119,6 +127,10 @@ a .glyphicon {
 
 a .glyphicon:hover {
     color: #777;
+}
+
+.btn-sm {
+    min-width: 37.61px;
 }
 
 .btn-custom {

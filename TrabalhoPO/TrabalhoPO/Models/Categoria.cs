@@ -12,11 +12,15 @@ namespace TrabalhoPO.Models
 
         [Required(ErrorMessage = "O campo Descrição é obrigatório.")]
         [StringLength(128, ErrorMessage = "A Descrição deve ter no máximo {1} caracteres.")]
+        [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
+        [Display(Name = "Data Alteração")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.DateTime)]
         public DateTime? DataAlteracao { get; set; }
 
-        public bool SetDescricao(string descricao)
+        public void SetDescricao(string descricao)
         {
             if (String.IsNullOrWhiteSpace(descricao))
             {
@@ -25,8 +29,6 @@ namespace TrabalhoPO.Models
 
             Descricao = descricao;
             SetDataAlteracao();
-
-            return true;
         }
 
         public void SetDataAlteracao()

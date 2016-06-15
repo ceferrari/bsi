@@ -10,10 +10,8 @@
     });
 });
 
-function postProduto(Acao, Id) {
-    Id = AddAntiForgeryToken({ id: Id });
-    $.post("/Produto/" + Acao, Id).done(sucesso).fail(erro);
-}
+var timeout = null;
+var interval = null;
 
 function hold(Funcao, Acao_Div, Id_Qtd) {
     Funcao(Acao_Div, Id_Qtd);
@@ -27,6 +25,11 @@ function hold(Funcao, Acao_Div, Id_Qtd) {
 function release() {
     clearTimeout(timeout);
     clearInterval(interval);
+}
+
+function postProduto(Acao, Id) {
+    Id = AddAntiForgeryToken({ id: Id });
+    $.post("/Produto/" + Acao, Id).done(sucesso).fail(erro);
 }
 
 function altera(div, qtd) {
