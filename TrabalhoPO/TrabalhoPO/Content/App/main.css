@@ -140,10 +140,10 @@ a .glyphicon:hover {
     float: none !important;
 }
 
-#ExcluirModal .modal-header {
-    color: #a94442;
+.no-border-right {
+    border-right: none;
 }
 
-#EstoqueAtual, #EstoqueMinimo {
-    border-right: none;
+.mb1 {
+    margin-bottom: 1px;
 }

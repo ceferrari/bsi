@@ -3,13 +3,13 @@
 });
 
 $(document).on("hidden.bs.modal", ".modal", function () {
-    var url = window.location.href;
+    var url = location.href;
     if (/Criar/i.test(url)) {
-        window.location.href = url.replace(/Criar.*/, 'Index');
+        location.href = url.replace(/Criar.*/, 'Index');
         return false;
     } 
     if (/Editar/i.test(url)) {
-        $.get(window.location.href, function (data) {
+        $.get(location.href, function (data) {
             replaceHtml(data);
         });
         return false;
@@ -78,7 +78,7 @@ function exclui(Model, Id) {
             $("#" + Model + Id).remove();
         }
         else {
-            window.location.href = "/" + Model + "/Index";
+            location.href = "/" + Model + "/Index";
         }
     });
 }

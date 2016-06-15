@@ -209,7 +209,7 @@
     <Content Include="Views\Produto\Lista.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Produto\Detalhes.cshtml" />
+    <Content Include="Views\Produto\Detalhes2.cshtml" />
     <Content Include="Views\Produto\Editar.cshtml" />
     <Content Include="Views\Produto\Criar.cshtml" />
     <Content Include="Views\Shared\_Botoes.cshtml" />
@@ -239,6 +239,7 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <Content Include="Views\Shared\Erro.cshtml" />
+    <Content Include="Views\Produto\Detalhes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
