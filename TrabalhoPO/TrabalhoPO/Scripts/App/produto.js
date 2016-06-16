@@ -31,7 +31,7 @@ function release() {
 
 function postProduto(Acao, Id) {
     Id = AddAntiForgeryToken({ id: Id });
-    $.post("/Produto/" + Acao, Id).done(sucesso).fail(erro);
+    $.post("/Produto/" + Acao + "Async", Id).done(sucesso).fail(erro);
 }
 
 function altera(div, qtd) {

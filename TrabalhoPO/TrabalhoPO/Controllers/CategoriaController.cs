@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Migrations;
+﻿using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -20,11 +21,6 @@ namespace TrabalhoPO.Controllers
         #endregion
 
         #region Métodos GET
-
-        public ActionResult Get(int id)
-        {
-            return Json(db.Categorias.Find(id), JsonRequestBehavior.AllowGet);
-        }
 
         public ActionResult Index()
         {
@@ -55,9 +51,9 @@ namespace TrabalhoPO.Controllers
 
         public ActionResult Excluir(int id)
         {
-            Categoria categoria = db.Categorias.Find(id);
+            var categoria = db.Categorias.Find(id);
 
-            Modal modal = new ModalFactory().criar(TipoModal.Excluir, new Modal()
+            var modal = new ModalFactory().criar(TipoModal.Excluir, new Modal()
             {
                 Titulo = "Excluir Categoria",
                 Mensagem = "Tem certeza que deseja excluir a categoria <strong>" + categoria.Id + " - " + categoria.Descricao + "</strong> ?",
@@ -73,11 +69,11 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Editar(Categoria categoria)
+        public ActionResult Editar(Categoria categoria)
         {
             if (ModelState.IsValid)
             {
-                await Salvar(categoria);
+                Salvar(categoria);
 
                 return Json("Categoria editada com sucesso!");
             }
@@ -87,11 +83,11 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Criar(Categoria categoria)
+        public ActionResult Criar(Categoria categoria)
         {
             if (ModelState.IsValid)
             {
-                await Salvar(categoria);
+                Salvar(categoria);
 
                 return Json("Categoria criada com sucesso!");
             }
@@ -103,9 +99,14 @@ namespace TrabalhoPO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Excluir(Categoria categoria)
+        public async Task<ActionResult> ExcluirAsync(int id)
         {
-            db.Categorias.Remove(db.Categorias.Find(categoria.Id));
+            var categoria = await db.Categorias.FindAsync(id);
+            if (db.Produtos.Count(x => x.Categoria == categoria.Id) > 0)
+            {
+                throw new Exception("Não é possível excluir uma categoria que contém produtos.");
+            }
+            db.Categorias.Remove(categoria);
             await db.SaveChangesAsync();
 
             return Json(categoria);
@@ -115,11 +116,11 @@ namespace TrabalhoPO.Controllers
 
         #region Métodos Privados e Protegidos
 
-        private async Task Salvar(Categoria categoria)
+        private void Salvar(Categoria categoria)
         {
             categoria.SetDataAlteracao();
             db.Set<Categoria>().AddOrUpdate(categoria);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
         }
 
         #endregion

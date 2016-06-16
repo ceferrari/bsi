@@ -17,7 +17,7 @@
         @Html.Label("IdAux", new { @class = "col-sm-2 control-label hidden" })
         @Html.LabelFor(x => x.Id, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.TextBox("IdAux", Model.Id.ToString("N0"), new { @class = "form-control", disabled = "disabled" })
+            @Html.TextBox("IdAux", (Model == null ? null : Model.Id.ToString("N0")), new { @class = "form-control", disabled = "disabled" })
             @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @type = "hidden" })
         </div>
         <div class="col-sm-10 col-sm-offset-2 text-danger">
@@ -76,7 +76,7 @@
     <div class="form-group">
         @Html.LabelFor(x => x.PrecisaReposicao, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.TextBoxFor(x => x.PrecisaReposicao, (Model.PrecisaReposicao == true ? "Sim" : "Não"), new { @class = "form-control", disabled = "disabled" })
+            @Html.TextBoxFor(x => x.PrecisaReposicao, (Model == null ? null : (Model.PrecisaReposicao == true ? "Sim" : "Não")), new { @class = "form-control", disabled = "disabled" })
         </div>
         <div class="col-sm-10 col-sm-offset-2 text-danger">
             @Html.ValidationMessageFor(x => x.PrecisaReposicao)
@@ -86,7 +86,7 @@
         @Html.LabelFor(x => x.Categoria, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
             @Html.DropDownListFor(x => x.Categoria,
-                new SelectList(ViewBag.Categorias, "Id", "Descricao", Model.Categoria),
+                new SelectList(ViewBag.Categorias, "Id", "Descricao", (Model == null ? 1 : Model.Categoria)),
                 new { @class = "form-control" })
         </div>
         <div class="col-sm-10 col-sm-offset-2 text-danger">

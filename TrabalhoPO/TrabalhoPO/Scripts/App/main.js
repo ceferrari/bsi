@@ -5,7 +5,7 @@
 $(document).on("hidden.bs.modal", ".modal", function () {
     var url = location.href;
     if (/Criar/i.test(url)) {
-        location.href = url.replace(/Criar.*/, 'Index');
+        location.href = url.replace(/Criar.*/i, "Index");
     } 
     if (/Editar/i.test(url)) {
         $.get(location.href, function (data) {
@@ -64,21 +64,30 @@ function modal(Modal, Tipo) {
 }
 
 function AddAntiForgeryToken(data) {
-    data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+    data.__RequestVerificationToken = $("input[name=__RequestVerificationToken]").val();
     return data;
 };
 
 function exclui(Model, Id) {
-    var url = "/" + Model + "/Excluir";
-    var data = AddAntiForgeryToken({ id: Id });
-    $.post(url, data, function (resposta) {
-        if ($("#" + Model + Id).length) {
-            $("#" + Model + Id).remove();
-        }
-        else {
-            location.href = "/" + Model + "/Index";
+    $.ajax({
+        url: "/" + Model + "/ExcluirAsync",
+        type: "POST",
+        data: AddAntiForgeryToken({ id: Id }),
+        success: function (result) {
+            if ($("#" + Model + Id).length) {
+                $("#" + Model + Id).remove();
+            }
+            else {
+                location.href = "/" + Model + "/Index";
+            }
+        },
+        error: function (result) {
+            setTimeout(function () {
+                modal(result.statusText, "Erro");
+            }, 500);
         }
     });
+    return false;
 }
 
 $(".form-crud").submit(function () {

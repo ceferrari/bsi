@@ -21,7 +21,16 @@ namespace TrabalhoPO.Controllers
                 return;
             }
 
-            var message = context.Exception.Message;
+            var exception = context.Exception;
+            var message = exception.Message;
+            while (exception.InnerException != null)
+            {
+                message = exception.InnerException.Message;
+                exception = exception.InnerException;
+            }
+
+            message = message.Replace("\"", "'");
+
             context.Result = new HttpStatusCodeResult(HttpStatusCode.BadRequest, message);
             context.ExceptionHandled = true;
         }
