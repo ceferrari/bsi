@@ -6,13 +6,11 @@ $(document).on("hidden.bs.modal", ".modal", function () {
     var url = location.href;
     if (/Criar/i.test(url)) {
         location.href = url.replace(/Criar.*/, 'Index');
-        return false;
     } 
     if (/Editar/i.test(url)) {
         $.get(location.href, function (data) {
             replaceHtml(data);
         });
-        return false;
     }
     $(this).remove();
 });

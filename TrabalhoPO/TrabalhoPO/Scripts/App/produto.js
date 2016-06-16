@@ -1,4 +1,6 @@
 ﻿$(document).ready(function () {
+    $(".holdable").on("mouseup mouseout", release);
+
     $("#Preco").on("paste focusout", function () {
         var valor = parseFloat($(this).val().replace(/\./g, '').replace(',', '.')).toFixed(2);
         $(this).val((isNaN(valor) || valor < 0 ? 0 : (valor * 1)).toLocaleString([], { minimumFractionDigits: 2 }));

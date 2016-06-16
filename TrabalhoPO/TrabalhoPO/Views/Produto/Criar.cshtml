@@ -47,10 +47,10 @@
         @Html.LabelFor(x => x.EstoqueAtual, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
             @Html.TextBoxFor(x => x.EstoqueAtual, "{0:N0}", new { @class = "form-control" })
-            <a href="#" class="input-group-addon" onmousedown="diminuiAtual();" onmouseup="release();">
+            <a href="javascript:;" class="holdable input-group-addon" onmousedown="diminuiAtual();">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </a>
-            <a href="#" class="input-group-addon" onmousedown="aumentaAtual();" onmouseup="release();">
+            <a href="javascript:;" class="holdable input-group-addon" onmousedown="aumentaAtual();">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
@@ -62,10 +62,10 @@
         @Html.LabelFor(x => x.EstoqueMinimo, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-9 input-group">
             @Html.TextBoxFor(x => x.EstoqueMinimo, "{0:N0}", new { @class = "form-control" })
-            <a href="#" class="input-group-addon" onmousedown="diminuiMinimo();" onmouseup="release();">
+            <a href="javascript:;" class="holdable input-group-addon" onmousedown="diminuiMinimo();">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </a>
-            <a href="#" class="input-group-addon" onmousedown="aumentaMinimo();" onmouseup="release();">
+            <a href="javascript:;" class="holdable input-group-addon" onmousedown="aumentaMinimo();">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
         </div>
