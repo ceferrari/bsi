@@ -74,7 +74,13 @@ function diminuiMinimo(Id) {
 function sucesso(result) {
     $("#EstoqueAtual" + result.Id).html(result.EstoqueAtual.toLocaleString());
     $("#EstoqueMinimo" + result.Id).html(result.EstoqueMinimo.toLocaleString());
-    $("#PrecisaReposicao" + result.Id).html(result.PrecisaReposicao === true ? "Sim" : "Não");
+    if (result.PrecisaReposicao) {
+        $("#Produto" + result.Id).addClass("text-danger");
+        $("#PrecisaReposicao" + result.Id).html("Sim");
+    } else {
+        $("#Produto" + result.Id).removeClass("text-danger");
+        $("#PrecisaReposicao" + result.Id).html("Não");
+    }
     var dataAlteracao = new Date(parseInt(result.DataAlteracao.substr(6)));
     var day = (dataAlteracao.getDate() < 10 ? '0' : '') + dataAlteracao.getDate();
     var month = (dataAlteracao.getMonth() < 9 ? '0' : '') + (dataAlteracao.getMonth() + 1);

@@ -34,7 +34,7 @@
     <tbody>
         @foreach (var produto in Model)
         {
-            <tr id="Produto@(produto.Id)">
+            <tr id="Produto@(produto.Id)" class="@(produto.PrecisaReposicao == true ? "text-danger" : String.Empty)">
                 <td>
                     @produto.Id.ToString("N0")
                 </td>
