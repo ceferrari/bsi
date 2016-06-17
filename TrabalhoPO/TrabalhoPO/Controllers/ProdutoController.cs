@@ -43,7 +43,7 @@ namespace TrabalhoPO.Controllers
 
         public ActionResult Criar()
         {
-            ViewBag.NextId = db.Produtos.Max(x => x.Id) + 1;
+            ViewBag.NextId = db.GetNextId("Produtos");
 
             return View(new Produto());
         }
@@ -91,7 +91,7 @@ namespace TrabalhoPO.Controllers
                 return Json("Produto criado com sucesso!");
             }
 
-            ViewBag.NextId = db.Produtos.Max(x => x.Id) + 1;
+            ViewBag.NextId = db.GetNextId("Produtos");
 
             return View(produto);
         }

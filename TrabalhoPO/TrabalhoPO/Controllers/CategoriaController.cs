@@ -44,7 +44,7 @@ namespace TrabalhoPO.Controllers
 
         public ActionResult Criar()
         {
-            ViewBag.NextId = db.Categorias.Max(x => x.Id) + 1;
+            ViewBag.NextId = db.GetNextId("Categorias");
 
             return View(new Categoria());
         }
@@ -92,7 +92,7 @@ namespace TrabalhoPO.Controllers
                 return Json("Categoria criada com sucesso!");
             }
 
-            ViewBag.NextId = db.Categorias.Max(x => x.Id) + 1;
+            ViewBag.NextId = db.GetNextId("Categorias");
 
             return View(categoria);
         }
@@ -104,7 +104,7 @@ namespace TrabalhoPO.Controllers
             var categoria = await db.Categorias.FindAsync(id);
             if (db.Produtos.Count(x => x.Categoria == categoria.Id) > 0)
             {
-                throw new Exception("Não é possível excluir uma categoria que contém produtos.");
+                throw new Exception("Não é possível excluir uma categoria que contém produto(s).");
             }
             db.Categorias.Remove(categoria);
             await db.SaveChangesAsync();

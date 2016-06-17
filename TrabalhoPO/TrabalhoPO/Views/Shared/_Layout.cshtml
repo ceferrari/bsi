@@ -11,7 +11,7 @@
     @Styles.Render("~/Content/App/main")
 </head>
 <body>
-    @if (!Request.IsAuthenticated || ViewBag.Titulo == "Login" || ViewBag.Titulo == "Register")
+    @if (!Request.IsAuthenticated || ViewBag.Modelo == "Auth")
     {
         <main>
             <div class="container-auth">
