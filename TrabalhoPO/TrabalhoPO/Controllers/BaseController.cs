@@ -4,7 +4,7 @@ using TrabalhoPO.DAL;
 
 namespace TrabalhoPO.Controllers
 {
-    public class BaseController : Controller
+    public abstract class BaseController : Controller
     {
         protected MyContext db = new MyContext();
 
