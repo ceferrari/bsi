@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using TrabalhoPO.Models;
@@ -23,7 +24,7 @@ namespace TrabalhoPO.Controllers
                 return View();
             }
 
-            var senha = new Utils()._SHA256(model.Senha);
+            var senha = new Utils().Hash(model.Senha, SHA256.Create());
             var usuario = db.Usuarios.Where(x => x.Email.Equals(model.Email) && x.Senha.Equals(senha)).FirstOrDefault();
 
             if (usuario != null)
@@ -42,7 +43,7 @@ namespace TrabalhoPO.Controllers
                 return Redirect(GetRedirectUrl(model.ReturnUrl));
             }
 
-            ModelState.AddModelError("", "E-mail ou senha inválido(s)");
+            ModelState.AddModelError("", "E-mail e/ou senha inválido(s).");
 
             return View(model);
         }
@@ -100,7 +101,8 @@ namespace TrabalhoPO.Controllers
                 return View();
             }
 
-            usuario.Senha = usuario.ConfirmarSenha = new Utils()._SHA256(usuario.Senha);
+            var senha = new Utils().Hash(usuario.Senha, SHA256.Create());
+            usuario.Senha = usuario.ConfirmarSenha = senha;
             db.Usuarios.Add(usuario);
             db.SaveChanges();
 

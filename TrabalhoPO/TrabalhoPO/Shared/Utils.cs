@@ -9,9 +9,9 @@ namespace TrabalhoPO.Shared
 {
     public class Utils
     {
-        public string _SHA256(string value)
+        public string Hash(string value, HashAlgorithm algorithm)
         {
-            return BitConverter.ToString(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(value))).Replace("-", "");
+            return BitConverter.ToString(algorithm.ComputeHash(Encoding.UTF8.GetBytes(value))).Replace("-", "");
         }
 
         public string Modal(Modal modal)
