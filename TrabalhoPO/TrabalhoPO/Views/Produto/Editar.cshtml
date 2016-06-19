@@ -47,11 +47,11 @@
         @Html.LabelFor(x => x.EstoqueAtual, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10 input-group">
             @Html.TextBoxFor(x => x.EstoqueAtual, "{0:N0}", new { @class = "form-control no-border-right" })
-            <a href="javascript:;" class="holdable input-group-addon" onmousedown="diminuiAtual();">
-                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            <a href="javascript:;" class="holdable input-group-addon cinza" onmousedown="diminuiAtual();">
+                <i class="glyphicon glyphicon-minus" aria-hidden="true"></i>
             </a>
-            <a href="javascript:;" class="holdable input-group-addon" onmousedown="aumentaAtual();">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <a href="javascript:;" class="holdable input-group-addon cinza" onmousedown="aumentaAtual();">
+                <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
             </a>
         </div>
         <div class="col-sm-10 col-sm-offset-2 text-danger">
@@ -62,11 +62,11 @@
         @Html.LabelFor(x => x.EstoqueMinimo, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10 input-group">
             @Html.TextBoxFor(x => x.EstoqueMinimo, "{0:N0}", new { @class = "form-control no-border-right" })
-            <a href="javascript:;" class="holdable input-group-addon" onmousedown="diminuiMinimo();">
-                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            <a href="javascript:;" class="holdable input-group-addon cinza" onmousedown="diminuiMinimo();">
+                <i class="glyphicon glyphicon-minus" aria-hidden="true"></i>
             </a>
-            <a href="javascript:;" class="holdable input-group-addon" onmousedown="aumentaMinimo();">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <a href="javascript:;" class="holdable input-group-addon cinza" onmousedown="aumentaMinimo();">
+                <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
             </a>
         </div>
         <div class="col-sm-10 col-sm-offset-2 text-danger">

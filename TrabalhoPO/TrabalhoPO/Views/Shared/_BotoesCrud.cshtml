@@ -2,33 +2,33 @@
 
 <span class="pull-left">
     <button onclick="javascript: history.back(); return false;" class="btn btn-default btn-custom">
-        <span class="fa fa-arrow-left" aria-hidden="true"></span>
+        <i class="glyphicon glyphicon-arrow-left" aria-hidden="true"></i>
         Voltar
     </button>
 </span>
 <span class="pull-right">
     @if (ViewBag.Acao != "Criar")
     {
-        <a href="@Url.Action("Criar", ViewBag.Modelo)" class="btn btn-success btn-custom">
-            <span class="fa fa-plus" aria-hidden="true"></span>
+        <a href="@Url.Action("Criar", ViewBag.Modelo)" class="btn btn-success btn-success-alpha btn-custom">
+            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
             @(Model is TrabalhoPO.Models.Categoria ? "Nova" : "Novo")
         </a>
-        <a href="@Url.Action("Excluir", ViewBag.Modelo, new { id = Model.Id })" class="btn btn-danger btn-custom" data-toggle="modal" data-target="ExcluirModal">
-            <span class="fa fa-trash-o" aria-hidden="true"></span>
+        <a href="@Url.Action("Excluir", ViewBag.Modelo, new { id = Model.Id })" class="btn btn-danger btn-danger-alpha btn-custom" data-toggle="modal" data-target="ExcluirModal">
+            <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
             Excluir
         </a>
     }
     @if (ViewBag.Acao == "Detalhes")
     {
-        <a href="@Url.Action("Editar", ViewBag.Modelo, new { id = Model.Id })" class="btn btn-warning btn-custom">
-            <span class="fa fa-edit" aria-hidden="true"></span>
+        <a href="@Url.Action("Editar", ViewBag.Modelo, new { id = Model.Id })" class="btn btn-warning btn-warning-alpha btn-custom">
+            <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
             Editar
         </a>
     }
     else
     {
-        <button type="submit" class="btn btn-primary btn-custom">
-            <span class="fa fa-save" aria-hidden="true"></span>
+        <button type="submit" class="btn btn-primary btn-primary-alpha btn-custom">
+            <i class="glyphicon glyphicon-floppy-save" aria-hidden="true"></i>
             Salvar
         </button>
     }

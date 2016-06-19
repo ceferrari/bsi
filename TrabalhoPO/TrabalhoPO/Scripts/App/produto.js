@@ -27,6 +27,7 @@ function hold(Funcao, Acao_Div, Id_Qtd) {
 function release() {
     clearTimeout(timeout);
     clearInterval(interval);
+    $(this).blur();
 }
 
 function postProduto(Acao, Id) {
@@ -92,5 +93,5 @@ function sucesso(result) {
 }
 
 function erro(result) {
-    modal(result.statusText, "Erro");
+    modal(result.statusText, "Alerta");
 }

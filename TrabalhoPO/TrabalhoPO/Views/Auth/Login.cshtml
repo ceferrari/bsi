@@ -21,7 +21,7 @@
         @Html.LabelFor(x => x.Email, String.Empty, new { @class = "control-label" })
         <div class="col-sm-12 input-group">
             <div class="input-group-addon">
-                <span class="fa fa-at" aria-hidden="true"></span>
+                <i class="glyphicon glyphicon-at" aria-hidden="true"></i>
             </div>
             @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @type = "email", placeholder = "E-mail" })
         </div>
@@ -33,7 +33,7 @@
         @Html.LabelFor(x => x.Senha, String.Empty, new { @class = "control-label" })
         <div class="col-sm-12 input-group">
             <div class="input-group-addon">
-                <span class="fa fa-asterisk" aria-hidden="true"></span>
+                <i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i>
             </div>
             @Html.PasswordFor(x => x.Senha, new { @class = "form-control", placeholder = "Senha" })
         </div>
@@ -44,13 +44,13 @@
     <div class="form-group">
         <div class="col-sm-6">
             <a href="@Url.Action("Register", "Auth")" class="btn btn-primary btn-block btn-custom">
-                <span class="fa fa-user-plus" aria-hidden="true"></span>
+                <i class="glyphicon glyphicon-user-add" aria-hidden="true"></i>
                 Registrar
             </a>
         </div>
         <div class="col-sm-6">
             <button type="submit" class="btn btn-primary btn-block btn-custom">
-                <span class="fa fa-sign-in" aria-hidden="true"></span>
+                <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>
                 Entrar
             </button>
         </div>

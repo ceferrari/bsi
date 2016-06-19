@@ -8,8 +8,8 @@
 
 <h2>
     <span>@ViewBag.Titulo</span>
-    <a href="@Url.Action("Criar", ViewBag.Modelo)" class="btn btn-success btn-custom pull-right">
-        <span class="fa fa-plus" aria-hidden="true"></span>
+    <a href="@Url.Action("Criar", ViewBag.Modelo)" class="btn btn-success btn-success-alpha btn-custom pull-right">
+        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
         Novo
     </a>
 </h2>
@@ -51,11 +51,11 @@
                 </td>
                 <td class="text-right no-text-decoration">
                     <span class="pull-left">
-                        <a href="javascript:;" class="holdable" onmousedown="diminuiAtual(@produto.Id);">
-                            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                        <a href="javascript:;" class="holdable va-middle cinza" onmousedown="diminuiAtual(@produto.Id);">
+                            <i class="glyphicon glyphicon-minus-sign" aria-hidden="true"></i>
                         </a>
-                        <a href="javascript:;" class="holdable" onmousedown="aumentaAtual(@produto.Id);">
-                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        <a href="javascript:;" class="holdable va-middle cinza" onmousedown="aumentaAtual(@produto.Id);">
+                            <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i>
                         </a>
                     </span>
                     <span class="pull-right" id="EstoqueAtual@(produto.Id)">
@@ -64,11 +64,11 @@
                 </td>
                 <td class="text-right no-text-decoration">
                     <span class="pull-left">
-                        <a href="javascript:;" class="holdable" onmousedown="diminuiMinimo(@produto.Id);">
-                            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                        <a href="javascript:;" class="holdable va-middle cinza" onmousedown="diminuiMinimo(@produto.Id);">
+                            <i class="glyphicon glyphicon-minus-sign" aria-hidden="true"></i>
                         </a>
-                        <a href="javascript:;" class="holdable" onmousedown="aumentaMinimo(@produto.Id);">
-                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        <a href="javascript:;" class="holdable va-middle cinza" onmousedown="aumentaMinimo(@produto.Id);">
+                            <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i>
                         </a>
                     </span>
                     <span class="pull-right" id="EstoqueMinimo@(produto.Id)">

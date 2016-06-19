@@ -7,7 +7,6 @@
     <title>@ViewBag.Titulo - Trabalho PO</title>
     <meta name="description" content="Trabalho PO">
     @Styles.Render("~/Content/bootstrap")
-    @Styles.Render("~/Content/font-awesome")
     @Styles.Render("~/Content/App/main")
 </head>
 <body>
@@ -32,13 +31,13 @@
                         <ul class="nav navbar-nav navbar-left">
                             <li>
                                 <a href="@Url.Action("Lista", "Produto")">
-                                    <span class="fa fa-list-ol" aria-hidden="true"></span>
+                                    <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
                                     Produtos
                                 </a>
                             </li>
                             <li>
                                 <a href="@Url.Action("Lista", "Categoria")">
-                                    <span class="fa fa-list-ol" aria-hidden="true"></span>
+                                    <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
                                     Categorias
                                 </a>
                             </li>
@@ -46,7 +45,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a href="@Url.Action("Logout", "Auth")">
-                                    <span class="fa fa-sign-out" aria-hidden="true"></span>
+                                    <i class="glyphicon glyphicon-log-out" aria-hidden="true"></i>
                                     Logout
                                 </a>
                             </li>
