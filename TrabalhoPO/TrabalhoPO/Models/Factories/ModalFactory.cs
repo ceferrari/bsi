@@ -40,7 +40,7 @@
                 {
                     Id = modal.Id ?? "AlertaModal",
                     ClasseCabecalho = modal.ClasseCabecalho ?? "text-warning",
-                    IconeCabecalho = modal.IconeCabecalho ?? "glyphicon glyphicon-exclamation-sign",
+                    IconeCabecalho = modal.IconeCabecalho ?? "fa fa-warning",
                     Titulo = modal.Titulo ?? "Alerta",
                     Mensagem = modal.Mensagem ?? "Ocorreu um erro inesperado. Tente novamente.",
                     TextoBotaoPadrao = modal.TextoBotaoPadrao ?? "Fechar",
