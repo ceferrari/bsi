@@ -11,7 +11,7 @@
     {
         <a href="@Url.Action("Criar", ViewBag.Modelo)" class="btn btn-success btn-success-alpha btn-custom">
             <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
-            @(Model is TrabalhoPO.Models.Categoria ? "Nova" : "Novo")
+            @(Model != null && Model is TrabalhoPO.Models.Categoria ? "Nova" : "Novo")
         </a>
         <a href="@Url.Action("Excluir", ViewBag.Modelo, new { id = Model.Id })" class="btn btn-danger btn-danger-alpha btn-custom" data-toggle="modal" data-target="ExcluirModal">
             <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
