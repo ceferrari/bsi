@@ -14,11 +14,9 @@
     @Html.AntiForgeryToken()
 
     <div class="form-group">
-        @Html.Label("IdAux", new { @class = "col-sm-2 control-label hidden" })
         @Html.LabelFor(x => x.Id, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.TextBox("IdAux", (string)ViewBag.NextId.ToString("N0"), new { @class = "form-control", disabled = "disabled" })
-            @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @type = "hidden" })
+            @Html.TextBoxFor(x => x.Id, (string)ViewBag.NextId.ToString("N0"), new { @class = "form-control", disabled = "true" })
         </div>
         <div class="col-sm-10 col-sm-offset-2 text-danger">
             @Html.ValidationMessageFor(x => x.Id)
@@ -80,7 +78,7 @@
     <div class="form-group">
         @Html.LabelFor(x => x.PrecisaReposicao, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.TextBoxFor(x => x.PrecisaReposicao, "Não", new { @class = "form-control", disabled = "disabled", placeholder = "Não" })
+            @Html.TextBoxFor(x => x.PrecisaReposicao, new { @class = "form-control", disabled = "true", placeholder = "Não" })
         </div>
         <div class="col-sm-10 col-sm-offset-2 text-danger">
             @Html.ValidationMessageFor(x => x.PrecisaReposicao)
@@ -100,7 +98,7 @@
     <div class="form-group">
         @Html.LabelFor(x => x.DataAlteracao, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.TextBoxFor(x => x.DataAlteracao, new { @class = "form-control", disabled = "disabled", placeholder = DateTime.Now.ToString("dd/MM/yyyy @ HH:mm:ss") })
+            @Html.TextBoxFor(x => x.DataAlteracao, new { @class = "form-control", disabled = "true", placeholder = DateTime.Now.ToString("dd/MM/yyyy @ HH:mm:ss") })
         </div>
         <div class="col-sm-10 col-sm-offset-2 text-danger">
             @Html.ValidationMessageFor(x => x.DataAlteracao)

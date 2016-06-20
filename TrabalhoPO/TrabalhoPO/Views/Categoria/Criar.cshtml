@@ -14,11 +14,9 @@
     @Html.AntiForgeryToken()
 
     <div class="form-group">
-        @Html.Label("IdAux", new { @class = "col-sm-2 control-label hidden" })
         @Html.LabelFor(x => x.Id, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.TextBox("IdAux", (string)ViewBag.NextId.ToString("N0"), new { @class = "form-control", disabled = "disabled" })
-            @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @type = "hidden" })
+            @Html.TextBoxFor(x => x.Id, (string)ViewBag.NextId.ToString("N0"), new { @class = "form-control", disabled = "true" })
         </div>
         <div class="col-sm-10 col-sm-offset-2 text-danger">
             @Html.ValidationMessageFor(x => x.Id)
@@ -36,7 +34,7 @@
     <div class="form-group">
         @Html.Label("QtdProdutos", "Qtd. de Produtos", new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10 mb1">
-            @Html.TextBox("QtdProdutos", "0", new { @class = "form-control", disabled = "disabled" })
+            @Html.TextBox("QtdProdutos", "0", new { @class = "form-control", disabled = "true" })
         </div>
     </div>
     <hr />

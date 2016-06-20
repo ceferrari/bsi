@@ -29,8 +29,8 @@ namespace TrabalhoPO
             ModelBinders.Binders.Add(typeof(int?), new IntegerModelBinder());
             ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
             ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
-            ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
-            ModelBinders.Binders.Add(typeof(DateTime?), new DateTimeModelBinder());
+            //ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
+            //ModelBinders.Binders.Add(typeof(DateTime?), new DateTimeModelBinder());
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
         }

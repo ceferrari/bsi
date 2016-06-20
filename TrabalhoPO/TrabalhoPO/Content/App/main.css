@@ -107,7 +107,7 @@ h2 {
 }
 
 .btn-xs i {
-    font-size: 15px;
+    font-size: 1.2em;
     vertical-align: middle;
 }
 
@@ -116,6 +116,7 @@ h2 {
     min-width: 100px;
 }
 
+.btn-custom .fa,
 .btn-custom .glyphicon {
     margin-right: 5px;
 }
@@ -166,13 +167,16 @@ h2 {
     margin-bottom: 1px;
 }
 
-.va-middle {
-    vertical-align: middle;
+.pr5 {
+    padding-right: 5px;
 }
 
-.glyphicon-minus-sign, 
-.glyphicon-plus-sign {
-    font-size: 1.2em;
+.pl5 {
+    padding-left: 5px;
+}
+
+.va-middle {
+    vertical-align: middle;
 }
 
 .cinza {
@@ -181,4 +185,9 @@ h2 {
 
 .cinza:hover {
     color: #777;
+}
+
+.glyphicon-minus-sign, 
+.glyphicon-plus-sign {
+    font-size: 1.2em;
 }
