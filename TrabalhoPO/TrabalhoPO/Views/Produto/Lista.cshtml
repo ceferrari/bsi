@@ -20,28 +20,54 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Descrição</th>
-            <th>Preço</th>
-            <th>Estoque Atual</th>
-            <th>Estoque Mínimo</th>
-            <th>Reposição</th>
-            <th>Categoria</th>
-            <th>Data Alteração</th>
-            <th>Ações</th>
+            <th class="col-sm-1">Id</th>
+            <th class="col-sm-3">Descrição</th>
+            <th class="col-sm-2">Preço</th>
+            <th class="col-sm-3">Estoque Atual</th>
+            <th class="col-sm-3">Estoque Mínimo</th>
+            <th class="col-sm-2">Reposição</th>
+            <th class="col-sm-3">Categoria</th>
+            <th class="col-sm-4">Data Alteração</th>
+            <th class="col-sm-3">Ações</th>
+        </tr>
+        <tr>
+            <td class="col-sm-1">@Html.TextBox("FiltroId", null, new { @class = "form-control filtro" })</td>
+            <td class="col-sm-3">@Html.TextBox("FiltroDescricao", null, new { @class = "form-control filtro" })</td>
+            <td class="col-sm-2">@Html.TextBox("FiltroPreco", null, new { @class = "form-control filtro", @readonly = "true" })</td>
+            <td class="col-sm-3">@Html.TextBox("FiltroAtual", null, new { @class = "form-control filtro", @readonly = "true" })</td>
+            <td class="col-sm-3">@Html.TextBox("FiltroMinimo", null, new { @class = "form-control filtro", @readonly = "true" })</td>
+            <td class="col-sm-2">@Html.DropDownList("FiltroReposicao", new SelectList(ViewBag.Reposicao), new { @class = "form-control filtro" })</td>
+            <td class="col-sm-3">@Html.DropDownList("FiltroCatgoria", new SelectList(ViewBag.Categorias, "Id", "Descricao", 0), new { @class = "form-control filtro" })</td>
+            <td class="col-sm-4">@Html.TextBox("FiltroAlteracao", null, new { @class = "form-control filtro" })</td>
+            <td class="col-sm-3"><btn class="btn btn-default btn-block" id="LimparFiltros"><strong>Limpar Filtros</strong></btn></td>
+        </tr>
+        <tr class="sliderRow" id="PrecoSliderRow" style="display:none">
+            <td colspan="9">
+                <div class="slider" id="PrecoSlider"></div>
+            </td>
+        </tr>
+        <tr class="sliderRow" id="AtualSliderRow" style="display:none">
+            <td colspan="9">
+                <div class="slider" id="AtualSlider"></div>
+            </td>
+        </tr>
+        <tr class="sliderRow" id="MinimoSliderRow" style="display:none">
+            <td colspan="9">
+                <div class="slider" id="MinimoSlider"></div>
+            </td>
         </tr>
     </thead>
     <tbody>
         @foreach (var produto in Model)
         {
-            <tr id="Produto@(produto.Id)" class="@(produto.PrecisaReposicao == true ? "text-danger" : String.Empty)">
-                <td>
+            <tr id="Produto@(produto.Id)" class="produto @(produto.PrecisaReposicao == true ? "text-danger" : String.Empty)">
+                <td class="id">
                     @produto.Id.ToString("N0")
                 </td>
-                <td>
+                <td class="descricao">
                     @produto.Descricao
                 </td>
-                <td>
+                <td class="preco">
                     <span class="pull-left">
                         R$
                     </span>
@@ -49,7 +75,7 @@
                         @produto.Preco.ToString("N2")
                     </span>
                 </td>
-                <td class="text-right no-text-decoration">
+                <td class="atual text-right no-text-decoration">
                     <span class="pull-left">
                         <a href="javascript:;" class="holdable va-middle cinza" onmousedown="diminuiAtual(@produto.Id);">
                             <i class="glyphicon glyphicon-minus-sign" aria-hidden="true"></i>
@@ -62,7 +88,7 @@
                         @produto.EstoqueAtual.ToString("N0")
                     </span>
                 </td>
-                <td class="text-right no-text-decoration">
+                <td class="minimo text-right no-text-decoration">
                     <span class="pull-left">
                         <a href="javascript:;" class="holdable va-middle cinza" onmousedown="diminuiMinimo(@produto.Id);">
                             <i class="glyphicon glyphicon-minus-sign" aria-hidden="true"></i>
@@ -75,15 +101,15 @@
                         @produto.EstoqueMinimo.ToString("N0")
                     </span>
                 </td>
-                <td class="text-center" id="PrecisaReposicao@(produto.Id)">
+                <td class="reposicao text-center" id="PrecisaReposicao@(produto.Id)">
                     @(produto.PrecisaReposicao == true ? "Sim" : "Não")
                 </td>
-                <td>
+                <td class="categoria">
                     <a href="@Url.Action("Detalhes", "Categoria", new { id = produto.Categoria })">
                         @((ViewBag.Categorias as IList<TrabalhoPO.Models.Categoria>).Where(x => x.Id == produto.Categoria).First().Descricao)
                     </a>
                 </td>
-                <td id="DataAlteracao@(produto.Id)">
+                <td class="alteracao" id="DataAlteracao@(produto.Id)">
                     @produto.DataAlteracao.Value.ToString("dd/MM/yyyy @ HH:mm:ss")
                 </td>
                 <td class="text-center">

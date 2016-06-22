@@ -14,26 +14,26 @@
     @Html.AntiForgeryToken()
 
     <div class="form-group">
-        @Html.LabelFor(x => x.Id, new { @class = "col-sm-2 control-label" })
-        <div class="col-sm-10">
+        @Html.LabelFor(x => x.Id, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-20">
             @Html.TextBoxFor(x => x.Id, (string)ViewBag.NextId.ToString("N0"), new { @class = "form-control", disabled = "true" })
         </div>
-        <div class="col-sm-10 col-sm-offset-2 text-danger">
+        <div class="col-sm-20 col-sm-offset-4 text-danger">
             @Html.ValidationMessageFor(x => x.Id)
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.Descricao, new { @class = "col-sm-2 control-label" })
-        <div class="col-sm-10">
+        @Html.LabelFor(x => x.Descricao, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-20">
             @Html.TextBoxFor(x => x.Descricao, new { @class = "form-control" })
         </div>
-        <div class="col-sm-10 col-sm-offset-2 text-danger">
+        <div class="col-sm-20 col-sm-offset-4 text-danger">
             @Html.ValidationMessageFor(x => x.Descricao)
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.Preco, new { @class = "col-sm-2 control-label" })
-        <div class="col-sm-10 input-group">
+        @Html.LabelFor(x => x.Preco, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-20 input-group">
             <span class="input-group-addon cinza">
                 <strong>
                     R$
@@ -41,13 +41,13 @@
             </span>
             @Html.TextBoxFor(x => x.Preco, "{0:N2}", new { @class = "form-control" })
         </div>
-        <div class="col-sm-10 col-sm-offset-2 text-danger">
+        <div class="col-sm-20 col-sm-offset-4 text-danger">
             @Html.ValidationMessageFor(x => x.Preco)
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.EstoqueAtual, new { @class = "col-sm-2 control-label" })
-        <div class="col-sm-10 input-group">
+        @Html.LabelFor(x => x.EstoqueAtual, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-20 input-group">
             @Html.TextBoxFor(x => x.EstoqueAtual, "{0:N0}", new { @class = "form-control no-border-right" })
             <a href="javascript:;" class="holdable input-group-addon cinza" onmousedown="diminuiAtual();">
                 <i class="glyphicon glyphicon-minus" aria-hidden="true"></i>
@@ -56,13 +56,13 @@
                 <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
             </a>
         </div>
-        <div class="col-sm-10 col-sm-offset-2 text-danger">
+        <div class="col-sm-20 col-sm-offset-4 text-danger">
             @Html.ValidationMessageFor(x => x.EstoqueAtual)
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.EstoqueMinimo, new { @class = "col-sm-2 control-label" })
-        <div class="col-sm-10 input-group">
+        @Html.LabelFor(x => x.EstoqueMinimo, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-20 input-group">
             @Html.TextBoxFor(x => x.EstoqueMinimo, "{0:N0}", new { @class = "form-control no-border-right" })
             <a href="javascript:;" class="holdable input-group-addon cinza" onmousedown="diminuiMinimo();">
                 <i class="glyphicon glyphicon-minus" aria-hidden="true"></i>
@@ -71,42 +71,42 @@
                 <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
             </a>
         </div>
-        <div class="col-sm-10 col-sm-offset-2 text-danger">
+        <div class="col-sm-20 col-sm-offset-4 text-danger">
             @Html.ValidationMessageFor(x => x.EstoqueMinimo)
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.PrecisaReposicao, new { @class = "col-sm-2 control-label" })
-        <div class="col-sm-10">
+        @Html.LabelFor(x => x.PrecisaReposicao, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-20">
             @Html.TextBoxFor(x => x.PrecisaReposicao, new { @class = "form-control", disabled = "true", placeholder = "Não" })
         </div>
-        <div class="col-sm-10 col-sm-offset-2 text-danger">
+        <div class="col-sm-20 col-sm-offset-4 text-danger">
             @Html.ValidationMessageFor(x => x.PrecisaReposicao)
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.Categoria, new { @class = "col-sm-2 control-label" })
-        <div class="col-sm-10">
+        @Html.LabelFor(x => x.Categoria, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-20">
             @Html.DropDownListFor(x => x.Categoria,
                 new SelectList(ViewBag.Categorias, "Id", "Descricao", Model.Categoria),
                 new { @class = "form-control" })
         </div>
-        <div class="col-sm-10 col-sm-offset-2 text-danger">
+        <div class="col-sm-20 col-sm-offset-4 text-danger">
             @Html.ValidationMessageFor(x => x.Categoria)
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.DataAlteracao, new { @class = "col-sm-2 control-label" })
-        <div class="col-sm-10">
+        @Html.LabelFor(x => x.DataAlteracao, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-20">
             @Html.TextBoxFor(x => x.DataAlteracao, new { @class = "form-control", disabled = "true", placeholder = DateTime.Now.ToString("dd/MM/yyyy @ HH:mm:ss") })
         </div>
-        <div class="col-sm-10 col-sm-offset-2 text-danger">
+        <div class="col-sm-20 col-sm-offset-4 text-danger">
             @Html.ValidationMessageFor(x => x.DataAlteracao)
         </div>
     </div>
     <hr />
     <div class="form-group">
-        <div class="col-sm-12">
+        <div class="col-sm-24">
             @Html.Partial("_BotoesCrud", Model)
         </div>
     </div>

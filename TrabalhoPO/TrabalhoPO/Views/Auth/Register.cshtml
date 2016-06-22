@@ -12,67 +12,67 @@
 
     <div class="form-group text-center">
         <h2>Registrar</h2>
-        <div class="col-sm-12 text-danger">
+        <div class="col-sm-24 text-danger">
             @Html.ValidationSummary(true)
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(x => x.Nome, String.Empty, new { @class = "control-label" })
-        <div class="col-sm-12 input-group">
+        <div class="col-sm-24 input-group">
             <div class="input-group-addon">
                 <i class="fa fa-user" aria-hidden="true"></i>
             </div>
             @Html.TextBoxFor(x => x.Nome, new { @class = "form-control", placeholder = "Nome" })
         </div>
-        <div class="col-sm-12 text-danger">
+        <div class="col-sm-24 text-danger">
             @Html.ValidationMessageFor(x => x.Nome)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.Email, String.Empty, new { @class = "control-label" })
-        <div class="col-sm-12 input-group">
+        <div class="col-sm-24 input-group">
             <div class="input-group-addon">
                 <i class="fa fa-at" aria-hidden="true"></i>
             </div>
             @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @type = "email", placeholder = "E-mail" })
         </div>
-        <div class="col-sm-12 text-danger">
+        <div class="col-sm-24 text-danger">
             @Html.ValidationMessageFor(x => x.Email)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.Senha, String.Empty, new { @class = "control-label" })
-        <div class="col-sm-12 input-group">
+        <div class="col-sm-24 input-group">
             <div class="input-group-addon">
                 <i class="fa fa-asterisk" aria-hidden="true"></i>
             </div>
             @Html.PasswordFor(x => x.Senha, new { @class = "form-control", placeholder = "Senha" })
         </div>
-        <div class="col-sm-12 text-danger">
+        <div class="col-sm-24 text-danger">
             @Html.ValidationMessageFor(x => x.Senha)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(x => x.ConfirmarSenha, String.Empty, new { @class = "control-label" })
-        <div class="col-sm-12 input-group">
+        <div class="col-sm-24 input-group">
             <div class="input-group-addon">
                 <i class="fa fa-asterisk" aria-hidden="true"></i>
             </div>
             @Html.PasswordFor(x => x.ConfirmarSenha, new { @class = "form-control", placeholder = "Confirmar Senha" })
         </div>
-        <div class="col-sm-12 text-danger">
+        <div class="col-sm-24 text-danger">
             @Html.ValidationMessageFor(x => x.ConfirmarSenha)
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-6 pr5">
+        <div class="col-sm-12 pr5">
             <a href="@Url.Action("Login", "Auth")" class="btn btn-default btn-block btn-custom">
                 <i class="fa fa-remove" aria-hidden="true"></i>
                 Cancelar
             </a>
         </div>
-        <div class="col-sm-6 pl5">
+        <div class="col-sm-12 pl5">
             <button type="submit" class="btn btn-primary btn-block btn-custom">
                 <i class="glyphicon glyphicon-floppy-save" aria-hidden="true"></i>
                 Salvar

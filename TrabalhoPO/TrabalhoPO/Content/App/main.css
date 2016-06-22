@@ -84,8 +84,29 @@ h2 {
     border-bottom: 1px solid #ddd;
 }
 
+.table > thead > tr:nth-child(2) > td {
+    border: 1px solid #ddd;
+    padding: 2px;
+}
+
 .table > tbody > tr > td {
     vertical-align: middle;
+}
+
+.table input {
+    width: 100%;
+}
+
+.table .sliderRow td {
+    padding: 10px 15px;
+}
+
+.filtro {
+    padding: 6px;
+}
+
+#FiltroPreco, #FiltroAtual, #FiltroMinimo {
+    cursor: pointer;
 }
 
 .validation-summary-errors ul {
@@ -151,8 +172,8 @@ h2 {
 }
 
 .input-group[class*=col-] {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .center-block { 

@@ -4,16 +4,32 @@
 
 $(document).on("hidden.bs.modal", ".modal", function () {
     var url = location.href;
-    if (/Criar/i.test(url)) {
-        location.href = url.replace(/Criar.*/i, "Index");
+    if (url.toUpperCase().indexOf("CRIAR") >= 0) {
+        location.href = url.replace(/CRIAR.*/i, "Index");
     } 
-    if (/Editar/i.test(url)) {
+    if (url.toUpperCase().indexOf("EDITAR") >= 0) {
         $.get(location.href, function (data) {
             replaceHtml(data);
         });
     }
     $(this).remove();
 });
+
+function toUsFloat(valor) {
+    return parseFloat(valor.replace(/\./g, '').replace(',', '.')).toFixed(2);
+}
+
+function toUsInt(valor) {
+    return parseInt(valor.replace(/\./g, ''));
+}
+
+function toBrFloat(valor) {
+    return (valor * 1).toLocaleString([], { minimumFractionDigits: 2 });
+}
+
+function toBrInt(valor) {
+    return (valor * 1).toLocaleString();
+}
 
 function isJson(str) {
     try {

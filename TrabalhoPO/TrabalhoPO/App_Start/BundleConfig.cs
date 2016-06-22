@@ -8,7 +8,10 @@ public class BundleConfig
         bundles.Add(new ScriptBundle("~/Scripts/jquery")
                     .Include("~/Scripts/jquery-{version}.js"));
 
-        //bundles.Add(new ScriptBundle("~/bundles/jqueryval") { Orderer = new AsIsBundleOrderer() }
+        bundles.Add(new ScriptBundle("~/Scripts/jqueryui")
+                    .Include("~/Scripts/jquery-ui-{version}.js"));
+
+        //bundles.Add(new ScriptBundle("~/Scripts/jqueryval") { Orderer = new AsIsBundleOrderer() }
         //            .Include("~/Scripts/jquery.validate.js",
         //                     "~/Scripts/jquery.validtae.unobtrusive.js",
         //                     "~/Scripts/globalize.js",
@@ -23,7 +26,11 @@ public class BundleConfig
         bundles.Add(new ScriptBundle("~/Scripts/produto")
                     .Include("~/Scripts/App/produto.js"));
 
+
         /* Styles */
+        bundles.Add(new StyleBundle("~/Content/jqueryui")
+                    .Include("~/Content/themes/base/*.css", new CssRewriteUrlTransform()));
+
         bundles.Add(new StyleBundle("~/Content/bootstrap")
                     .Include("~/Content/bootstrap.css"));
 

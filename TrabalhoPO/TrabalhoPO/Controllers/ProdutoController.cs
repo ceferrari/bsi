@@ -1,4 +1,6 @@
-﻿using System.Data.Entity.Migrations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -28,6 +30,15 @@ namespace TrabalhoPO.Controllers
 
         public ActionResult Lista()
         {
+            ((IList)ViewBag.Categorias).Insert(0, new Categoria { Descricao = "Tudo" });
+
+            ViewBag.Reposicao = new List<string>()
+            {
+                "Tudo",
+                "Sim",
+                "Não"
+            };
+
             return View(db.Produtos.ToList());
         }
 
