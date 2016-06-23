@@ -23,6 +23,9 @@ public class BundleConfig
         bundles.Add(new ScriptBundle("~/Scripts/main")
                     .Include("~/Scripts/App/main.js"));
 
+        bundles.Add(new ScriptBundle("~/Scripts/filtro")
+                    .Include("~/Scripts/App/filtro.js"));
+
         bundles.Add(new ScriptBundle("~/Scripts/produto")
                     .Include("~/Scripts/App/produto.js"));
 

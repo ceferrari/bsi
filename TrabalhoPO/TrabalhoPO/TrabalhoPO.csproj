@@ -195,6 +195,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\App\backup.js" />
     <Content Include="Scripts\App\categoria.js" />
+    <Content Include="Scripts\App\filtro.js" />
     <Content Include="Scripts\App\main.js" />
     <Content Include="Scripts\App\produto.js" />
     <Content Include="fonts\FontAwesome.otf" />

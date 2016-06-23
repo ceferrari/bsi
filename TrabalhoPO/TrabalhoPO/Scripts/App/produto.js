@@ -14,23 +14,6 @@
     var maxPreco = 150;
     var maxEstoque = 5000;
 
-    $(".slider").slider({
-        range: true,
-        min: 0,
-        slide: function (event, ui) {
-            var sign = (this.id === "PrecoSlider" ? '$' : '');
-            $("#Filtro" + this.id.replace("Slider", '')).val(sign + ui.values[0] + " - " + sign + ui.values[1]).focus();
-            $(".filtro").trigger("change");
-        },
-        stop: function (event, ui) {
-            $("#Filtro" + this.id.replace("Slider", '')).focus();
-            $(".filtro").trigger("change");
-        }
-    });
-
-    $("#PrecoSlider").slider("option", { max: maxPreco, values: [0, maxPreco], step: 1 });
-    $("#AtualSlider, #MinimoSlider").slider("option", { max: maxEstoque, values: [0, maxEstoque], step: 10 });
-
     $(".filtro").on("change keyup", function () {
         var id = $("#FiltroId").val();
         var descricao = $("#FiltroDescricao").val().toUpperCase();
@@ -65,9 +48,9 @@
     $("#LimparFiltros").on("click", function () {
         $("#FiltroId").val('');
         $("#FiltroDescricao").val('');
-        $("#PrecoSlider").slider("values", 0, 0).slider("values", 1, maxPreco);
-        $("#AtualSlider").slider("values", 0, 0).slider("values", 1, maxEstoque);
-        $("#MinimoSlider").slider("values", 0, 0).slider("values", 1, maxEstoque);
+        $("#PrecoSlider").slider("option", { max: maxPreco, values: [0, maxPreco], step: 1 });
+        $("#AtualSlider").slider("option", { max: maxEstoque, values: [0, maxEstoque], step: 10 });
+        $("#MinimoSlider").slider("option", { max: maxEstoque, values: [0, maxEstoque], step: 10 });
         $("#FiltroReposicao option:first").prop("selected", "selected");
         $("#FiltroCatgoria option:first").prop("selected", "selected");
         $("#FiltroAlteracao").val('');

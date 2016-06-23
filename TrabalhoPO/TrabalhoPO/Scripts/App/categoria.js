@@ -3,20 +3,6 @@
         return toUsInt($(this).html());
     }).get());
 
-    $("#ProdutosSlider").slider({
-        range: true,
-        min: 0,
-        max: maxProdutos,
-        values: [0, maxProdutos],
-        slide: function (event, ui) {
-            $("#FiltroProdutos").val(ui.values[0] + " - " + ui.values[1]).focus();
-            $(".filtro").trigger("change");
-        },
-        stop: function (event, ui) {
-            $(".filtro").trigger("change");
-        }
-    });
-
     $(".filtro").on("change keyup", function () {
         var id = $("#FiltroId").val();
         var descricao = $("#FiltroDescricao").val().toUpperCase();
@@ -39,7 +25,7 @@
     $("#LimparFiltros").on("click", function () {
         $("#FiltroId").val('');
         $("#FiltroDescricao").val('');
-        $("#ProdutosSlider").slider("values", 0, 0).slider("values", 1, maxProdutos);
+        $("#ProdutosSlider").slider("option", { max: maxProdutos, values: [0, maxProdutos], step: 1 });
         $("#FiltroAlteracao").val('');
         $("#FiltroProdutos").val($("#ProdutosSlider").slider("values", 0) + " - " + $("#ProdutosSlider").slider("values", 1));
         $(".filtro").trigger("change");
