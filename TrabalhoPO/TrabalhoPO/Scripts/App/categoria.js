@@ -23,11 +23,11 @@
     });
 
     $("#LimparFiltros").on("click", function () {
+        $("#ProdutosSlider").slider("option", { max: maxProdutos, values: [0, maxProdutos], step: 1 });
         $("#FiltroId").val('');
         $("#FiltroDescricao").val('');
-        $("#ProdutosSlider").slider("option", { max: maxProdutos, values: [0, maxProdutos], step: 1 });
-        $("#FiltroAlteracao").val('');
         $("#FiltroProdutos").val($("#ProdutosSlider").slider("values", 0) + " - " + $("#ProdutosSlider").slider("values", 1));
+        $("#FiltroAlteracao").val('');
         $(".filtro").trigger("change");
     }).click();
 });

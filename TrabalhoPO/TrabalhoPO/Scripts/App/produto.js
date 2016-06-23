@@ -46,17 +46,17 @@
     });
 
     $("#LimparFiltros").on("click", function () {
-        $("#FiltroId").val('');
-        $("#FiltroDescricao").val('');
         $("#PrecoSlider").slider("option", { max: maxPreco, values: [0, maxPreco], step: 1 });
         $("#AtualSlider").slider("option", { max: maxEstoque, values: [0, maxEstoque], step: 10 });
         $("#MinimoSlider").slider("option", { max: maxEstoque, values: [0, maxEstoque], step: 10 });
-        $("#FiltroReposicao option:first").prop("selected", "selected");
-        $("#FiltroCatgoria option:first").prop("selected", "selected");
-        $("#FiltroAlteracao").val('');
+        $("#FiltroId").val('');
+        $("#FiltroDescricao").val('');
         $("#FiltroPreco").val("$" + $("#PrecoSlider").slider("values", 0) + " - $" + $("#PrecoSlider").slider("values", 1));
         $("#FiltroAtual").val($("#AtualSlider").slider("values", 0) + " - " + $("#AtualSlider").slider("values", 1));
         $("#FiltroMinimo").val($("#MinimoSlider").slider("values", 0) + " - " + $("#MinimoSlider").slider("values", 1));
+        $("#FiltroReposicao option:first").prop("selected", "selected");
+        $("#FiltroCatgoria option:first").prop("selected", "selected");
+        $("#FiltroAlteracao").val('');
         $(".filtro").trigger("change");
     }).click();
 });
