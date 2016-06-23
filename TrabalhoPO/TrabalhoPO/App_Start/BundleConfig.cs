@@ -26,6 +26,9 @@ public class BundleConfig
         bundles.Add(new ScriptBundle("~/Scripts/produto")
                     .Include("~/Scripts/App/produto.js"));
 
+        bundles.Add(new ScriptBundle("~/Scripts/categoria")
+                    .Include("~/Scripts/App/categoria.js"));
+
 
         /* Styles */
         bundles.Add(new StyleBundle("~/Content/jqueryui")

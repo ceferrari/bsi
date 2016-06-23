@@ -64,12 +64,12 @@
         }
     });
 
-    $(".ui-slider-handle").on("focus", function () {
-        $("#Filtro" + $(this).parent().prop("id").replace("Slider", "")).focus();
+    $(".ui-slider-handle, .sliderRow td").on("focus click", function () {
+        $("#Filtro" + $(this).closest("tr").prop("id").replace("SliderRow", "")).focus();
     });
 
     $(".container .row").click(function (event) {
-        if (!$(event.target).is("#FiltroPreco, #FiltroAtual, #FiltroMinimo")) {
+        if (!$(event.target).is("#FiltroPreco, #FiltroAtual, #FiltroMinimo, .slider, .sliderRow td")) {
             $(".sliderRow").hide();
         }
     });
