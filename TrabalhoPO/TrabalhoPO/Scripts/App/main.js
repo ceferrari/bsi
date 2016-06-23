@@ -1,5 +1,24 @@
 ﻿$(document).ready(function () {
     $(".input-validation-error").parents(".form-group").addClass("has-error");
+
+    $(".filtro-slider").on("click", function () {
+        var elem = "#" + this.id.replace("Filtro", '') + "SliderRow";
+        $(".sliderRow").not(elem).hide();
+        $(elem).toggle();
+        if ($(elem).is(":hidden")) {
+            $(this).blur();
+        }
+    });
+
+    $(".container .row").on("click", function (event) {
+        if (!$(event.target).is(".filtro-slider, .sliderRow td, .slider")) {
+            $(".sliderRow").hide();
+        }
+    });
+
+    $(".sliderRow").find("*").on("click focus", function () {
+        $("#Filtro" + $(this).closest("tr").prop("id").replace("SliderRow", '')).focus();
+    });
 });
 
 $(document).on("hidden.bs.modal", ".modal", function () {

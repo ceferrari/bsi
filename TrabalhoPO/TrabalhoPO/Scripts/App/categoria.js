@@ -3,15 +3,6 @@
         return toUsInt($(this).html());
     }).get());
 
-    $("#FiltroProdutos").on("click", function () {
-        var elem = "#" + this.id.replace("Filtro", "") + "SliderRow";
-        $(".sliderRow").not(elem).hide();
-        $(elem).toggle();
-        if ($(elem).is(":hidden")) {
-            $(this).blur();
-        }
-    });
-
     $("#ProdutosSlider").slider({
         range: true,
         min: 0,
@@ -23,16 +14,6 @@
         },
         stop: function (event, ui) {
             $(".filtro").trigger("change");
-        }
-    });
-
-    $(".ui-slider-handle, .sliderRow td").on("focus click", function () {
-        $("#Filtro" + $(this).closest("tr").prop("id").replace("SliderRow", "")).focus();
-    });
-
-    $(".container .row").click(function (event) {
-        if (!$(event.target).is("#FiltroProdutos, .slider, .sliderRow td")) {
-            $(".sliderRow").hide();
         }
     });
 

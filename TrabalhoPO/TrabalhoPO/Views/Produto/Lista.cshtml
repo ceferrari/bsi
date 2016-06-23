@@ -33,9 +33,9 @@
         <tr>
             <td class="col-sm-1">@Html.TextBox("FiltroId", null, new { @class = "form-control filtro" })</td>
             <td class="col-sm-3">@Html.TextBox("FiltroDescricao", null, new { @class = "form-control filtro" })</td>
-            <td class="col-sm-2">@Html.TextBox("FiltroPreco", null, new { @class = "form-control filtro", @readonly = "true" })</td>
-            <td class="col-sm-3">@Html.TextBox("FiltroAtual", null, new { @class = "form-control filtro", @readonly = "true" })</td>
-            <td class="col-sm-3">@Html.TextBox("FiltroMinimo", null, new { @class = "form-control filtro", @readonly = "true" })</td>
+            <td class="col-sm-2">@Html.TextBox("FiltroPreco", null, new { @class = "form-control filtro filtro-slider", @readonly = "true" })</td>
+            <td class="col-sm-3">@Html.TextBox("FiltroAtual", null, new { @class = "form-control filtro filtro-slider", @readonly = "true" })</td>
+            <td class="col-sm-3">@Html.TextBox("FiltroMinimo", null, new { @class = "form-control filtro filtro-slider", @readonly = "true" })</td>
             <td class="col-sm-2">@Html.DropDownList("FiltroReposicao", new SelectList(ViewBag.Reposicao), new { @class = "form-control filtro" })</td>
             <td class="col-sm-3">@Html.DropDownList("FiltroCatgoria", new SelectList(ViewBag.Categorias, "Id", "Descricao", 0), new { @class = "form-control filtro" })</td>
             <td class="col-sm-4">@Html.TextBox("FiltroAlteracao", null, new { @class = "form-control filtro" })</td>

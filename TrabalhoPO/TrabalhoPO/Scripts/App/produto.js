@@ -11,68 +11,25 @@
         $(this).val(isNaN(valor) || valor < 0 ? 0 : toBrInt(valor));
     });
 
-    $("#FiltroPreco, #FiltroAtual, #FiltroMinimo").on("click", function () {
-        var elem = "#" + this.id.replace("Filtro", "") + "SliderRow";
-        $(".sliderRow").not(elem).hide();
-        $(elem).toggle();
-        if ($(elem).is(":hidden")) {
-            $(this).blur();
-        }
-    });
+    var maxPreco = 150;
+    var maxEstoque = 5000;
 
-    $("#PrecoSlider").slider({
+    $(".slider").slider({
         range: true,
         min: 0,
-        max: 150,
-        values: [0, 150],
         slide: function (event, ui) {
-            $("#FiltroPreco").val("$" + ui.values[0] + " - $" + ui.values[1]).focus();
+            var sign = (this.id === "PrecoSlider" ? '$' : '');
+            $("#Filtro" + this.id.replace("Slider", '')).val(sign + ui.values[0] + " - " + sign + ui.values[1]).focus();
             $(".filtro").trigger("change");
         },
         stop: function (event, ui) {
+            $("#Filtro" + this.id.replace("Slider", '')).focus();
             $(".filtro").trigger("change");
         }
     });
 
-    $("#AtualSlider").slider({
-        range: true,
-        min: 0,
-        max: 5000,
-        values: [0, 5000],
-        step: 10,
-        slide: function (event, ui) {
-            $("#FiltroAtual").val(ui.values[0] + " - " + ui.values[1]).focus();
-            $(".filtro").trigger("change");
-        },
-        stop: function (event, ui) {
-            $(".filtro").trigger("change");
-        }
-    });
-
-    $("#MinimoSlider").slider({
-        range: true,
-        min: 0,
-        max: 5000,
-        values: [0, 5000],
-        step: 10,
-        slide: function (event, ui) {
-            $("#FiltroMinimo").val(ui.values[0] + " - " + ui.values[1]).focus();
-            $(".filtro").trigger("change");
-        },
-        stop: function (event, ui) {
-            $(".filtro").trigger("change");
-        }
-    });
-
-    $(".ui-slider-handle, .sliderRow td").on("focus click", function () {
-        $("#Filtro" + $(this).closest("tr").prop("id").replace("SliderRow", "")).focus();
-    });
-
-    $(".container .row").click(function (event) {
-        if (!$(event.target).is("#FiltroPreco, #FiltroAtual, #FiltroMinimo, .slider, .sliderRow td")) {
-            $(".sliderRow").hide();
-        }
-    });
+    $("#PrecoSlider").slider("option", { max: maxPreco, values: [0, maxPreco], step: 1 });
+    $("#AtualSlider, #MinimoSlider").slider("option", { max: maxEstoque, values: [0, maxEstoque], step: 10 });
 
     $(".filtro").on("change keyup", function () {
         var id = $("#FiltroId").val();
@@ -108,9 +65,9 @@
     $("#LimparFiltros").on("click", function () {
         $("#FiltroId").val('');
         $("#FiltroDescricao").val('');
-        $("#PrecoSlider").slider("values", 0, 0).slider("values", 1, 150);
-        $("#AtualSlider").slider("values", 0, 0).slider("values", 1, 5000);
-        $("#MinimoSlider").slider("values", 0, 0).slider("values", 1, 5000);
+        $("#PrecoSlider").slider("values", 0, 0).slider("values", 1, maxPreco);
+        $("#AtualSlider").slider("values", 0, 0).slider("values", 1, maxEstoque);
+        $("#MinimoSlider").slider("values", 0, 0).slider("values", 1, maxEstoque);
         $("#FiltroReposicao option:first").prop("selected", "selected");
         $("#FiltroCatgoria option:first").prop("selected", "selected");
         $("#FiltroAlteracao").val('');
