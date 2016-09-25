@@ -19,7 +19,10 @@ namespace TrabalhoPO.Shared
                         filterContext.Exception.StackTrace
                     }
                 };
+
                 filterContext.ExceptionHandled = true;
+
+                new ErrorLogger().Log(filterContext.Exception);
             }
             else
             {

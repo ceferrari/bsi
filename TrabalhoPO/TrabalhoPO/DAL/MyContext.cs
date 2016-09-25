@@ -12,6 +12,7 @@ namespace TrabalhoPO.DAL
         public DbSet<Usuario> Usuarios { get; set; }
 
         public MyContext() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TrabalhoPO;Integrated Security=True;Pooling=False;MultipleActiveResultSets=True;Application Name=EntityFramework")
+        //public MyContext() : base("name=DefaultConnection")
         {
             Database.SetInitializer<MyContext>(new CreateDatabaseIfNotExists<MyContext>());
         }

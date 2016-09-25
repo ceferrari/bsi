@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Web.Mvc;
 using TrabalhoPO.DAL;
+using TrabalhoPO.Shared;
 
 namespace TrabalhoPO.Controllers
 {
@@ -33,6 +34,8 @@ namespace TrabalhoPO.Controllers
 
             context.Result = new HttpStatusCodeResult(HttpStatusCode.BadRequest, message);
             context.ExceptionHandled = true;
+
+            new ErrorLogger().Log(exception);
         }
     }
 }
